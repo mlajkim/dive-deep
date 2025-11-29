@@ -3,6 +3,7 @@
     "aliasfuncdef",
     "allexport",
     "chaselinks",
+    "chdir",
     "combiningchars",
     "noaliases",
     "setopt",
