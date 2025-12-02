@@ -1,0 +1,158 @@
+# 1. Create Namespace
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: 251202-ns
+---
+# 2. Sidecar Code (Go Language)
+# Run directly from ConfigMap without building an image for testing purposes.
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sidecar-code
+  namespace: 251202-ns
+data:
+  main.go: |
+    package main
+
+    import (
+        "fmt"
+        "log"
+        "net/http"
+    )
+
+    func handler(w http.ResponseWriter, r *http.Request) {
+        log.Println("[Sidecar] Request received! Checking auth...")
+
+        // Complex token logic usually goes here.
+        // For now, we inject a dummy token and approve everything.
+
+        // Instruct Envoy to inject the 'Authorization' header to the upstream.
+        w.Header().Set("Authorization", "Bearer hello-world-token")
+
+        // 200 OK = Tell Envoy to allow the request.
+        w.WriteHeader(http.StatusOK)
+    }
+
+    func main() {
+        http.HandleFunc("/", handler)
+        fmt.Println("🚀 Sidecar is running on :8080")
+        log.Fatal(http.ListenAndServe(":8080", nil))
+    }
+---
+# 3. Envoy Configuration
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: envoy-config
+  namespace: 251202-ns
+data:
+  envoy.yaml: |
+    static_resources:
+      listeners:
+      - name: listener_0
+        address:
+          socket_address: { address: 0.0.0.0, port_value: 10000 }
+        filter_chains:
+        - filters:
+          - name: envoy.filters.network.http_connection_manager
+            typed_config:
+              "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+              stat_prefix: ingress_http
+              http_filters:
+              # [Core] External Authz Filter (HTTP Mode)
+              # Envoy checks with the sidecar before processing the request.
+              - name: envoy.filters.http.ext_authz
+                typed_config:
+                  "@type": type.googleapis.com/envoy.extensions.filters.http.ext_authz.v3.ExtAuthz
+                  http_service:
+                    server_uri:
+                      uri: http://127.0.0.1:8080
+                      cluster: sidecar-cluster
+                      timeout: 0.5s
+                    authorization_response:
+                      allowed_upstream_headers:
+                        patterns:
+                        - exact: authorization
+                  # Security: Fail-closed (If sidecar fails, reject the request)
+                  failure_mode_allow: false
+
+              - name: envoy.filters.http.router
+                typed_config:
+                  "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
+
+              route_config:
+                name: local_route
+                virtual_hosts:
+                - name: local_service
+                  domains: ["*"]
+                  routes:
+                  - match:
+                      prefix: "/"
+                    # Since there is no actual backend app, Envoy responds directly (Hello World).
+                    direct_response:
+                      status: 200
+                      body:
+                        inline_string: "🎉 Success! Envoy received 200 OK from Sidecar.\n"
+
+      clusters:
+      # Cluster configuration for communicating with the Sidecar via localhost
+      - name: sidecar-cluster
+        connect_timeout: 0.25s
+        type: STATIC
+        load_assignment:
+          cluster_name: sidecar-cluster
+          endpoints:
+          - lb_endpoints:
+            - endpoint:
+                address:
+                  socket_address:
+                    address: 127.0.0.1
+                    port_value: 8080
+---
+# 4. Deployment (Envoy + Sidecar)
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: envoy-sidecar-demo
+  namespace: 251202-ns
+  labels:
+    app: demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo
+  template:
+    metadata:
+      labels:
+        app: demo
+    spec:
+      containers:
+      # [Main] Envoy Proxy Container
+      - name: envoy
+        image: envoyproxy/envoy:v1.26-latest
+        ports:
+        - containerPort: 10000
+        volumeMounts:
+        - name: envoy-config-vol
+          mountPath: /etc/envoy
+
+      # [Sidecar] Go Token Generator (Run on the fly)
+      # Compiles and runs the code from the ConfigMap at runtime.
+      - name: sidecar
+        image: golang:1.21-alpine
+        command: [ "go", "run", "/app/main.go" ]
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: sidecar-code-vol
+          mountPath: /app
+
+      volumes:
+      - name: envoy-config-vol
+        configMap:
+          name: envoy-config
+      - name: sidecar-code-vol
+        configMap:
+          name: sidecar-code
