@@ -27,7 +27,7 @@ spec:
 
       # [Sidecar] Go Token Generator (Run on the fly)
       # Compiles and runs the code from the ConfigMap at runtime.
-      - name: sidecar
+      - name: auth-sidecar
         image: golang:1.21-alpine
         command: [ "go", "run", "/app/main.go" ]
         ports:
