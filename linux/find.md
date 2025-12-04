@@ -5,6 +5,7 @@
 - [Find](#find)
   - [Overview](#overview)
   - [Based on ...](#based-on-)
+    - [Filetype](#filetype)
     - [Name](#name)
     - [Permission](#permission)
     - [Size](#size)
@@ -42,6 +43,21 @@ Very complex, but you can do this too:
 ```sh
 # find a file where it is NOT jpg or png:
 find ! ( -name "*.jpg" -o -name "*.png" )
+```
+
+### Filetype
+
+You can search only based on file types:
+
+```sh
+find . -type f | wc -l
+# 154 files with type "f"
+find . -type d | wc -l
+# 91 directories with type "d"
+find . -type fd | wc -l
+# 154 Wrong one: (Please note that the "d" is ignored here)
+find . type f -o -type d | wc -l
+# 245 Correct one: files and directories combined
 ```
 
 ### Name
