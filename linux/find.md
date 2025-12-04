@@ -10,6 +10,7 @@
     - [Permission](#permission)
     - [Size](#size)
     - [Modified Time](#modified-time)
+  - [Examples](#examples)
 
 <!-- /TOC -->
 
@@ -112,4 +113,16 @@ find -mmin -30
 # 30 minutes or older ones:
 find -mmin +30
 find -mtime +30
+```
+
+## Examples
+
+
+The following commands output the same, but the difference is that:
+- `/` means *any* of the bits match
+- `-` means *all* of the bits match
+
+```sh
+find /var/log/ -perm /g=w -o ! -perm /o=rw
+find /var/log/ -perm -g=w -o ! -perm /o=rw
 ```
