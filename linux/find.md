@@ -57,7 +57,8 @@ find . -type d | wc -l
 find . -type fd | wc -l
 # 154 Wrong one: (Please note that the "d" is ignored here)
 find . type f -o -type d | wc -l
-# 245 Correct one: files and directories combined
+find . type f|d | wc -l
+# 245 Correct one: files and directories combined (Both are the same)
 ```
 
 ### Name
@@ -79,6 +80,9 @@ find -perm +644
 # / means any permission:
 find -perm /4000
 find -perm /2000
+# 
+find -perm g=w
+
 ```
 
 ### Size
