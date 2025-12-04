@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "linux/chmod.md",
+                "file": "251130.inode.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "chmod"
+              "title": "251130.inode"
             }
           }
         ]
@@ -185,18 +185,20 @@
   },
   "active": "9061f579b0a3e05e",
   "lastOpenFiles": [
+    "251129.script.md",
+    "251201.linux_file_type.md",
+    "251130.inode.md",
     "linux/cp.md",
+    "assets/proxy_sidecar.png",
+    "assets/25_years_ago_commit.png",
+    "assets/inode.png",
+    "assets/soft_link_distinct_inode.png",
     "linux/find.md",
     "linux/ls.md",
     "linux/chmod.md",
-    "251201.linux_file_type.md",
     "251202.proxy-sidecar.md",
-    "251130.inode.md",
     "README.md",
     "linux",
-    "251201.??.md",
-    "assets/soft_link_distinct_inode.png",
-    "assets/inode.png",
-    "251129.script.md"
+    "251201.??.md"
   ]
 }

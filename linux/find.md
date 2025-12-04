@@ -1,4 +1,25 @@
+# Find
 
+<!-- TOC -->
+
+- [Find](#find)
+  - [Based on ...](#based-on-)
+    - [Name](#name)
+    - [Permission](#permission)
+    - [Size](#size)
+    - [Modified Time](#modified-time)
+
+<!-- /TOC -->
+
+## Based on ...
+
+Please noe that you can have multiple params together to filter down the results.
+To use logical OR, use `-o` between the conditions:
+
+
+```sh
+find -name "*cert*" -o -size +50M
+```
 
 ### Name
 
@@ -11,6 +32,12 @@ find -iname *cert*
 ### Permission
 
 ```sh
+find -perm 644
+# at least 644 permission file:
+find -perm -644
+# at most 644 permission file:
+find -perm +644
+# / means any permission:
 find -perm /4000
 find -perm /2000
 ```
@@ -27,7 +54,7 @@ find -size +50G
 
 ### Modified Time
 
-Logically speaing, the modifed time cannot be future time,
+Logically speaking, the modifed time cannot be future time,
 
 > [!NOTE]
 > Difference between modified and change in Linux is as below:
