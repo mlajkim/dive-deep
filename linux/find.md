@@ -110,6 +110,9 @@ Logically speaking, the modifed time cannot be future time,
 - mtime: modified time: when you change the content of file. note that ctime also modifes with modified time (due to size, etc)
 - ctime: change time: when you change the inode data (metadata) of file
 
+> ![NOTE]
+> Sometimes there are two `-`s so we forget to type it. Please be careful.
+
 ```sh
 find -mmin -30
 # 30 minutes or older ones:
