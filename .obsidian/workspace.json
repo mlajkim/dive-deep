@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "linux/cp.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "cp"
             }
           }
         ]
@@ -183,14 +183,22 @@
       "bases:Create new base": false
     }
   },
-  "active": "9061f579b0a3e05e",
+  "active": "b6bf4a1c3580f0ce",
   "lastOpenFiles": [
-    "251201.linux_file_type.md",
-    "251201.??.md",
-    "assets/soft_link_distinct_inode.png",
-    "assets/inode.png",
+    "linux/find.md",
     "251130.inode.md",
+    "251129.script.md",
+    "251201.linux_file_type.md",
+    "linux/cp.md",
+    "assets/proxy_sidecar.png",
+    "assets/25_years_ago_commit.png",
+    "assets/inode.png",
+    "assets/soft_link_distinct_inode.png",
+    "linux/ls.md",
+    "linux/chmod.md",
+    "251202.proxy-sidecar.md",
     "README.md",
-    "251129.script.md"
+    "linux",
+    "251201.??.md"
   ]
 }
