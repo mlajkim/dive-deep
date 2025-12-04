@@ -3,6 +3,7 @@
 <!-- TOC -->
 
 - [Find](#find)
+  - [Overview](#overview)
   - [Based on ...](#based-on-)
     - [Name](#name)
     - [Permission](#permission)
@@ -11,14 +12,36 @@
 
 <!-- /TOC -->
 
+## Overview
+
+`find` by default list up files and directories **recursively** from the current directory.
+
+To limit the depth of recursion, you can use `-maxdepth` parameter:
+```sh
+find -maxdepth 2 -name "*cert*"
+```
+
 ## Based on ...
 
-Please noe that you can have multiple params together to filter down the results.
+Please note that you can have multiple params together to filter down the results.
 To use logical OR, use `-o` between the conditions:
 
 
 ```sh
 find -name "*cert*" -o -size +50M
+```
+
+You can also run NOT operator:
+
+```sh
+find \! -name "*cert*"
+```
+
+Very complex, but you can do this too:
+
+```sh
+# find a file where it is NOT jpg or png:
+find ! ( -name "*.jpg" -o -name "*.png" )
 ```
 
 ### Name
