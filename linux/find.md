@@ -11,6 +11,8 @@
     - [Size](#size)
     - [Modified Time](#modified-time)
   - [Examples](#examples)
+    - [Complex Set](#complex-set)
+    - [Set SUID, GUID, Sticky Bit](#set-suid-guid-sticky-bit)
 
 <!-- /TOC -->
 
@@ -117,6 +119,7 @@ find -mtime +30
 
 ## Examples
 
+### Complex Set
 
 The following commands output the same, but the difference is that:
 - `/` means *any* of the bits match
@@ -125,4 +128,25 @@ The following commands output the same, but the difference is that:
 ```sh
 find /var/log/ -perm /g=w -o ! -perm /o=rw
 find /var/log/ -perm -g=w -o ! -perm /o=rw
+```
+
+
+### Set SUID, GUID, Sticky Bit
+
+```sh
+stat /home/bob/datadir
+#   File: /home/bob/datadir
+#   Size: 4096            Blocks: 8          IO Block: 4096   directory
+# Device: 7000abh/7340203d        Inode: 42871712    Links: 2
+# Access: (0755/drwxr-xr-x)  Uid: ( 1000/     bob)   Gid: ( 1000/     bob)
+# Access: 2025-12-04 07:14:20.864883411 +0000
+# Modify: 2025-12-04 07:14:20.864883411 +0000
+# Change: 2025-12-04 07:14:20.864883411 +0000
+#  Birth: 2025-12-04 07:14:20.864883411 +0000
+```
+
+And youu may do either of the following:
+```sh
+chmod 7755 /home/bob/datadir
+chmod u+s,g+s,o+t /home/bob/datadir
 ```
