@@ -80,8 +80,10 @@ find -perm +644
 # / means any permission:
 find -perm /4000
 find -perm /2000
-# 
+# Group only write:
 find -perm g=w
+# Group at least write:
+find -perm -g=w
 
 ```
 
