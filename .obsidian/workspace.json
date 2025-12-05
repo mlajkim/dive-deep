@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "linux/chmod.md",
+                "file": "251201.linux_file_type.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "chmod"
+              "title": "251201.linux_file_type"
             }
           }
         ]
@@ -185,28 +185,31 @@
   },
   "active": "9061f579b0a3e05e",
   "lastOpenFiles": [
-    "linux/less.md",
-    "linux/cp.md",
-    "linux/cut.md",
-    "linux/diff.md",
-    "linux/find.md",
-    "linux/head.md",
-    "linux/ls.md",
-    "linux/sed.md",
-    "linux/tail.md",
+    "weekly_dives/w49.2025.md",
+    "weekly_dives/w",
+    "weekly_dives",
     "linux/uniq.md",
+    "linux/tail.md",
     "linux/sort.md",
+    "linux/sed.md",
+    "linux/less.md",
+    "linux/head.md",
+    "linux/diff.md",
+    "linux/cut.md",
+    "251129.cd.md",
+    "linux/ls.md",
+    "linux/find.md",
+    "linux/cp.md",
     "linux/chmod.md",
-    "assets/inode.png",
-    "assets/25_years_ago_commit.png",
-    "251130.inode.md",
-    "251129.script.md",
-    "251201.linux_file_type.md",
-    "assets/proxy_sidecar.png",
-    "assets/soft_link_distinct_inode.png",
-    "251202.proxy-sidecar.md",
-    "README.md",
     "linux",
-    "251201.??.md"
+    "251203.suid_guid_sticky.md",
+    "251202.proxy-sidecar.md",
+    "251201.linux_file_type.md",
+    "251130.inode.md",
+    "README.md",
+    "251201.??.md",
+    "assets/soft_link_distinct_inode.png",
+    "assets/inode.png",
+    "251129.script.md"
   ]
 }
