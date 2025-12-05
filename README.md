@@ -30,18 +30,18 @@ I want to become a **Golden Kubestronaut**. But while doing that, I also want to
 
 ### Dec 2025: Linux: LFCS
 
-|     Date     |  Weekly Goal  | Chapters | Done  |
-|:------------:|:-------------:|:--------:|:-----:|
-| 11/30 ~ 12/6 |   Section 2   |  8 ~ 11  | 11/29 |
-|              |               |   ~17    | 11/30 |
-|              |               |   ~21    | 12/4  |
-|              |               |   ~27    |       |
-|              |               |   ~32    |       |
-|              |               |   ~37    |       |
-|  12/7~12/13  |   Section 3   |          |       |
-| 12/14~12/20  | Section 4,5,6 |          |       |
-| 12/21~12/27  |   Mock Test   |          |       |
-|  12/28~1/3   |  Actual Test  |          |       |
+|     Date     |  Weekly Goal  | Chapters |  Done   |
+|:------------:|:-------------:|:--------:|:-------:|
+| 11/30 ~ 12/6 |   Section 2   |  8 ~ 11  |  11/29  |
+|              |               |   ~17    |  11/30  |
+|              |               |   ~21    |  12/4   |
+|              |               |   ~27    | ...12/6 |
+|              |               |   ~32    | ...12/6 |
+|              |               |   ~37    | ...12/6 |
+|  12/7~12/13  |   Section 3   |          |         |
+| 12/14~12/20  | Section 4,5,6 |          |         |
+| 12/21~12/27  |   Mock Test   |          |         |
+|  12/28~1/3   |  Actual Test  |          |         |
 
 ### Jan 2026: ICA
 
