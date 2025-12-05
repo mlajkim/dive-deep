@@ -5,12 +5,13 @@ Setup:
 ```sh
 tmp_date=$(date +%y%m%d_%H%M%S_test)
 mkdir -p ~/test_dive/$tmp_date && cd ~/test_dive/$tmp_date
-echo -e "canada cada john\ncanada cada amy\ncada cada michael\ncada cada sara" > file.txt
+echo -e "john uk\namy korea\nmichael usa\nsara canada\njohn uk" > file.txt
 cat file.txt
-# canada cada john
-# canada cada amy
-# cada cada michael
-# cada cada sara
+# john uk
+# amy korea
+# michael usa
+# sara canada
+# john uk
 ```
 
 ### Get names only (third column)
@@ -19,19 +20,25 @@ cat file.txt
 - `f`: field (not 0-indexed, starts from 1)
 
 ```sh
-cut -d ' ' -f 3 file.txt
+cut -d ' ' -f 1 file.txt
 # john
 # amy
 # michael
 # sara
+# john
 ```
 
-And again, it does not modify the original file:
+And again, it does not modify the original file (you may do `>` to redirect output to a new file):
 
 ```sh
 cat file.txt
-# canada cada john
-# canada cada amy
-# cada cada michael
-# cada cada sara
+# john uk
+# amy korea
+# michael usa
+# sara canada
+# john uk
 ```
+
+You can also [[unqi]] the names:
+
+```sh
