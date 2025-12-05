@@ -4,7 +4,9 @@
 
 - [less](#less)
   - [Setup](#setup)
-  - [Test](#test)
+  - [Flags: Core](#flags-core)
+  - [Flags: Searching](#flags-searching)
+  - [Configuration](#configuration)
 
 <!-- /TOC -->
 
@@ -17,14 +19,9 @@ We will use the following file to test out `less`:
 less /etc/services
 ```
 
-## Test
+## Flags: Core
 
-You can also set up in `.zshrc`:
-```sh
-export LESS="-R -I -x4 -S"
-```
-
-
+Here are some useful flags for `less`:
 - `-N`: Show line numbers
 - `-i`: Ignore case when searching
 - `-I`: Ignore case when searching unless uppercase is used
@@ -32,5 +29,14 @@ export LESS="-R -I -x4 -S"
 - `-S`: Chop long lines rather than wrapping
 - `=`: Show file information: i.e) `/etc/services lines 430-461/13926 byte 23961/678260 4%  (press RETURN)`
 
+## Flags: Searching
 - `n`: Next search result
 - `shift + n`, or `N`: Previous search result
+
+## Configuration
+
+Add the following environment variable to your shell configuration to optimize defaults in `.zshrc`:
+
+```sh
+export LESS="-R -I -x4 -S"
+```
