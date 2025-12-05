@@ -16,6 +16,9 @@ cat file.txt
 
 ### Get names only (third column)
 
+> [!NOTE]
+> You may [[uniq]] or [[sort]] the names after this.
+
 - `d`: delimiter
 - `f`: field (not 0-indexed, starts from 1)
 
@@ -39,6 +42,5 @@ cat file.txt
 # john uk
 ```
 
-You can also [[unqi]] the names:
 
-```sh
+

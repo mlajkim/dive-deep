@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "linux/cp.md",
+                "file": "linux/uniq.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "cp"
+              "title": "uniq"
             }
           }
         ]
@@ -183,13 +183,15 @@
       "bases:Create new base": false
     }
   },
-  "active": "b6bf4a1c3580f0ce",
+  "active": "9061f579b0a3e05e",
   "lastOpenFiles": [
+    "linux/cut.md",
+    "linux/uniq.md",
+    "linux/cp.md",
     "linux/find.md",
     "251130.inode.md",
     "251129.script.md",
     "251201.linux_file_type.md",
-    "linux/cp.md",
     "assets/proxy_sidecar.png",
     "assets/25_years_ago_commit.png",
     "assets/inode.png",
