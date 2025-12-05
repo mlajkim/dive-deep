@@ -7,25 +7,66 @@
 
 - [grep](#grep)
   - [Setup](#setup)
-  - [Search file contents recursively](#search-file-contents-recursively)
   - [Exclude lines matching a pattern using `-v` flag](#exclude-lines-matching-a-pattern-using--v-flag)
+  - [-w flag: Match whole words only](#-w-flag-match-whole-words-only)
+  - [-o flag: Print only matching parts of a line](#-o-flag-print-only-matching-parts-of-a-line)
+  - [Search file contents recursively](#search-file-contents-recursively)
 
 <!-- /TOC -->
 
 
 ## Setup
 
-
-## Search file contents recursively
-
-Search through files recursively `-r` for the case-insensitive `-i` word "password" in `/etc/` directory:
+Setup:
 ```sh
-grep -ir 'password' /etc/
+test_name=grep_command
+tmp_date=$(date +%y%m%d_%H%M%S_$test_name)
+mkdir -p ~/test_dive/$tmp_date && cd ~/test_dive/$tmp_date
+
+cat > file.txt <<EOF
+pattern
+non_pattern
+non-pattern
+nonpattern
+pattern
+totally different line
+EOF
 ```
 
 
 ## Exclude lines matching a pattern using `-v` flag
 
 ```sh
-grep -v 'pattern' file.txt  # Exclude lines matching 'pattern'
+grep -v 'pattern' file.txt
+# totally different line
+```
+
+
+## -w flag: Match whole words only
+
+That `-` is included with `-w` flag:
+
+```sh
+grep -w 'pattern' file.txt
+# pattern
+# non-pattern
+# pattern
+```
+
+## -o flag: Print only matching parts of a line
+
+```sh
+grep -o 'pattern' file.txt  # Print only matching parts of a line
+# pattern
+# pattern
+# pattern
+# pattern
+# pattern
+```
+
+## Search file contents recursively
+
+Search through files recursively `-r` for the case-insensitive `-i` word "password" in `/etc/` directory:
+```sh
+grep -ir 'password' /etc/
 ```
