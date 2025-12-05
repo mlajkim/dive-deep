@@ -1,0 +1,48 @@
+# sed
+
+*s*tream *ed*itor
+
+<!-- TOC -->
+
+- [sed](#sed)
+
+<!-- /TOC -->
+
+
+Setup:
+```sh
+tmp_date=$(date +%y%m%d_%H%M%S_test)
+mkdir -p ~/test_dive/$tmp_date && cd ~/test_dive/$tmp_date
+echo -e "canada cada\ncanada cada\ncada cada\ncada cada" > file.txt
+cat file.txt
+# canada cada
+# canada cada
+# cada cada
+# cada cada
+```
+
+Here is the setting:
+- `s`: substitute
+- `g`: global (applies for every occurrence in the line)
+- without `g`: applies only for the first occurrence in the line (Still loops through lines)
+
+```sh
+sed 's/cada/canada/g' file.txt
+# canada canada
+# canada canada
+# canada canada
+# canada canada
+```
+
+So you may apply only the first one:
+```sh
+sed 's/cada/canada/' file.txt
+# canada canada
+# canada canada
+# canada cada
+# canada cada
+```
+
+To actually modifiy:
+
+
