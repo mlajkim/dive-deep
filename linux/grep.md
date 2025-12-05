@@ -10,10 +10,11 @@
     - [Exclude lines matching a pattern using `-v` flag](#exclude-lines-matching-a-pattern-using--v-flag)
     - [-w flag: Match whole words only](#-w-flag-match-whole-words-only)
     - [-o flag: Print only matching parts of a line](#-o-flag-print-only-matching-parts-of-a-line)
-    - [Search file contents recursively](#search-file-contents-recursively)
-  - [Advanced Grep with Regex](#advanced-grep-with-regex)
+    - [Search file contents recursively -r](#search-file-contents-recursively--r)
 
 <!-- /TOC -->
+
+`Grep` basically uses the [[regexp]] (regular expression) patterns to search texts.
 
 
 ## Basic Grep
@@ -65,12 +66,10 @@ grep -o 'pattern' file.txt  # Print only matching parts of a line
 # pattern
 ```
 
-### Search file contents recursively
+### Search file contents recursively -r
 
 Search through files recursively `-r` for the case-insensitive `-i` word "password" in `/etc/` directory:
 ```sh
 grep -ir 'password' /etc/
 ```
-
-## Advanced Grep with Regex
 
