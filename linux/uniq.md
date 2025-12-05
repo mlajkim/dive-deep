@@ -1,10 +1,15 @@
-# uniq 
+# uniq
 
+<!-- TOC -->
 
+- [uniq](#uniq)
+  - [Setup](#setup)
+  - [Unqiue names only](#unqiue-names-only)
 
+<!-- /TOC -->
 
+## Setup
 
-Setup:
 ```sh
 tmp_date=$(date +%y%m%d_%H%M%S_test)
 mkdir -p ~/test_dive/$tmp_date && cd ~/test_dive/$tmp_date
