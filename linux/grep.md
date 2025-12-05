@@ -6,16 +6,17 @@
 <!-- TOC -->
 
 - [grep](#grep)
-  - [Setup](#setup)
-  - [Exclude lines matching a pattern using `-v` flag](#exclude-lines-matching-a-pattern-using--v-flag)
-  - [-w flag: Match whole words only](#-w-flag-match-whole-words-only)
-  - [-o flag: Print only matching parts of a line](#-o-flag-print-only-matching-parts-of-a-line)
-  - [Search file contents recursively](#search-file-contents-recursively)
+  - [Basic Grep](#basic-grep)
+    - [Exclude lines matching a pattern using `-v` flag](#exclude-lines-matching-a-pattern-using--v-flag)
+    - [-w flag: Match whole words only](#-w-flag-match-whole-words-only)
+    - [-o flag: Print only matching parts of a line](#-o-flag-print-only-matching-parts-of-a-line)
+    - [Search file contents recursively](#search-file-contents-recursively)
+  - [Advanced Grep with Regex](#advanced-grep-with-regex)
 
 <!-- /TOC -->
 
 
-## Setup
+## Basic Grep
 
 Setup:
 ```sh
@@ -34,7 +35,7 @@ EOF
 ```
 
 
-## Exclude lines matching a pattern using `-v` flag
+### Exclude lines matching a pattern using `-v` flag
 
 ```sh
 grep -v 'pattern' file.txt
@@ -42,7 +43,7 @@ grep -v 'pattern' file.txt
 ```
 
 
-## -w flag: Match whole words only
+### -w flag: Match whole words only
 
 That `-` is included with `-w` flag:
 
@@ -53,7 +54,7 @@ grep -w 'pattern' file.txt
 # pattern
 ```
 
-## -o flag: Print only matching parts of a line
+### -o flag: Print only matching parts of a line
 
 ```sh
 grep -o 'pattern' file.txt  # Print only matching parts of a line
@@ -64,9 +65,12 @@ grep -o 'pattern' file.txt  # Print only matching parts of a line
 # pattern
 ```
 
-## Search file contents recursively
+### Search file contents recursively
 
 Search through files recursively `-r` for the case-insensitive `-i` word "password" in `/etc/` directory:
 ```sh
 grep -ir 'password' /etc/
 ```
+
+## Advanced Grep with Regex
+
