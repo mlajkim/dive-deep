@@ -1,8 +1,8 @@
-# dive-deep
+# Dive Deep 🤿
 
 <!-- TOC -->
 
-- [dive-deep](#dive-deep)
+- [Dive Deep 🤿](#dive-deep-🤿)
 - [Goal](#goal)
   - [Dive Deep & Become Golden Kubestronaut](#dive-deep--become-golden-kubestronaut)
     - [Dec 2025: Linux: LFCS](#dec-2025-linux-lfcs)
