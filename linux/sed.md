@@ -43,6 +43,38 @@ sed 's/cada/canada/' file.txt
 # canada cada
 ```
 
-To actually modifiy:
+Note that the `sed` above does not modify the original file:
+
+```sh
+cat file.txt
+# canada cada
+# canada cada
+# cada cada
+# cada cada
+```
+
+
+To modify the original file, use `-i` option:
+
+```sh
+sed -i .bak 's/cada/canada/g' file.txt
+cat file.txt
+# canada canada
+# canada canada
+# canada canada
+# canada canada
+```
+
+with `-i .bak`, a backup file `file.txt.bak` is created:
+
+```sh
+cat file.txt.bak
+# canada cada
+# canada cada
+# cada cada
+# cada cada
+```
+
+
 
 
