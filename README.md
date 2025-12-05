@@ -6,14 +6,14 @@
 - [Goal](#goal)
   - [Dive Deep & Become Golden Kubestronaut](#dive-deep--become-golden-kubestronaut)
     - [Dec 2025: Linux: LFCS](#dec-2025-linux-lfcs)
-    - [January 2026: ICA](#january-2026-ica)
-    - [Feburary 2026: CCA](#feburary-2026-cca)
-    - [March 2026: CNPA](#march-2026-cnpa)
-    - [April 2026: CNPE](#april-2026-cnpe)
+    - [Jan 2026: ICA](#jan-2026-ica)
+    - [Feb 2026: CCA](#feb-2026-cca)
+    - [Mar 2026: CNPA](#mar-2026-cnpa)
+    - [Apr 2026: CNPE](#apr-2026-cnpe)
     - [May 2026: CPE](#may-2026-cpe)
-    - [June 2026: PCA](#june-2026-pca)
-    - [July 2026: CAPA](#july-2026-capa)
-    - [August 2026: CGOA](#august-2026-cgoa)
+    - [Jun 2026: PCA](#jun-2026-pca)
+    - [Jul 2026: CAPA](#jul-2026-capa)
+    - [Aug 2026: CGOA](#aug-2026-cgoa)
     - [Sep 2026: CBA](#sep-2026-cba)
     - [Oct 2026: OTCA](#oct-2026-otca)
     - [Nov 2026: KCA](#nov-2026-kca)
@@ -43,21 +43,21 @@ I want to become a **Golden Kubestronaut**. But while doing that, I also want to
 | 12/21~12/27  |   Mock Test   |          |       |
 |  12/28~1/3   |  Actual Test  |          |       |
 
-### January 2026: ICA
+### Jan 2026: ICA
 
-### Feburary 2026: CCA
+### Feb 2026: CCA
 
-### March 2026: CNPA
+### Mar 2026: CNPA
 
-### April 2026: CNPE
+### Apr 2026: CNPE
 
 ### May 2026: CPE
 
-### June 2026: PCA
+### Jun 2026: PCA
 
-### July 2026: CAPA
+### Jul 2026: CAPA
 
-### August 2026: CGOA
+### Aug 2026: CGOA
 
 ### Sep 2026: CBA
 
