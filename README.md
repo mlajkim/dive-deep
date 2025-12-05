@@ -30,6 +30,9 @@ I want to become a **Golden Kubestronaut**. But while doing that, I also want to
 
 ### Dec 2025: Linux: LFCS
 
+> [!NOTE]
+> `...<date>` means that I want to finish it by that date
+
 |     Date     |  Weekly Goal  | Chapters |  Done   |
 |:------------:|:-------------:|:--------:|:-------:|
 | 11/30 ~ 12/6 |   Section 2   |  8 ~ 11  |  11/29  |
