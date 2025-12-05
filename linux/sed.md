@@ -1,6 +1,6 @@
 # sed
 
-*s*tream *ed*itor
+**s**tream **ed**itor
 
 <!-- TOC -->
 
