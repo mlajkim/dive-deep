@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "linux/uniq.md",
+                "file": "linux/sed.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "uniq"
+              "title": "sed"
             }
           }
         ]
@@ -185,19 +185,23 @@
   },
   "active": "9061f579b0a3e05e",
   "lastOpenFiles": [
-    "linux/cut.md",
+    "linux/sort.md",
+    "linux/tail.md",
     "linux/uniq.md",
-    "linux/cp.md",
     "linux/find.md",
+    "linux/ls.md",
+    "linux/sed.md",
+    "linux/cp.md",
+    "linux/cut.md",
+    "linux/chmod.md",
+    "assets/inode.png",
+    "assets/25_years_ago_commit.png",
+    "linux/diff.md",
     "251130.inode.md",
     "251129.script.md",
     "251201.linux_file_type.md",
     "assets/proxy_sidecar.png",
-    "assets/25_years_ago_commit.png",
-    "assets/inode.png",
     "assets/soft_link_distinct_inode.png",
-    "linux/ls.md",
-    "linux/chmod.md",
     "251202.proxy-sidecar.md",
     "README.md",
     "linux",
