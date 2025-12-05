@@ -22,13 +22,15 @@
 
 # Goal
 
+The general goal of **diving deep** is to really understand what’s happening *inside*, rather than only partially understanding the surface. Sometimes, for speed, it’s important to learn only the surface, but great decisions come from the **knowledge gained underneath**. And since humans tend not to dive deep because it can feel like too much work, we need to purposefully remind ourselves to dive into it with clear goals.
+
 ## Dive Deep & Become Golden Kubestronaut
 
 I want to become a **Golden Kubestronaut**. But while doing that, I also want to *dive deep* whenever I learn something new — for example, checking the source code of the Linux `cd` command rather than just learning that `cd` means "change directory".
 
 ### Dec 2025: Linux: LFCS
 
-|     Date     |    Section    | Chapters | Done  |
+|     Date     |  Weekly Goal  | Chapters | Done  |
 |:------------:|:-------------:|:--------:|:-----:|
 | 11/30 ~ 12/6 |   Section 2   |  8 ~ 11  | 11/29 |
 |              |               |   ~17    | 11/30 |
