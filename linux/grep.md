@@ -8,7 +8,7 @@
 - [grep](#grep)
   - [Setup](#setup)
   - [Search file contents recursively](#search-file-contents-recursively)
-  - [You can exclude lines matching a pattern using `-v` flag](#you-can-exclude-lines-matching-a-pattern-using--v-flag)
+  - [Exclude lines matching a pattern using `-v` flag](#exclude-lines-matching-a-pattern-using--v-flag)
 
 <!-- /TOC -->
 
@@ -24,7 +24,7 @@ grep -ir 'password' /etc/
 ```
 
 
-## You can exclude lines matching a pattern using `-v` flag
+## Exclude lines matching a pattern using `-v` flag
 
 ```sh
 grep -v 'pattern' file.txt  # Exclude lines matching 'pattern'
