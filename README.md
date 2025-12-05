@@ -30,7 +30,7 @@ I want to become a **Golden Kubestronaut**. But while doing that, I also want to
 
 ### Dec 2025: Linux: LFCS
 
-|     Date     |    Section    | Chapters | Done  |
+|     Date     |  Weekly Goal  | Chapters | Done  |
 |:------------:|:-------------:|:--------:|:-----:|
 | 11/30 ~ 12/6 |   Section 2   |  8 ~ 11  | 11/29 |
 |              |               |   ~17    | 11/30 |
