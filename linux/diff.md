@@ -46,3 +46,34 @@ diff file.txt file_v2.txt
 # ---
 # > usa
 ```
+
+Search with context option `-c`:
+
+```sh
+diff -c file.txt file_v2.txt
+# *** file.txt	Fri Dec  5 12:37:26 2025
+# --- file_v2.txt	Fri Dec  5 12:37:26 2025
+# ***************
+# *** 1,4 ****
+#   canada
+#   canada
+# ! canada
+# ! canada
+# --- 1,4 ----
+#   canada
+# + Canada
+#   canada
+# ! usa
+```
+
+Search with side by side option `-y`:
+
+```sh
+diff -y file.txt file_v2.txt
+# canada									canada
+# 								>       Canada
+# canada									canada
+# canada								|       usa
+# canada								<
+```
+
