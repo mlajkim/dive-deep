@@ -6,7 +6,7 @@
   - [Setup](#setup)
   - [Flags: Core](#flags-core)
   - [Flags: Searching](#flags-searching)
-  - [Configuration](#configuration)
+  - [Default Configuration](#default-configuration)
 
 <!-- /TOC -->
 
@@ -33,7 +33,7 @@ Here are some useful flags for `less`:
 - `n`: Next search result
 - `shift + n`, or `N`: Previous search result
 
-## Configuration
+## Default Configuration
 
 Add the following environment variable to your shell configuration to optimize defaults in `.zshrc`:
 
