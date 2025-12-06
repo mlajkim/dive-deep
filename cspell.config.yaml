@@ -1,0 +1,14 @@
+version: "0.2"
+ignorePaths: []
+dictionaryDefinitions: []
+dictionaries: []
+words:
+- CAPA
+- CGOA
+- CNPA
+- CNPE
+- Kubestronaut
+- LFCS
+- OTCA
+ignoreWords: []
+import: []
