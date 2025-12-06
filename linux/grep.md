@@ -11,6 +11,7 @@
     - [-w flag: Match whole words only](#-w-flag-match-whole-words-only)
     - [-o flag: Print only matching parts of a line](#-o-flag-print-only-matching-parts-of-a-line)
     - [Search file contents recursively -r](#search-file-contents-recursively--r)
+    - [Regex mode](#regex-mode)
 
 <!-- /TOC -->
 
@@ -73,3 +74,13 @@ Search through files recursively `-r` for the case-insensitive `-i` word "passwo
 grep -ir 'password' /etc/
 ```
 
+### Regex mode
+
+> [!NOTE]
+> By default `grep` uses basic regular expressions. To use newer regex features, use `grep -E` or `egrep`.
+
+
+```sh
+grep -Er '0+' /etc/
+egrep -r '0+' /etc/
+```
