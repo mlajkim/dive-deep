@@ -9,7 +9,8 @@
   - [Replace string without changes](#replace-string-without-changes)
     - [Replace with line numbers](#replace-with-line-numbers)
     - [Escape with custom delimiter](#escape-with-custom-delimiter)
-  - [Actually modify file using -i](#actually-modify-file-using--i)
+  - [Delete lines](#delete-lines)
+  - [Finally: Actually modify file using -i](#finally-actually-modify-file-using--i)
 
 <!-- /TOC -->
 
@@ -17,7 +18,8 @@
 ## Setup
 
 ```sh
-tmp_date=$(date +%y%m%d_%H%M%S_test)
+test_name=test
+tmp_date=$(date +%y%m%d_%H%M%S_$test_name)
 mkdir -p ~/test_dive/$tmp_date && cd ~/test_dive/$tmp_date
 echo -e "canada cada\ncanada cada\ncada cada\ncada cada" > file.txt
 cat file.txt
@@ -82,9 +84,13 @@ sed 's|cada|canada|g' file.txt
 # canada canada
 ```
 
+## Delete lines
 
+```sh
+sed '1,2d' file.txt  # Delete lines from 1 to 2
+```
 
-## Actually modify file using -i
+## Finally: Actually modify file using -i
 
 Note that the `sed` above does not modify the original file:
 

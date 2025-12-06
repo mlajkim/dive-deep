@@ -4,7 +4,8 @@
 
 Setup:
 ```sh
-tmp_date=$(date +%y%m%d_%H%M%S_test)
+test_name=test
+tmp_date=$(date +%y%m%d_%H%M%S_$test_name)
 mkdir -p ~/test_dive/$tmp_date && cd ~/test_dive/$tmp_date
 echo -e "john uk\namy korea\nmichael usa\nsara canada\njohn uk" > file.txt
 cat file.txt
