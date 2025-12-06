@@ -4,3 +4,7 @@
 > To see about `head` command, see [linux/head.md](/linux/head.md).
 
 
+
+```sh
+tail -500 textfile
+```

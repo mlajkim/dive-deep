@@ -38,7 +38,7 @@ I want to become a **Golden Kubestronaut**. But while doing that, I also want to
 | 11/30 ~ 12/6 |   Section 2   |  8 ~ 11  |  11/29  |
 |              |               |   ~17    |  11/30  |
 |              |               |   ~21    |  12/4   |
-|              |               |   ~27    | ...12/6 |
+|              |               |   ~27    |  12/6   |
 |              |               |   ~32    | ...12/6 |
 |              |               |   ~37    | ...12/6 |
 |  12/7~12/13  |   Section 3   |          |         |
