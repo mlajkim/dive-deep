@@ -5,11 +5,15 @@
 <!-- TOC -->
 
 - [sed](#sed)
+  - [Setup](#setup)
+  - [Replace string without changes](#replace-string-without-changes)
+  - [Actually modify file using -i](#actually-modify-file-using--i)
 
 <!-- /TOC -->
 
 
-Setup:
+## Setup
+
 ```sh
 tmp_date=$(date +%y%m%d_%H%M%S_test)
 mkdir -p ~/test_dive/$tmp_date && cd ~/test_dive/$tmp_date
@@ -21,6 +25,7 @@ cat file.txt
 # cada cada
 ```
 
+## Replace string without changes
 Here is the setting:
 - `s`: substitute
 - `g`: global (applies for every occurrence in the line)
@@ -55,6 +60,11 @@ cat file.txt
 
 
 To modify the original file, use `-i` option:
+
+## Actually modify file using -i
+
+>[!WARNING]
+> It is important to always make a backup of your original file before using the `-i` option with `sed`, as this option modifies the file in place and the changes cannot be undone.
 
 ```sh
 sed -i .bak 's/cada/canada/g' file.txt
