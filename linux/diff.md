@@ -30,6 +30,7 @@ Canada
 canada
 usa
 EOF
+
 ```
 
 ## Test
@@ -75,5 +76,15 @@ diff -y file.txt file_v2.txt
 # canada									canada
 # canada								|       usa
 # canada								<
+```
+
+Search with case insensitive option `-i`:
+
+```sh
+diff -iy file.txt file_v2.txt
+# canada								canada
+# canada								Canada
+# canada								canada
+# canada							      |	usa
 ```
 
