@@ -8,6 +8,7 @@
   - [Setup](#setup)
   - [Replace string without changes](#replace-string-without-changes)
     - [Replace with line numbers](#replace-with-line-numbers)
+    - [Escape with custom delimiter](#escape-with-custom-delimiter)
   - [Actually modify file using -i](#actually-modify-file-using--i)
 
 <!-- /TOC -->
@@ -67,6 +68,20 @@ sed '2,4s/cada/canada/g' file.txt
 # cada cada
 # canada canada
 ```
+
+
+### Escape with custom delimiter
+
+Sometimes you want to replace strings that contain `/`. That case you can define your own delimiter, e.g., `|`:
+
+```sh
+sed 's|cada|canada|g' file.txt
+# canada canada
+# canada canada
+# canada canada
+# canada canada
+```
+
 
 
 ## Actually modify file using -i
