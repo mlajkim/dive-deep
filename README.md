@@ -6,14 +6,14 @@
 - [Goal](#goal)
   - [Dive Deep & Become Golden Kubestronaut](#dive-deep--become-golden-kubestronaut)
     - [Dec 2025: Linux: LFCS](#dec-2025-linux-lfcs)
-    - [January 2026: ICA](#january-2026-ica)
-    - [Feburary 2026: CCA](#feburary-2026-cca)
-    - [March 2026: CNPA](#march-2026-cnpa)
-    - [April 2026: CNPE](#april-2026-cnpe)
+    - [Jan 2026: ICA](#jan-2026-ica)
+    - [Feb 2026: CCA](#feb-2026-cca)
+    - [Mar 2026: CNPA](#mar-2026-cnpa)
+    - [Apr 2026: CNPE](#apr-2026-cnpe)
     - [May 2026: CPE](#may-2026-cpe)
-    - [June 2026: PCA](#june-2026-pca)
-    - [July 2026: CAPA](#july-2026-capa)
-    - [August 2026: CGOA](#august-2026-cgoa)
+    - [Jun 2026: PCA](#jun-2026-pca)
+    - [Jul 2026: CAPA](#jul-2026-capa)
+    - [Aug 2026: CGOA](#aug-2026-cgoa)
     - [Sep 2026: CBA](#sep-2026-cba)
     - [Oct 2026: OTCA](#oct-2026-otca)
     - [Nov 2026: KCA](#nov-2026-kca)
@@ -30,34 +30,37 @@ I want to become a **Golden Kubestronaut**. But while doing that, I also want to
 
 ### Dec 2025: Linux: LFCS
 
-|     Date     |  Weekly Goal  | Chapters | Done  |
-|:------------:|:-------------:|:--------:|:-----:|
-| 11/30 ~ 12/6 |   Section 2   |  8 ~ 11  | 11/29 |
-|              |               |   ~17    | 11/30 |
-|              |               |   ~21    | 12/4  |
-|              |               |   ~27    |       |
-|              |               |   ~32    |       |
-|              |               |   ~37    |       |
-|  12/7~12/13  |   Section 3   |          |       |
-| 12/14~12/20  | Section 4,5,6 |          |       |
-| 12/21~12/27  |   Mock Test   |          |       |
-|  12/28~1/3   |  Actual Test  |          |       |
+> [!NOTE]
+> `...<date>` means that I want to finish it by that date
 
-### January 2026: ICA
+|     Date     |  Weekly Goal  | Chapters |  Done   |
+|:------------:|:-------------:|:--------:|:-------:|
+| 11/30 ~ 12/6 |   Section 2   |  8 ~ 11  |  11/29  |
+|              |               |   ~17    |  11/30  |
+|              |               |   ~21    |  12/4   |
+|              |               |   ~27    |  12/6   |
+|              |               |   ~32    | ...12/6 |
+|              |               |   ~37    | ...12/6 |
+|  12/7~12/13  |   Section 3   |          |         |
+| 12/14~12/20  | Section 4,5,6 |          |         |
+| 12/21~12/27  |   Mock Test   |          |         |
+|  12/28~1/3   |  Actual Test  |          |         |
 
-### Feburary 2026: CCA
+### Jan 2026: ICA
 
-### March 2026: CNPA
+### Feb 2026: CCA
 
-### April 2026: CNPE
+### Mar 2026: CNPA
+
+### Apr 2026: CNPE
 
 ### May 2026: CPE
 
-### June 2026: PCA
+### Jun 2026: PCA
 
-### July 2026: CAPA
+### Jul 2026: CAPA
 
-### August 2026: CGOA
+### Aug 2026: CGOA
 
 ### Sep 2026: CBA
 
