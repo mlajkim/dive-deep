@@ -8,10 +8,14 @@
 - [grep](#grep)
   - [Basic Grep](#basic-grep)
     - [Exclude lines matching a pattern using `-v` flag](#exclude-lines-matching-a-pattern-using--v-flag)
-    - [-w flag: Match whole words only](#-w-flag-match-whole-words-only)
+    - [-w flag: Exact Match whole words only](#-w-flag-exact-match-whole-words-only)
     - [-o flag: Print only matching parts of a line](#-o-flag-print-only-matching-parts-of-a-line)
     - [Search file contents recursively -r](#search-file-contents-recursively--r)
-    - [Regex mode](#regex-mode)
+  - [Regex mode](#regex-mode)
+    - [3 digit numbers](#3-digit-numbers)
+    - [3 digit OR 5 digit numbers](#3-digit-or-5-digit-numbers)
+    - [3 OR 4 digit numbers](#3-or-4-digit-numbers)
+    - [starts or ends with string](#starts-or-ends-with-string)
 
 <!-- /TOC -->
 
@@ -45,7 +49,7 @@ grep -v 'pattern' file.txt
 ```
 
 
-### -w flag: Match whole words only
+### -w flag: Exact Match whole words only
 
 That `-` is included with `-w` flag:
 
@@ -74,7 +78,7 @@ Search through files recursively `-r` for the case-insensitive `-i` word "passwo
 grep -ir 'password' /etc/
 ```
 
-### Regex mode
+## Regex mode
 
 > [!NOTE]
 > By default `grep` uses basic regular expressions. To use newer regex features, use `grep -E` or `egrep`.
@@ -83,4 +87,29 @@ grep -ir 'password' /etc/
 ```sh
 grep -Er '0+' /etc/
 egrep -r '0+' /etc/
+```
+
+### 3 digit numbers
+
+```sh
+egrep '[0-9]{3}' file.txt
+```
+
+### 3 digit OR 5 digit numbers
+
+```sh
+egrep '[0-9]{3}|[0-9]{5}' file.txt
+```
+
+### 3 OR 4 digit numbers
+
+```sh
+egrep '[0-9]{3,4}' file.txt
+```
+
+### starts or ends with string
+
+```sh
+egrep '^hello' file.txt
+egrep 'world$' file.txt
 ```

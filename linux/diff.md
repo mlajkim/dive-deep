@@ -5,7 +5,7 @@
 
 - [diff](#diff)
   - [Setup](#setup)
-  - [Test](#test)
+  - [Understand results](#understand-results)
 
 <!-- /TOC -->
 
@@ -33,7 +33,20 @@ EOF
 
 ```
 
-## Test
+## Understand results
+
+Basically the diff is a tool to make two files the same by showing the differences:
+- `a`: add
+- `d`: delete
+- `c`: change
+
+- If it says `3a4`, it means after adding the 3rd line in the left, 4th line in the right appears.
+  - It says `3a4,5`, it means after adding the 3rd line in the left, 4th and 5th lines in the right appear.
+- If it says `18d17`, it means delete the 18th line, and the 17th line in the right remains.
+- If it says `5c5`, it means change the 5th line in the left to the 5th line in the right.
+
+
+
 
 Run diff between two files:
 
