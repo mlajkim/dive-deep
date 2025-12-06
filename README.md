@@ -10,13 +10,12 @@
     - [Feb 2026: CCA](#feb-2026-cca)
     - [Mar 2026: CNPA](#mar-2026-cnpa)
     - [Apr 2026: CNPE](#apr-2026-cnpe)
-    - [May 2026: CPE](#may-2026-cpe)
+    - [May 2026: KCA](#may-2026-kca)
     - [Jun 2026: PCA](#jun-2026-pca)
     - [Jul 2026: CAPA](#jul-2026-capa)
     - [Aug 2026: CGOA](#aug-2026-cgoa)
     - [Sep 2026: CBA](#sep-2026-cba)
     - [Oct 2026: OTCA](#oct-2026-otca)
-    - [Nov 2026: KCA](#nov-2026-kca)
 
 <!-- /TOC -->
 
@@ -61,7 +60,7 @@ I want to become a **Golden Kubestronaut**. But while doing that, I also want to
 
 ### Apr 2026: CNPE
 
-### May 2026: CPE
+### May 2026: KCA
 
 ### Jun 2026: PCA
 
@@ -72,5 +71,3 @@ I want to become a **Golden Kubestronaut**. But while doing that, I also want to
 ### Sep 2026: CBA
 
 ### Oct 2026: OTCA
-
-### Nov 2026: KCA
