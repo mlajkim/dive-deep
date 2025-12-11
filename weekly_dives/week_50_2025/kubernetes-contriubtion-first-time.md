@@ -8,6 +8,10 @@
   - [What is fieldnamedocscheck?](#what-is-fieldnamedocscheck)
   - [Where is fieldnamedocscheck used?](#where-is-fieldnamedocscheck-used)
     - [Zero-brain Run `verify-fieldname-docs.sh`](#zero-brain-run-verify-fieldname-docssh)
+      - [Disects each code of the 60 lines of sh](#disects-each-code-of-the-60-lines-of-sh)
+        - [Disection: Safety check](#disection-safety-check)
+        - [Disection:](#disection)
+          - [Di-Disection: Can you run somewhere else with this logic?](#di-disection-can-you-run-somewhere-else-with-this-logic)
   - [Zero-brain Run fieldnamedocekscheck](#zero-brain-run-fieldnamedocekscheck)
   - [What is that `-s` flag?](#what-is-that--s-flag)
     - [Can we get a help command for that `-s` flag, without looking at the source code?](#can-we-get-a-help-command-for-that--s-flag-without-looking-at-the-source-code)
@@ -70,6 +74,56 @@ This script has checked 64 lines of output:
 # ...
 ```
 
+#### Disects each code of the 60 lines of sh
+
+Let's open the `verify-fieldname-docs.sh` file and dissect each code.
+
+##### Disection: Safety check
+
+```sh
+set -o errexit
+set -o nounset
+set -o pipefail
+```
+
+- `errexit` : Exit immediately if a command exits with a non-zero status
+- `nounset` : Treat unset variables as an error when substituting
+- `pipefail`: Prevent errors in a pipeline from being masked
+
+
+
+##### Disection:
+
+> [!TIPS]
+> Once you `echo $KUBE_ROOT`, you will get `./hack/..` as a sample.
+> That `..` at the end
+```sh
+KUBE_ROOT=$(dirname "${BASH_SOURCE[0]}")/.. # i.e) ./hack/.. or ../../..
+source "${KUBE_ROOT}/hack/lib/init.sh"
+source "${KUBE_ROOT}/hack/lib/util.sh"
+```
+
+###### Di-Disection: Can you run somewhere else with this logic?
+
+In conclusion, we need to run the `verify-fieldname-docs.sh` from the base directory of kubernetes repository.
+
+```sh
+./oss_workspace/oss_kubernetes/hack/verify-fieldname-docs.sh
+# KUBE_ROOT=./oss_workspace/oss_kubernetes/hack/..
+# go: go.mod file not found in current directory or any parent directory; see 'go help modules'
+```
+
+```sh
+../../verify-fieldname-docs.sh
+# KUBE_ROOT=../../..
+# stat ~/oss_workspace/oss_kubernetes/hack/hello/can/cmd/fieldnamedocscheck: directory not found
+```
+
+```sh
+./verify-fieldname-docs.sh
+# KUBE_ROOT=./..
+# stat ~/oss_workspace/oss_kubernetes/hack/cmd/fieldnamedocscheck: directory not found
+```
 
 ## Zero-brain Run fieldnamedocekscheck
 
