@@ -12,6 +12,7 @@
         - [Disection: Safety check](#disection-safety-check)
         - [Disection:](#disection)
           - [Di-Disection: Can you run somewhere else with this logic?](#di-disection-can-you-run-somewhere-else-with-this-logic)
+      - [](#)
   - [Zero-brain Run fieldnamedocekscheck](#zero-brain-run-fieldnamedocekscheck)
   - [What is that `-s` flag?](#what-is-that--s-flag)
     - [Can we get a help command for that `-s` flag, without looking at the source code?](#can-we-get-a-help-command-for-that--s-flag-without-looking-at-the-source-code)
@@ -124,6 +125,12 @@ In conclusion, we need to run the `verify-fieldname-docs.sh` from the base direc
 # KUBE_ROOT=./..
 # stat ~/oss_workspace/oss_kubernetes/hack/cmd/fieldnamedocscheck: directory not found
 ```
+
+#####
+
+Since this chunk of code is used, I do not think we can modify this:
+
+![the_same_code_for_source](./assets/the_same_code_for_source.png)
 
 ## Zero-brain Run fieldnamedocekscheck
 
