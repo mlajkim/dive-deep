@@ -26,6 +26,7 @@
     - [Dissection: Understand what's inside the variables](#dissection-understand-whats-inside-the-variables)
   - [Check if the go file actually works](#check-if-the-go-file-actually-works)
   - [Understand TODOs](#understand-todos)
+  - [What's next?](#whats-next)
 
 <!-- /TOC -->
 
@@ -282,3 +283,10 @@ go run field_name_docs_check.go -s ../../staging/src/k8s.io/api/core/v1/types.go
 // TODO: a manual pass adding back-ticks to the doc strings, then update the linter to
 // TODO: check the existence of back-ticks
 ```
+
+Right now, setting the `back-ticks` is not mandatory, but the TODO suggests that we should add back-ticks to the doc strings, and then update the linter to check the existence of back-ticks.
+
+## What's next?
+
+I am going to write the enforce mechanism first, and see what kind of results I get.
+
