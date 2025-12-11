@@ -5,7 +5,8 @@
 - [Week 50, 2025 Weekly Dive](#week-50-2025-weekly-dive)
   - [Where do we dive this week?](#where-do-we-dive-this-week)
   - [What can I do as a first time contributor?](#what-can-i-do-as-a-first-time-contributor)
-  - [What is fieldnamedocscheck?](#what-is-fieldnamedocscheck)
+  - [Where is fieldnamedocscheck used?](#where-is-fieldnamedocscheck-used)
+  - [Run fieldnamedocekscheck with zero brain](#run-fieldnamedocekscheck-with-zero-brain)
   - [What is that `-s` flag?](#what-is-that--s-flag)
     - [Can we get a help command for that `-s` flag, without looking at the source code?](#can-we-get-a-help-command-for-that--s-flag-without-looking-at-the-source-code)
   - [Successfully runned with `-s`!](#successfully-runned-with--s)
@@ -37,11 +38,17 @@ And the AI has found this todo:
 
 First of all I have no idea what this field_name_docs_check.go does so ... let's just dive in without knowing anything :)
 
-## What is fieldnamedocscheck?
+## Where is fieldnamedocscheck used?
 
 So what is fieldnamedocscheck? Let see where this cmd `fieldnamedocscheck` is used:
 
 ![fieldnamedocscheck_usage_search](./assets/fieldnamedocscheck_usage_search.png)
+
+
+## Run fieldnamedocekscheck with zero brain
+
+> ![NOTE]
+> It is important to give a shot even if you don't know what you are doing :)
 
 ```sh
 cd /cmd/fieldnamedocscheck
