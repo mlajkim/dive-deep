@@ -3,13 +3,16 @@
 <!-- TOC -->
 
 - [Week 50, 2025 Weekly Dive](#week-50-2025-weekly-dive)
+  - [Where do we dive this week?](#where-do-we-dive-this-week)
   - [What can I do as a first time contributor?](#what-can-i-do-as-a-first-time-contributor)
   - [What is fieldnamedocscheck?](#what-is-fieldnamedocscheck)
   - [What is that `-s` flag?](#what-is-that--s-flag)
     - [Can we get a help command for that `-s` flag, without looking at the source code?](#can-we-get-a-help-command-for-that--s-flag-without-looking-at-the-source-code)
-  - [Has set the with `-s` and succeeded!](#has-set-the-with--s-and-succeeded)
+  - [Successfully runned with `-s`!](#successfully-runned-with--s)
 
 <!-- /TOC -->
+
+## Where do we dive this week?
 
 I want to be a part of Contriubtor in kubernetes
 
@@ -70,7 +73,7 @@ Usage of ~/Library/Caches/go-build/81/..hash../-d/field_name_docs_check:
 ```
 
 
-## Has set the with `-s` and succeeded!
+## Successfully runned with `-s`!
 ```sh
 go run field_name_docs_check.go -s ../../staging/src/k8s.io/api/core/v1/types.go
 ```
