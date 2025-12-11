@@ -23,6 +23,7 @@
   - [Successfully run with `-s`!](#successfully-run-with--s)
   - [Dissects the core logic](#dissects-the-core-logic)
     - [Dissection: Store all the field names in lower case](#dissection-store-all-the-field-names-in-lower-case)
+    - [Dissection: Understand p.Name](#dissection-understand-pname)
   - [Check if the go file actually works](#check-if-the-go-file-actually-works)
   - [Understand TODOs](#understand-todos)
 
@@ -228,25 +229,42 @@ if p.Name != "" {
 
 To find all the fields, including right and wrong ones, we store all the field names in lower case inside `typesMap`.
 
-
-## Check if the go file actually works
-
-It seems like it checks only when it has the back-tick quoted field names in the doc string:
-
-So I've set up `TCPSocket` => `TcPSocket`:
+### Dissection: Understand p.Name
 
 ```go
-// Deprecated. `TcPSocket` is NOT supported as a LifecycleHandler and kept
-// for backward compatibility. There is no validation of this field and
-// lifecycle hooks will fail at runtime when it is specified.
-// +optional
 TCPSocket *TCPSocketAction `json:"tcpSocket,omitempty" protobuf:"bytes,3,opt,name=tcpSocket"`
 ```
 
-And run the command again:
+```sh
+Struct: TCPSocketAction
+p.Name:  tcpSocket
+typesMap: tcpsocket
+```
+
+## Check if the go file actually works
+
+It seems like it checks only when it has the back-tick quoted field names in the doc string.
+
+So I've set up `TCPSocket` => `TcPSocket`, and created a new sentence `// TcPSocket is deprecated and...`
+
+```go
+// LifecycleHandler defines a specific action that should be taken in a lifecycle
+// hook. One and only one of the fields, except `TcPSocket` must be specified.
+// `TcPSocket` is deprecated and not supported as a LifecycleHandler.
+type LifecycleHandler struct {
+  // Deprecated. `TcPSocket` is NOT supported as a LifecycleHandler and kept
+  // for backward compatibility. There is no validation of this field and
+  // lifecycle hooks will fail at runtime when it is specified.
+  // +optional
+  TCPSocket *TCPSocketAction `json:"tcpSocket,omitempty" protobuf:"bytes,3,opt,name=tcpSocket"`
+}
+```
+
+And got two errors (Note that even if there are three places of `TcPSocket`, it only shows two errors because the second rule skips the already found mismatched names):
 
 ```sh
 go run field_name_docs_check.go -s ../../staging/src/k8s.io/api/core/v1/types.go
+# Error: doc for LifecycleHandler contains: TcPSocket, which should be: tcpSocket
 # Error: doc for LifecycleHandler.tcpSocket contains: TcPSocket, which should be: tcpSocket
 # exit status 1
 ```

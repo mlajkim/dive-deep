@@ -23,6 +23,7 @@ words:
   - nounset
   - OTCA
   - pipefail
+  - tcpsocket
   - trafficdistribution
 ignoreWords: []
 import: []
