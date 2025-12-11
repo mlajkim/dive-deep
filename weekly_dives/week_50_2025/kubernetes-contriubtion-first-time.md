@@ -7,7 +7,8 @@
   - [What can I do as a first time contributor?](#what-can-i-do-as-a-first-time-contributor)
   - [What is fieldnamedocscheck?](#what-is-fieldnamedocscheck)
   - [Where is fieldnamedocscheck used?](#where-is-fieldnamedocscheck-used)
-  - [Run fieldnamedocekscheck with zero brain](#run-fieldnamedocekscheck-with-zero-brain)
+    - [Zero-brain Run `verify-fieldname-docs.sh`](#zero-brain-run-verify-fieldname-docssh)
+  - [Zero-brain Run fieldnamedocekscheck](#zero-brain-run-fieldnamedocekscheck)
   - [What is that `-s` flag?](#what-is-that--s-flag)
     - [Can we get a help command for that `-s` flag, without looking at the source code?](#can-we-get-a-help-command-for-that--s-flag-without-looking-at-the-source-code)
   - [Successfully runned with `-s`!](#successfully-runned-with--s)
@@ -49,8 +50,28 @@ So what is fieldnamedocscheck? Let see where this cmd `fieldnamedocscheck` is us
 
 ![fieldnamedocscheck_usage_search](./assets/fieldnamedocscheck_usage_search.png)
 
+### Zero-brain Run `verify-fieldname-docs.sh`
 
-## Run fieldnamedocekscheck with zero brain
+> ![NOTE]
+> You may be asked to run `brew install bash` if your bash version is insufficient
+
+This script has checked 64 lines of output:
+
+```sh
+./hack/verify-fieldname-docs.sh
+# Checking ./staging/src/k8s.io/kube-aggregator/pkg/apis/apiregistration/v1
+# Checking ./staging/src/k8s.io/kube-aggregator/pkg/apis/apiregistration/v1beta1
+# Checking ./staging/src/k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/v1
+# Checking ./staging/src/k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/v1beta1
+# Checking ./staging/src/k8s.io/api/rbac/v1
+# Checking ./staging/src/k8s.io/api/rbac/v1beta1
+# Checking ./staging/src/k8s.io/api/rbac/v1alpha1
+# Checking ./staging/src/k8s.io/api/apiserverinternal/v1alpha1
+# ...
+```
+
+
+## Zero-brain Run fieldnamedocekscheck
 
 > ![NOTE]
 > It is important to give a shot even if you don't know what you are doing :)
