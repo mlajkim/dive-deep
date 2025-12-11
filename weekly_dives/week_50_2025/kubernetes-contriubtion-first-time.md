@@ -31,7 +31,7 @@ So I've git cloned the kubernetes repository without thinking too much, but stil
 
 So I asked AI inside the project, what kind of things I can fix as a first time contributor (basically easy stuff)
 
-And the AI has found this todo:
+And the AI has found this todo inside `fieldnamedocscheck`:
 
 ```go
 // TODO: a manual pass adding back-ticks to the doc strings, then update the linter to
