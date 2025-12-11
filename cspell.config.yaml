@@ -12,14 +12,17 @@ words:
   - CNPA
   - CNPE
   - errexit
+  - externalips
   - Fatalf
   - fieldnamedocekscheck
   - fieldnamedocscheck
+  - ipfamilypolicy
   - klog
   - Kubestronaut
   - LFCS
   - nounset
   - OTCA
   - pipefail
+  - trafficdistribution
 ignoreWords: []
 import: []

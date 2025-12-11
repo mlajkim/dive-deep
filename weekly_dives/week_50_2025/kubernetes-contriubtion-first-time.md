@@ -21,6 +21,9 @@
   - [What is that `-s` flag?](#what-is-that--s-flag)
     - [Can we get a help command for that `-s` flag, without looking at the source code?](#can-we-get-a-help-command-for-that--s-flag-without-looking-at-the-source-code)
   - [Successfully run with `-s`!](#successfully-run-with--s)
+  - [Dissects the core logic](#dissects-the-core-logic)
+    - [Dissection: Store all the field names in lower case](#dissection-store-all-the-field-names-in-lower-case)
+  - [Check if the go file actually works](#check-if-the-go-file-actually-works)
   - [Understand TODOs](#understand-todos)
 
 <!-- /TOC -->
@@ -208,6 +211,44 @@ Usage of ~/Library/Caches/go-build/81/..hash../-d/field_name_docs_check:
 
 ```sh
 go run field_name_docs_check.go -s ../../staging/src/k8s.io/api/core/v1/types.go
+```
+
+## Dissects the core logic
+
+### Dissection: Store all the field names in lower case
+
+```go
+if p.Name != "" {
+  typesMap[strings.ToLower(p.Name)] = p
+}
+
+// Sample keys:
+// key: ipfamilypolicy  key: trafficdistribution  key: externalips ...
+```
+
+To find all the fields, including right and wrong ones, we store all the field names in lower case inside `typesMap`.
+
+
+## Check if the go file actually works
+
+It seems like it checks only when it has the back-tick quoted field names in the doc string:
+
+So I've set up `TCPSocket` => `TcPSocket`:
+
+```go
+// Deprecated. `TcPSocket` is NOT supported as a LifecycleHandler and kept
+// for backward compatibility. There is no validation of this field and
+// lifecycle hooks will fail at runtime when it is specified.
+// +optional
+TCPSocket *TCPSocketAction `json:"tcpSocket,omitempty" protobuf:"bytes,3,opt,name=tcpSocket"`
+```
+
+And run the command again:
+
+```sh
+go run field_name_docs_check.go -s ../../staging/src/k8s.io/api/core/v1/types.go
+# Error: doc for LifecycleHandler.tcpSocket contains: TcPSocket, which should be: tcpSocket
+# exit status 1
 ```
 
 ## Understand TODOs
