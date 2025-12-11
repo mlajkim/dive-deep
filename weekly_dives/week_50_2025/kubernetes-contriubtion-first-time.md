@@ -6,4 +6,6 @@
 
 <!-- /TOC -->
 
-I want to
+I want to be a part of Contriubtor in kubernetes
+
+![kubernetes_contributors](./assets/kubernetes_contributors.png)
