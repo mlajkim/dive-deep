@@ -19,12 +19,13 @@
   - [What is that `-s` flag?](#what-is-that--s-flag)
     - [Can we get a help command for that `-s` flag, without looking at the source code?](#can-we-get-a-help-command-for-that--s-flag-without-looking-at-the-source-code)
   - [Successfully run with `-s`!](#successfully-run-with--s)
+  - [Understand TODOs](#understand-todos)
 
 <!-- /TOC -->
 
 ## Where do we dive this week?
 
-I want to be a part of Contriubtor in kubernetes
+I want to be a part of Contributor in kubernetes
 
 ![kubernetes_contributors](./assets/kubernetes_contributors.png)
 
@@ -195,3 +196,5 @@ Usage of ~/Library/Caches/go-build/81/..hash../-d/field_name_docs_check:
 ```sh
 go run field_name_docs_check.go -s ../../staging/src/k8s.io/api/core/v1/types.go
 ```
+
+## Understand TODOs
