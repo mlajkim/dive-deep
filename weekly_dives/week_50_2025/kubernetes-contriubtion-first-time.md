@@ -9,12 +9,12 @@
   - [Where is fieldnamedocscheck used?](#where-is-fieldnamedocscheck-used)
     - [Zero-brain Run `verify-fieldname-docs.sh`](#zero-brain-run-verify-fieldname-docssh)
       - [Disects each code of the 60 lines of sh](#disects-each-code-of-the-60-lines-of-sh)
-        - [Disection: Safety check](#disection-safety-check)
-        - [Disection: KUBE_ROOT setup](#disection-kube_root-setup)
-          - [Di-Disection: Can you run somewhere else with this logic?](#di-disection-can-you-run-somewhere-else-with-this-logic)
+        - [Dissection: Safety check](#dissection-safety-check)
+        - [Dissection: KUBE_ROOT setup](#dissection-kube_root-setup)
+          - [Di-Dissection: Can you run somewhere else with this logic?](#di-dissection-can-you-run-somewhere-else-with-this-logic)
           - [We can't fix the path issue](#we-cant-fix-the-path-issue)
-        - [Disection: go language check](#disection-go-language-check)
-        - [Disection: store every type.go](#disection-store-every-typego)
+        - [Dissection: go language check](#dissection-go-language-check)
+        - [Dissection: store every type.go](#dissection-store-every-typego)
   - [Zero-brain Run fieldnamedocekscheck](#zero-brain-run-fieldnamedocekscheck)
   - [What is that `-s` flag?](#what-is-that--s-flag)
     - [Can we get a help command for that `-s` flag, without looking at the source code?](#can-we-get-a-help-command-for-that--s-flag-without-looking-at-the-source-code)
@@ -81,7 +81,7 @@ This script has checked 64 lines of output:
 
 Let's open the `verify-fieldname-docs.sh` file and dissect each code.
 
-##### Disection: Safety check
+##### Dissection: Safety check
 
 ```sh
 set -o errexit
@@ -95,7 +95,7 @@ set -o pipefail
 
 
 
-##### Disection: KUBE_ROOT setup
+##### Dissection: KUBE_ROOT setup
 
 > [!TIPS]
 > Once you `echo $KUBE_ROOT`, you will get `./hack/..` as a sample.
@@ -106,7 +106,7 @@ source "${KUBE_ROOT}/hack/lib/init.sh"
 source "${KUBE_ROOT}/hack/lib/util.sh"
 ```
 
-###### Di-Disection: Can you run somewhere else with this logic?
+###### Di-Dissection: Can you run somewhere else with this logic?
 
 In conclusion, we need to run the `verify-fieldname-docs.sh` from the base directory of kubernetes repository.
 
@@ -135,7 +135,7 @@ Since this chunk of code is used, I do not think we can modify this:
 ![the_same_code_for_source](./assets/the_same_code_for_source.png)
 
 
-##### Disection: go language check
+##### Dissection: go language check
 
 Checks if golang sufficient environment is set
 
@@ -143,7 +143,7 @@ Checks if golang sufficient environment is set
 kube::golang::setup_env
 ```
 
-##### Disection: store every type.go
+##### Dissection: store every type.go
 
 Store every `type.go` files inside `versioned_api_files` variable:
 
