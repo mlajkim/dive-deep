@@ -23,7 +23,7 @@
   - [Successfully run with `-s`!](#successfully-run-with--s)
   - [Dissects the core logic](#dissects-the-core-logic)
     - [Dissection: Store all the field names in lower case](#dissection-store-all-the-field-names-in-lower-case)
-    - [Dissection: Understand p.Name](#dissection-understand-pname)
+    - [Dissection: Understand what's inside the variables](#dissection-understand-whats-inside-the-variables)
   - [Check if the go file actually works](#check-if-the-go-file-actually-works)
   - [Understand TODOs](#understand-todos)
 
@@ -229,7 +229,7 @@ if p.Name != "" {
 
 To find all the fields, including right and wrong ones, we store all the field names in lower case inside `typesMap`.
 
-### Dissection: Understand p.Name
+### Dissection: Understand what's inside the variables
 
 ```go
 TCPSocket *TCPSocketAction `json:"tcpSocket,omitempty" protobuf:"bytes,3,opt,name=tcpSocket"`
