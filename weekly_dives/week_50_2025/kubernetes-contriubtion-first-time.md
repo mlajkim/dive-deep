@@ -437,3 +437,5 @@ There is no way that I manually fix `1,402` lines of errors, and this applies fo
 Also, even after I fix this somehow, if someone else adds a new field without back-ticks, BEFORE I enforce the back-ticks check, the problem will happen again.
 
 Therefore, I think it is better, if I make a mechanism that enforces one page first, and then eventually scope out to the entire repository.
+
+Also there are some words like, `name`, `type`, `kind`, etc, that are used very often in the doc strings, but they are ALSO field names. That case, we need to have some kind of AI mechanism to figure out whether it is a field name or just a normal word.
