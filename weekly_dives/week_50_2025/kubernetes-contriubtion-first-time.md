@@ -10,9 +10,9 @@
     - [Zero-brain Run `verify-fieldname-docs.sh`](#zero-brain-run-verify-fieldname-docssh)
       - [Disects each code of the 60 lines of sh](#disects-each-code-of-the-60-lines-of-sh)
         - [Disection: Safety check](#disection-safety-check)
-        - [Disection:](#disection)
+        - [Disection: KUBE_ROOT setup](#disection-kube_root-setup)
           - [Di-Disection: Can you run somewhere else with this logic?](#di-disection-can-you-run-somewhere-else-with-this-logic)
-      - [](#)
+        - [We can't fix the path issue](#we-cant-fix-the-path-issue)
   - [Zero-brain Run fieldnamedocekscheck](#zero-brain-run-fieldnamedocekscheck)
   - [What is that `-s` flag?](#what-is-that--s-flag)
     - [Can we get a help command for that `-s` flag, without looking at the source code?](#can-we-get-a-help-command-for-that--s-flag-without-looking-at-the-source-code)
@@ -93,7 +93,7 @@ set -o pipefail
 
 
 
-##### Disection:
+##### Disection: KUBE_ROOT setup
 
 > [!TIPS]
 > Once you `echo $KUBE_ROOT`, you will get `./hack/..` as a sample.
@@ -126,7 +126,7 @@ In conclusion, we need to run the `verify-fieldname-docs.sh` from the base direc
 # stat ~/oss_workspace/oss_kubernetes/hack/cmd/fieldnamedocscheck: directory not found
 ```
 
-#####
+##### We can't fix the path issue
 
 Since this chunk of code is used, I do not think we can modify this:
 
