@@ -5,6 +5,7 @@
 - [Week 50, 2025 Weekly Dive](#week-50-2025-weekly-dive)
   - [Where do we dive this week?](#where-do-we-dive-this-week)
   - [What can I do as a first time contributor?](#what-can-i-do-as-a-first-time-contributor)
+  - [What is fieldnamedocscheck?](#what-is-fieldnamedocscheck)
   - [Where is fieldnamedocscheck used?](#where-is-fieldnamedocscheck-used)
   - [Run fieldnamedocekscheck with zero brain](#run-fieldnamedocekscheck-with-zero-brain)
   - [What is that `-s` flag?](#what-is-that--s-flag)
@@ -37,6 +38,10 @@ And the AI has found this todo:
 ```
 
 First of all I have no idea what this field_name_docs_check.go does so ... let's just dive in without knowing anything :)
+
+## What is fieldnamedocscheck?
+
+It seems like it checks if the fields in the types are properly documented or not.
 
 ## Where is fieldnamedocscheck used?
 
