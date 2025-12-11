@@ -29,6 +29,11 @@
   - [What's next?: Create a sample enforcing mechanism](#whats-next-create-a-sample-enforcing-mechanism)
     - [Returned 1402 lines of errors just for one file](#returned-1402-lines-of-errors-just-for-one-file)
   - [What's next?: Create a auto lint fixer](#whats-next-create-a-auto-lint-fixer)
+  - [Create a linter](#create-a-linter)
+  - [Apply the code](#apply-the-code)
+  - [Find the smallest code](#find-the-smallest-code)
+  - [Realize that the changes are too big and go beyond expected](#realize-that-the-changes-are-too-big-and-go-beyond-expected)
+  - [Let's see if others have worked on this](#lets-see-if-others-have-worked-on-this)
 
 <!-- /TOC -->
 
@@ -439,3 +444,48 @@ Also, even after I fix this somehow, if someone else adds a new field without ba
 Therefore, I think it is better, if I make a mechanism that enforces one page first, and then eventually scope out to the entire repository.
 
 Also there are some words like, `name`, `type`, `kind`, etc, that are used very often in the doc strings, but they are ALSO field names. That case, we need to have some kind of AI mechanism to figure out whether it is a field name or just a normal word.
+
+
+
+## Create a linter
+
+TODO: Write code here
+
+## Apply the code
+
+```sh
+go run field_name_docs_check_lint.go -s ../../staging/src/k8s.io/api/core/v1/types.go
+# ✅ Successfully fixed backticks in: ../../staging/src/k8s.io/api/core/v1/types.go
+```
+
+## Find the smallest code
+
+I do not want to scare them but also want them to merge the PR & somewhat has dependency in my changes later in the future.
+
+So maybe enforcing one file first with the smallest lines of code is a good idea:s
+
+```sh
+find staging/src/k8s.io/api -name "types.go" | xargs wc -l | sort -n | head -n 5
+# 48 staging/src/k8s.io/api/authentication/v1alpha1/types.go
+# 75 staging/src/k8s.io/api/scheduling/v1/types.go
+# 82 staging/src/k8s.io/api/scheduling/v1beta1/types.go
+# 83 staging/src/k8s.io/api/imagepolicy/v1alpha1/types.go
+```
+
+## Realize that the changes are too big and go beyond expected
+
+```go
+// `azureDisk` represents an Azure Data Disk mount on the host and bind mount to the pod.
+// Deprecated: `azureDisk` is deprecated. All operations for the in-tree `azureDisk` type
+// are redirected to the disk.`csi`.azure.com `csi` driver.
+```
+
+The problem of the changes above:
+- The link is corrupted because of the back-ticks: `disk.`csi`.azure.com` => should be `disk.csi.azure.com`
+- Not sure if we can start with `azureDisk` rather than `AzureDisk` for the first word
+  - It seems like the preview mode works fine, but not sure if the actual kubernetes doc generator works fine with this.
+
+
+## Let's see if others have worked on this
+
+🟡 TODO
