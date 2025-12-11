@@ -8,7 +8,7 @@
   - [What is fieldnamedocscheck?](#what-is-fieldnamedocscheck)
   - [Where is fieldnamedocscheck used?](#where-is-fieldnamedocscheck-used)
     - [Zero-brain Run `verify-fieldname-docs.sh`](#zero-brain-run-verify-fieldname-docssh)
-      - [Disects each code of the 60 lines of sh](#disects-each-code-of-the-60-lines-of-sh)
+      - [Dissects each code of the 60 lines of sh](#dissects-each-code-of-the-60-lines-of-sh)
         - [Dissection: Safety check](#dissection-safety-check)
         - [Dissection: KUBE_ROOT setup](#dissection-kube_root-setup)
           - [Di-Dissection: Can you run somewhere else with this logic?](#di-dissection-can-you-run-somewhere-else-with-this-logic)
@@ -78,7 +78,7 @@ This script has checked 64 lines of output:
 # ...
 ```
 
-#### Disects each code of the 60 lines of sh
+#### Dissects each code of the 60 lines of sh
 
 Let's open the `verify-fieldname-docs.sh` file and dissect each code.
 

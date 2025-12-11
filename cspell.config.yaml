@@ -3,13 +3,23 @@ ignorePaths: []
 dictionaryDefinitions: []
 dictionaries: []
 words:
+  - apiextensions
+  - apiregistration
+  - apiserver
+  - apiserverinternal
   - CAPA
   - CGOA
   - CNPA
   - CNPE
+  - errexit
+  - Fatalf
+  - fieldnamedocekscheck
   - fieldnamedocscheck
+  - klog
   - Kubestronaut
   - LFCS
+  - nounset
   - OTCA
+  - pipefail
 ignoreWords: []
 import: []
