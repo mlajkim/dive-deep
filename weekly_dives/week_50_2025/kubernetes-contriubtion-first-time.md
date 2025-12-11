@@ -172,7 +172,7 @@ versioned_api_files=$(find_files) || true
 > It is important to give a shot even if you don't know what you are doing :)
 
 ```sh
-cd /cmd/fieldnamedocscheck
+cd ./cmd/fieldnamedocscheck
 go run field_name_docs_check.go
 # F1211 11:49:45.848446   80482 field_name_docs_check.go:33] Please define -s flag as it is the api type file
 # exit status 255
@@ -211,3 +211,15 @@ go run field_name_docs_check.go -s ../../staging/src/k8s.io/api/core/v1/types.go
 ```
 
 ## Understand TODOs
+
+```go
+// The rule is:
+// 1. Get all back-tick quoted names in the doc
+// 2. Skip the name which is already found mismatched.
+// 3. Skip the name whose lowercase is different from the lowercase of tag names,
+//    because some docs use back-tick to quote field value or nil
+// 4. Check if the name is different from its tag name
+
+// TODO: a manual pass adding back-ticks to the doc strings, then update the linter to
+// TODO: check the existence of back-ticks
+```
