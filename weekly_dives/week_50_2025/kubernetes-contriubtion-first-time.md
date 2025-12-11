@@ -18,7 +18,7 @@
   - [Zero-brain Run fieldnamedocekscheck](#zero-brain-run-fieldnamedocekscheck)
   - [What is that `-s` flag?](#what-is-that--s-flag)
     - [Can we get a help command for that `-s` flag, without looking at the source code?](#can-we-get-a-help-command-for-that--s-flag-without-looking-at-the-source-code)
-  - [Successfully runned with `-s`!](#successfully-runned-with--s)
+  - [Successfully run with `-s`!](#successfully-run-with--s)
 
 <!-- /TOC -->
 
@@ -187,7 +187,7 @@ Usage of ~/Library/Caches/go-build/81/..hash../-d/field_name_docs_check:
 ```
 
 
-## Successfully runned with `-s`!
+## Successfully run with `-s`!
 
 >[!NOTE]
 > If nothing happens, it means all the fields are properly documented :)
