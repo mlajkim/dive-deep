@@ -3,7 +3,8 @@
 <!-- TOC -->
 
 - [Week 50, 2025 Weekly Dive](#week-50-2025-weekly-dive)
-  - [Git Clone](#git-clone)
+  - [What can I do as a first time contributor?](#what-can-i-do-as-a-first-time-contributor)
+  - [What is fieldnamedocscheck?](#what-is-fieldnamedocscheck)
   - [What is that `-s` flag?](#what-is-that--s-flag)
     - [Can we get a help command for that `-s` flag, without looking at the source code?](#can-we-get-a-help-command-for-that--s-flag-without-looking-at-the-source-code)
   - [Has set the with `-s` and succeeded!](#has-set-the-with--s-and-succeeded)
@@ -18,11 +19,11 @@ And eventually have the `@kubernetes` handle in GitHub:
 ![personal_kubernetes](./assets/personal_kubernetes.png)
 
 
-## Git Clone
+## What can I do as a first time contributor?
 
-So I've git cloned the kubernetes repository
+So I've git cloned the kubernetes repository without thinking too much, but still have no idea what to fix.
 
-and asked AI inside the project, what kind of things I can fix as a first time contributor (basically easy stuff)
+So I asked AI inside the project, what kind of things I can fix as a first time contributor (basically easy stuff)
 
 And the AI has found this todo:
 
@@ -32,6 +33,12 @@ And the AI has found this todo:
 ```
 
 First of all I have no idea what this field_name_docs_check.go does so ... let's just dive in without knowing anything :)
+
+## What is fieldnamedocscheck?
+
+So what is fieldnamedocscheck? Let see where this cmd `fieldnamedocscheck` is used:
+
+![fieldnamedocscheck_usage_search](./assets/fieldnamedocscheck_usage_search.png)
 
 ```sh
 cd /cmd/fieldnamedocscheck
