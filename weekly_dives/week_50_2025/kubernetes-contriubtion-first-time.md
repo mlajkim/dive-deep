@@ -74,6 +74,10 @@ Usage of ~/Library/Caches/go-build/81/..hash../-d/field_name_docs_check:
 
 
 ## Successfully runned with `-s`!
+
+>[!NOTE]
+> If nothing happens, it means all the fields are properly documented :)
+
 ```sh
 go run field_name_docs_check.go -s ../../staging/src/k8s.io/api/core/v1/types.go
 ```
