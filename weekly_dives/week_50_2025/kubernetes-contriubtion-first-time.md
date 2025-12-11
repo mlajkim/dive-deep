@@ -3,6 +3,8 @@
 <!-- TOC -->
 
 - [Week 50, 2025 Weekly Dive](#week-50-2025-weekly-dive)
+  - [Goal of this week](#goal-of-this-week)
+  - [Conclusion](#conclusion)
   - [Where do we dive this week?](#where-do-we-dive-this-week)
   - [What can I do as a first time contributor?](#what-can-i-do-as-a-first-time-contributor)
   - [What is fieldnamedocscheck?](#what-is-fieldnamedocscheck)
@@ -22,6 +24,17 @@
   - [Understand TODOs](#understand-todos)
 
 <!-- /TOC -->
+
+## Goal of this week
+
+The goal of this week is to make my first contribution to kubernetes project.
+
+## Conclusion
+
+>[!NOTE]
+> Not yet completed, still working on it :)
+
+I have successfully made a PR here: TODO LINK
 
 ## Where do we dive this week?
 
