@@ -3,12 +3,13 @@ ignorePaths: []
 dictionaryDefinitions: []
 dictionaries: []
 words:
-- CAPA
-- CGOA
-- CNPA
-- CNPE
-- Kubestronaut
-- LFCS
-- OTCA
+  - CAPA
+  - CGOA
+  - CNPA
+  - CNPE
+  - fieldnamedocscheck
+  - Kubestronaut
+  - LFCS
+  - OTCA
 ignoreWords: []
 import: []
