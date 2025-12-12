@@ -450,7 +450,7 @@ Also there are some words like, `name`, `type`, `kind`, etc, that are used very 
 
 ## Create a linter
 
-TODO: Write code here
+I simply used AI for the linter. I won't put source code because it was not hard to generate.
 
 ## Apply the code
 
