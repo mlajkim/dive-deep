@@ -11,8 +11,9 @@ you call the tar file as `tarball` too.
   - [History: Why tar?](#history-why-tar)
   - [Prerequisites](#prerequisites)
   - [tar cf: create a new archive](#tar-cf-create-a-new-archive)
-  - [tar rf: append to existing archive](#tar-rf-append-to-existing-archive)
   - [tar tf: list contents of archive](#tar-tf-list-contents-of-archive)
+  - [tar rf: append to existing archive](#tar-rf-append-to-existing-archive)
+    - [Add the same files again: duplicates are allowed](#add-the-same-files-again-duplicates-are-allowed)
   - [tar xf: extract files from archive](#tar-xf-extract-files-from-archive)
 
 <!-- /TOC -->
@@ -26,7 +27,8 @@ The old times when they had to use tape to back up, the tape did not have random
 
 ## Prerequisites
 
-Setup:
+Here is the prerequisite setup for the following examples:
+
 ```sh
 test_name=tar_command
 tmp_dir=$(date +%y%m%d_%H%M%S_$test_name)
@@ -37,6 +39,14 @@ touch file1 file2 file3
 mkdir dir1 extracted_dir
 touch dir1/file4 dir1/file5
 
+ls -al
+# drwxr-xr-x  7 mlajkim  staff  224 Dec 13 04:51 .
+# drwxr-xr-x  9 mlajkim  staff  288 Dec 13 04:51 ..
+# drwxr-xr-x  4 mlajkim  staff  128 Dec 13 04:51 dir1
+# drwxr-xr-x  2 mlajkim  staff   64 Dec 13 04:51 extracted_dir
+# -rw-r--r--  1 mlajkim  staff    0 Dec 13 04:51 file1
+# -rw-r--r--  1 mlajkim  staff    0 Dec 13 04:51 file2
+# -rw-r--r--  1 mlajkim  staff    0 Dec 13 04:51 file3
 ```
 
 
@@ -47,15 +57,16 @@ touch dir1/file4 dir1/file5
 
 ```sh
 tar cf archive.tar file1 file2
-```
-
-## tar rf: append to existing archive
-
-- `r`: append
-- `f`: file for archive
-
-```sh
-tar rf archive.tar file3 dir1
+ls -al
+# total 8
+# drwxr-xr-x  8 ajk  staff   256 Dec 13 04:52 .
+# drwxr-xr-x  9 ajk  staff   288 Dec 13 04:51 ..
+# -rw-r--r--  1 ajk  staff  2048 Dec 13 04:52 archive.tar
+# drwxr-xr-x  4 ajk  staff   128 Dec 13 04:51 dir1
+# drwxr-xr-x  2 ajk  staff    64 Dec 13 04:51 extracted_dir
+# -rw-r--r--  1 ajk  staff     0 Dec 13 04:51 file1
+# -rw-r--r--  1 ajk  staff     0 Dec 13 04:51 file2
+# -rw-r--r--  1 ajk  staff     0 Dec 13 04:51 file3
 ```
 
 ## tar tf: list contents of archive
@@ -65,16 +76,56 @@ tar rf archive.tar file3 dir1
 
 ```sh
 tar tf archive.tar
+# file1
+# file2
 ```
 
+## tar rf: append to existing archive
+
+- `r`: append
+- `f`: file for archive
+
+```sh
+tar rf archive.tar file3 dir1
+# file1
+# file2
+# file3
+# dir1/
+# dir1/file4
+# dir1/file5
+```
+
+### Add the same files again: duplicates are allowed
+
+```sh
+tar rf archive.tar file3 dir1
+tar tf archive.tar
+# file1
+# file2
+# file3
+# dir1/
+# dir1/file4
+# dir1/file5
+# file3
+# dir1/
+# dir1/file4
+# dir1/file5
+```
 
 ## tar xf: extract files from archive
 
 - `x`: extract
 - `f`: file for archive
-- `C`: change to directory
+- `C`: Default Current Directory: change to directory
 
 ```sh
-tar xf archive.tar
 tar xf archive.tar -C ./extracted_dir
+ls -al ./extracted_dir
+# total 0
+# drwxr-xr-x  6 ajk  staff  192 Dec 13 04:55 .
+# drwxr-xr-x  8 ajk  staff  256 Dec 13 04:52 ..
+# drwxr-xr-x  4 ajk  staff  128 Dec 13 04:51 dir1
+# -rw-r--r--  1 ajk  staff    0 Dec 13 04:51 file1
+# -rw-r--r--  1 ajk  staff    0 Dec 13 04:51 file2
+# -rw-r--r--  1 ajk  staff    0 Dec 13 04:51 file3
 ```
