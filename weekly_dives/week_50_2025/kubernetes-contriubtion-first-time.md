@@ -36,6 +36,8 @@
   - [Let's see if others have worked on this](#lets-see-if-others-have-worked-on-this)
   - [Create PR, even if it is WIP](#create-pr-even-if-it-is-wip)
   - [Fixes CLA problem](#fixes-cla-problem)
+  - [Closes the PR](#closes-the-pr)
+- [References](#references)
 
 <!-- /TOC -->
 
@@ -45,10 +47,7 @@ The goal of this week is to make my first contribution to kubernetes project.
 
 ## Conclusion
 
->[!NOTE]
-> Not yet completed, still working on it :)
-
-I have successfully made a PR here: TODO LINK
+I have successfully made a PR here: [feat(tools): support incremental enforcement of backticks in `check-missing-backticks` in `field_name_docs_check.go`](https://github.com/kubernetes/kubernetes/pull/135727)
 
 ## Where do we dive this week?
 
@@ -515,3 +514,19 @@ Did the sign here:
 Now it says:
 
 ![cla_signed](./assets/cla_signed.png)
+
+## Closes the PR
+
+My goal was to create a PR out there and has definitely experienced the process of contribution.
+
+But I realize that why such a TODO has been out there for 3 years without being fixed; The fix required too many changes that goes beyond the expected range like:
+- url corruption
+- handle general terms like port, name, type etc that are used very often in the doc strings
+- passes the k8s native rules for doc generation
+
+So I close the PR:
+![closed_pr_with_comments](./assets/closed_pr_with_comments.png)
+
+# References
+
+NONE
