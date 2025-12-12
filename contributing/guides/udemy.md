@@ -6,6 +6,7 @@
   - [Fastest / Most motivated way to learn](#fastest--most-motivated-way-to-learn)
     - [Rationale: Human wants progress](#rationale-human-wants-progress)
     - [Rationale: Context Switching](#rationale-context-switching)
+    - [Rationale: Progress Feeling For Tag](#rationale-progress-feeling-for-tag)
 
 <!-- /TOC -->
 
@@ -31,3 +32,11 @@ If you are stuck in one place for too long, your brain will lose motivation to c
 ### Rationale: Context Switching
 
 If you do video => hands-on => video => hands-on, your brain will have to context switch too often, even when it seems like they are of course related. By finishing one video lesson and doing hands-on right after, you can minimize context switching and maximize focus.
+
+### Rationale: Progress Feeling For Tag
+
+After the hands-on is done, placing the tag `hands-on-tested` in your note file will give you a sense of accomplishment and progress, because you know that:
+
+- You have finished a video, which is a step forward in your learning journey
+- You have done hands-on, which is a practical application of what you have learned
+
