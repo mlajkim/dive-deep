@@ -23,6 +23,7 @@ you call the tar file as `tarball` too.
   - [tar rf: append to existing archive](#tar-rf-append-to-existing-archive)
     - [Add the same files again: duplicates are allowed](#add-the-same-files-again-duplicates-are-allowed)
   - [tar xf: extract files from archive](#tar-xf-extract-files-from-archive)
+    - [tar xf with compressed files](#tar-xf-with-compressed-files)
 
 <!-- /TOC -->
 
@@ -44,7 +45,7 @@ mkdir -p ~/test_dive/$tmp_dir
 cd ~/test_dive/$tmp_dir
 
 touch file1 file2 file3
-mkdir dir1 extracted_dir
+mkdir dir1 extracted_dir extracted_dir_gz extracted_dir_bz2 extracted_dir_xz
 touch dir1/file4 dir1/file5
 
 ls -al
@@ -168,4 +169,35 @@ ls -al ./extracted_dir
 # -rw-r--r--  1 ajk  staff    0 Dec 13 04:51 file1
 # -rw-r--r--  1 ajk  staff    0 Dec 13 04:51 file2
 # -rw-r--r--  1 ajk  staff    0 Dec 13 04:51 file3
+```
+
+### tar xf with compressed files
+
+You can extract compressed tar files directly without decompressing them first.
+
+```sh
+tar xf archive.tar.gz -C ./extracted_dir_gz
+tar xf archive.tar.bz2 -C ./extracted_dir_bz2
+tar xf archive.tar.xz -C ./extracted_dir_xz
+ls -al ./extracted_dir_gz ./extracted_dir_bz2 ./extracted_dir_xz
+# ./extracted_dir_bz2:
+# total 0
+# drwxr-xr-x   4 ajk  staff  128 Dec 13 05:35 .
+# drwxr-xr-x  14 ajk  staff  448 Dec 13 05:34 ..
+# -rw-r--r--   1 ajk  staff    0 Dec 13 04:51 file1
+# -rw-r--r--   1 ajk  staff    0 Dec 13 04:51 file2
+
+# ./extracted_dir_gz:
+# total 0
+# drwxr-xr-x   4 ajk  staff  128 Dec 13 05:35 .
+# drwxr-xr-x  14 ajk  staff  448 Dec 13 05:34 ..
+# -rw-r--r--   1 ajk  staff    0 Dec 13 04:51 file1
+# -rw-r--r--   1 ajk  staff    0 Dec 13 04:51 file2
+
+# ./extracted_dir_xz:
+# total 0
+# drwxr-xr-x   4 ajk  staff  128 Dec 13 05:35 .
+# drwxr-xr-x  14 ajk  staff  448 Dec 13 05:34 ..
+# -rw-r--r--   1 ajk  staff    0 Dec 13 04:51 file1
+# -rw-r--r--   1 ajk  staff    0 Dec 13 04:51 file2
 ```
