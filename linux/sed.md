@@ -20,7 +20,7 @@
 ```sh
 test_name=test
 tmp_dir=$(date +%y%m%d_%H%M%S_$test_name)
-mkdir -p ~/test_dive/$tmp_date && cd ~/test_dive/$tmp_dir
+mkdir -p ~/test_dive/$tmp_dir && cd ~/test_dive/$tmp_dir
 echo -e "canada cada\ncanada cada\ncada cada\ncada cada" > file.txt
 cat file.txt
 # canada cada

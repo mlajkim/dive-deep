@@ -28,7 +28,7 @@ Setup:
 ```sh
 test_name=grep_command
 tmp_dir=$(date +%y%m%d_%H%M%S_$test_name)
-mkdir -p ~/test_dive/$tmp_date && cd ~/test_dive/$tmp_dir
+mkdir -p ~/test_dive/$tmp_dir && cd ~/test_dive/$tmp_dir
 
 cat > file.txt <<EOF
 pattern

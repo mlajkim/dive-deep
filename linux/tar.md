@@ -9,6 +9,7 @@ you call the tar file as `tarball` too.
 
 - [tar](#tar)
   - [History: Why tar?](#history-why-tar)
+  - [Prerequisites](#prerequisites)
   - [tar cf: create a new archive](#tar-cf-create-a-new-archive)
   - [tar rf: append to existing archive](#tar-rf-append-to-existing-archive)
   - [tar tf: list contents of archive](#tar-tf-list-contents-of-archive)
@@ -23,6 +24,21 @@ The old times when they had to use tape to back up, the tape did not have random
 
 [[tar]] simply stores files and their metadata into a single file without compression.
 
+## Prerequisites
+
+Setup:
+```sh
+test_name=tar_command
+tmp_dir=$(date +%y%m%d_%H%M%S_$test_name)
+mkdir -p ~/test_dive/$tmp_dir
+cd ~/test_dive/$tmp_dir
+
+touch file1 file2 file3
+mkdir dir1 extracted_dir
+touch dir1/file4 dir1/file5
+
+```
+
 
 ## tar cf: create a new archive
 
@@ -30,7 +46,7 @@ The old times when they had to use tape to back up, the tape did not have random
 - `f`: file for archive
 
 ```sh
-tar cf archive.tar file1 file2 dir1
+tar cf archive.tar file1 file2
 ```
 
 ## tar rf: append to existing archive
@@ -39,7 +55,7 @@ tar cf archive.tar file1 file2 dir1
 - `f`: file for archive
 
 ```sh
-tar rf archive.tar file3 dir2
+tar rf archive.tar file3 dir1
 ```
 
 ## tar tf: list contents of archive
@@ -60,5 +76,5 @@ tar tf archive.tar
 
 ```sh
 tar xf archive.tar
-tar xf archive.tar -C /path/to/extract/
+tar xf archive.tar -C ./extracted_dir
 ```

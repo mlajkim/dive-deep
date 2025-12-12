@@ -4,7 +4,7 @@
 
 - [uniq](#uniq)
   - [Setup](#setup)
-  - [Unqiue names only](#unqiue-names-only)
+  - [Unique names only](#unique-names-only)
 
 <!-- /TOC -->
 
@@ -13,7 +13,7 @@
 ```sh
 test_name=test
 tmp_dir=$(date +%y%m%d_%H%M%S_$test_name)
-mkdir -p ~/test_dive/$tmp_date && cd ~/test_dive/$tmp_dir
+mkdir -p ~/test_dive/$tmp_dir && cd ~/test_dive/$tmp_dir
 echo -e "john uk\namy korea\nmichael usa\nsara canada\njohn uk" > file.txt
 cat file.txt
 # john uk
@@ -23,7 +23,7 @@ cat file.txt
 # john uk
 ```
 
-## Unqiue names only
+## Unique names only
 
 Please check out the [[cut]] command to get only names first.
 
