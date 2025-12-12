@@ -41,7 +41,7 @@ I want to become a **Golden Kubestronaut**. But while doing that, I also want to
 |              |                      |   ~21    |   12/4   |
 |              |                      |   ~27    |   12/6   |
 |              |                      |   ~32    | ...12/13 |
-|              |                      |   ~37    |          |
+|              |                      |   ~37    | ...12/14 |
 |     ...      |      Section 3       |  38~43   |          |
 |              |                      |   ~46    |          |
 |              |                      |   ~48    |          |
