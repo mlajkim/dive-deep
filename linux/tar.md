@@ -1,6 +1,6 @@
 ---
 tags:
-- hands-on tested
+- hands-on-tested
 ---
 
 # tar
