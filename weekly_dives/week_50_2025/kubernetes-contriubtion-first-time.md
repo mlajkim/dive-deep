@@ -498,6 +498,10 @@ It won't build but who cares. Do the zero-brain PR: https://github.com/kubernete
 
 ![first_time_pr_in_kubernetes](./assets/first_time_pr_in_kubernetes.png)
 
+I see you `Kubernetes Contributor` badge :)
+
+![kubernetes_badge](./assets/kubernetes_badge.png)
+
 ##  Signs
 
 ![signed_agreement_missing](./assets/signed_agreement_missing.png)
