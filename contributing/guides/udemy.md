@@ -3,7 +3,7 @@
 <!-- TOC -->
 
 - [udemy](#udemy)
-  - [Fastest / Most motivated way to learn](#fastest--most-motivated-way-to-learn)
+  - [Fastest/Most motivated, efficient way to learn](#fastestmost-motivated-efficient-way-to-learn)
     - [Rationale: Human wants progress](#rationale-human-wants-progress)
     - [Rationale: Context Switching](#rationale-context-switching)
     - [Rationale: Mode Changing](#rationale-mode-changing)
@@ -12,7 +12,7 @@
 
 <!-- /TOC -->
 
-## Fastest / Most motivated way to learn
+## Fastest/Most motivated, efficient way to learn
 
 To let your brain know that you are progressing, it is recommended to:
 
