@@ -17,6 +17,8 @@ you call the tar file as `tarball` too.
   - [Prerequisites](#prerequisites)
   - [tar cf: create a new archive](#tar-cf-create-a-new-archive)
     - [tar czf : create a compressed archive with gzip](#tar-czf--create-a-compressed-archive-with-gzip)
+      - [tar cjf: Use bzip2 instead over gzip](#tar-cjf-use-bzip2-instead-over-gzip)
+      - [tar cjf: Use bzip2 instead over gzip](#tar-cjf-use-bzip2-instead-over-gzip-1)
   - [tar tf: list contents of archive](#tar-tf-list-contents-of-archive)
   - [tar rf: append to existing archive](#tar-rf-append-to-existing-archive)
     - [Add the same files again: duplicates are allowed](#add-the-same-files-again-duplicates-are-allowed)
@@ -89,6 +91,22 @@ To do in a single command:
 tar czf archive.tar.gz file1 file2
 ls -al | grep archive.tar.gz
 # -rw-r--r--  1 ajk  staff   119 Dec 13 05:29 archive.tar.gz
+```
+
+#### tar cjf: Use bzip2 instead over gzip
+
+```sh
+tar cjf archive.tar.bz2 file1 file2
+ls -al | grep archive.tar.bz2
+# -rw-r--r--   1 ajk  staff   141 Dec 13 05:31 archive.tar.bz2
+```
+
+#### tar cjf: Use bzip2 instead over gzip
+
+```sh
+tar cJf archive.tar.xz file1 file2
+ls -al | grep archive.tar.xz
+# -rw-r--r--   1 ajk  staff   160 Dec 13 05:31 archive.tar.xz
 ```
 
 ## tar tf: list contents of archive
