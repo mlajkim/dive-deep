@@ -216,7 +216,7 @@ Usage of ~/Library/Caches/go-build/81/..hash../-d/field_name_docs_check:
 
 ## Successfully run with `-s`!
 
->[!NOTE]
+> [!NOTE]
 > If nothing happens, it means all the fields are properly documented :)
 
 ```sh
