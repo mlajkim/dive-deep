@@ -35,7 +35,7 @@
   - [Realize that the changes are too big and go beyond expected](#realize-that-the-changes-are-too-big-and-go-beyond-expected)
   - [Let's see if others have worked on this](#lets-see-if-others-have-worked-on-this)
   - [Create PR, even if it is WIP](#create-pr-even-if-it-is-wip)
-  - [Signs](#signs)
+  - [Fixes CLA problem](#fixes-cla-problem)
 
 <!-- /TOC -->
 
@@ -502,10 +502,16 @@ I see you `Kubernetes Contributor` badge :)
 
 ![kubernetes_badge](./assets/kubernetes_badge.png)
 
-##  Signs
+## Fixes CLA problem
+
+I got this warning in my PR:
 
 ![signed_agreement_missing](./assets/signed_agreement_missing.png)
 
+Did the sign here:
+
 ![document_sign_cla](./assets/document_sign_cla.png)
+
+Now it says:
 
 ![cla_signed](./assets/cla_signed.png)
