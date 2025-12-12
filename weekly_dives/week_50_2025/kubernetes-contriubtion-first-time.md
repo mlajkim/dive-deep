@@ -124,7 +124,7 @@ set -o pipefail
 
 ##### Dissection: KUBE_ROOT setup
 
-> [!TIPS]
+> [!TIP]
 > Once you `echo $KUBE_ROOT`, you will get `./hack/..` as a sample.
 > That `..` at the end
 ```sh
