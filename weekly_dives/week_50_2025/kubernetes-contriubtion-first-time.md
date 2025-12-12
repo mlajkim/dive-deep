@@ -86,7 +86,7 @@ So what is fieldnamedocscheck? Let see where this cmd `fieldnamedocscheck` is us
 
 ### Zero-brain Run `verify-fieldname-docs.sh`
 
-> ![NOTE]
+> [!NOTE]
 > You may be asked to run `brew install bash` if your bash version is insufficient
 
 This script has checked 64 lines of output:
