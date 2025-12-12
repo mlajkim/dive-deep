@@ -8,7 +8,7 @@
     - [gzip cannot compress directories](#gzip-cannot-compress-directories)
   - [gzip -l: list compressed files](#gzip--l-list-compressed-files)
   - [gunzip: decompress files](#gunzip-decompress-files)
-    - [returns error for using unzip on .gz files](#returns-error-for-using-unzip-on-gz-files)
+    - [unzip on .gz files: returns error](#unzip-on-gz-files-returns-error)
   - [gzip -k: keep original files](#gzip--k-keep-original-files)
   - [gzip -h: get help](#gzip--h-get-help)
 
@@ -107,7 +107,7 @@ ls -al
 # -rw-r--r--   1 ajk  staff   26 Dec 13 05:45 file3.gz
 ```
 
-### returns error for using unzip on .gz files
+### unzip on .gz files: returns error
 
 ```sh
 unzip file1.gz
