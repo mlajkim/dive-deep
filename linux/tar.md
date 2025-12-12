@@ -16,6 +16,7 @@ you call the tar file as `tarball` too.
   - [History: Why tar?](#history-why-tar)
   - [Prerequisites](#prerequisites)
   - [tar cf: create a new archive](#tar-cf-create-a-new-archive)
+    - [tar czf : create a compressed archive with gzip](#tar-czf--create-a-compressed-archive-with-gzip)
   - [tar tf: list contents of archive](#tar-tf-list-contents-of-archive)
   - [tar rf: append to existing archive](#tar-rf-append-to-existing-archive)
     - [Add the same files again: duplicates are allowed](#add-the-same-files-again-duplicates-are-allowed)
@@ -72,6 +73,22 @@ ls -al
 # -rw-r--r--  1 ajk  staff     0 Dec 13 04:51 file1
 # -rw-r--r--  1 ajk  staff     0 Dec 13 04:51 file2
 # -rw-r--r--  1 ajk  staff     0 Dec 13 04:51 file3
+```
+
+
+### tar czf : create a compressed archive with gzip
+
+> [!NOTE]
+> To learn more about `gzip`, please refer to the [gzip](/linux/gzip.md) page.
+
+Usually you make a tar file and compress file, like `archive.tar.gz`.
+
+To do in a single command:
+
+```sh
+tar czf archive.tar.gz file1 file2
+ls -al | grep archive.tar.gz
+# -rw-r--r--  1 ajk  staff   119 Dec 13 05:29 archive.tar.gz
 ```
 
 ## tar tf: list contents of archive
