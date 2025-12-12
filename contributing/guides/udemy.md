@@ -8,6 +8,7 @@
     - [Rationale: Context Switching](#rationale-context-switching)
     - [Rationale: Mode Changing](#rationale-mode-changing)
     - [Rationale: Progress Feeling For Tag](#rationale-progress-feeling-for-tag)
+    - [Rationale: Visual Progress](#rationale-visual-progress)
 
 <!-- /TOC -->
 
@@ -54,3 +55,6 @@ After the hands-on is done, placing the tag `hands-on-tested` in your note file 
 - You have finished a video, which is a step forward in your learning journey
 - You have done hands-on, which is a practical application of what you have learned
 
+### Rationale: Visual Progress
+
+Visualizing Progress is important, and by declaring a tag in your note file, you can easily see which topics you have completed hands-on for, and which ones you still need to do. This will help you stay organized and motivated to continue learning.
