@@ -34,6 +34,8 @@
   - [Find the smallest code](#find-the-smallest-code)
   - [Realize that the changes are too big and go beyond expected](#realize-that-the-changes-are-too-big-and-go-beyond-expected)
   - [Let's see if others have worked on this](#lets-see-if-others-have-worked-on-this)
+  - [Create PR, even if it is WIP](#create-pr-even-if-it-is-wip)
+  - [Signs](#signs)
 
 <!-- /TOC -->
 
@@ -488,4 +490,18 @@ The problem of the changes above:
 
 ## Let's see if others have worked on this
 
-🟡 TODO
+I was not able to find one
+
+## Create PR, even if it is WIP
+
+It won't build but who cares. Do the zero-brain PR: https://github.com/kubernetes/kubernetes/pull/135727
+
+![first_time_pr_in_kubernetes](./assets/first_time_pr_in_kubernetes.png)
+
+##  Signs
+
+![signed_agreement_missing](./assets/signed_agreement_missing.png)
+
+![document_sign_cla](./assets/document_sign_cla.png)
+
+![cla_signed](./assets/cla_signed.png)
