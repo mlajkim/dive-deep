@@ -6,6 +6,7 @@
   - [Fastest / Most motivated way to learn](#fastest--most-motivated-way-to-learn)
     - [Rationale: Human wants progress](#rationale-human-wants-progress)
     - [Rationale: Context Switching](#rationale-context-switching)
+    - [Rationale: Mode Changing](#rationale-mode-changing)
     - [Rationale: Progress Feeling For Tag](#rationale-progress-feeling-for-tag)
 
 <!-- /TOC -->
@@ -32,6 +33,19 @@ If you are stuck in one place for too long, your brain will lose motivation to c
 ### Rationale: Context Switching
 
 If you do video => hands-on => video => hands-on, your brain will have to context switch too often, even when it seems like they are of course related. By finishing one video lesson and doing hands-on right after, you can minimize context switching and maximize focus.
+
+### Rationale: Mode Changing
+
+You can have two different modes:
+
+- Note taking mode
+- Understanding mode
+
+Now when you watch a video, if you too focus on note taking, you will lose understanding. By finishing one video lesson with minimum note-taking, you can maximize understanding.
+
+Then when you do hands-on, you can switch to note taking mode and summarize notes on what you have learned and practiced.
+
+Also you can always go back to your video & AI later if you need more understanding! EASY!
 
 ### Rationale: Progress Feeling For Tag
 
