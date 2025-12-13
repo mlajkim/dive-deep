@@ -25,7 +25,7 @@ cover_image: "./thumbnail.png"
           - [We can't fix the path issue](#we-cant-fix-the-path-issue)
         - [Dissection: go language check](#dissection-go-language-check)
         - [Dissection: store every type.go](#dissection-store-every-typego)
-  - [Zero-brain Run fieldnamedocekscheck](#zero-brain-run-fieldnamedocekscheck)
+  - [Zero-brain Run fieldnamedocscheck](#zero-brain-run-fieldnamedocscheck)
   - [What is that `-s` flag?](#what-is-that--s-flag)
     - [Can we get a help command for that `-s` flag, without looking at the source code?](#can-we-get-a-help-command-for-that--s-flag-without-looking-at-the-source-code)
   - [Successfully run with `-s`!](#successfully-run-with--s)
