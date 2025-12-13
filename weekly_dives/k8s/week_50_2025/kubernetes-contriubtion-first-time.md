@@ -187,7 +187,7 @@ versioned_api_files=$(find_files) || true
 ```
 
 
-## Zero-brain Run fieldnamedocekscheck
+## Zero-brain Run fieldnamedocscheck
 
 > [!NOTE]
 > It is important to give a shot even if you don't know what you are doing :)
