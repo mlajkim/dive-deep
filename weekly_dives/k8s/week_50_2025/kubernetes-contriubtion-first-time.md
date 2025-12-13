@@ -471,7 +471,7 @@ go run field_name_docs_check_lint.go -s ../../staging/src/k8s.io/api/core/v1/typ
 
 I do not want to scare them but also want them to merge the PR & somewhat has dependency in my changes later in the future.
 
-So maybe enforcing one file first with the smallest lines of code is a good idea:s
+So maybe enforcing one file first with the smallest lines of code is a good idea.
 
 ```sh
 find staging/src/k8s.io/api -name "types.go" | xargs wc -l | sort -n | head -n 5
