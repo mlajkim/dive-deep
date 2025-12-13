@@ -1,0 +1,20 @@
+name: Publish to dev.to
+
+on:
+  push:
+    branches:
+    - main
+    paths:
+    - 'mlajkim_dive_deep/weekly_dives/**/*.md'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - uses: sinedied/publish-devto@v2
+      with:
+        devto_key: ${{ secrets.DEV_TO_KEY }} # Secret "DEV_TO_KEY" must be stored in https://github.com/mlajkim/dive-deep/settings/secrets/actions
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        files: 'mlajkim_dive_deep/weekly_dives/**/*.md'

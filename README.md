@@ -16,6 +16,8 @@
     - [Aug 2026: CGOA](#aug-2026-cgoa)
     - [Sep 2026: CBA](#sep-2026-cba)
     - [Oct 2026: OTCA](#oct-2026-otca)
+- [Glossary](#glossary)
+  - [Zero-brain run](#zero-brain-run)
 
 <!-- /TOC -->
 
@@ -71,3 +73,9 @@ I want to become a **Golden Kubestronaut**. But while doing that, I also want to
 ### Sep 2026: CBA
 
 ### Oct 2026: OTCA
+
+# Glossary
+
+## Zero-brain run
+
+A "zero-brain run" is an approach where you run a command or piece of code without fully understanding it, to see what happens. This method helps in learning through exploration and experimentation, allowing you to observe the behavior of the code and gain insights that can lead to a deeper understanding over time.

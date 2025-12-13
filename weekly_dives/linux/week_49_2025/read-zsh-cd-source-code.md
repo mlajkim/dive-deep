@@ -1,3 +1,11 @@
+---
+title: "Dives into zsh's cd command in Week 49, 2025"
+published: true
+tags: [linux, weekly_dive, zsh, cd_command, source_code]
+series: "Weekly Dive"
+cover_image: "./thumbnail.png"
+---
+
 # Goal
 
 > [!NOTE]
@@ -294,4 +302,4 @@ Basically write the new working directory to the `PWD` environment variable and 
 
 ## First time seeing 25 years old commit
 
-![25_years_ago_commit](/assets/25_years_ago_commit.png)
+![25_years_ago_commit](./assets/25_years_ago_commit.png)
