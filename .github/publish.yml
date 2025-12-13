@@ -5,7 +5,7 @@ on:
     branches:
     - main
     paths:
-    - 'mlajkim_dive_deep/weekly_dives/**/*.md'
+    - 'weekly_dives/**/*.md'
 
 jobs:
   publish:
@@ -17,4 +17,4 @@ jobs:
       with:
         devto_key: ${{ secrets.DEV_TO_KEY }} # Secret "DEV_TO_KEY" must be stored in https://github.com/mlajkim/dive-deep/settings/secrets/actions
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        files: 'mlajkim_dive_deep/weekly_dives/**/*.md'
+        files: 'weekly_dives/**/*.md'
