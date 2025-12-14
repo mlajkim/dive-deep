@@ -1,3 +1,8 @@
+---
+tags:
+- hands-on-tested
+---
+
 # column
 
 <!-- TOC -->
@@ -42,6 +47,8 @@ cat server_stats.txt
 
 
 ## column
+
+Note that how it formats the output, just like `ls` does:
 
 ```sh
 column server_stats.txt
