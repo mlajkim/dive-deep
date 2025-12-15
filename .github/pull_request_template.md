@@ -1,10 +1,19 @@
+<!--
+If it is not directly related to the dive-deep, simply write:
+
+- Background
+- What's done
+-->
+
 ## What I learned (at least three)
-- 
-- 
-- 
+
+- ...
+- ...
+- ...
 
 ## What could be better (at least one)
-- 
+
+- ...
 
 ---
 
