@@ -65,6 +65,9 @@ ls -al
 > [!NOTE]
 > The output comes first, followed by file/directory names
 
+> [!TIP]
+> Please note that unlike `zip`, `tar` does not delete original files after archiving. So it is pretty handy.
+
 - `c`: create
 - `f`: file for archive
 
