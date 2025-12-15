@@ -15,7 +15,8 @@ you call the tar file as `tarball` too.
 - [tar](#tar)
   - [History: Why tar?](#history-why-tar)
   - [Prerequisites](#prerequisites)
-  - [tar cf: create a new archive](#tar-cf-create-a-new-archive)
+  - [tar cf: create a new archive for file or directory](#tar-cf-create-a-new-archive-for-file-or-directory)
+    - [tar cfP: preserve absolute path](#tar-cfp-preserve-absolute-path)
     - [tar czf : create a compressed archive with gzip](#tar-czf--create-a-compressed-archive-with-gzip)
       - [tar cjf: Use bzip2 instead over gzip](#tar-cjf-use-bzip2-instead-over-gzip)
       - [tar cjf: Use bzip2 instead over gzip](#tar-cjf-use-bzip2-instead-over-gzip-1)
@@ -59,7 +60,10 @@ ls -al
 ```
 
 
-## tar cf: create a new archive
+## tar cf: create a new archive for file or directory
+
+> [!NOTE]
+> The output comes first, followed by file/directory names
 
 - `c`: create
 - `f`: file for archive
@@ -77,6 +81,22 @@ ls -al
 # -rw-r--r--  1 ajk  staff     0 Dec 13 04:51 file2
 # -rw-r--r--  1 ajk  staff     0 Dec 13 04:51 file3
 ```
+
+### tar cfP: preserve absolute path
+
+For the safety, by default, `tar` removes the leading `/` from absolute paths to avoid overwriting important system files when extracting.
+
+```sh
+tar cf p_flag_no.tar /dev/null 2> /dev/null
+tar cfP p_flag_yes.tar /dev/null 2> /dev/null
+
+tar tf p_flag_no.tar
+tar tf p_flag_yes.tar
+
+# dev/null
+# /dev/null
+```
+
 
 
 ### tar czf : create a compressed archive with gzip
