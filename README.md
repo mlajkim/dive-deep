@@ -36,25 +36,25 @@ I want to become a **Golden Kubestronaut**. But while doing that, I also want to
 > `...<date> 90%` means that I have finished 90% of it by that date
 > `<date>` means that I have finished it on that date
 
-|     Date     |     Weekly Goal      | Chapters |    Done     |
-|:------------:|:--------------------:|:--------:|:-----------:|
-| 11/30 ~ 12/6 |      Section 2       |   8~11   |    11/29    |
-|              |                      |   ~17    |    11/30    |
-|              |                      |   ~21    |    12/4     |
-|              |                      |   ~27    |    12/6     |
-|              |                      |   ~32    | ...12/1 90% |
-|              |                      |   ~37    |  ...12/14   |
-|     ...      |      Section 3       |  38~43   |             |
-|              |                      |   ~46    |             |
-|              |                      |   ~48    |             |
-|              |                      |   ~52    |             |
-|              |                      |   ~54    |             |
-|              |                      |   ~58    |             |
-|              |                      |   ~61    |             |
-|              |                      |   ~63    |             |
-|     ...      |     Section 4,5      |          |             |
-| 12/21~12/27  | Section 6, Mock Test |          |             |
-|  12/28~1/3   |     Actual Test      |          |             |
+|     Date     |     Weekly Goal      | Chapters |     Done     |
+|:------------:|:--------------------:|:--------:|:------------:|
+| 11/30 ~ 12/6 |      Section 2       |   8~11   |    11/29     |
+|              |                      |   ~17    |    11/30     |
+|              |                      |   ~21    |     12/4     |
+|              |                      |   ~27    |     12/6     |
+|              |                      |   ~32    | ...12/15 95% |
+|              |                      |   ~37    |   ...12/15   |
+|     ...      |      Section 3       |  38~43   |              |
+|              |                      |   ~46    |              |
+|              |                      |   ~48    |              |
+|              |                      |   ~52    |              |
+|              |                      |   ~54    |              |
+|              |                      |   ~58    |              |
+|              |                      |   ~61    |              |
+|              |                      |   ~63    |              |
+|     ...      |     Section 4,5      |          |              |
+| 12/21~12/27  | Section 6, Mock Test |          |              |
+|  12/28~1/3   |     Actual Test      |          |              |
 
 ### Jan 2026: Istio: ICA
 
