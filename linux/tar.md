@@ -84,6 +84,9 @@ ls -al
 
 ### tar cfP: preserve absolute path
 
+> [!NOTE]
+> For the safety, the instruction removes tar files created
+
 For the safety, by default, `tar` removes the leading `/` from absolute paths to avoid overwriting important system files when extracting.
 
 ```sh
@@ -92,6 +95,8 @@ tar cfP p_flag_yes.tar /dev/null 2> /dev/null
 
 tar tf p_flag_no.tar
 tar tf p_flag_yes.tar
+
+rm p_flag_no.tar p_flag_yes.tar
 
 # dev/null
 # /dev/null
