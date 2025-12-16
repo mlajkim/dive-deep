@@ -2,26 +2,30 @@ name: Enforce PR Checklist
 
 on:
   pull_request:
-    types: [opened, edited, reopened, synchronize]
+    types: [ opened, edited, reopened, synchronize, ready_for_review ]
 
 jobs:
   check-checklist:
     runs-on: ubuntu-latest
     steps:
-      - name: Check for unchecked boxes
-        uses: actions/github-script@v6
-        with:
-          script: |
-            const pr = context.payload.pull_request;
-            const body = pr.body;
-            
-            // This regex searches for unchecked boxes: [ ] 
-            // It allows for spaces inside like [  ] but not [x]
-            const uncheckedRegex = /-\s\[\s*\]/g;
-            
-            if (uncheckedRegex.test(body)) {
-              core.setFailed("❌ You have unfinished items in your checklist. Please check all boxes before merging.");
-            } else {
-              console.log("✅ All checklist items are completed.");
-            }
+    - name: Check for unchecked boxes
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const pr = context.payload.pull_request;
 
+          if (pr.draft) {
+            console.log("ℹ️ Pull request is a draft. Skipping checklist validation. Please make sure to handle all checklist before making it ready for review.");
+            return;
+          }
+          const body = pr.body;
+
+          // This regex searches for unchecked boxes: [ ]
+          // It allows for spaces inside like [  ] but not [x]
+          const uncheckedRegex = /-\s\[\s*\]/g;
+
+          if (uncheckedRegex.test(body)) {
+            core.setFailed("❌ You have unfinished items in your checklist. Please check all boxes before merging.");
+          } else {
+            console.log("✅ All checklist items are completed.");
+          }
