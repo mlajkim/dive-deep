@@ -6,6 +6,7 @@
   - [Overview](#overview)
     - [ssl is actually old](#ssl-is-actually-old)
   - [man openssl](#man-openssl)
+    - [man openssl-genpkey](#man-openssl-genpkey)
     - [man openssl-x509](#man-openssl-x509)
     - [man openssl-req](#man-openssl-req)
       - [man openssl-x509 | grep req](#man-openssl-x509--grep-req)
@@ -20,6 +21,15 @@
 `ssl` has been deprecated and we are living under `tls` but the `ssl` is still being used. Simply speaking you can say `tls = ssl` nowadays.
 
 ## man openssl
+
+### man openssl-genpkey
+
+> [!TIP]
+> As you can see from the `genkey` description, `genkey` is deprecated and `genpkey` is the new way to generate private keys
+
+```sh
+man openssl-genpkey
+```
 
 ### man openssl-x509
 
@@ -53,3 +63,4 @@ man openssl-x509 | grep req
 #         openssl x509 -req -in req.pem -extfile openssl.cnf -extensions v3_usr \
 #        It is possible to produce invalid certificates or requests by
 ```
+
