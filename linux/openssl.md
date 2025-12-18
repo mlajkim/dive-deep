@@ -5,9 +5,9 @@
 - [openssl](#openssl)
   - [Overview](#overview)
     - [ssl is actually old](#ssl-is-actually-old)
-  - [man openssl](#man-openssl)
+  - [man openssl / EXAMPLE](#man-openssl--example)
     - [man openssl-genpkey](#man-openssl-genpkey)
-    - [man openssl-x509](#man-openssl-x509)
+    - [man openssl-x509 | grep -A 40 EXAMPLES](#man-openssl-x509--grep--a-40-examples)
     - [man openssl-req](#man-openssl-req)
       - [man openssl-x509 | grep req](#man-openssl-x509--grep-req)
 
@@ -20,7 +20,10 @@
 
 `ssl` has been deprecated and we are living under `tls` but the `ssl` is still being used. Simply speaking you can say `tls = ssl` nowadays.
 
-## man openssl
+## man openssl / EXAMPLE
+
+> [!TIP]
+> The `EXAMPLE` is the most important section
 
 ### man openssl-genpkey
 
@@ -31,7 +34,7 @@
 man openssl-genpkey
 ```
 
-### man openssl-x509
+### man openssl-x509 | grep -A 40 EXAMPLES
 
 [!TIP]
 > The `Examples` section is pretty useful
