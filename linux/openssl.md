@@ -8,6 +8,7 @@
   - [man openssl](#man-openssl)
     - [man openssl-x509](#man-openssl-x509)
     - [man openssl-req](#man-openssl-req)
+      - [man openssl-x509 | grep req](#man-openssl-x509--grep-req)
 
 <!-- /TOC -->
 
@@ -35,3 +36,20 @@ It outputs the following sections:
 
 
 ### man openssl-req
+
+#### man openssl-x509 | grep req
+
+> [!TIP]
+> You can always expand
+
+```sh
+man openssl-x509 | grep req
+# ...
+# Convert a certificate to a certificate request:
+#         openssl x509 -x509toreq -in cert.pem -out req.pem -key key.pem
+#        Convert a certificate request into a self-signed certificate using
+#         openssl x509 -req -in careq.pem -extfile openssl.cnf -extensions v3_ca \
+#        Sign a certificate request using the CA certificate above and add user
+#         openssl x509 -req -in req.pem -extfile openssl.cnf -extensions v3_usr \
+#        It is possible to produce invalid certificates or requests by
+```
