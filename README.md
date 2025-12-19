@@ -43,8 +43,8 @@ I want to become a **Golden Kubestronaut**. But while doing that, I also want to
 |              |                      |   ~21    |   12/4   |
 |              |                      |   ~27    |   12/6   |
 |              |                      |   ~32    |  12/16   |
-|              |                      |   ~37    | ...12/17 |
-|     ...      |      Section 3       |  38~43   | ...12/19 |
+|              |                      |   ~37    |  12/19   |
+|  12/7~12/20  |      Section 3       |  38~43   | ...12/21 |
 |              |                      |   ~46    | ...12/21 |
 |              |                      |   ~48    |          |
 |              |                      |   ~52    |          |
@@ -52,7 +52,7 @@ I want to become a **Golden Kubestronaut**. But while doing that, I also want to
 |              |                      |   ~58    |          |
 |              |                      |   ~61    |          |
 |              |                      |   ~63    |          |
-|     ...      |     Section 4,5      |          |          |
+|  12/7~12/20  |     Section 4,5      |          |          |
 | 12/21~12/27  | Section 6, Mock Test |          |          |
 |  12/28~1/3   |     Actual Test      |          |          |
 
