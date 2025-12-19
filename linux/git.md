@@ -5,6 +5,7 @@
 - [git](#git)
   - [Overview](#overview)
     - [delete branch: git branch --delete testing](#delete-branch-git-branch---delete-testing)
+    - [git log --raw](#git-log---raw)
 
 <!-- /TOC -->
 
@@ -26,4 +27,19 @@ git add *.cpp
 
 ```sh
 git branch --delete testing
+```
+
+
+
+###  git log --raw
+
+```sh
+git log --raw
+# commit 9c06d2b4a331f6ae8195cb67134fc6703e51fe81 (HEAD -> master)
+# Author: Bob <bob@kodekloud.com>
+# Date:   Fri Dec 19 02:02:18 2025 +0000
+
+#     Modified a project file
+
+# :100644 100644 e69de29 a11f211 M        file2.cpp
 ```
