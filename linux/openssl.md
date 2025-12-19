@@ -1,6 +1,6 @@
 ---
 tags:
-- 🟡 todo-requires-hands-on-tested
+- hands-on-tested
 ---
 
 # openssl
@@ -9,19 +9,41 @@ tags:
 
 - [openssl](#openssl)
   - [Overview](#overview)
+    - [ssl is actually old](#ssl-is-actually-old)
+  - [Prerequisites](#prerequisites)
   - [Good-to-remember commamnds](#good-to-remember-commamnds)
     - [openssl req -newkey rsa:4096 -keyout priv.key -out cert.csr](#openssl-req--newkey-rsa4096--keyout-privkey--out-certcsr)
     - [create self-signed cert: openssl req -x509 -noenc -days 365 -keyout priv.key -out kodekloud.crt](#create-self-signed-cert-openssl-req--x509--noenc--days-365--keyout-privkey--out-kodekloudcrt)
-    - [ssl is actually old](#ssl-is-actually-old)
-  - [man openssl / EXAMPLE](#man-openssl--example)
-    - [man openssl-genpkey](#man-openssl-genpkey)
-    - [man openssl-x509 | grep -A 40 EXAMPLES](#man-openssl-x509--grep--a-40-examples)
-    - [man openssl-req](#man-openssl-req)
-      - [man openssl-x509 | grep req](#man-openssl-x509--grep-req)
 
 <!-- /TOC -->
 
 ## Overview
+
+> [!TIPS]
+> Please use `man openssl` to get more details about the `openssl` command and its subcommands.
+> Or you can use `openssl help`
+
+`openssl` creates X.509 cert, private keys and CSRs (certificate signing requests).
+
+### ssl is actually old
+
+`ssl` has been deprecated and we are living under `tls` but the `ssl` is still being used. Simply speaking you can say `tls = ssl` nowadays.
+
+## Prerequisites
+
+Here is the prerequisite setup for the following examples:
+
+```sh
+test_name=openssl
+tmp_dir=$(date +%y%m%d_%H%M%S_$test_name)
+mkdir -p ~/test_dive/$tmp_dir
+cd ~/test_dive/$tmp_dir
+
+echo "Target Acquired" > existing_file
+ls -al existing_file ghost_file
+# ls: ghost_file: No such file or directory
+# -rw-r--r--  1 ajk  staff  16 Dec 15 12:27 existing_file
+```
 
 
 ## Good-to-remember commamnds
@@ -34,7 +56,12 @@ tags:
 Creates both a new private key and a certificate signing request (CSR)
 
 ```sh
-openssl req -newkey rsa:4096 -keyout priv.key -out cert.csr
+openssl req -newkey rsa:4096 -keyout private.key -out cert.csr > /dev/null
+ls -al
+# total 0
+# drwxr-xr-x  3 mlajkim  staff   96 Dec 19 12:11 .
+# drwxr-xr-x  6 mlajkim  staff  192 Dec 19 12:11 ..
+# -rw-------  1 mlajkim  staff    0 Dec 19 12:11 private.key
 ```
 
 ### create self-signed cert: openssl req -x509 -noenc -days 365 -keyout priv.key -out kodekloud.crt
@@ -43,7 +70,8 @@ openssl req -newkey rsa:4096 -keyout priv.key -out cert.csr
 > Note that you will be prompted to enter the details for the certificate
 
 ```sh
-openssl req -x509 -noenc -days 365 -keyout priv.key -out root.crt
+openssl req -x509 -noenc -days 365 -keyout private.key -out root.crt
+ls -al root.crt
 # ....+.....+...+....+..................+......+.....+.+...........+....+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*......+.....+..........+.........+.....+.......+.....+.+...+..+.............+..+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*..+.......+......+...........+.+..+.......+......+........+.......+..+......+............+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # ....+...................+...+.....+............+...+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*......+....+..+.........+.........+.......+.....+...+....+..+...+.......+...+............+...+..................+.........+.....+.+...+..+.......+...+.........+...........+...+.........+..........+..+....+......+........+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*....+.................+.........+...+.+.....+..........+...........+......+...+..........+..+.........+.+.....+....+..................+......+.....+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # -----
@@ -61,57 +89,9 @@ openssl req -x509 -noenc -days 365 -keyout priv.key -out root.crt
 # Organizational Unit Name (eg, section) []:
 # Common Name (e.g. server FQDN or YOUR name) []:kodekloud.com
 # Email Address []:
+# -rw-r--r--  1 mlajkim  staff  1245 Dec 19 12:12 root.crt
 ```
 
 
-### ssl is actually old
 
-`ssl` has been deprecated and we are living under `tls` but the `ssl` is still being used. Simply speaking you can say `tls = ssl` nowadays.
-
-## man openssl / EXAMPLE
-
-> [!TIP]
-> The `EXAMPLE` is the most important section
-
-### man openssl-genpkey
-
-> [!TIP]
-> As you can see from the `genkey` description, `genkey` is deprecated and `genpkey` is the new way to generate private keys
-
-```sh
-man openssl-genpkey
-```
-
-### man openssl-x509 | grep -A 40 EXAMPLES
-
-[!TIP]
-> The `Examples` section is pretty useful
-
-It outputs the following sections:
-
-- Name
-- Synopsis
-- Description
-- Options
-- Examples
-
-
-### man openssl-req
-
-#### man openssl-x509 | grep req
-
-> [!TIP]
-> You can always expand
-
-```sh
-man openssl-x509 | grep req
-# ...
-# Convert a certificate to a certificate request:
-#         openssl x509 -x509toreq -in cert.pem -out req.pem -key key.pem
-#        Convert a certificate request into a self-signed certificate using
-#         openssl x509 -req -in careq.pem -extfile openssl.cnf -extensions v3_ca \
-#        Sign a certificate request using the CA certificate above and add user
-#         openssl x509 -req -in req.pem -extfile openssl.cnf -extensions v3_usr \
-#        It is possible to produce invalid certificates or requests by
-```
 
