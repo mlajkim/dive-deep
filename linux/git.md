@@ -4,6 +4,7 @@
 
 - [git](#git)
   - [Overview](#overview)
+  - [delete branch: git branch --delete testing](#delete-branch-git-branch---delete-testing)
 
 <!-- /TOC -->
 
@@ -18,4 +19,11 @@ git add *.cpp
 #  2 files changed, 0 insertions(+), 0 deletions(-)
 #  create mode 100644 file1.cpp
 #  create mode 100644 file2.cpp
+```
+
+
+## delete branch: git branch --delete testing
+
+```sh
+git branch --delete testing
 ```
