@@ -4,6 +4,9 @@
 
 - [openssl](#openssl)
   - [Overview](#overview)
+  - [Good-to-remember commamnds](#good-to-remember-commamnds)
+    - [openssl req -newkey rsa:4096 -keyout priv.key -out cert.csr](#openssl-req--newkey-rsa4096--keyout-privkey--out-certcsr)
+    - [create self-signed cert: openssl req -x509 -noenc -days 365 -keyout priv.key -out kodekloud.crt](#create-self-signed-cert-openssl-req--x509--noenc--days-365--keyout-privkey--out-kodekloudcrt)
     - [ssl is actually old](#ssl-is-actually-old)
   - [man openssl / EXAMPLE](#man-openssl--example)
     - [man openssl-genpkey](#man-openssl-genpkey)
@@ -14,6 +17,46 @@
 <!-- /TOC -->
 
 ## Overview
+
+
+## Good-to-remember commamnds
+
+### openssl req -newkey rsa:4096 -keyout priv.key -out cert.csr
+
+> [!NOTE]
+>
+
+Creates both a new private key and a certificate signing request (CSR)
+
+```sh
+openssl req -newkey rsa:4096 -keyout priv.key -out cert.csr
+```
+
+### create self-signed cert: openssl req -x509 -noenc -days 365 -keyout priv.key -out kodekloud.crt
+
+> [!TIP]
+> Note that you will be prompted to enter the details for the certificate
+
+```sh
+openssl req -x509 -noenc -days 365 -keyout priv.key -out root.crt
+# ....+.....+...+....+..................+......+.....+.+...........+....+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*......+.....+..........+.........+.....+.......+.....+.+...+..+.............+..+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*..+.......+......+...........+.+..+.......+......+........+.......+..+......+............+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# ....+...................+...+.....+............+...+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*......+....+..+.........+.........+.......+.....+...+....+..+...+.......+...+............+...+..................+.........+.....+.+...+..+.......+...+.........+...........+...+.........+..........+..+....+......+........+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*....+.................+.........+...+.+.....+..........+...........+......+...+..........+..+.........+.+.....+....+..................+......+.....+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# -----
+# You are about to be asked to enter information that will be incorporated
+# into your certificate request.
+# What you are about to enter is what is called a Distinguished Name or a DN.
+# There are quite a few fields but you can leave some blank
+# For some fields there will be a default value,
+# If you enter '.', the field will be left blank.
+# -----
+# Country Name (2 letter code) [AU]:
+# State or Province Name (full name) [Some-State]:
+# Locality Name (eg, city) []:
+# Organization Name (eg, company) [Internet Widgits Pty Ltd]:
+# Organizational Unit Name (eg, section) []:
+# Common Name (e.g. server FQDN or YOUR name) []:kodekloud.com
+# Email Address []:
+```
 
 
 ### ssl is actually old
