@@ -4,7 +4,7 @@
 
 - [git](#git)
   - [Overview](#overview)
-  - [delete branch: git branch --delete testing](#delete-branch-git-branch---delete-testing)
+    - [delete branch: git branch --delete testing](#delete-branch-git-branch---delete-testing)
 
 <!-- /TOC -->
 
@@ -22,7 +22,7 @@ git add *.cpp
 ```
 
 
-## delete branch: git branch --delete testing
+### delete branch: git branch --delete testing
 
 ```sh
 git branch --delete testing
