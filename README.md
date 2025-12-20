@@ -2,8 +2,9 @@
 
 > [!NOTE]
 > - To see the:
-> - Workout performance: [README_WORKOUT.md](./README_WORKOUT.md)
-> - Half Yearly Dive: [README_HALF_YEARLY_DIVE.md](./README_HALF_YEARLY_DIVE.md)
+> - Workout performance: [README.workout.md](./README.workout.md)
+> - Sleep performance: [README.sleep.md](./README.sleep.md)
+> - Half Yearly Dive: [README.official-tech-blogs.md](./README.official-tech-blogs.md)
 
 <!-- TOC -->
 
