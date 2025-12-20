@@ -1,5 +1,11 @@
 # Dive Deep 🤿
 
+> [!NOTE]
+> - To see the:
+> - Workout performance: [README.workout.md](./README.workout.md)
+> - Sleep performance: [README.sleep.md](./README.sleep.md)
+> - Half Yearly Dive: [README.official-tech-blogs.md](./README.official-tech-blogs.md)
+
 <!-- TOC -->
 
 - [Dive Deep 🤿](#dive-deep-🤿)
