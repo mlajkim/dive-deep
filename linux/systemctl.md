@@ -10,6 +10,7 @@
   - [systemctl poweroff](#systemctl-poweroff)
     - [systemctl poweroff --force](#systemctl-poweroff---force)
     - [systemctl poweroff --force --force: The strongest poweroff](#systemctl-poweroff---force---force-the-strongest-poweroff)
+  - [systemctl get-default](#systemctl-get-default)
 
 <!-- /TOC -->
 
@@ -55,4 +56,16 @@ The same as plugging out the power cord:
 
 ```sh
 systemctl poweroff --force --force
+```
+
+## systemctl get-default
+
+It shows the current default target (runlevel) of the system, with the following types:
+
+- `graphical.target`: multi-user system with a graphical user interface (GUI)
+- `multi-user.target`: multi-user system without a graphical user interface (GUI)
+
+```sh
+systemctl get-default
+# graphical.target
 ```
