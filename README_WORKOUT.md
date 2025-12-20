@@ -34,14 +34,6 @@ The current goal, officially starting on Dec 21, 2025~, is to:
 
 |    Date     | Weekly Goal |                         Days Done                         |
 |:-----------:|:-----------:|:---------------------------------------------------------:|
-| 12/21~12/27 |    Golf     |                                                           |
+| 12/21~12/27 |    Golf     |                         ...12/27                          |
 |             |   Workout   | [12/20](./workout/workout/251220.back.4_4t.png), ...12/22 |
 |             |   Cardio    |     [12/20](./workout/cardio/251220.bike.50kcal.png)      |
-
-<!-- Here is a sample, please delete it once you add your own:
-
-|     Date      | Weekly Goal |      Days Done      |   |     |
-|:-------------:|:-----------:|:-------------------:|---|-----|
-| 12/14 ~ 12/20 |    Golf     |        12/20        |   |     |
-|               |   Workout   |                     |   |     |
-|               |   Cardio    | 12/15, 12/17, 12/19 |   |     |  -->
