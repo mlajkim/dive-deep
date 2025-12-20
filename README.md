@@ -1,7 +1,9 @@
 # Dive Deep 🤿
 
 > [!NOTE]
-> To see the workout performance, see [README_WORKOUT.md](./READEME_WORKOUT.md)
+> - To see the:
+> - Workout performance: [README_WORKOUT.md](./READEME_WORKOUT.md)
+> - Half Yearly Dive: [README_HALF_YEARLY_DIVE.md](./README_HALF_YEARLY_DIVE.md)
 
 <!-- TOC -->
 

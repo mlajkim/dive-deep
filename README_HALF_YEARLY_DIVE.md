@@ -1,0 +1,20 @@
+# Half Yearly Dive
+
+<!-- TOC -->
+
+- [Half Yearly Dive](#half-yearly-dive)
+  - [Goal](#goal)
+  - [Performance](#performance)
+
+<!-- /TOC -->
+
+## Goal
+
+The goal of this half-yearly document is to summarize the deep dives result I usually produce in every 6 months.
+
+## Performance
+
+|        Date         |                                      Weekly Goal                                       |
+|:-------------------:|:--------------------------------------------------------------------------------------:|
+| Apr 2025 ~ Oct 2025 | [How I become Kubestronaut - LY Tech Blog](https://techblog.lycorp.co.jp/ja/20251001a) |
+| Oct 2025 ~ Mar 2026 |                                          ...                                           |
