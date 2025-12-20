@@ -2,7 +2,7 @@
 
 > [!NOTE]
 > - To see the:
-> - Workout performance: [README_WORKOUT.md](./READEME_WORKOUT.md)
+> - Workout performance: [README_WORKOUT.md](./README_WORKOUT.md)
 > - Half Yearly Dive: [README_HALF_YEARLY_DIVE.md](./README_HALF_YEARLY_DIVE.md)
 
 <!-- TOC -->
