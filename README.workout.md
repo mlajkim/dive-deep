@@ -37,3 +37,4 @@ The current goal, officially starting on Dec 21, 2025~, is to:
 | 12/21~12/27 |    Golf     |                              ...12/27                              |
 |             |   Workout   | [12/20](./proofs/workout/251220.back.4_4t.png), ...12/22, ...12/24 |
 |             |   Cardio    |          [12/20](./proofs/cardio/251220.bike.50kcal.png)           |
+
