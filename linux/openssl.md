@@ -1,6 +1,7 @@
 ---
 tags:
 - 🟡 todo-requires-hands-on-tested
+- hands-on-tested
 ---
 
 # openssl
@@ -23,6 +24,11 @@ tags:
 
 ## Overview
 
+> [!TIPS]
+> Please use `man openssl` to get more details about the `openssl` command and its subcommands.
+> Or you can use `openssl help`
+
+`openssl` creates X.509 cert, private keys and CSRs (certificate signing requests).
 
 ## Good-to-remember commamnds
 
