@@ -1,10 +1,13 @@
+# ls
 
+<!-- TOC -->
 
-In [[Linux]]
+- [ls](#ls)
+    - [ls --full-time: Show detailed list with full timestamp information](#ls---full-time-show-detailed-list-with-full-timestamp-information)
 
-abc
+<!-- /TOC -->
 
-### ls --full-time3
+### ls --full-time: Show detailed list with full timestamp information
 
 ```sh
 bob@ubuntu-host ~ ➜  ls --full-time

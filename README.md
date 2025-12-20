@@ -9,7 +9,7 @@
 
 - [Dive Deep 🤿](#dive-deep-🤿)
 - [Goal](#goal)
-  - [Dive Deep & Become Golden Kubestronaut](#dive-deep--become-golden-kubestronaut)
+  - [Goal: Become Golden Kubestronaut](#goal-become-golden-kubestronaut)
     - [Dec 2025: Linux: LFCS](#dec-2025-linux-lfcs)
     - [Jan 2026: Istio: ICA](#jan-2026-istio-ica)
     - [Feb 2026: Cilium: CCA](#feb-2026-cilium-cca)
@@ -30,7 +30,7 @@
 
 The general goal of **diving deep** is to really understand what’s happening *inside*, rather than only partially understanding the surface. Sometimes, for speed, it’s important to learn only the surface, but great decisions come from the **knowledge gained underneath**. And since humans tend not to dive deep because it can feel like too much work, we need to purposefully remind ourselves to dive into it with clear goals.
 
-## Dive Deep & Become Golden Kubestronaut
+## Goal: Become Golden Kubestronaut
 
 I want to become a **Golden Kubestronaut**. But while doing that, I also want to *dive deep* whenever I learn something new — for example, checking the source code of the Linux `cd` command rather than just learning that `cd` means "change directory".
 

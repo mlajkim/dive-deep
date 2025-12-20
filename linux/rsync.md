@@ -14,7 +14,7 @@ remote sync
   - [Prerequisites](#prerequisites)
   - [rsync: a fast and versatile file copying tool](#rsync-a-fast-and-versatile-file-copying-tool)
     - [Checks already synced files not copied again](#checks-already-synced-files-not-copied-again)
-  - [rsync ssh: remote copy\](#rsync-ssh-remote-copy\)
+  - [rsync ssh: remote copy](#rsync-ssh-remote-copy)
 
 <!-- /TOC -->
 
@@ -101,7 +101,7 @@ ls -al ./dir2
 # -rw-r--r--  1 ajk  staff    0 Dec 13 07:07 file2
 ```
 
-## rsync ssh: remote copy\
+## rsync ssh: remote copy
 
 > [!NOTE]
 > The following example is commented out as it requires a remote server setup & has not been tested.
