@@ -1,5 +1,8 @@
 # Dive Deep 🤿
 
+> [!NOTE]
+> To see the workout performance, see [README_WORKOUT.md](./READEME_WORKOUT.md)
+
 <!-- TOC -->
 
 - [Dive Deep 🤿](#dive-deep-🤿)
