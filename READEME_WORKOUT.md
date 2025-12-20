@@ -4,6 +4,7 @@
 
 - [Workout](#workout)
   - [Goal](#goal)
+  - [Performance](#performance)
 
 <!-- /TOC -->
 
@@ -18,6 +19,8 @@ The current goal, officially starting on Dec 21, 2025~, is to:
 - 3 Workouts / a week
 - 1 Jogging Outside
 
+
+## Performance
 
 > [!WARNING]
 > You can only add dates only when you have proofs stored under `/workout/*`
