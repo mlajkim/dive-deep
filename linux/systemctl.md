@@ -11,6 +11,7 @@
     - [systemctl poweroff --force](#systemctl-poweroff---force)
     - [systemctl poweroff --force --force: The strongest poweroff](#systemctl-poweroff---force---force-the-strongest-poweroff)
   - [systemctl get-default](#systemctl-get-default)
+    - [systemctl set-default multi-user.target: Change default target to multi-user (non-GUI)](#systemctl-set-default-multi-usertarget-change-default-target-to-multi-user-non-gui)
 
 <!-- /TOC -->
 
@@ -68,4 +69,10 @@ It shows the current default target (run level) of the system, with the followin
 ```sh
 systemctl get-default
 # graphical.target
+```
+
+### systemctl set-default multi-user.target: Change default target to multi-user (non-GUI)
+
+```sh
+systemctl set-default multi-user.target
 ```
