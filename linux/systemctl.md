@@ -66,6 +66,8 @@ It shows the current default target (run level) of the system, with the followin
 
 - `graphical.target`: multi-user system with a graphical user interface (GUI)
 - `multi-user.target`: multi-user system without a graphical user interface (GUI)
+- `emergency.target`: minimal environment for emergency maintenance
+- `rescue.target`: single-user mode for system recovery (more applications than emergency)
 
 ```sh
 systemctl get-default
