@@ -10,10 +10,10 @@
 
 ## Goal
 
-The goal of sleep is to write sleep performance every day.
+To really achieve my goals, I need to keep my sleep in check.
 
 ## Performance
 
-|    Date     | Days Done |
-|:-----------:|:---------:|
-| 12/21~12/27 |   5:46    |
+|    Date     |                            Wake                            |
+|:-----------:|:----------------------------------------------------------:|
+| 12/21~12/27 | 5:46, ...4:30, ...4:15, ...4:00, ...4:30, ...3:55, ...4:15 |
