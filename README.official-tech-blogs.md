@@ -1,8 +1,8 @@
-# Half Yearly Dive
+# Official Tech Blogs
 
 <!-- TOC -->
 
-- [Half Yearly Dive](#half-yearly-dive)
+- [Official Tech Blogs](#official-tech-blogs)
   - [Goal](#goal)
   - [Performance](#performance)
 
@@ -10,7 +10,7 @@
 
 ## Goal
 
-The goal of this half-yearly document is to summarize the deep dives result I usually produce in every 6 months.
+The goal of this official tech blogs document is to summarize the deep dives result I usually produce in every 6 months.
 
 ## Performance
 
