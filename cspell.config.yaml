@@ -3,17 +3,19 @@ ignorePaths: []
 dictionaryDefinitions: []
 dictionaries: []
 words:
-- apiextensions
-- apiregistration
-- apiserver
-- apiserverinternal
-- CAPA
-- CGOA
-- CNPA
-- CNPE
-- Kubestronaut
-- LFCS
-- mlajkim
-- OTCA - CAPA - CGOA - CNPA - CNPE - Kubestronaut - LFCS - mlajkim - OTCA - udemy
+  - apiextensions
+  - apiregistration
+  - apiserver
+  - apiserverinternal
+  - CAPA
+  - CGOA
+  - CNPA
+  - CNPE
+  - Kubestronaut
+  - LFCS
+  - mlajkim
+  - OTCA
+  - OTCA - CAPA - CGOA - CNPA - CNPE - Kubestronaut - LFCS - mlajkim - OTCA -
+    udemy
 ignoreWords: []
 import: []
