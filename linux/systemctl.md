@@ -12,6 +12,7 @@
     - [systemctl poweroff --force --force: The strongest poweroff](#systemctl-poweroff---force---force-the-strongest-poweroff)
   - [systemctl get-default](#systemctl-get-default)
     - [systemctl set-default multi-user.target: Change default target to multi-user (non-GUI)](#systemctl-set-default-multi-usertarget-change-default-target-to-multi-user-non-gui)
+    - [systemctl isolate graphical.target: Switch to graphical target (GUI) immediately](#systemctl-isolate-graphicaltarget-switch-to-graphical-target-gui-immediately)
 
 <!-- /TOC -->
 
@@ -73,6 +74,19 @@ systemctl get-default
 
 ### systemctl set-default multi-user.target: Change default target to multi-user (non-GUI)
 
+This will show the text-based login prompt on the next boot:
+
 ```sh
 systemctl set-default multi-user.target
+```
+
+### systemctl isolate graphical.target: Switch to graphical target (GUI) immediately
+
+> [!TIP]
+> Note that the default target remains unchanged.
+
+This will switch the current session to graphical target (GUI) without rebooting:
+
+```sh
+systemctl isolate graphical.target
 ```
