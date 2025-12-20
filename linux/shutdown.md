@@ -1,5 +1,8 @@
 # shutdown
 
+> [!NOTE]
+> Command `shutdown` has not been hands-on tested as it requires actual system shutdown.
+
 <!-- TOC -->
 
 - [shutdown](#shutdown)
