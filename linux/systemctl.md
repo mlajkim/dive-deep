@@ -3,6 +3,7 @@
 <!-- TOC -->
 
 - [systemctl](#systemctl)
+  - [Overview](#overview)
   - [systemctl reboot](#systemctl-reboot)
     - [systemctl reboot --force](#systemctl-reboot---force)
     - [systemctl reboot --force --force: The strongest reboot](#systemctl-reboot---force---force-the-strongest-reboot)
@@ -11,6 +12,11 @@
     - [systemctl poweroff --force --force: The strongest poweroff](#systemctl-poweroff---force---force-the-strongest-poweroff)
 
 <!-- /TOC -->
+
+## Overview
+
+> [!TIP]
+> `systemctl shutdown/reboot` is more of the mechanical way. to see what operators use, please check [shutdown command](linux/shutdown.md).
 
 
 ## systemctl reboot
