@@ -60,6 +60,7 @@ I want to become a **Golden Kubestronaut**. But while doing that, I also want to
 |              |                      |   ~74    | ...12/27 15:00 |
 |              |                      |   ~78    | ...12/28 10:00 |
 |              |                      |   ~82    | ...12/28 15:00 |
+|              |                      |   ~87    | ...12/29 10:00 |
 | 12/21~12/27  | Section 6, Mock Test |          |                |
 |  12/28~1/3   |     Actual Test      |          |                |
 
