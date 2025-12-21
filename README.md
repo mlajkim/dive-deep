@@ -23,6 +23,8 @@
     - [Oct 2026: OTCA](#oct-2026-otca)
 - [Glossary](#glossary)
   - [Zero-brain run](#zero-brain-run)
+  - [Rules](#rules)
+    - [How to write date](#how-to-write-date)
 
 <!-- /TOC -->
 
@@ -36,10 +38,11 @@ I want to become a **Golden Kubestronaut**. But while doing that, I also want to
 
 ### Dec 2025: Linux: LFCS
 
-> [!NOTE]
-> `...<date>` means that I want to finish it by that date
-> `...<date> 90%` means that I have finished 90% of it by that date
-> `<date>` means that I have finished it on that date
+> [!CAUTION]
+> You MUST stop diving after:
+> - `10:00` for the first *daily dive* deep task
+> - `14:00` for the second *daily dive* deep task, if you dive twice a day
+> - `17:00` for the *weekly dive* deep task, if you do weekly dive on the day
 
 |     Date     |     Weekly Goal      | Chapters |      Done      |
 |:------------:|:--------------------:|:--------:|:--------------:|
@@ -89,3 +92,14 @@ I want to become a **Golden Kubestronaut**. But while doing that, I also want to
 ## Zero-brain run
 
 A "zero-brain run" is an approach where you run a command or piece of code without fully understanding it, to see what happens. This method helps in learning through exploration and experimentation, allowing you to observe the behavior of the code and gain insights that can lead to a deeper understanding over time.
+
+
+## Rules
+
+### How to write date
+
+Write date:
+
+- `...<date>` means that I want to finish it by that date
+- `...<date> 90%` means that I have finished 90% of it by that date
+- `<date>` means that I have finished it on that date
