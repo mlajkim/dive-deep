@@ -62,8 +62,8 @@ lsof -p 72647
 
 ## Cleanup
 
+Kill the background job:
 ```sh
-# Kill the background job
 kill 72647 > /dev/null 2>&1
 lsof being_tailed_file
 # (nothing)
