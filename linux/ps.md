@@ -5,13 +5,17 @@ tags:
 
 # ps
 
+> [!TIP]
+> Note that the commands and results differ from Linux and Mac.
+
 <!-- TOC -->
 
 - [ps](#ps)
   - [ps aux](#ps-aux)
-    - [ps <pid>](#ps-pid)
+    - [ps u <pid>](#ps-u-pid)
     - [ps -u <uid>](#ps--u-uid)
       - [ps -U <username>](#ps--u-username)
+  - [ps lax: list nice as well](#ps-lax-list-nice-as-well)
     - [ps fax: to see process tree](#ps-fax-to-see-process-tree)
   - [pgrep](#pgrep)
   - [top: to continue `ps aux`](#top-to-continue-ps-aux)
@@ -48,12 +52,12 @@ ps aux
 # bob         4724  0.0  0.0  10388  1592 pts/2    R+   20:35   0:00 ps aux
 ```
 
-### ps <pid>
+### ps u <pid>
 
 ```sh
-ps 1
-    # PID TTY      STAT   TIME COMMAND
-    #   1 ?        Ss     0:00 /sbin/init --log-level=err
+ps u 1
+# USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+# root           1  0.0  0.0 100028  8044 ?        Ss   22:29   0:00 /sbin/init --log-level=err
 ```
 
 ### ps -u <uid>
@@ -103,6 +107,38 @@ ps -U root
   #  4122 pts/1    00:00:00 sudo
   #  4123 pts/2    00:00:00 sudo
   #  4124 pts/2    00:00:00 su
+```
+
+## ps lax: list nice as well
+
+```sh
+ps lax
+# F   UID     PID    PPID PRI  NI    VSZ   RSS WCHAN  STAT TTY        TIME COMMAND
+# 4     0       1       0  20   0 100028  8028 -      Ss   ?          0:00 /sbin/init --log-level=err
+# 4     0     255       1  20   0  25532  5748 -      Ss   ?          0:00 /lib/systemd/systemd-journald
+# 4     0     532       1  20   0  24332  1284 -      Ss   ?          0:00 /lib/systemd/systemd-udevd
+# 4   104     647       1  20   0   8104   552 -      Ss   ?          0:00 /sbin/rpcbind -f -w
+# 4   102     691       1  20   0  25536  5380 -      Ss   ?          0:00 /lib/systemd/systemd-resolved
+# 4   103    1283       1  20   0   8292  1468 -      Ss   ?          0:00 @dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --s
+# 4     0    1342       1  20   0  15044  5440 -      Ss   ?          0:00 /lib/systemd/systemd-logind
+# 4     0    1389       1  20   0   8080  1416 -      Ss   ?          0:00 /bin/bash /usr/local/bin/start-ttyd.sh
+# 4     0    1390       1  20   0 2170316 34996 -     Ssl  ?          0:00 /usr/bin/containerd
+# 4     0    1391       1  20   0  15428  4268 -      Ss   ?          0:00 sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups
+# 4     0    1397    1389  20   0   9720  1032 -      Rl   ?          0:00 /usr/bin/ttyd --ping-interval 30 -t fontSize 16 -t theme {"foreground": "#eff0eb", "ba
+# 4     0    1805       1  20   0 2504168 48544 -     Ssl  ?          0:00 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+# 4     0    3201       1  20   0 296312 13896 -      Ssl  ?          0:00 /usr/libexec/packagekitd
+# 4     0    3211       1  20   0 234496  3068 -      Ssl  ?          0:00 /usr/libexec/polkitd --no-debug
+# 4     0    3541    1397  20   0   6524  1096 -      Ds+  pts/0      0:00 /usr/bin/script -q -f /root/.terminal_logs/terminal.log bash -c sudo su - bob
+# 0     0    3543    3541  20   0   2888  1004 -      Ss+  pts/1      0:00 sh -c sudo su - bob
+# 4     0    3544    3543  20   0  11840  4864 -      R+   pts/1      0:00 sudo su - bob
+# 1     0    3545    3544  20   0  11840   628 -      Ss   pts/2      0:00 sudo su - bob
+# 4     0    3546    3545  20   0  10584  4628 -      S    pts/2      0:00 su - bob
+# 4  1000    3572       1  20   0  17076  9460 ep_pol Ss   ?          0:00 /lib/systemd/systemd --user
+# 5  1000    3579    3572  20   0 102612  3244 -      S    ?          0:00 (sd-pam)
+# 4  1000    3616    3546  20   0   9476  5984 do_wai S    pts/2      0:00 -bash
+# 4     0    3753       1  20   0  16932  9420 -      Ss   ?          0:00 /lib/systemd/systemd --user
+# 5     0    3761    3753  20   0 102612  3248 -      S    ?          0:00 (sd-pam)
+# 0  1000    3833    3616  20   0  10388  1608 -      R+   pts/2      0:00 ps lax
 ```
 
 ### ps fax: to see process tree
