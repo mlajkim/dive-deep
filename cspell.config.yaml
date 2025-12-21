@@ -11,11 +11,13 @@ words:
   - CGOA
   - CNPA
   - CNPE
+  - journalctl
   - Kubestronaut
   - LFCS
   - mlajkim
   - OTCA
   - OTCA - CAPA - CGOA - CNPA - CNPE - Kubestronaut - LFCS - mlajkim - OTCA -
     udemy
+  - poweroff
 ignoreWords: []
 import: []
