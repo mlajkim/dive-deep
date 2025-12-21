@@ -134,7 +134,15 @@ Sometimes, other services start/disable a service automatically even after you `
 To prevent a service from being started by any means, you can `mask` it. This creates a symbolic link that points to `/dev/null`, effectively making it impossible to start the service.
 
 ```sh
-systemctl mask <service_name>
+sudo systemctl mask apache
+# Created symlink /etc/systemd/system/apache2.service → /dev/null.
+```
+2
+Or:
+
+```sh
+sudo systemctl unmask apache2
+# Removed /etc/systemd/system/apache2.service.
 ```
 
 ## systemctl list-units --all --type <unit_type>
