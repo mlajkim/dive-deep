@@ -5,6 +5,7 @@
 - [Special Files in Linux](#special-files-in-linux)
   - [/dev/null](#devnull)
   - [/etc/default/grub](#etcdefaultgrub)
+  - [/etc/systemd/system/](#etcsystemdsystem)
   - [/proc/version](#procversion)
 
 <!-- /TOC -->
@@ -64,6 +65,11 @@ GRUB_CMDLINE_LINUX="net.ifnames=0 biosdevname=0  security=selinux"
 # Uncomment to get a beep at grub start
 #GRUB_INIT_TUNE="480 440 1"
 ```
+
+## /etc/systemd/system/
+
+Any custom (/etc) unit files to overwrite the default/factory (/lib) unit files are stored in this directory. Please note `systemd` runs the `/etc/` first before `/lib/`.
+
 
 ## /proc/version
 

@@ -136,6 +136,9 @@ systemctl mask <service_name>
 > [!TIP]
 > You can do `man systemctl.<unit_type>` to see more about each unit type, especially for exam
 
+> [!TIP]
+> You can check out already available unit files in `/etc/systemd/system/` and `/lib/systemd/system/` to get start point. To learn more about these directories, please check [here](/linux/concepts/special_files.md#etcsystemdsystem).
+
 Here are the unit file types you can list:
 
 - `service`: Services
