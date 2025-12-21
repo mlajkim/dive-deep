@@ -133,6 +133,9 @@ systemctl mask <service_name>
 
 ## systemctl list-units --all --type <unit_type>
 
+> [!TIP]
+> You can do `man systemctl.<unit_type>` to see more about each unit type, especially for exam
+
 Here are the unit file types you can list:
 
 - `service`: Services
