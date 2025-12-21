@@ -20,9 +20,13 @@ tags:
 
 ## &: Create a job (running background process)
 
+
 ```sh
 sleep 100 &
 # [1] 65375
+#
+# Job Number = 1
+# Process ID = 65375
 ```
 
 ## jobs: check status of background jobs
