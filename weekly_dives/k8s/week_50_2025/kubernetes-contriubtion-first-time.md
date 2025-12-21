@@ -1,5 +1,5 @@
 ---
-title: "Dives into kubernetes contribution in Week 50, 2025"
+title: "Dives into Kubernetes contribution in Week 50, 2025"
 published: true
 tags: [kubernetes, weekly_dive, contribution, first_time]
 series: "Weekly Dive"
