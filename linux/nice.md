@@ -72,7 +72,10 @@ You need `sudo` to set up higher priority, but for now we won't higher it:
 
 ```sh
 renice 5 -p 74540
-# renice: 74540: setpriority: Permission denied
+# renice: failed to set priority for 1391 (process ID): Operation not permitted
+
+sudo renice 9 -p 1391
+# 1391 (process ID) old priority 0, new priority 9
 ```
 
 ## nice: run a command with a modified scheduling priority
