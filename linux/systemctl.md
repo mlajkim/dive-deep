@@ -66,6 +66,10 @@ systemctl poweroff --force --force
 
 ## systemctl get-default
 
+> [!NOTE]
+> It simply stores the symbolic link to the default target unit file: `ls -l /etc/systemd/system/default.target`
+> Meaning, you can simply get list of targets like ` ls  /lib/systemd/system/ | grep graphic`
+
 It shows the current default target (run level) of the system, with the following types:
 
 - `graphical.target`: multi-user system with a graphical user interface (GUI)
@@ -83,7 +87,9 @@ systemctl get-default
 This will show the text-based login prompt on the next boot:
 
 ```sh
-systemctl set-default multi-user.target
+sudo systemctl set-default graphical.target
+# Removed /etc/systemd/system/default.target.
+# Created symlink /etc/systemd/system/default.target → /lib/systemd/system/graphical.target.
 ```
 
 ### systemctl isolate graphical.target: Switch to graphical target (GUI) immediately
