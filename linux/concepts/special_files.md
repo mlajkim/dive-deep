@@ -68,8 +68,14 @@ GRUB_CMDLINE_LINUX="net.ifnames=0 biosdevname=0  security=selinux"
 
 ## /etc/systemd/system/
 
-Any custom (/etc) unit files to overwrite the default/factory (/lib) unit files are stored in this directory. Please note `systemd` runs the `/etc/` first before `/lib/`.
+Any custom (/etc) unit files to overwrite the default/factory (/lib) unit files are stored in this directory. Please note `systemd` runs the `/etc/` first before `/lib/`, with it defined by its file name.
 
+> [!TIP]
+> If you want to add/override certain config, you can add `.d` directory inside `/etc/systemd/system/` with the same service name. For example, to override `nginx.service`, you can create `/etc/systemd/system/nginx.service.d/` directory and add your custom config files there.
+
+- First Priority: `/etc/systemd/system/nginx.service`
+- Second Priority: `/run/systemd/system/nginx.service`
+- Third Priority (The Factory): `/lib/systemd/system/nginx.service`
 
 ## /proc/version
 
