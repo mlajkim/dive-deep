@@ -34,5 +34,5 @@ sleep 100 &
 ```sh
 jobs
 # [1] 65375
-# [1]  + running    sleep 10
+# [1]  + running    sleep 100
 ```
