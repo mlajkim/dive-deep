@@ -19,5 +19,6 @@ words:
   - OTCA - CAPA - CGOA - CNPA - CNPE - Kubestronaut - LFCS - mlajkim - OTCA -
     udemy
   - poweroff
+  - renice
 ignoreWords: []
 import: []

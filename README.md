@@ -2,6 +2,7 @@
 
 > [!NOTE]
 > - Workout performance: [README.workout.md](./README.workout.md)
+> - Meal performance: [README.meal.md](./README.meal.md)
 > - Sleep performance: [README.sleep.md](./README.sleep.md)
 > - Weekly Dive performance: [README.weekly.md](./README.weekly.md)
 > - Half Yearly Dive: [README.official-tech-blogs.md](./README.official-tech-blogs.md)
@@ -54,15 +55,15 @@ I want to become a **Golden Kubestronaut**. But while doing that, I also want to
 |              |                      |   ~32    |     12/16      |
 |              |                      |   ~37    |     12/19      |
 |  12/7~12/13  |      Section 3       |  38~43   |     12/21      |
-|              |                      |   ~46    | ...12/22 10:00 |
+|              |                      |   ~46    |  12/22 08:05   |
 |              |                      |   ~52    | ...12/23 10:00 |
 |              |                      |   ~54    | ...12/24 10:00 |
 |              |                      |   ~58    | ...12/25 10:00 |
 |              |                      |   ~61    | ...12/26 10:00 |
 |              |                      |   ~63    | ...12/27 10:00 |
-| 12/14~12/20  |     Section 4,5      |  64~69   | ...12/27 15:00 |
+| 12/14~12/20  |     Section 4,5      |  64~69   | ...12/27 14:00 |
 |              |                      |   ~74    | ...12/28 10:00 |
-|              |                      |   ~78    | ...12/28 15:00 |
+|              |                      |   ~78    | ...12/28 14:00 |
 |              |                      |   ~82    | ...12/29 10:00 |
 |              |                      |   ~87    |                |
 | 12/21~12/27  | Section 6, Mock Test |          |                |
