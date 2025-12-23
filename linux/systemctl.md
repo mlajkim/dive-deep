@@ -17,6 +17,7 @@
     - [systemctl enable/disable --now <service_name>](#systemctl-enabledisable---now-service_name)
     - [system mask/unmask <service_name>](#system-maskunmask-service_name)
   - [systemctl list-units --all --type <unit_type>](#systemctl-list-units---all---type-unit_type)
+  - [systemctl list-dependencies](#systemctl-list-dependencies)
 
 <!-- /TOC -->
 
@@ -167,3 +168,7 @@ Here are the unit file types you can list:
 
 
 `-all` shows all units, including inactive ones.
+
+
+## systemctl list-dependencies
+
