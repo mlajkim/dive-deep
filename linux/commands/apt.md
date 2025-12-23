@@ -25,8 +25,12 @@
 
 ### cat /etc/apt/sources.list: Default repository
 
+> [!NOTE]
+> Make sure to run `apt update` after modifying this file.
+
 ```sh
 cat /etc/apt/sources.list
+# deb http://us.archive.ubuntu.com/ubuntu/ focal main
 ```
 
 
@@ -122,6 +126,23 @@ dpkg --listfiles coreutils | grep ^/bin
 #### apt autoremove <package_name>
 
 To delete dependencies that were installed with the package and are no longer needed.
+
+```sh
+sudo apt autoremove ziptool
+# Reading package lists... Done
+# Building dependency tree... Done
+# Reading state information... Done
+# The following packages will be REMOVED:
+#   libzip4 ziptool
+# 0 upgraded, 0 newly installed, 2 to remove and 95 not upgraded.
+# After this operation, 216 kB disk space will be freed.
+# Do you want to continue? [Y/n] Y
+# (Reading database ... 22281 files and directories currently installed.)
+# Removing ziptool (1.7.3-1ubuntu2) ...
+# Removing libzip4:amd64 (1.7.3-1ubuntu2) ...
+# Processing triggers for man-db (2.10.2-1) ...
+# Processing triggers for libc-bin (2.35-0ubuntu3.8) ...
+```
 
 
 ## gpg -dearmor <downloaded_key> && mv /etc/apt/keyrings/
