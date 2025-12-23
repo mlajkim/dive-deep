@@ -28,24 +28,24 @@ lscpu
 #     Stepping:             4
 #     BogoMIPS:             5599.99
 #     Flags:                fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss syscall nx rdts
-#                           cp lm constant_tsc rep_good nopl xtopology cpuid tsc_known_freq pni pclmulqdq vmx ssse3 fma cx16 pcid sse4_1 sse4_2 
+#                           cp lm constant_tsc rep_good nopl xtopology cpuid tsc_known_freq pni pclmulqdq vmx ssse3 fma cx16 pcid sse4_1 sse4_2
 #                           x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch cpuid_fault in
-#                           vpcid_single pti ssbd ibrs ibpb tpr_shadow vnmi flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 hle avx2 smep 
+#                           vpcid_single pti ssbd ibrs ibpb tpr_shadow vnmi flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 hle avx2 smep
 #                           bmi2 erms invpcid rtm avx512f avx512dq rdseed adx smap clflushopt clwb avx512cd avx512bw avx512vl xsaveopt xsavec xg
 #                           etbv1 xsaves arat md_clear
-# Virtualization features:  
+# Virtualization features:
 #   Virtualization:         VT-x
 #   Hypervisor vendor:      KVM
 #   Virtualization type:    full
-# Caches (sum of all):      
+# Caches (sum of all):
 #   L1d:                    32 KiB (1 instance)
 #   L1i:                    32 KiB (1 instance)
 #   L2:                     4 MiB (1 instance)
 #   L3:                     16 MiB (1 instance)
-# NUMA:                     
+# NUMA:
 #   NUMA node(s):           1
 #   NUMA node0 CPU(s):      0
-# Vulnerabilities:          
+# Vulnerabilities:
 #   Gather data sampling:   Unknown: Dependent on hypervisor status
 #   Itlb multihit:          KVM: Mitigation: VMX disabled
 #   L1tf:                   Mitigation; PTE Inversion; VMX conditional cache flushes, SMT disabled

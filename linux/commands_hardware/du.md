@@ -1,11 +1,21 @@
+---
+tags:
+- hands-on-tested
+---
+
 # du
 
 <!-- TOC -->
 
 - [du](#du)
+  - [Overview](#overview)
   - [du -sh /bin/](#du--sh-bin)
 
 <!-- /TOC -->
+
+## Overview
+
+`du` stands for `disk usage`, for a specific file or directory.
 
 
 ## du -sh /bin/
