@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# 에러 발생 시 스크립트 중단 (안전장치)
 set -e
 
 BRANCH_DATE=$(LC_TIME=C date "+%b-%d-%Y" | tr '[:upper:]' '[:lower:]') # i.e) dec-24-2025
