@@ -9,6 +9,7 @@ tags:
 
 - [lsof](#lsof)
   - [Prerequisites](#prerequisites)
+  - [lsof -i :<port_number>](#lsof--i-port_number)
   - [lsof <file_path>: Get list of processes using the file](#lsof-file_path-get-list-of-processes-using-the-file)
   - [lsof -p <pid>: Get list of files opened by the process](#lsof--p-pid-get-list-of-files-opened-by-the-process)
   - [Cleanup](#cleanup)
@@ -31,6 +32,20 @@ cd ~/test_dive/$tmp_dir
 touch being_tailed_file
 tail -f being_tailed_file &
 # [1] 72647
+```
+
+
+## lsof -i :<port_number>
+
+> [!TIP]
+> You can do the `ps 6956` to see what kind of process it is!
+
+See info of process using the port:
+
+```sh
+# sudo lsof -i :9705
+COMMAND    PID   USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
+something 6956 nobody    7u  IPv6  49926      0t0  TCP *:9705 (LISTEN)
 ```
 
 ## lsof <file_path>: Get list of processes using the file
