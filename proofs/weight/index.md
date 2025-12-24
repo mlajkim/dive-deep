@@ -11,3 +11,5 @@
 ## Goal
 
 Who likes to open their weight? But I believe in transparency to really move forward. Hopefully one day I can share my weight loss journey here.
+
+Also maybe one day, I can simply share my abs picture here too.
