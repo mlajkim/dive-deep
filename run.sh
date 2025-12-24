@@ -22,6 +22,9 @@ git checkout -b "$BRANCH_NAME"
 cat <<EOF > "$FILE_PATH"
 # ${FILE_DATE}
 
+> [!TIP]
+> Check out the parent README file: [README.meal.md](../../README.meal.md)
+
 <!-- 414 + 700 + 1180 = 2294 kcal
 
 6 + 14 + 46 = 66 g protein
