@@ -172,7 +172,7 @@ Here are the unit file types you can list:
 
 ## systemctl list-dependencies
 
-
+This is especially handy to see the dependency tree of services and targets.
 
 ```sh
 systemctl list-dependencies --no-pager
