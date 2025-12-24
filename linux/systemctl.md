@@ -172,3 +172,97 @@ Here are the unit file types you can list:
 
 ## systemctl list-dependencies
 
+
+
+```sh
+systemctl list-dependencies --no-pager
+# default.target
+# ○ ├─display-manager.service
+# ○ ├─systemd-update-utmp-runlevel.service
+# ● └─multi-user.target
+# ×   ├─auditd.service
+# ○   ├─banner.service
+# ●   ├─containerd.service
+# ●   ├─dbus.service
+# ●   ├─docker.service
+# ○   ├─e2scrub_reap.service
+# ●   ├─rpcbind.service
+# ●   ├─ssh.service
+# ●   ├─systemd-ask-password-wall.path
+# ●   ├─systemd-logind.service
+# ●   ├─systemd-resolved.service
+# ○   ├─systemd-update-utmp-runlevel.service
+# ●   ├─systemd-user-sessions.service
+# ●   ├─ttyd.service
+# ●   ├─ufw.service
+# ●   ├─basic.target
+# ●   │ ├─selinux-autorelabel-mark.service
+# ○   │ ├─tmp.mount
+# ●   │ ├─paths.target
+# ●   │ ├─slices.target
+# ●   │ │ ├─-.slice
+# ●   │ │ └─system.slice
+# ●   │ ├─sockets.target
+# ●   │ │ ├─dbus.socket
+# ●   │ │ ├─docker.socket
+# ●   │ │ ├─rpcbind.socket
+# ●   │ │ ├─systemd-initctl.socket
+# ○   │ │ ├─systemd-journald-audit.socket
+# ●   │ │ ├─systemd-journald-dev-log.socket
+# ●   │ │ ├─systemd-journald.socket
+# ●   │ │ ├─systemd-udevd-control.socket
+# ●   │ │ └─systemd-udevd-kernel.socket
+# ●   │ ├─sysinit.target
+# ○   │ │ ├─apparmor.service
+# ○   │ │ ├─dev-hugepages.mount
+# ●   │ │ ├─dev-mqueue.mount
+# ×   │ │ ├─kmod-static-nodes.service
+# ○   │ │ ├─proc-sys-fs-binfmt_misc.automount
+# ○   │ │ ├─sys-fs-fuse-connections.mount
+# ●   │ │ ├─sys-kernel-config.mount
+# ●   │ │ ├─sys-kernel-debug.mount
+# ●   │ │ ├─sys-kernel-tracing.mount
+# ●   │ │ ├─systemd-ask-password-console.path
+# ○   │ │ ├─systemd-binfmt.service
+# ○   │ │ ├─systemd-boot-system-token.service
+# ●   │ │ ├─systemd-journal-flush.service
+# ●   │ │ ├─systemd-journald.service
+# ○   │ │ ├─systemd-machine-id-commit.service
+# ○   │ │ ├─systemd-modules-load.service
+# ○   │ │ ├─systemd-pstore.service
+# ○   │ │ ├─systemd-random-seed.service
+# ●   │ │ ├─systemd-sysctl.service
+# ●   │ │ ├─systemd-sysusers.service
+# ●   │ │ ├─systemd-tmpfiles-setup-dev.service
+# ●   │ │ ├─systemd-tmpfiles-setup.service
+# ●   │ │ ├─systemd-udev-trigger.service
+# ●   │ │ ├─systemd-udevd.service
+# ●   │ │ ├─systemd-update-utmp.service
+# ●   │ │ ├─cryptsetup.target
+# ●   │ │ ├─local-fs.target
+# ●   │ │ │ └─systemd-remount-fs.service
+# ●   │ │ ├─swap.target
+# ●   │ │ └─veritysetup.target
+# ●   │ └─timers.target
+# ●   │   ├─apt-daily-upgrade.timer
+# ●   │   ├─apt-daily.timer
+# ●   │   ├─dpkg-db-backup.timer
+# ●   │   ├─e2scrub_all.timer
+# ○   │   ├─fstrim.timer
+# ●   │   ├─man-db.timer
+# ●   │   ├─motd-news.timer
+# ●   │   └─systemd-tmpfiles-clean.timer
+# ●   ├─getty.target
+# ○   │ ├─console-getty.service
+# ○   │ ├─getty-static.service
+# ○   │ └─getty@tty1.service
+# ●   ├─nfs-client.target
+# ○   │ ├─auth-rpcgss-module.service
+# ●   │ ├─rpc-statd-notify.service
+# ●   │ └─remote-fs-pre.target
+# ●   └─remote-fs.target
+# ●     └─nfs-client.target
+# ○       ├─auth-rpcgss-module.service
+# ●       ├─rpc-statd-notify.service
+# ●       └─remote-fs-pre.target
+```
