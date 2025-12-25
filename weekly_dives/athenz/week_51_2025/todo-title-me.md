@@ -20,7 +20,17 @@ The temporary goal is to build a cluster with Athenz installed, and see
 
 🟡 TODO: The following is temporary:
 
+The goal of this document is to setup a syncer mechanism between Athenz and Kubernettes RBAC by:
+- Make a custom syncer that syncs from Athenz to K8s RBAC (Good Challenge & Learn a lot about both Athenz and K8s RBAC) only by ZMS
+- Then learn how to deploy k8s-athenz-syncer properly with good UI UX and how it is differ
+- We can also see what is better and what is missing in the k8s-athenz-sycner and possibly contribute back.
+
 1. Create the similar one only with ZMS API and see how it affects the k8s-athenz-syncer
+
+- /domain?prefix={athenzDomain}   (ex: /domain?prefix=shared-kubernetes-cluster-helper)
+- /domain/{domainName}/role/{roleName}?auditLog=true&expand=true
+
+
 1. Learn about the core logic of https://github.com/AthenZ/k8s-athenz-syncer with deployment examples
 1. Maybe create a very simple deployer for the k8s-athenz-syncer with good UI UX to really make others be able to test => Learn a lot from athenz distribution as I can test Athenz so easy.
 
