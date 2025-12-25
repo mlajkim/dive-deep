@@ -9,6 +9,7 @@
       - [Check](#check)
     - [Setup: Athenz Server in Kubernetes Cluster](#setup-athenz-server-in-kubernetes-cluster)
       - [Check](#check-1)
+  - [Exp1: Create a d](#exp1-create-a-d)
 
 <!-- /TOC -->
 
@@ -20,7 +21,10 @@ The temporary goal is to build a cluster with Athenz installed, and see
 
 🟡 TODO: The following is temporary:
 
+You guys want to leanr about it but have no idea right? here is the tutorial for you all :)
+
 The goal of this document is to setup a syncer mechanism between Athenz and Kubernettes RBAC by:
+- Make really 
 - Make a custom syncer that syncs from Athenz to K8s RBAC (Good Challenge & Learn a lot about both Athenz and K8s RBAC) only by ZMS
 - Then learn how to deploy k8s-athenz-syncer properly with good UI UX and how it is differ
 - We can also see what is better and what is missing in the k8s-athenz-sycner and possibly contribute back.
@@ -116,3 +120,6 @@ kubectl -n athenz port-forward deployment/athenz-ui 3000:3000
 Then open up your browser and go to `http://localhost:3000`. You should see the Athenz UI page:
 
 ![athenz_page](./assets/athenz_page.png)
+
+
+## Exp1: Create a d
