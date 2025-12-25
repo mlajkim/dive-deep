@@ -24,6 +24,7 @@ The goal of this document is to setup a syncer mechanism between Athenz and Kube
 - Make a custom syncer that syncs from Athenz to K8s RBAC (Good Challenge & Learn a lot about both Athenz and K8s RBAC) only by ZMS
 - Then learn how to deploy k8s-athenz-syncer properly with good UI UX and how it is differ
 - We can also see what is better and what is missing in the k8s-athenz-sycner and possibly contribute back.
+- Maybe I can mock creating the same cluster!
 
 1. Create the similar one only with ZMS API and see how it affects the k8s-athenz-syncer
 
