@@ -4,6 +4,7 @@
 
 - [ls](#ls)
     - [ls --full-time: Show detailed list with full timestamp information](#ls---full-time-show-detailed-list-with-full-timestamp-information)
+  - [ls -Z](#ls--z)
 
 <!-- /TOC -->
 
@@ -24,4 +25,14 @@ bob@ubuntu-host ~ ➜  ls --full-time
 # drwxrwxr-x 5 bob  bob  4096 2025-11-30 03:42:59.499796494 +0000 old-data
 # -rw-r--r-- 1 root root   28 2025-11-30 04:01:58.577775236 +0000 old_file
 # drwxrwxr-x 2 bob  bob  4096 2025-11-30 03:44:14.780720796 +0000 test
+```
+
+## ls -Z
+
+> [!TIP]
+> Learn more about SELinux context in [./concepts/selinux.md](./concepts/selinux.md)
+
+
+```sh
+ls -Z
 ```
