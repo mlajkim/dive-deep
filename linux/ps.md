@@ -19,6 +19,7 @@ tags:
     - [ps fax: to see process tree](#ps-fax-to-see-process-tree)
   - [pgrep](#pgrep)
   - [top: to continue `ps aux`](#top-to-continue-ps-aux)
+  - [ps axZ](#ps-axz)
 
 <!-- /TOC -->
 
@@ -207,3 +208,8 @@ top
 # 408    coreaudiod   2.3  02:53:47 10     2     15817  77M    0B     34M   408   1     sleeping *0
 # ...
 ```
+
+## ps axZ
+
+> [!TIP]
+> Learn more about SELinux context in [./concepts/selinux.md](./concepts/selinux.md)
