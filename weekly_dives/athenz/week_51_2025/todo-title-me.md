@@ -18,6 +18,14 @@
 The temporary goal is to build a cluster with Athenz installed, and see
 
 
+🟡 TODO: The following is temporary:
+
+1. Learn about the core logic of https://github.com/AthenZ/k8s-athenz-syncer with deployment examples
+1. Maybe create a very simple deployer for the k8s-athenz-syncer with good UI UX to really make others be able to test => Learn a lot from athenz distribution as I can test Athenz so easy.
+
+🟡 Everything above is temporary (note purpose)
+
+
 ## Setup
 
 ### Setup: Local Kubernetes Cluster w/ Kind
