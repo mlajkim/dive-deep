@@ -22,6 +22,8 @@ git checkout -b "$BRANCH_NAME"
 cat <<EOF > "$FILE_PATH"
 # ${FILE_DATE}
 
+<!-- # 251225.2863.132.18 -->
+
 > [!TIP]
 > Check out the parent README file: [README.meal.md](../../README.meal.md)
 
@@ -37,6 +39,8 @@ cat <<EOF > "$FILE_PATH"
 
 ## Breakfast.xxx.xx
 
+<!-- ## Breakfast.627.47 -->
+
 |         Food         | Calories | Protein |
 |:--------------------:|:--------:|:-------:|
 | Baked Chicken Breast |   182    |   34    |
@@ -45,6 +49,8 @@ cat <<EOF > "$FILE_PATH"
 
 ## Lunch.xxx.xx
 
+<!-- ## Lunch.71.12 -->
+
 |    Food     | Calories | Protein |
 |:-----------:|:--------:|:-------:|
 | Protein 1/2 |   240    |   37    |
@@ -52,6 +58,8 @@ cat <<EOF > "$FILE_PATH"
 |     ...     |   ...    |   ...   |
 
 ## Dinner.xxx.xx
+
+<!-- ## Lunch.71.12 -->
 
 |    Food     | Calories | Protein |
 |:-----------:|:--------:|:-------:|
