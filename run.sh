@@ -37,11 +37,11 @@ cat <<EOF > "$FILE_PATH"
 
 ## Breakfast.xxx.xx
 
-|    Food     | Calories | Protein |
-|:-----------:|:--------:|:-------:|
-| Protein 1/2 |   240    |   37    |
-|   Coffee    |    0     |    0    |
-|     ...     |   ...    |   ...   |
+|         Food         | Calories | Protein |
+|:--------------------:|:--------:|:-------:|
+| Baked Chicken Breast |   182    |   34    |
+|        Coffee        |    0     |    0    |
+|         ...          |   ...    |   ...   |
 
 ## Lunch.xxx.xx
 
@@ -52,6 +52,12 @@ cat <<EOF > "$FILE_PATH"
 |     ...     |   ...    |   ...   |
 
 ## Dinner.xxx.xx
+
+|    Food     | Calories | Protein |
+|:-----------:|:--------:|:-------:|
+| Protein 1/2 |   240    |   37    |
+|   Coffee    |    0     |    0    |
+|     ...     |   ...    |   ...   |
 
 EOF
 
