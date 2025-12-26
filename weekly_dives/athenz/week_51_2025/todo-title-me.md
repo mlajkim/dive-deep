@@ -11,7 +11,12 @@
       - [Check](#check-1)
     - [Setup: Kubebuilder](#setup-kubebuilder)
   - [Exp1: Create a brute-force approaching](#exp1-create-a-brute-force-approaching)
-    - [Exp1: Create Syncer Project](#exp1-create-syncer-project)
+    - [Exp1: Initialize Syncer Project](#exp1-initialize-syncer-project)
+    - [Exp1: Initalize git](#exp1-initalize-git)
+    - [Exp1: Create a API](#exp1-create-a-api)
+      - [Check: Structure](#check-structure)
+      - [Check: Domain](#check-domain)
+      - [Check: Repo](#check-repo)
 
 <!-- /TOC -->
 
@@ -26,7 +31,7 @@ The temporary goal is to build a cluster with Athenz installed, and see
 You guys want to leanr about it but have no idea right? here is the tutorial for you all :)
 
 The goal of this document is to setup a syncer mechanism between Athenz and Kubernettes RBAC by:
-- Make really 
+- Make really
 - Make a custom syncer that syncs from Athenz to K8s RBAC (Good Challenge & Learn a lot about both Athenz and K8s RBAC) only by ZMS
 - Then learn how to deploy k8s-athenz-syncer properly with good UI UX and how it is differ
 - We can also see what is better and what is missing in the k8s-athenz-sycner and possibly contribute back.
@@ -145,7 +150,10 @@ https://kubernetes.io/docs/concepts/extend-kubernetes/operator/
 https://book.kubebuilder.io/
 
 
-### Exp1: Create Syncer Project
+### Exp1: Initialize Syncer Project
+
+> [!TIP]
+> As the `init` implies, you only run once for one repository, and you simply create apis under the same repository.
 
 - `domain`: k8s already has `Pod`, `SA`, `Role`, `RoleBinding`, so we need to specify our own ID so that it does not conflict with existing ones.
 
@@ -154,11 +162,108 @@ domain="ajktown.com"
 repo="github.com/mlajkim/athenz-syncer"
 
 mkdir -p my-athenz-syncer && cd my-athenz-syncer
-kubebuilder init --domain $domain --repo $repo
+kubebuilder init --domain $domain --repo $repo &> /dev/null
 # Lots of log...
 # go: downloading github.com/cenkalti/backoff/v4 v4.3.0
 # go: downloading github.com/grpc-ecosystem/grpc-gateway/v2 v2.26.3
 # go: downloading go.opentelemetry.io/otel/sdk/metric v1.34.0
 # Next: define a resource with:
 # $ kubebuilder create api
+```
+
+### Exp1: Initalize git
+
+To track progress, let's initialize git:
+
+```sh
+git init
+git add .
+git commit -m "Initial commit: Initialize kubebuilder project"
+```
+
+### Exp1: Create a API
+
+The full name will be: `<group>.<domain>/<version>, Kind=<kind>`, as:
+
+```yaml
+apiVersion: identity.ajktown.com/v1
+kind: AthenzSyncer
+...
+```
+
+```sh
+group="identity"
+version="v1"
+kind="AthenzSyncer"
+
+kubebuilder create api --group $group --version $version --kind $kind --resource --controller
+```
+
+
+#### Check: Structure
+
+Let' see what kind of file structure we have now:
+
+```sh
+tree .
+# .
+# ├── Dockerfile
+# ├── Makefile
+# ├── PROJECT
+# ├── README.md
+# ├── cmd
+# │   └── main.go
+# ├── config
+# │   ├── default
+# │   │   ├── cert_metrics_manager_patch.yaml
+# │   │   ├── kustomization.yaml
+# │   │   ├── manager_metrics_patch.yaml
+# │   │   └── metrics_service.yaml
+# │   ├── manager
+# │   │   ├── kustomization.yaml
+# │   │   └── manager.yaml
+# │   ├── network-policy
+# │   │   ├── allow-metrics-traffic.yaml
+# │   │   └── kustomization.yaml
+# │   ├── prometheus
+# │   │   ├── kustomization.yaml
+# │   │   ├── monitor.yaml
+# │   │   └── monitor_tls_patch.yaml
+# │   └── rbac
+# │       ├── kustomization.yaml
+# │       ├── leader_election_role.yaml
+# │       ├── leader_election_role_binding.yaml
+# │       ├── metrics_auth_role.yaml
+# │       ├── metrics_auth_role_binding.yaml
+# │       ├── metrics_reader_role.yaml
+# │       ├── role.yaml
+# │       ├── role_binding.yaml
+# │       └── service_account.yaml
+# ├── go.mod
+# ├── go.sum
+# ├── hack
+# │   └── boilerplate.go.txt
+# └── test
+#     ├── e2e
+#     │   ├── e2e_suite_test.go
+#     │   └── e2e_test.go
+#     └── utils
+#         └── utils.go
+```
+
+#### Check: Domain
+
+Check domain:
+
+```sh
+head -n 1 config/samples/identity_v1_athenzsyncer.yaml
+```
+
+#### Check: Repo
+
+You can see your domain and repo in the `go.mod` file:
+
+```sh
+head -n 1 go.mod
+# module github.com/mlajkim/athenz-syncer
 ```
