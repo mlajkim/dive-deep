@@ -114,14 +114,13 @@ k cluster-info
 Let's first setup the basic Athenz environment. We will use @ctyano's `athenz-distribution` repository:
 
 ```sh
-test_name=athenz_distribution
-tmp_dir=$(date +%y%m%d_%H%M%S_$test_name)
-mkdir -p ~/test_dive/
-cd ~/test_dive
+test_name=custom_k8s-athenz-syncer
 
-git clone https://github.com/ctyano/athenz-distribution.git $tmp_dir
-cd $tmp_dir
-make clean-kubernetes-athenz deploy-kubernetes-athenz
+_tmp_dir=$(date +%y%m%d_%H%M%S_$test_name)
+mkdir -p ~/test_dive/$_tmp_dir && cd ~/test_dive/$_tmp_dir
+
+git clone https://github.com/ctyano/athenz-distribution.git athenz_distribution
+make -C ./athenz_distribution clean-kubernetes-athenz deploy-kubernetes-athenz
 
 # Lots of log ...
 # kubectl apply -k athenz-ui/kustomize
@@ -137,7 +136,9 @@ make clean-kubernetes-athenz deploy-kubernetes-athenz
 #### Check
 
 > [!TIP]
-> Make take few minutes to see the UI up and running.
+> If you see `error: unable to forward port because pod is not running. Current status=Pending`,
+> Wait for few minutes before pods running
+> You can check status in live with `kubectl get deploy athenz-ui -n athenz -w`
 
 Let's do this:
 
