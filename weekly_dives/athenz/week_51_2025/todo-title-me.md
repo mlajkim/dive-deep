@@ -3,7 +3,9 @@
 <!-- TOC -->
 
 - [TODO: TITLE ME](#todo-title-me)
-  - [Goal](#goal)
+- [Goal](#goal)
+- [Conclusion](#conclusion)
+- [Steps for the conclusion](#steps-for-the-conclusion)
   - [Setup](#setup)
     - [Setup: Local Kubernetes Cluster w/ Kind](#setup-local-kubernetes-cluster-w-kind)
       - [Check](#check)
@@ -14,17 +16,19 @@
     - [Exp1: Initialize Syncer Project](#exp1-initialize-syncer-project)
       - [Check: Structure](#check-structure)
     - [Exp1: Initalize git](#exp1-initalize-git)
-    - [Exp1: Create a API](#exp1-create-a-api)
+    - [Exp1: Initalize a API](#exp1-initalize-a-api)
       - [Checl: Structure](#checl-structure)
       - [Check: Domain](#check-domain)
       - [Check: Repo](#check-repo)
+    - [Exp1: Define API](#exp1-define-api)
 
 <!-- /TOC -->
 
 
-## Goal
+# Goal
 
 The temporary goal is to build a cluster with Athenz installed, and see
+
 
 
 🟡 TODO: The following is temporary:
@@ -50,6 +54,11 @@ The goal of this document is to setup a syncer mechanism between Athenz and Kube
 
 🟡 Everything above is temporary (note purpose)
 
+# Conclusion
+
+🟡 TODO Write me
+
+# Steps for the conclusion
 
 ## Setup
 
@@ -233,7 +242,7 @@ git add .
 git commit -m "Initial commit: Initialize kubebuilder project"
 ```
 
-### Exp1: Create a API
+### Exp1: Initalize a API
 
 The full name will be: `<group>.<domain>/<version>, Kind=<kind>`, as:
 
@@ -342,3 +351,14 @@ You can see your domain and repo in the `go.mod` file:
 head -n 1 go.mod
 # module github.com/mlajkim/athenz-syncer
 ```
+
+
+### Exp1: Define API
+
+So far we only have boilerplate code, and we need to define our own:
+
+- Spec: Desired State
+- Status: Observed State
+- Controller: Reconcile loop that brings the current state to the desired state.
+
+
