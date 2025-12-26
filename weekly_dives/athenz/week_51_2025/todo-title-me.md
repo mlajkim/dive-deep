@@ -21,6 +21,14 @@
       - [Check: Domain](#check-domain)
       - [Check: Repo](#check-repo)
     - [Exp1: Define API](#exp1-define-api)
+    - [Expl1: Define Spec](#expl1-define-spec)
+    - [Exp1: Define yaml](#exp1-define-yaml)
+    - [Exp1: Define Controller](#exp1-define-controller)
+    - [Exp1: Register CRD](#exp1-register-crd)
+      - [Check](#check-2)
+    - [Exp1: Run Controller](#exp1-run-controller)
+    - [Exp1: Finally create](#exp1-finally-create)
+      - [Check: Log from Controller](#check-log-from-controller)
 
 <!-- /TOC -->
 
@@ -355,10 +363,124 @@ head -n 1 go.mod
 
 ### Exp1: Define API
 
-So far we only have boilerplate code, and we need to define our own:
+So far we only have boilerplate code, and we need to define the oeperator's:
 
 - Spec: Desired State
 - Status: Observed State
 - Controller: Reconcile loop that brings the current state to the desired state.
 
 
+### Expl1: Define Spec
+
+Modify `api/v1/athenzsyncer_types.go`:
+
+```go
+type AthenzSyncerSpec struct {
+	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
+	// Important: Run "make" to regenerate code after modifying this file
+	// The following markers will use OpenAPI v3 schema to validate the value
+	// More info: https://book.kubebuilder.io/reference/markers/crd-validation.html
+
+	// foo is an example field of AthenzSyncer. Edit athenzsyncer_types.go to remove/update
+	// +optional
+	Foo *string `json:"foo,omitempty"`
+
+	// `athenzDomain` is the Athenz domain to be synced by this AthenzSyncer.
+	// It also syncs all the subdomains under this domain.
+	AthenzDomain string `json:"athenzDomain"`
+
+	// `zmsURL` is the ZMS endpoint URL of the Athenz server to sycn against
+	ZMSURL string `json:"zmsURL"`
+}
+```
+
+
+Then:
+
+```sh
+make manifests
+# "~/test_dive/251226_080757_athenz_distribution/my-athenz-syncer/bin/controller-gen" rbac:roleName=manager-role crd webhook paths="./..." output:crd:artifacts:config=config/crd/bases
+```
+
+### Exp1: Define yaml
+
+
+`config/samples/identity_v1_athenzsyncer.yaml`
+
+```yaml
+apiVersion: identity.ajktown.com/v1
+kind: AthenzSyncer
+metadata:
+  labels:
+    app.kubernetes.io/name: my-athenz-syncer
+    app.kubernetes.io/managed-by: kustomize
+  name: athenzsyncer-sample
+spec:
+  athenzDomain: "athenz-syncer"
+  zmsURL: "https://localhost:4443/zms/v1"
+
+```
+
+
+### Exp1: Define Controller
+
+`internal/controller/athenzsyncer_controller.go`
+
+### Exp1: Register CRD
+
+All the files under `config/crd/bases` are applied:
+
+```sh
+make install
+...
+# customresourcedefinition.apiextensions.k8s.io/athenzsyncers.identity.ajktown.com created
+```
+
+#### Check
+
+```sh
+k api-resources | grep $domain
+# athenzsyncers                                    identity.ajktown.com/v1           true         AthenzSynce
+```
+
+### Exp1: Run Controller
+
+Controller for now works locally to receive your request:
+
+```sh
+make run
+# 2025-12-26T11:48:04+09:00	INFO	setup	starting manager
+# 2025-12-26T11:48:04+09:00	INFO	starting server	{"name": "health probe", "addr": "[::]:8081"}
+# 2025-12-26T11:48:04+09:00	INFO	Starting EventSource	{"controller": "athenzsyncer", "controllerGroup": "identity.ajktown.com", "controllerKind": "AthenzSyncer", "source": "kind source: *v1.AthenzSyncer"}
+# 2025-12-26T11:48:04+09:00	INFO	Starting Controller	{"controller": "athenzsyncer", "controllerGroup": "identity.ajktown.com", "controllerKind": "AthenzSyncer"}
+# 2025-12-26T11:48:04+09:00	INFO	Starting workers	{"controller": "athenzsyncer", "controllerGroup": "identity.ajktown.com", "controllerKind": "AthenzSyncer", "worker count": 1}
+```
+
+
+### Exp1: Finally create 
+
+Finally, create the AthenzSyncer resource:
+
+```sh
+kubectl apply -f ./config/samples/identity_v1_athenzsyncer.yaml
+# athenzsyncer.identity.ajktown.com/athenzsyncer-sample created
+```
+
+#### Check: Log from Controller
+
+🟡 TODO: Fix the fire 
+
+```sh
+2025-12-26T11:52:38+09:00	INFO	Reconciling AthenzSyncer ...	{"controller": "athenzsyncer", "controllerGroup": "identity.ajktown.com", "controllerKind": "AthenzSyncer", "AthenzSyncer": {"name":"athenzsyncer-sample","namespace":"default"}, "namespace": "default", "name": "athenzsyncer-sample", "reconcileID": "f5431c86-a12a-414e-a242-83744a3139bb", "AthenzSyncer": {"name":"athenzsyncer-sample","namespace":"default"}, "Target": "athenz-syncer", "URL": "https://localhost:4443/zms/v1"}
+2025-12-26T11:52:38+09:00	ERROR	🔥 Failed to connect to Athenz Server	{"controller": "athenzsyncer", "controllerGroup": "identity.ajktown.com", "controllerKind": "AthenzSyncer", "AthenzSyncer": {"name":"athenzsyncer-sample","namespace":"default"}, "namespace": "default", "name": "athenzsyncer-sample", "reconcileID": "f5431c86-a12a-414e-a242-83744a3139bb", "error": "Get \"https://localhost:4443/zms/v1/domain/athenz-syncer\": dial tcp [::1]:4443: connect: connection refused"}
+github.com/mlajkim/athenz-syncer/internal/controller.(*AthenzSyncerReconciler).Reconcile
+	/Users/jekim/test_dive/251226_080757_athenz_distribution/my-athenz-syncer/internal/controller/athenzsyncer_controller.go:75
+sigs.k8s.io/controller-runtime/pkg/internal/controller.(*Controller[...]).Reconcile
+	/Users/jekim/go/pkg/mod/sigs.k8s.io/controller-runtime@v0.22.4/pkg/internal/controller/controller.go:216
+sigs.k8s.io/controller-runtime/pkg/internal/controller.(*Controller[...]).reconcileHandler
+	/Users/jekim/go/pkg/mod/sigs.k8s.io/controller-runtime@v0.22.4/pkg/internal/controller/controller.go:461
+sigs.k8s.io/controller-runtime/pkg/internal/controller.(*Controller[...]).processNextWorkItem
+	/Users/jekim/go/pkg/mod/sigs.k8s.io/controller-runtime@v0.22.4/pkg/internal/controller/controller.go:421
+sigs.k8s.io/controller-runtime/pkg/internal/controller.(*Controller[...]).Start.func1.1
+	/Users/jekim/go/pkg/mod/sigs.k8s.io/controller-runtime@v0.22.4/pkg/internal/controller/controller.go:296
+```
