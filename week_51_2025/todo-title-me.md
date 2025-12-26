@@ -149,7 +149,11 @@ kubectl -n athenz port-forward deployment/athenz-ui 3000:3000
 # Forwarding from [::1]:3000 -> 3000
 ```
 
-Then open up your browser and go to `http://localhost:3000`. You should see the Athenz UI page:
+Then do the following to see the screenshot below:
+
+```sh
+open http://localhost:3000
+```
 
 ![athenz_page](./assets/athenz_page.png)
 
