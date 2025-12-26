@@ -14,7 +14,7 @@
     - [Setup: Athenz ZMS Server Outside](#setup-athenz-zms-server-outside)
       - [Check](#check-2)
     - [Setup: Kubebuilder](#setup-kubebuilder)
-  - [Exp1: Create syncer in hard way](#exp1-create-syncer-in-hard-way)
+  - [Exp1: Create Syncer the hard way.](#exp1-create-syncer-the-hard-way)
     - [Exp1: Initialize Syncer Project](#exp1-initialize-syncer-project)
       - [Check: Structure](#check-structure)
     - [Exp1: Initialize git](#exp1-initialize-git)
@@ -187,8 +187,8 @@ Try to connect to the ZMS server with auto generated root certificate from `athe
 
 ```sh
 curl -k -X GET "https://localhost:4443/zms/v1/domain" \
-  --cert ./certs/athenz_admin.cert.pem \
-  --key ./keys/athenz_admin.private.pem
+  --cert ./athenz_distribution/certs/athenz_admin.cert.pem \
+  --key ./athenz_distribution/keys/athenz_admin.private.pem
 
 # {"names":["home","sys","sys.auth","sys.auth.audit","sys.auth.audit.domain","sys.auth.audit.org","user","user.ajkim","user.dev"]}
 ```
@@ -202,7 +202,7 @@ brew install kubebuilder
 ```
 
 
-## Exp1: Create syncer in hard way
+## Exp1: Create Syncer the hard way.
 
 Let's first create something that works, but not elegant *yet*.
 
