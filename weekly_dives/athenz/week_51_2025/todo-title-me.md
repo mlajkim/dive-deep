@@ -9,7 +9,9 @@
       - [Check](#check)
     - [Setup: Athenz Server in Kubernetes Cluster](#setup-athenz-server-in-kubernetes-cluster)
       - [Check](#check-1)
-  - [Exp1: Create a d](#exp1-create-a-d)
+    - [Setup: Kubebuilder](#setup-kubebuilder)
+  - [Exp1: Create a brute-force approaching](#exp1-create-a-brute-force-approaching)
+    - [Exp1: Create Syncer Project](#exp1-create-syncer-project)
 
 <!-- /TOC -->
 
@@ -121,5 +123,42 @@ Then open up your browser and go to `http://localhost:3000`. You should see the 
 
 ![athenz_page](./assets/athenz_page.png)
 
+### Setup: Kubebuilder
 
-## Exp1: Create a d
+If you do not have `kubebuilder` yet, please install it first:
+
+```sh
+brew install kubebuilder
+```
+
+
+## Exp1: Create a brute-force approaching
+
+Let's first create something that works, but not elegant *yet*.
+
+https://kubernetes.io/docs/concepts/extend-kubernetes/operator/
+
+![kubernetes_operator](./assets/kubernetes_operator.png)
+
+
+![kube_builder](./assets/kube_builder.png)
+https://book.kubebuilder.io/
+
+
+### Exp1: Create Syncer Project
+
+- `domain`: k8s already has `Pod`, `SA`, `Role`, `RoleBinding`, so we need to specify our own ID so that it does not conflict with existing ones.
+
+```sh
+domain="ajktown.com"
+repo="github.com/mlajkim/athenz-syncer"
+
+mkdir -p my-athenz-syncer && cd my-athenz-syncer
+kubebuilder init --domain $domain --repo $repo
+# Lots of log...
+# go: downloading github.com/cenkalti/backoff/v4 v4.3.0
+# go: downloading github.com/grpc-ecosystem/grpc-gateway/v2 v2.26.3
+# go: downloading go.opentelemetry.io/otel/sdk/metric v1.34.0
+# Next: define a resource with:
+# $ kubebuilder create api
+```
