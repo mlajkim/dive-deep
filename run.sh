@@ -58,9 +58,9 @@ cat <<EOF > "$FILE_PATH"
 | Protein 1/2 |   240    |   37    |
 |     ...     |   ...    |   ...   |
 
-## Dinner.xxx.xx
-
 <!-- ## Dinner.71.12 -->
+
+## Dinner.xxx.xx
 
 |    Food     | Calories | Protein |
 |:-----------:|:--------:|:-------:|
