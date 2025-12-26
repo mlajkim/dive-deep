@@ -11,6 +11,9 @@
       - [Check](#check)
     - [Setup: Athenz Server in Kubernetes Cluster](#setup-athenz-server-in-kubernetes-cluster)
       - [Check](#check-1)
+    - [Setup: Athenz ZMS Server Outside](#setup-athenz-zms-server-outside)
+    - [Setup: Setup athenz domain and services](#setup-setup-athenz-domain-and-services)
+      - [Check](#check-2)
     - [Setup: Kubebuilder](#setup-kubebuilder)
   - [Exp1: Create a brute-force approaching](#exp1-create-a-brute-force-approaching)
     - [Exp1: Initialize Syncer Project](#exp1-initialize-syncer-project)
@@ -21,11 +24,11 @@
       - [Check: Domain](#check-domain)
       - [Check: Repo](#check-repo)
     - [Exp1: Define API](#exp1-define-api)
-    - [Expl1: Define Spec](#expl1-define-spec)
+    - [Exp1: Define Spec](#exp1-define-spec)
     - [Exp1: Define yaml](#exp1-define-yaml)
     - [Exp1: Define Controller](#exp1-define-controller)
     - [Exp1: Register CRD](#exp1-register-crd)
-      - [Check](#check-2)
+      - [Check](#check-3)
     - [Exp1: Run Controller](#exp1-run-controller)
     - [Exp1: Finally create](#exp1-finally-create)
       - [Check: Log from Controller](#check-log-from-controller)
@@ -133,6 +136,9 @@ make clean-kubernetes-athenz deploy-kubernetes-athenz
 
 #### Check
 
+> [!TIP]
+> Make take few minutes to see the UI up and running.
+
 Let's do this:
 
 ```sh
@@ -145,6 +151,43 @@ kubectl -n athenz port-forward deployment/athenz-ui 3000:3000
 Then open up your browser and go to `http://localhost:3000`. You should see the Athenz UI page:
 
 ![athenz_page](./assets/athenz_page.png)
+
+![alt athenz_page](./assets/athenz_page.png)
+
+
+### Setup: Athenz ZMS Server Outside
+
+```sh
+kubectl -n athenz port-forward deployment/athenz-zms-server 4443:4443
+```
+
+### Setup: Setup athenz domain and services
+
+```sh
+function zms() {
+  local base_url="https://localhost:4443/zms/v1"
+  local path="${1}"
+
+  curl -s -k \
+    --cert service.cert.pem \
+    --key service.key.pem \
+    "${base_url}${path}" | jq .
+}
+
+
+```
+
+#### Check
+
+> [!TIP]
+> Ignore `{"code":401,"message":"Invalid credentials"}`, at least we know we can connect to the ZMS server:
+
+Try to connect to ZMS server:
+
+```sh
+zms "/domain"
+# {"code":401,"message":"Invalid credentials"}
+```
 
 ### Setup: Kubebuilder
 
@@ -370,7 +413,7 @@ So far we only have boilerplate code, and we need to define the oeperator's:
 - Controller: Reconcile loop that brings the current state to the desired state.
 
 
-### Expl1: Define Spec
+### Exp1: Define Spec
 
 Modify `api/v1/athenzsyncer_types.go`:
 
@@ -445,6 +488,9 @@ k api-resources | grep $domain
 
 ### Exp1: Run Controller
 
+> [!TIP]
+> Please note that `make run` will build and run the controller outside the cluster.
+
 Controller for now works locally to receive your request:
 
 ```sh
@@ -457,7 +503,7 @@ make run
 ```
 
 
-### Exp1: Finally create 
+### Exp1: Finally create
 
 Finally, create the AthenzSyncer resource:
 
@@ -468,7 +514,7 @@ kubectl apply -f ./config/samples/identity_v1_athenzsyncer.yaml
 
 #### Check: Log from Controller
 
-🟡 TODO: Fix the fire 
+🟡 TODO: Fix the fire
 
 ```sh
 2025-12-26T11:52:38+09:00	INFO	Reconciling AthenzSyncer ...	{"controller": "athenzsyncer", "controllerGroup": "identity.ajktown.com", "controllerKind": "AthenzSyncer", "AthenzSyncer": {"name":"athenzsyncer-sample","namespace":"default"}, "namespace": "default", "name": "athenzsyncer-sample", "reconcileID": "f5431c86-a12a-414e-a242-83744a3139bb", "AthenzSyncer": {"name":"athenzsyncer-sample","namespace":"default"}, "Target": "athenz-syncer", "URL": "https://localhost:4443/zms/v1"}
