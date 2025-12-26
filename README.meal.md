@@ -10,7 +10,8 @@
 
 ## Goal
 
-> [!CAUTION] Don't fall for the Perfectionism Trap.
+> [!CAUTION]
+> **Don't fall for the Perfectionism Trap:**
 > - **The Real Goal**: Tracking is about recognizing patterns, not creating a perfect database. Even rough or partial entries are GREAT enough to maintain awareness and control.
 > - **The Instinct's Lie**: Your survival instinct fights against dietary restriction. It tries to trick you by whispering, "If you can't track it perfectly, it's meaningless." This is a lie designed to lead you back to mindless eating.
 > - **The Strategy**: Controlling your diet is a battle against biology. Never forget that a flawed record is infinitely better than zero record. Do not let "perfection" become your excuse to give up.
