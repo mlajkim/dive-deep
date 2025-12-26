@@ -32,6 +32,8 @@ The current goal, officially starting on Dec 21, 2025~, is to:
 > [!TIP]
 > It is allowed to write A WEEK ahead of time, but not more than that. This is to ensure that you are motivated to do more or workout in advance to handle certain schedules upcoming.
 
+🟡 todo: 12/26 proofs!
+
 |    Date     | Weekly Goal |                                             Days Done                                              |
 |:-----------:|:-----------:|:--------------------------------------------------------------------------------------------------:|
 | 12/21~12/27 |    Golf     |                                              ...12/27                                              |
