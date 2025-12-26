@@ -403,7 +403,7 @@ func (r *AthenzSyncerReconciler) Reconcile(ctx context.Context, req ctrl.Request
 All the files under `config/crd/bases` are applied:
 
 ```sh
-make install
+make -C ./k8s-athenz-syncer-the-hard-way install
 ...
 # customresourcedefinition.apiextensions.k8s.io/athenzsyncers.identity.ajktown.com created
 ```
@@ -423,7 +423,7 @@ k api-resources | grep $domain
 Controller for now works locally to receive your request:
 
 ```sh
-make run
+make -C ./k8s-athenz-syncer-the-hard-way run
 # 2025-12-26T11:48:04+09:00	INFO	setup	starting manager
 # 2025-12-26T11:48:04+09:00	INFO	starting server	{"name": "health probe", "addr": "[::]:8081"}
 # 2025-12-26T11:48:04+09:00	INFO	Starting EventSource	{"controller": "athenzsyncer", "controllerGroup": "identity.ajktown.com", "controllerKind": "AthenzSyncer", "source": "kind source: *v1.AthenzSyncer"}
@@ -434,30 +434,33 @@ make run
 
 ### Exp1: Finally create
 
-Finally, create the AthenzSyncer resource:
+So far we have the running operator locally, but the operator is not seeing any CRD deployed yet in your local cluster. That means the operator will do nothing and keep waiting for your request.
+
+By creating the resource with the following command, the operator will soon notice it and start reconciling it:
 
 ```sh
-kubectl apply -f ./config/samples/identity_v1_athenzsyncer.yaml
+kubectl apply -f ./k8s-athenz-syncer-the-hard-way/config/samples/identity_v1_athenzsyncer.yaml
 # athenzsyncer.identity.ajktown.com/athenzsyncer-sample created
 ```
 
 #### Check: Log from Controller
 
-🟡 TODO: Fix the fire
+> [!TIP]
+> You will see `🔥 Failed to connect to Athenz Server	{"controller": ...` if the operator cannot connect to the ZMS Server
+> To fix it, checkout [Setup: Athenz ZMS Server Outside](#setup-athenz-zms-server-outside)
+
+> [!TIP]
+> To fix error `⚠️ Athenz Returned Error	{"controller": ... "StatusCode": 401}`
+> You may not present X.509 certificate to the ZMS server, which is required for authentication.
+
+
+🟡 TODO: Fix the `⚠️ Athenz Returned Error	{"controller": ... "StatusCode": 401}`
+
+Check out the log from the controller terminal:
 
 ```sh
-2025-12-26T11:52:38+09:00	INFO	Reconciling AthenzSyncer ...	{"controller": "athenzsyncer", "controllerGroup": "identity.ajktown.com", "controllerKind": "AthenzSyncer", "AthenzSyncer": {"name":"athenzsyncer-sample","namespace":"default"}, "namespace": "default", "name": "athenzsyncer-sample", "reconcileID": "f5431c86-a12a-414e-a242-83744a3139bb", "AthenzSyncer": {"name":"athenzsyncer-sample","namespace":"default"}, "Target": "athenz-syncer", "URL": "https://localhost:4443/zms/v1"}
-2025-12-26T11:52:38+09:00	ERROR	🔥 Failed to connect to Athenz Server	{"controller": "athenzsyncer", "controllerGroup": "identity.ajktown.com", "controllerKind": "AthenzSyncer", "AthenzSyncer": {"name":"athenzsyncer-sample","namespace":"default"}, "namespace": "default", "name": "athenzsyncer-sample", "reconcileID": "f5431c86-a12a-414e-a242-83744a3139bb", "error": "Get \"https://localhost:4443/zms/v1/domain/athenz-syncer\": dial tcp [::1]:4443: connect: connection refused"}
-github.com/mlajkim/athenz-syncer/internal/controller.(*AthenzSyncerReconciler).Reconcile
-	/Users/jekim/test_dive/251226_080757_athenz_distribution/my-athenz-syncer/internal/controller/athenzsyncer_controller.go:75
-sigs.k8s.io/controller-runtime/pkg/internal/controller.(*Controller[...]).Reconcile
-	/Users/jekim/go/pkg/mod/sigs.k8s.io/controller-runtime@v0.22.4/pkg/internal/controller/controller.go:216
-sigs.k8s.io/controller-runtime/pkg/internal/controller.(*Controller[...]).reconcileHandler
-	/Users/jekim/go/pkg/mod/sigs.k8s.io/controller-runtime@v0.22.4/pkg/internal/controller/controller.go:461
-sigs.k8s.io/controller-runtime/pkg/internal/controller.(*Controller[...]).processNextWorkItem
-	/Users/jekim/go/pkg/mod/sigs.k8s.io/controller-runtime@v0.22.4/pkg/internal/controller/controller.go:421
-sigs.k8s.io/controller-runtime/pkg/internal/controller.(*Controller[...]).Start.func1.1
-	/Users/jekim/go/pkg/mod/sigs.k8s.io/controller-runtime@v0.22.4/pkg/internal/controller/controller.go:296
+# 2025-12-27T07:26:48+09:00	INFO	Reconciling AthenzSyncer ...	{"controller": "athenzsyncer", "controllerGroup": "identity.ajktown.com", "controllerKind": "AthenzSyncer", "AthenzSyncer": {"name":"athenzsyncer-sample","namespace":"default"}, "namespace": "default", "name": "athenzsyncer-sample", "reconcileID": "d4b4697e-de8c-40ce-a842-4f8a742aa19a", "AthenzSyncer": {"name":"athenzsyncer-sample","namespace":"default"}, "Target": "athenz-syncer", "URL": "https://localhost:4443/zms/v1"}
+# 2025-12-27T07:26:48+09:00	INFO	⚠️ Athenz Returned Error	{"controller": "athenzsyncer", "controllerGroup": "identity.ajktown.com", "controllerKind": "AthenzSyncer", "AthenzSyncer": {"name":"athenzsyncer-sample","namespace":"default"}, "namespace": "default", "name": "athenzsyncer-sample", "reconcileID": "d4b4697e-de8c-40ce-a842-4f8a742aa19a", "StatusCode": 401}
 ```
 
 
