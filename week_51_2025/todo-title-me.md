@@ -31,6 +31,7 @@
     - [Exp1: Run Controller](#exp1-run-controller)
     - [Exp1: Finally create](#exp1-finally-create)
       - [Check: Log from Controller](#check-log-from-controller)
+- [Dive Records](#dive-records)
 
 <!-- /TOC -->
 
@@ -516,3 +517,9 @@ sigs.k8s.io/controller-runtime/pkg/internal/controller.(*Controller[...]).proces
 sigs.k8s.io/controller-runtime/pkg/internal/controller.(*Controller[...]).Start.func1.1
 	/Users/jekim/go/pkg/mod/sigs.k8s.io/controller-runtime@v0.22.4/pkg/internal/controller/controller.go:296
 ```
+
+
+
+# Dive Records
+
+- `12/26 Fri`: 4.5h
