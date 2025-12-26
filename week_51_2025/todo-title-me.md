@@ -16,10 +16,9 @@
     - [Setup: Kubebuilder](#setup-kubebuilder)
   - [Exp1: Create K8s-Athenz-Syncer the hard way.](#exp1-create-k8s-athenz-syncer-the-hard-way)
     - [Exp1: Initialize Syncer Project](#exp1-initialize-syncer-project)
-      - [Check: Structure](#check-structure)
     - [Exp1: Initialize git](#exp1-initialize-git)
     - [Exp1: Initialize an API](#exp1-initialize-an-api)
-      - [Check: Structure](#check-structure-1)
+      - [Check: Structure](#check-structure)
       - [Check: Domain](#check-domain)
       - [Check: Repo](#check-repo)
     - [Exp1: Define API](#exp1-define-api)
@@ -227,67 +226,15 @@ https://book.kubebuilder.io/
 
 ```sh
 domain="ajktown.com"
-repo="github.com/mlajkim/athenz-syncer"
+repo="github.com/mlajkim/k8s-athenz-syncer-the-hard-way"
 
-mkdir -p my-athenz-syncer && cd my-athenz-syncer
-kubebuilder init --domain $domain --repo $repo &> /dev/null
-# Lots of log...
-# go: downloading github.com/cenkalti/backoff/v4 v4.3.0
-# go: downloading github.com/grpc-ecosystem/grpc-gateway/v2 v2.26.3
+mkdir -p k8s-athenz-syncer-the-hard-way && \
+(cd k8s-athenz-syncer-the-hard-way && kubebuilder init --domain $domain --repo $repo)
+
+# Lots of log ...
 # go: downloading go.opentelemetry.io/otel/sdk/metric v1.34.0
 # Next: define a resource with:
 # $ kubebuilder create api
-```
-
-#### Check: Structure
-
-Let' see what kind of file structure we have now:
-
-```sh
-tree .
-# .
-# ├── Dockerfile
-# ├── Makefile
-# ├── PROJECT
-# ├── README.md
-# ├── cmd
-# │   └── main.go
-# ├── config
-# │   ├── default
-# │   │   ├── cert_metrics_manager_patch.yaml
-# │   │   ├── kustomization.yaml
-# │   │   ├── manager_metrics_patch.yaml
-# │   │   └── metrics_service.yaml
-# │   ├── manager
-# │   │   ├── kustomization.yaml
-# │   │   └── manager.yaml
-# │   ├── network-policy
-# │   │   ├── allow-metrics-traffic.yaml
-# │   │   └── kustomization.yaml
-# │   ├── prometheus
-# │   │   ├── kustomization.yaml
-# │   │   ├── monitor.yaml
-# │   │   └── monitor_tls_patch.yaml
-# │   └── rbac
-# │       ├── kustomization.yaml
-# │       ├── leader_election_role.yaml
-# │       ├── leader_election_role_binding.yaml
-# │       ├── metrics_auth_role.yaml
-# │       ├── metrics_auth_role_binding.yaml
-# │       ├── metrics_reader_role.yaml
-# │       ├── role.yaml
-# │       ├── role_binding.yaml
-# │       └── service_account.yaml
-# ├── go.mod
-# ├── go.sum
-# ├── hack
-# │   └── boilerplate.go.txt
-# └── test
-#     ├── e2e
-#     │   ├── e2e_suite_test.go
-#     │   └── e2e_test.go
-#     └── utils
-#         └── utils.go
 ```
 
 ### Exp1: Initialize git
@@ -295,9 +242,9 @@ tree .
 To track progress, let's initialize git:
 
 ```sh
-git init
-git add .
-git commit -m "Initial commit: Initialize kubebuilder project"
+git -C k8s-athenz-syncer-the-hard-way init
+git -C k8s-athenz-syncer-the-hard-way add .
+git -C k8s-athenz-syncer-the-hard-way commit -m "Initial commit: Initialize kubebuilder project"
 ```
 
 ### Exp1: Initialize an API
