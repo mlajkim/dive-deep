@@ -32,14 +32,12 @@ The current goal, officially starting on Dec 21, 2025~, is to:
 > [!TIP]
 > It is allowed to write A WEEK ahead of time, but not more than that. This is to ensure that you are motivated to do more or workout in advance to handle certain schedules upcoming.
 
-🟡 todo: 12/26 proofs!
-
-|    Date     | Weekly Goal |                                             Days Done                                              |
-|:-----------:|:-----------:|:--------------------------------------------------------------------------------------------------:|
-| 12/21~12/27 |    Golf     |                                              ...12/27                                              |
-|             |   Workout   | [12/20](./proofs/workout/251220.back.4_4.png), [12/24](./proofs/workout/251224.leg.5_2.png), 12/26 |
-|             |   Cardio    |                          [12/20](./proofs/cardio/251220.bike.50kcal.png)                           |
-|  12/28~1/3  |    Golf     |                                              ...12/29                                              |
-|             |   Workout   |                                                                                                    |
-|             |   Cardio    |                                                                                                    |
+|    Date     | Weekly Goal |                                                                  Days Done                                                                  |
+|:-----------:|:-----------:|:-------------------------------------------------------------------------------------------------------------------------------------------:|
+| 12/21~12/27 |    Golf     |                                                                  ...12/27                                                                   |
+|             |   Workout   | [12/20](./proofs/workout/251220.back.4_4.png), [12/24](./proofs/workout/251224.leg.5_2.png), [12/26](./proofs/workout/251226.chest.3_0.png) |
+|             |   Cardio    |                                               [12/20](./proofs/cardio/251220.bike.50kcal.png)                                               |
+|  12/28~1/3  |    Golf     |                                                                  ...12/29                                                                   |
+|             |   Workout   |                                                                                                                                             |
+|             |   Cardio    |                                                                                                                                             |
 
