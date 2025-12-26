@@ -12,8 +12,6 @@
     - [Setup: Athenz Server in Kubernetes Cluster](#setup-athenz-server-in-kubernetes-cluster)
       - [Check](#check-1)
     - [Setup: Athenz ZMS Server Outside](#setup-athenz-zms-server-outside)
-    - [Setup: Setup your user athenz domain](#setup-setup-your-user-athenz-domain)
-    - [Setup: Setup service representing your local machine](#setup-setup-service-representing-your-local-machine)
       - [Check](#check-2)
     - [Setup: Kubebuilder](#setup-kubebuilder)
   - [Exp1: Create a brute-force approaching](#exp1-create-a-brute-force-approaching)
@@ -160,60 +158,6 @@ Then open up your browser and go to `http://localhost:3000`. You should see the 
 
 ```sh
 kubectl -n athenz port-forward deployment/athenz-zms-server 4443:4443
-```
-
-### Setup: Setup your user athenz domain
-
-> [!CAUTION]
-> Do NOT use the admin certificate for other actions for security reasons.
-
-Let's create a Athenz service that represents your local machine as a service principal.
-
-In Athenz, there are two types of domains:
-
-- TLD: Top Level Domain: Only Admins can create/delete domains under TLD
-- Subdomain: Anyone with proper permissions can create/delete subdomains under a domain.
-
-Since Athenz server manifests with a TLD `user`, we will create a subdomain under the `user` TLD:
-
-```sh
-curl -k -X POST https://localhost:4443/zms/v1/subdomain/user \
-  --cert ./certs/athenz_admin.cert.pem \
-  --key ./keys/athenz_admin.private.pem \
-  -H "Content-Type: application/json" \
-  -d "{
-    \"parent\": \"user\",
-    \"name\": \"dev\",
-    \"adminUsers\": [\"user.dev.local\"]
-  }"
-
-# {"auditEnabled":false,"name":"user.dev","modified":"2025-12-26T06:36:49.201Z","id":"41ad0210-e225-11f0-b78c-1eb4e09f036a"}
-```
-
-### Setup: Setup service representing your local machine
-
-The following command will:
-1. Create a private key for your service representing your local machine
-1. Create a public key and register the service under your user domain
-
-We will fix the service name as 
-
-```sh
-openssl genrsa -out "./keys/local.key.pem" 2048
-pub_key=$(openssl rsa -in "./keys/local.key.pem" -pubout | grep -v "PUBLIC KEY" | tr -d '\n')
-curl -k -X PUT "https://localhost:4443/zms/v1/domain/user.dev/service/local" \
-  --cert ./certs/athenz_admin.cert.pem \
-  --key ./keys/athenz_admin.private.pem \
-  -H "Content-Type: application/json" \
-  -d "{
-    \"name\": \"user.dev.local\",
-    \"publicKeys\": [
-      {
-        \"id\": \"0\",
-        \"key\": \"$pub_key\"
-      }
-    ]
-  }"
 ```
 
 #### Check
