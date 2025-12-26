@@ -11,12 +11,7 @@
 
 - [Dive Deep 🤿](#dive-deep-🤿)
 - [Goal](#goal)
-  - [Performance: Long Term Tech Blogs](#performance-long-term-tech-blogs)
   - [Performance: Weekly Tech Blogs](#performance-weekly-tech-blogs)
-- [Glossary](#glossary)
-  - [Zero-brain run](#zero-brain-run)
-  - [Rules](#rules)
-    - [How to write date](#how-to-write-date)
 
 <!-- /TOC -->
 
@@ -24,24 +19,11 @@
 
 Want to be really good in technology over getting certain certificates that may touch only surface level knowledge.
 
-## Performance: Long Term Tech Blogs
-
 ## Performance: Weekly Tech Blogs
 
-
-# Glossary
-
-## Zero-brain run
-
-A "zero-brain run" is an approach where you run a command or piece of code without fully understanding it, to see what happens. This method helps in learning through exploration and experimentation, allowing you to observe the behavior of the code and gain insights that can lead to a deeper understanding over time.
-
-
-## Rules
-
-### How to write date
-
-Write date:
-
-- `...<date>` means that I want to finish it by that date
-- `...<date> 90%` means that I have finished 90% of it by that date
-- `<date>` means that I have finished it on that date
+|    Date     |     Hours      |                                                                Result                                                                 |
+|:-----------:|:--------------:|:-------------------------------------------------------------------------------------------------------------------------------------:|
+| 11/30~12/6  |      6.5h      |                       [Dives into zsh's cd command in Week 49, 2025](https://dev.to/mlajkim/251130-zsh-cd-460i)                       |
+| 12/7~12/13  |                | [Dives into Kubernetes contribution in Week 50, 2025](https://dev.to/mlajkim/dives-into-kubernetes-contribution-in-week-50-2025-4i6g) |
+| 12/14~12/20 | ...12/22~12/26 |                                                                  ...                                                                  |
+| 12/21~12/27 |  ...12/27~28   |                                                                  ...                                                                  |

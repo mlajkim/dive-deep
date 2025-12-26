@@ -8,9 +8,6 @@ cover_image: "./thumbnail.png"
 
 # Goal
 
-> [!NOTE]
-> This dive took 6.5 hours
-
 The goal of this document is to dive deep into the following commands:
 ```sh
 cd /
@@ -46,6 +43,7 @@ This document is intended for users who have a basic understanding of Linux comm
     - [Dive into cd_new_pwd()](#dive-into-cd_new_pwd)
 - [Others](#others)
   - [First time seeing 25 years old commit](#first-time-seeing-25-years-old-commit)
+- [Dive Record: 6.5h](#dive-record-65h)
 
 <!-- /TOC -->
 
@@ -303,3 +301,8 @@ Basically write the new working directory to the `PWD` environment variable and 
 ## First time seeing 25 years old commit
 
 ![25_years_ago_commit](./assets/25_years_ago_commit.png)
+
+
+# Dive Record: 6.5h
+
+- 11/29: 6.5h

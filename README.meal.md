@@ -20,8 +20,6 @@ To not fall into food comma, stay sharp and well fit, I need to maintain my dail
 - [251225](./proofs/meal/251225.meal.md)
 - [251226](./proofs/meal/251226.meal.md)
 
-2863.132.18
-
 |    Date     |   Category    | Average |             Daily              |
 |:-----------:|:-------------:|:-------:|:------------------------------:|
 | 12/22~12/27 |   Calories    |   ...   | 2584, 2294 , 2182 , 2863, 2138 |

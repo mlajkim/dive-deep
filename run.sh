@@ -20,9 +20,9 @@ echo "Creating branch $BRANCH_NAME..."
 git checkout -b "$BRANCH_NAME"
 
 cat <<EOF > "$FILE_PATH"
-# ${FILE_DATE}
-
 <!-- # 251225.2863.132.18 -->
+
+# ${FILE_DATE}
 
 > [!TIP]
 > Check out the parent README file: [README.meal.md](../../README.meal.md)
@@ -37,18 +37,21 @@ cat <<EOF > "$FILE_PATH"
 
 <!-- /TOC -->
 
+<!-- ## Breakfast.627.47 -->
+
 ## Breakfast.xxx.xx
 
-<!-- ## Breakfast.627.47 -->
+
 
 |         Food         | Calories | Protein |
 |:--------------------:|:--------:|:-------:|
 | Baked Chicken Breast |   182    |   34    |
 |         ...          |   ...    |   ...   |
 
-## Lunch.xxx.xx
 
 <!-- ## Lunch.71.12 -->
+
+## Lunch.xxx.xx
 
 |    Food     | Calories | Protein |
 |:-----------:|:--------:|:-------:|

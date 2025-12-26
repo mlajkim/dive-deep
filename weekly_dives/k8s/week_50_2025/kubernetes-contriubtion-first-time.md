@@ -46,6 +46,7 @@ cover_image: "./thumbnail.png"
   - [Fixes CLA problem](#fixes-cla-problem)
   - [Closes the PR](#closes-the-pr)
 - [References](#references)
+- [Dive Record: 3.5h](#dive-record-35h)
 
 <!-- /TOC -->
 
@@ -538,3 +539,9 @@ So I close the PR:
 # References
 
 NONE
+
+
+# Dive Record: 3.5h
+
+- 12/11: 0.75h
+- 12/12: 2.75h
