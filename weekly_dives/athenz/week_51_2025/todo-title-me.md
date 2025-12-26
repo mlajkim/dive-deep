@@ -12,14 +12,13 @@
     - [Setup: Athenz Server in Kubernetes Cluster](#setup-athenz-server-in-kubernetes-cluster)
       - [Check](#check-1)
     - [Setup: Athenz ZMS Server Outside](#setup-athenz-zms-server-outside)
-    - [Setup: Setup athenz domain and services](#setup-setup-athenz-domain-and-services)
       - [Check](#check-2)
     - [Setup: Kubebuilder](#setup-kubebuilder)
   - [Exp1: Create a brute-force approaching](#exp1-create-a-brute-force-approaching)
     - [Exp1: Initialize Syncer Project](#exp1-initialize-syncer-project)
       - [Check: Structure](#check-structure)
     - [Exp1: Initalize git](#exp1-initalize-git)
-    - [Exp1: Initalize a API](#exp1-initalize-a-api)
+    - [Exp1: Initalize an API](#exp1-initalize-an-api)
       - [Checl: Structure](#checl-structure)
       - [Check: Domain](#check-domain)
       - [Check: Repo](#check-repo)
@@ -161,32 +160,19 @@ Then open up your browser and go to `http://localhost:3000`. You should see the 
 kubectl -n athenz port-forward deployment/athenz-zms-server 4443:4443
 ```
 
-### Setup: Setup athenz domain and services
-
-```sh
-function zms() {
-  local base_url="https://localhost:4443/zms/v1"
-  local path="${1}"
-
-  curl -s -k \
-    --cert service.cert.pem \
-    --key service.key.pem \
-    "${base_url}${path}" | jq .
-}
-
-
-```
-
 #### Check
 
-> [!TIP]
-> Ignore `{"code":401,"message":"Invalid credentials"}`, at least we know we can connect to the ZMS server:
+> [!CAUTION]
+> For the test, we will use the root certificate but do not use the root certificate for production use.
 
-Try to connect to ZMS server:
+Try to connect to the ZMS server with auto generated root certificate from `athenz-manifest`:
 
 ```sh
-zms "/domain"
-# {"code":401,"message":"Invalid credentials"}
+curl -k -X GET "https://localhost:4443/zms/v1/domain" \
+  --cert ./certs/athenz_admin.cert.pem \
+  --key ./keys/athenz_admin.private.pem
+
+# {"names":["home","sys","sys.auth","sys.auth.audit","sys.auth.audit.domain","sys.auth.audit.org","user","user.ajkim","user.dev"]}
 ```
 
 ### Setup: Kubebuilder
@@ -293,7 +279,7 @@ git add .
 git commit -m "Initial commit: Initialize kubebuilder project"
 ```
 
-### Exp1: Initalize a API
+### Exp1: Initalize an API
 
 The full name will be: `<group>.<domain>/<version>, Kind=<kind>`, as:
 
