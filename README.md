@@ -4,7 +4,6 @@
 > - Workout performance: [README.workout.md](./README.workout.md)
 > - Meal performance: [README.meal.md](./README.meal.md)
 > - Sleep performance: [README.sleep.md](./README.sleep.md)
-> - Weekly Dive performance: [README.weekly.md](./README.weekly.md)
 > - Half Yearly Dive: [README.official-tech-blogs.md](./README.official-tech-blogs.md)
 
 <!-- TOC -->
