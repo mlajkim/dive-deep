@@ -41,6 +41,16 @@
 The temporary goal is to build a cluster with Athenz installed, and see
 
 
+1. exp1: Create a custom k8s-athenz-syncer only with ZMS API, in a hard way
+- /domain?prefix={athenzDomain}   (ex: /domain?prefix=shared-kubernetes-cluster-helper)
+- /domain/{domainName}/role/{roleName}?auditLog=true&expand=true
+1. exp2: Create a custom k8s-athenz-syncer only with ZMS API, in a elegant way with checking updates and other mechanisms that I can think of
+1. exp3: Write a guide for deploying the k8s-athenz-syncer with good UI UX so that others can easily deploy and test it out. => This is especially good as I can contribute the team to really work on it (Remember the jenkins day that I did it for them so that they can easily deploy Copper Argos in Jenkins)
+1. exp4: Write thoughts and stuff
+1. exp5: Maybe I can write some PRs to improve the k8s-athenz-syncer if I find something missing or can be better.
+
+
+
 
 🟡 TODO: The following is temporary:
 
@@ -55,8 +65,6 @@ The goal of this document is to setup a syncer mechanism between Athenz and Kube
 
 1. Create the similar one only with ZMS API and see how it affects the k8s-athenz-syncer
 
-- /domain?prefix={athenzDomain}   (ex: /domain?prefix=shared-kubernetes-cluster-helper)
-- /domain/{domainName}/role/{roleName}?auditLog=true&expand=true
 
 
 1. Learn about the core logic of https://github.com/AthenZ/k8s-athenz-syncer with deployment examples
@@ -111,7 +119,7 @@ k cluster-info
 
 ### Setup: Athenz Server in Kubernetes Cluster
 
-Let's first setup the basic Athenz environment. We will use @ctyano's `athenz-distribution` repository:
+Let's first setup the basic Athenz environment. We will use [@ctyano's `athenz-distribution`](https://github.com/ctyano/athenz-distribution) repository:
 
 ```sh
 test_name=custom_k8s-athenz-syncer
