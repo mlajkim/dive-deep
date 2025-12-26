@@ -12,9 +12,10 @@
     - [Setup: Kubebuilder](#setup-kubebuilder)
   - [Exp1: Create a brute-force approaching](#exp1-create-a-brute-force-approaching)
     - [Exp1: Initialize Syncer Project](#exp1-initialize-syncer-project)
+      - [Check: Structure](#check-structure)
     - [Exp1: Initalize git](#exp1-initalize-git)
     - [Exp1: Create a API](#exp1-create-a-api)
-      - [Check: Structure](#check-structure)
+      - [Checl: Structure](#checl-structure)
       - [Check: Domain](#check-domain)
       - [Check: Repo](#check-repo)
 
@@ -171,35 +172,6 @@ kubebuilder init --domain $domain --repo $repo &> /dev/null
 # $ kubebuilder create api
 ```
 
-### Exp1: Initalize git
-
-To track progress, let's initialize git:
-
-```sh
-git init
-git add .
-git commit -m "Initial commit: Initialize kubebuilder project"
-```
-
-### Exp1: Create a API
-
-The full name will be: `<group>.<domain>/<version>, Kind=<kind>`, as:
-
-```yaml
-apiVersion: identity.ajktown.com/v1
-kind: AthenzSyncer
-...
-```
-
-```sh
-group="identity"
-version="v1"
-kind="AthenzSyncer"
-
-kubebuilder create api --group $group --version $version --kind $kind --resource --controller
-```
-
-
 #### Check: Structure
 
 Let' see what kind of file structure we have now:
@@ -249,6 +221,108 @@ tree .
 #     │   └── e2e_test.go
 #     └── utils
 #         └── utils.go
+```
+
+### Exp1: Initalize git
+
+To track progress, let's initialize git:
+
+```sh
+git init
+git add .
+git commit -m "Initial commit: Initialize kubebuilder project"
+```
+
+### Exp1: Create a API
+
+The full name will be: `<group>.<domain>/<version>, Kind=<kind>`, as:
+
+```yaml
+apiVersion: identity.ajktown.com/v1
+kind: AthenzSyncer
+...
+```
+
+```sh
+group="identity"
+version="v1"
+kind="AthenzSyncer"
+
+kubebuilder create api --group $group --version $version --kind $kind --resource --controller
+```
+
+
+#### Checl: Structure
+
+```sh
+tree .
+# .
+# ├── Dockerfile
+# ├── Makefile
+# ├── PROJECT
+# ├── README.md
+# ├── api
+# │   └── v1
+# │       ├── athenzsyncer_types.go
+# │       ├── groupversion_info.go
+# │       └── zz_generated.deepcopy.go
+# ├── bin
+# │   ├── controller-gen -> /Users/jekim/test_dive/251226_080757_athenz_distribution/my-athenz-syncer/bin/controller-gen-v0.19.0
+# │   └── controller-gen-v0.19.0
+# ├── cmd
+# │   └── main.go
+# ├── config
+# │   ├── crd
+# │   │   ├── kustomization.yaml
+# │   │   └── kustomizeconfig.yaml
+# │   ├── default
+# │   │   ├── cert_metrics_manager_patch.yaml
+# │   │   ├── kustomization.yaml
+# │   │   ├── manager_metrics_patch.yaml
+# │   │   └── metrics_service.yaml
+# │   ├── manager
+# │   │   ├── kustomization.yaml
+# │   │   └── manager.yaml
+# │   ├── network-policy
+# │   │   ├── allow-metrics-traffic.yaml
+# │   │   └── kustomization.yaml
+# │   ├── prometheus
+# │   │   ├── kustomization.yaml
+# │   │   ├── monitor.yaml
+# │   │   └── monitor_tls_patch.yaml
+# │   ├── rbac
+# │   │   ├── athenzsyncer_admin_role.yaml
+# │   │   ├── athenzsyncer_editor_role.yaml
+# │   │   ├── athenzsyncer_viewer_role.yaml
+# │   │   ├── kustomization.yaml
+# │   │   ├── leader_election_role.yaml
+# │   │   ├── leader_election_role_binding.yaml
+# │   │   ├── metrics_auth_role.yaml
+# │   │   ├── metrics_auth_role_binding.yaml
+# │   │   ├── metrics_reader_role.yaml
+# │   │   ├── role.yaml
+# │   │   ├── role_binding.yaml
+# │   │   └── service_account.yaml
+# │   └── samples
+# │       ├── identity_v1_athenzsyncer.yaml
+# │       └── kustomization.yaml
+# ├── go.mod
+# ├── go.sum
+# ├── hack
+# │   └── boilerplate.go.txt
+# ├── internal
+# │   └── controller
+# │       ├── athenzsyncer_controller.go
+# │       ├── athenzsyncer_controller_test.go
+# │       └── suite_test.go
+# └── test
+#     ├── e2e
+#     │   ├── e2e_suite_test.go
+#     │   └── e2e_test.go
+#     └── utils
+#         └── utils.go
+
+# 19 directories, 46 files
 ```
 
 #### Check: Domain
