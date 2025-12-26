@@ -76,4 +76,4 @@ git commit -m "first automated commit"
 
 git push -u origin "$BRANCH_NAME"
 
-echo "Done! Open the PR: https://github.com/mlajkim/dive-deep/pulls"
+open https://github.com/mlajkim/dive-deep/pulls
