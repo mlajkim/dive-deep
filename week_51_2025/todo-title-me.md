@@ -14,12 +14,12 @@
     - [Setup: Athenz ZMS Server Outside](#setup-athenz-zms-server-outside)
       - [Check](#check-2)
     - [Setup: Kubebuilder](#setup-kubebuilder)
-  - [Exp1: Create a brute-force approaching](#exp1-create-a-brute-force-approaching)
+  - [Exp1: Create syncer in hard way](#exp1-create-syncer-in-hard-way)
     - [Exp1: Initialize Syncer Project](#exp1-initialize-syncer-project)
       - [Check: Structure](#check-structure)
     - [Exp1: Initalize git](#exp1-initalize-git)
     - [Exp1: Initalize an API](#exp1-initalize-an-api)
-      - [Checl: Structure](#checl-structure)
+      - [Check: Structure](#check-structure-1)
       - [Check: Domain](#check-domain)
       - [Check: Repo](#check-repo)
     - [Exp1: Define API](#exp1-define-api)
@@ -190,7 +190,7 @@ brew install kubebuilder
 ```
 
 
-## Exp1: Create a brute-force approaching
+## Exp1: Create syncer in hard way
 
 Let's first create something that works, but not elegant *yet*.
 
@@ -304,7 +304,7 @@ kubebuilder create api --group $group --version $version --kind $kind --resource
 ```
 
 
-#### Checl: Structure
+#### Check: Structure
 
 ```sh
 tree .
