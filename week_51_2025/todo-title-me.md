@@ -14,7 +14,7 @@
     - [Setup: Athenz ZMS Server Outside](#setup-athenz-zms-server-outside)
       - [Check](#check-2)
     - [Setup: Kubebuilder](#setup-kubebuilder)
-  - [Exp1: Create Syncer the hard way.](#exp1-create-syncer-the-hard-way)
+  - [Exp1: Create K8s-Athenz-Syncer the hard way.](#exp1-create-k8s-athenz-syncer-the-hard-way)
     - [Exp1: Initialize Syncer Project](#exp1-initialize-syncer-project)
       - [Check: Structure](#check-structure)
     - [Exp1: Initialize git](#exp1-initialize-git)
@@ -202,7 +202,7 @@ brew install kubebuilder
 ```
 
 
-## Exp1: Create Syncer the hard way.
+## Exp1: Create K8s-Athenz-Syncer the hard way.
 
 > [!INFO]
 > Similar concept: [Kubernetes-the-hard-way](https://github.com/kelseyhightower/kubernetes-the-hard-way)
