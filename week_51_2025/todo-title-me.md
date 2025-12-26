@@ -17,8 +17,8 @@
   - [Exp1: Create syncer in hard way](#exp1-create-syncer-in-hard-way)
     - [Exp1: Initialize Syncer Project](#exp1-initialize-syncer-project)
       - [Check: Structure](#check-structure)
-    - [Exp1: Initalize git](#exp1-initalize-git)
-    - [Exp1: Initalize an API](#exp1-initalize-an-api)
+    - [Exp1: Initialize git](#exp1-initialize-git)
+    - [Exp1: Initialize an API](#exp1-initialize-an-api)
       - [Check: Structure](#check-structure-1)
       - [Check: Domain](#check-domain)
       - [Check: Repo](#check-repo)
@@ -283,7 +283,7 @@ tree .
 #         └── utils.go
 ```
 
-### Exp1: Initalize git
+### Exp1: Initialize git
 
 To track progress, let's initialize git:
 
@@ -293,7 +293,7 @@ git add .
 git commit -m "Initial commit: Initialize kubebuilder project"
 ```
 
-### Exp1: Initalize an API
+### Exp1: Initialize an API
 
 The full name will be: `<group>.<domain>/<version>, Kind=<kind>`, as:
 
