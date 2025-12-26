@@ -148,6 +148,10 @@ make -C ./athenz_distribution clean-kubernetes-athenz deploy-kubernetes-athenz
 > Wait for few minutes before pods running
 > You can check status in live with `kubectl get deploy athenz-ui -n athenz -w`
 
+> [!TIP]
+> It requires some DB spaces, and if you encounter `athenz-db`'s error `Errcode: 28 "No space left on device`
+> you can clean it up `docker image prune -a`
+
 Let's do this:
 
 ```sh
