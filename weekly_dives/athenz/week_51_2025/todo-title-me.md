@@ -331,6 +331,7 @@ Check domain:
 
 ```sh
 head -n 1 config/samples/identity_v1_athenzsyncer.yaml
+# apiVersion: identity.ajktown.com/v1
 ```
 
 #### Check: Repo
