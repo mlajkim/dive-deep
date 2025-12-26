@@ -18,7 +18,6 @@
     - [Exp1: Initialize Syncer Project](#exp1-initialize-syncer-project)
     - [Exp1: Initialize git](#exp1-initialize-git)
     - [Exp1: Initialize an API](#exp1-initialize-an-api)
-      - [Check: Structure](#check-structure)
       - [Check: Domain](#check-domain)
       - [Check: Repo](#check-repo)
     - [Exp1: Define API](#exp1-define-api)
@@ -262,81 +261,10 @@ group="identity"
 version="v1"
 kind="AthenzSyncer"
 
-kubebuilder create api --group $group --version $version --kind $kind --resource --controller
-```
+(cd k8s-athenz-syncer-the-hard-way && kubebuilder create api --group $group --version $version --kind $kind --resource --controller)
 
-
-#### Check: Structure
-
-```sh
-tree .
-# .
-# ├── Dockerfile
-# ├── Makefile
-# ├── PROJECT
-# ├── README.md
-# ├── api
-# │   └── v1
-# │       ├── athenzsyncer_types.go
-# │       ├── groupversion_info.go
-# │       └── zz_generated.deepcopy.go
-# ├── bin
-# │   ├── controller-gen -> /Users/jekim/test_dive/251226_080757_athenz_distribution/my-athenz-syncer/bin/controller-gen-v0.19.0
-# │   └── controller-gen-v0.19.0
-# ├── cmd
-# │   └── main.go
-# ├── config
-# │   ├── crd
-# │   │   ├── kustomization.yaml
-# │   │   └── kustomizeconfig.yaml
-# │   ├── default
-# │   │   ├── cert_metrics_manager_patch.yaml
-# │   │   ├── kustomization.yaml
-# │   │   ├── manager_metrics_patch.yaml
-# │   │   └── metrics_service.yaml
-# │   ├── manager
-# │   │   ├── kustomization.yaml
-# │   │   └── manager.yaml
-# │   ├── network-policy
-# │   │   ├── allow-metrics-traffic.yaml
-# │   │   └── kustomization.yaml
-# │   ├── prometheus
-# │   │   ├── kustomization.yaml
-# │   │   ├── monitor.yaml
-# │   │   └── monitor_tls_patch.yaml
-# │   ├── rbac
-# │   │   ├── athenzsyncer_admin_role.yaml
-# │   │   ├── athenzsyncer_editor_role.yaml
-# │   │   ├── athenzsyncer_viewer_role.yaml
-# │   │   ├── kustomization.yaml
-# │   │   ├── leader_election_role.yaml
-# │   │   ├── leader_election_role_binding.yaml
-# │   │   ├── metrics_auth_role.yaml
-# │   │   ├── metrics_auth_role_binding.yaml
-# │   │   ├── metrics_reader_role.yaml
-# │   │   ├── role.yaml
-# │   │   ├── role_binding.yaml
-# │   │   └── service_account.yaml
-# │   └── samples
-# │       ├── identity_v1_athenzsyncer.yaml
-# │       └── kustomization.yaml
-# ├── go.mod
-# ├── go.sum
-# ├── hack
-# │   └── boilerplate.go.txt
-# ├── internal
-# │   └── controller
-# │       ├── athenzsyncer_controller.go
-# │       ├── athenzsyncer_controller_test.go
-# │       └── suite_test.go
-# └── test
-#     ├── e2e
-#     │   ├── e2e_suite_test.go
-#     │   └── e2e_test.go
-#     └── utils
-#         └── utils.go
-
-# 19 directories, 46 files
+git -C k8s-athenz-syncer-the-hard-way add .
+git -C k8s-athenz-syncer-the-hard-way commit -m "Feat: Initialize AthenzSyncer API and Controller"
 ```
 
 #### Check: Domain
@@ -344,7 +272,7 @@ tree .
 Check domain:
 
 ```sh
-head -n 1 config/samples/identity_v1_athenzsyncer.yaml
+head -n 1 ./k8s-athenz-syncer-the-hard-way/config/samples/identity_v1_athenzsyncer.yaml
 # apiVersion: identity.ajktown.com/v1
 ```
 
@@ -353,7 +281,7 @@ head -n 1 config/samples/identity_v1_athenzsyncer.yaml
 You can see your domain and repo in the `go.mod` file:
 
 ```sh
-head -n 1 go.mod
+head -n 1 ./k8s-athenz-syncer-the-hard-way/go.mod
 # module github.com/mlajkim/athenz-syncer
 ```
 
@@ -369,7 +297,7 @@ So far we only have boilerplate code, and we need to define the oeperator's:
 
 ### Exp1: Define Spec
 
-Modify `api/v1/athenzsyncer_types.go`:
+Modify `./k8s-athenz-syncer-the-hard-way/api/v1/athenzsyncer_types.go`:
 
 ```go
 type AthenzSyncerSpec struct {
@@ -395,14 +323,14 @@ type AthenzSyncerSpec struct {
 Then:
 
 ```sh
-make manifests
+make -C ./k8s-athenz-syncer-the-hard-way manifests
 # "~/test_dive/251226_080757_athenz_distribution/my-athenz-syncer/bin/controller-gen" rbac:roleName=manager-role crd webhook paths="./..." output:crd:artifacts:config=config/crd/bases
 ```
 
 ### Exp1: Define yaml
 
 
-`config/samples/identity_v1_athenzsyncer.yaml`
+`./k8s-athenz-syncer-the-hard-way/config/samples/identity_v1_athenzsyncer.yaml`
 
 ```yaml
 apiVersion: identity.ajktown.com/v1
@@ -422,6 +350,53 @@ spec:
 ### Exp1: Define Controller
 
 `internal/controller/athenzsyncer_controller.go`
+
+Replace the original `Reconcile` function with the following:
+
+```go
+func (r *AthenzSyncerReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
+	log := logf.FromContext(ctx)
+
+	var syncer identityv1.AthenzSyncer
+	if err := r.Get(ctx, req.NamespacedName, &syncer); err != nil {
+		return ctrl.Result{}, client.IgnoreNotFound(err)
+	}
+
+	targetDomain := syncer.Spec.AthenzDomain
+	zmsURL := syncer.Spec.ZMSURL
+
+	log.Info("Reconciling AthenzSyncer ...", "AthenzSyncer", req.NamespacedName, "Target", targetDomain, "URL", zmsURL)
+
+	tr := &http.Transport{
+		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
+	}
+	httpClient := &http.Client{Transport: tr}
+
+	fullURL := fmt.Sprintf("%s/domain/%s", zmsURL, targetDomain)
+
+	resp, err := httpClient.Get(fullURL)
+	if err != nil {
+		log.Error(err, "🔥 Failed to connect to Athenz Server")
+	} else {
+		defer resp.Body.Close()
+		bodyBytes, _ := io.ReadAll(resp.Body)
+		bodyString := string(bodyBytes)
+
+		// if response is 200
+		if resp.StatusCode == 200 {
+			preview := bodyString
+			if len(bodyString) > 200 {
+				preview = bodyString[:200] + "..."
+			}
+			log.Info("✅ Athenz Response OK!", "StatusCode", resp.StatusCode, "Data", preview)
+		} else {
+			log.Info("⚠️ Athenz Returned Error", "StatusCode", resp.StatusCode)
+		}
+	}
+
+	return ctrl.Result{}, nil
+}
+```
 
 ### Exp1: Register CRD
 
