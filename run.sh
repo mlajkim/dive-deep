@@ -44,7 +44,6 @@ cat <<EOF > "$FILE_PATH"
 |         Food         | Calories | Protein |
 |:--------------------:|:--------:|:-------:|
 | Baked Chicken Breast |   182    |   34    |
-|        Coffee        |    0     |    0    |
 |         ...          |   ...    |   ...   |
 
 ## Lunch.xxx.xx
@@ -54,17 +53,15 @@ cat <<EOF > "$FILE_PATH"
 |    Food     | Calories | Protein |
 |:-----------:|:--------:|:-------:|
 | Protein 1/2 |   240    |   37    |
-|   Coffee    |    0     |    0    |
 |     ...     |   ...    |   ...   |
 
 ## Dinner.xxx.xx
 
-<!-- ## Lunch.71.12 -->
+<!-- ## Dinner.71.12 -->
 
 |    Food     | Calories | Protein |
 |:-----------:|:--------:|:-------:|
 | Protein 1/2 |   240    |   37    |
-|   Coffee    |    0     |    0    |
 |     ...     |   ...    |   ...   |
 
 EOF
