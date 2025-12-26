@@ -204,6 +204,9 @@ brew install kubebuilder
 
 ## Exp1: Create Syncer the hard way.
 
+> [!INFO]
+> Similar concept: [Kubernetes-the-hard-way](https://github.com/kelseyhightower/kubernetes-the-hard-way)
+
 Let's first create something that works, but not elegant *yet*.
 
 https://kubernetes.io/docs/concepts/extend-kubernetes/operator/
