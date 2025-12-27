@@ -14,6 +14,7 @@
     - [Setup: Athenz ZMS Server Outside](#setup-athenz-zms-server-outside)
       - [Check](#check-2)
     - [Setup: Create TLD beforehand](#setup-create-tld-beforehand)
+    - [Setup: Create subdomains](#setup-create-subdomains)
     - [Setup: Kubebuilder](#setup-kubebuilder)
   - [Exp1: Create K8s-Athenz-Syncer the hard way.](#exp1-create-k8s-athenz-syncer-the-hard-way)
     - [Exp1: Initialize Syncer Project](#exp1-initialize-syncer-project)
@@ -23,11 +24,11 @@
       - [Check: Repo](#check-repo)
     - [Exp1: Define API](#exp1-define-api)
     - [Exp1: Define Spec](#exp1-define-spec)
-    - [Exp1: Define yaml](#exp1-define-yaml)
     - [Exp1: Register CRD](#exp1-register-crd)
       - [Check](#check-3)
     - [Exp1: Define Controller](#exp1-define-controller)
     - [Exp1: Run Controller](#exp1-run-controller)
+    - [Exp1: Define yaml](#exp1-define-yaml)
     - [Exp1: Finally create](#exp1-finally-create)
       - [Check: Log from Controller](#check-log-from-controller)
 - [Dive Records](#dive-records)
@@ -215,6 +216,29 @@ curl -k -X POST "https://localhost:4443/zms/v1/domain" \
 # {"description":"Elastic Kubernetes Service Domain","org":"ajkim","auditEnabled":false,"ypmId":0,"autoDeleteTenantAssumeRoleAssertions":false,"name":"eks","modified":"2025-12-27T03:00:05.421Z","id":"253b65d0-e2d0-11f0-9dea-17c92bf9f5a9"}
 ```
 
+
+### Setup: Create subdomains
+
+> [!TIP]
+> [Source code](https://github.com/AthenZ/athenz/blob/master/core/zms/src/main/rdl/Domain.rdli#L81-L95) for the `POST /subdomain/{parent}` API in Athenz ZMS Server.
+
+```sh
+curl -k -X POST "https://localhost:4443/zms/v1/subdomain/eks" \
+	--cert ./athenz_distribution/certs/athenz_admin.cert.pem \
+	--key ./athenz_distribution/keys/athenz_admin.private.pem \
+	-H "Content-Type: application/json" \
+	-d '{
+		"parent": "eks",
+		"name": "users",
+		"description": "EKS Users Subdomain",
+		"org": "ajkim",
+		"enabled": true,
+		"adminUsers": ["user.athenz_admin"]
+	}'
+
+# {"description":"Athenz Users Subdomain","org":"ajkim","auditEnabled":false,"name":"eks.users","modified":"2025-12-27T03:02:42.141Z","id":"82a4f8d0-e2d0-11f0-9dea-17c92bf9f5a9"}
+```
+
 ### Setup: Kubebuilder
 
 If you do not have `kubebuilder` yet, please install it first:
@@ -351,25 +375,6 @@ make -C ./k8s-athenz-syncer-the-hard-way manifests
 # "~/test_dive/251226_080757_athenz_distribution/my-athenz-syncer/bin/controller-gen" rbac:roleName=manager-role crd webhook paths="./..." output:crd:artifacts:config=config/crd/bases
 ```
 
-### Exp1: Define yaml
-
-
-`./k8s-athenz-syncer-the-hard-way/config/samples/identity_v1_athenzsyncer.yaml`
-
-```yaml
-apiVersion: identity.ajktown.com/v1
-kind: AthenzSyncer
-metadata:
-  labels:
-    app.kubernetes.io/name: my-athenz-syncer
-    app.kubernetes.io/managed-by: kustomize
-  name: athenzsyncer-sample
-spec:
-  athenzDomain: "eks.users"
-  zmsURL: "https://localhost:4443/zms/v1"
-
-```
-
 ### Exp1: Register CRD
 
 All the files under `config/crd/bases` are applied:
@@ -457,6 +462,23 @@ make -C ./k8s-athenz-syncer-the-hard-way run
 # 2025-12-26T11:48:04+09:00	INFO	Starting workers	{"controller": "athenzsyncer", "controllerGroup": "identity.ajktown.com", "controllerKind": "AthenzSyncer", "worker count": 1}
 ```
 
+### Exp1: Define yaml
+
+`./k8s-athenz-syncer-the-hard-way/config/samples/identity_v1_athenzsyncer.yaml`
+
+```yaml
+apiVersion: identity.ajktown.com/v1
+kind: AthenzSyncer
+metadata:
+  labels:
+    app.kubernetes.io/name: my-athenz-syncer
+    app.kubernetes.io/managed-by: kustomize
+  name: athenzsyncer-sample
+spec:
+  athenzDomain: "eks.users"
+  zmsURL: "https://localhost:4443/zms/v1"
+
+```
 
 ### Exp1: Finally create
 
@@ -466,6 +488,7 @@ By creating the resource with the following command, the operator will soon noti
 
 ```sh
 kubectl apply -f ./k8s-athenz-syncer-the-hard-way/config/samples/identity_v1_athenzsyncer.yaml
+
 # athenzsyncer.identity.ajktown.com/athenzsyncer-sample created
 ```
 
