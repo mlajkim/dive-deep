@@ -23,11 +23,9 @@ To not fall into food comma, stay sharp and well fit, I need to maintain my dail
 > [!TIP]
 > Grocery activities give you more chances to buy healthier food over delivery or eating out.
 
-- [251222](./proofs/meal/251222.meal.md)
-- [251223](./proofs/meal/251223.meal.md)
-- [251224](./proofs/meal/251224.meal.md)
-- [251225](./proofs/meal/251225.meal.md)
-- [251226](./proofs/meal/251226.meal.md)
+> [!NOTE]
+> Check out the proofs [here](./proofs/meal/).
+
 
 |    Date     |   Category    | Average |               Daily                |
 |:-----------:|:-------------:|:-------:|:----------------------------------:|
