@@ -28,7 +28,7 @@ Want to be really good in technology over getting certain certificates that may 
 
 ### 12/28~1/3: Not Yet Titled
 
-> [!INFO]
+> [!NOTE]
 > Topic about learning the production used athenz-syncer and learn based on what I have been searching so far
 
 ## 2025 Performance: Weekly Tech Blogs
@@ -38,7 +38,7 @@ Want to be really good in technology over getting certain certificates that may 
 > [!WARNING]
 > LATE HERE: My current goal is to post it on Dec 31, 2025
 
-> [!INFO]
+> [!NOTE]
 > Topic about how I improved my custom syncer performance to the extreme
 
 ### 12/14~12/20: Not Yet Titled
@@ -46,7 +46,7 @@ Want to be really good in technology over getting certain certificates that may 
 > [!CAUTION]
 > VERY LATE HERE: My current goal is to post it on Dec 28, 2025
 
-> [!INFO]
+> [!NOTE]
 > Topic about the hard way to build a syncer by my own
 
 ### 12/7~12/13: Dives into Kubernetes contribution in Week 50, 2025

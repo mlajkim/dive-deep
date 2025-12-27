@@ -251,7 +251,7 @@ brew install kubebuilder
 
 ## Exp1: Create k8s-athenz-syncer-the-hard-way
 
-> [!INFO]
+> [!NOTE]
 > Similar concept: [Kubernetes-the-hard-way](https://github.com/kelseyhightower/kubernetes-the-hard-way)
 
 Let's first create something that works, but not elegant *yet*.

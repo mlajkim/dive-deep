@@ -91,7 +91,7 @@ echo $0
 
 ## Dive into the source code of `cd`'s `bin_cd` command in `zsh`
 
-> [!INFO]
+> [!NOTE]
 > The following is a mirror link of the official repository of `zsh`
 
 https://github.com/zsh-users/zsh
@@ -110,7 +110,7 @@ if (isset(RESTRICTED)) {
 }
 ```
 
-> [!INFO]
+> [!NOTE]
 > zwarnnam is a compound word for: `z`(ZSH) + `warn` (WARNING) + `nam` (NAME)
 > A function for error output with consistent formatting.
 
@@ -266,7 +266,7 @@ Also it is shared by the following commands (Please note that they had to do thi
 
 If argument is empty:
 
-> [!INFO]
+> [!NOTE]
 > `popd` stands for "pop directory" and is used to remove the top entry from the directory stack and change the current working directory to that entry.
 
 ```c
