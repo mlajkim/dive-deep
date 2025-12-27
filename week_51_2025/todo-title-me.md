@@ -31,6 +31,7 @@
     - [Exp1: Define yaml](#exp1-define-yaml)
     - [Exp1: Finally create](#exp1-finally-create)
       - [Check: Log from Controller](#check-log-from-controller)
+    - [Exp1: Create an operator that creates Athenz Domain when NS is created in Kubernetes](#exp1-create-an-operator-that-creates-athenz-domain-when-ns-is-created-in-kubernetes)
 - [Dive Records](#dive-records)
 
 <!-- /TOC -->
@@ -507,6 +508,21 @@ Check out the log from the controller terminal:
 ```sh
 # 2025-12-27T12:41:52025-12-27T12:41:58+09:00	INFO	Reconciling AthenzSyncer ...	{"controller": "athenzsyncer", "controllerGroup": "identity.ajktown.com", "controllerKind": "AthenzSyncer", "AthenzSyncer": {"name":"athenzsyncer-sample","namespace":"default"}, "namespace": "default", "name": "athenzsyncer-sample", "reconcileID": "366e13d0-fadf-4b37-9850-c1ae4e017d05", "AthenzSyncer": {"name":"athenzsyncer-sample","namespace":"default"}, "Target": "eks.users", "URL": "https://localhost:4443/zms/v1"}
 # 2025-12-27T12:41:58+09:00	INFO	✅ Athenz Response OK!	{"controller": "athenzsyncer", "controllerGroup": "identity.ajktown.com", "controllerKind": "AthenzSyncer", "AthenzSyncer": {"name":"athenzsyncer-sample","namespace":"default"}, "namespace": "default", "name": "athenzsyncer-sample", "reconcileID": "366e13d0-fadf-4b37-9850-c1ae4e017d05", "StatusCode": 200, "Data": "{\"description\":\"Athenz Users Subdomain\",\"org\":\"ajkim\",\"enabled\":true,\"auditEnabled\":false,\"ypmId\":0,\"autoDeleteTenantAssumeRoleAssertions\":false,\"name\":\"eks.users\",\"modified\":\"2025-12-27T03:02:42.153Z..."}
+```
+
+
+### Exp1: Create an operator that creates Athenz Domain when NS is created in Kubernetes
+
+> [!TIP]
+> I first decided against deleting the Athenz domain upon namespace deletion.
+> This is to prevent the accidental loss of critical roles if a Kubernetes namespace is deleted in error.
+> BUT, I realized this creates a trade-off where stale data may accumulate in the Athenz server,
+> potentially leading to namespace name occupancy or collisions in the future.
+
+We can set `--resource=false` as we do not need the CRD (Because `Namespace` is the native Kubernetes resource):
+
+```sh
+(cd k8s-athenz-syncer-the-hard-way && kubebuilder create api --group core --version v1 --kind Namespace --controller=true --resource=false)
 ```
 
 

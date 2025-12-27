@@ -27,6 +27,7 @@ Want to be really good in technology over getting certain certificates that may 
 
 
 
+
 ## Performance: Weekly Tech Blogs
 
 |    Date     | Hours |                                                                Result                                                                 |
