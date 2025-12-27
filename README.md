@@ -18,6 +18,15 @@
 
 Want to be really good in technology over getting certain certificates that may touch only surface level knowledge.
 
+|                                      Task                                       |    Done     |
+|:-------------------------------------------------------------------------------:|:-----------:|
+|                     Be able to get subdomains using prefix                      | 12/27 14:15 |
+|                                       ...                                       |     ...     |
+| Create a controller that creates Athenz Domain when NS is created in Kubernetes |     ...     |
+| Create a controller that deletes Athenz Domain when NS is deleted in Kubernetes |     ...     |
+
+
+
 ## Performance: Weekly Tech Blogs
 
 |    Date     | Hours |                                                                Result                                                                 |
