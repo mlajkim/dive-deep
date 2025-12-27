@@ -32,13 +32,19 @@ The current goal, officially starting on Dec 21, 2025~, is to:
 > [!TIP]
 > It is allowed to write A WEEK ahead of time, but not more than that. This is to ensure that you are motivated to do more or workout in advance to handle certain schedules upcoming.
 
-|    Date     | Weekly Goal |                                                                  Days Done                                                                  |
-|:-----------:|:-----------:|:-------------------------------------------------------------------------------------------------------------------------------------------:|
-|  12/28~1/3  |    Golf     |                                                                     ...                                                                     |
-|             |   Workout   |                                                                     ...                                                                     |
-|             |   Cardio    |                                                                     ...                                                                     |
-| 12/21~12/27 |    Golf     |                                                   [12/27](./proofs/golf/251227.golf.png)                                                    |
-|             |   Workout   | [12/20](./proofs/workout/251220.back.4_4.png), [12/24](./proofs/workout/251224.leg.5_2.png), [12/26](./proofs/workout/251226.chest.3_0.png) |
-|             |   Cardio    |                                               [12/20](./proofs/cardio/251220.bike.50kcal.png)                                               |
+Checkout the proofs for:
+- [Golf](./proofs/golf/)
+- [Workout](./proofs/workout/)
+- [Cardio](./proofs/cardio/)
+
+|    Date     | Weekly Goal |           Days Done           |
+|:-----------:|:-----------:|:-----------------------------:|
+|  12/28~1/3  |    Rest     |       ...12/28, ...1/1        |
+|             |    Golf     |  ...12/29F,  ...1/2, ...1/3F  |
+|             |   Workout   | ...12/30B, ...12/31L, ...1/2C |
+|             |   Cardio    |       ...12/30, ...1/2        |
+| 12/21~12/27 |    Golf     |             12/27             |
+|             |   Workout   |      12/20, 12/24, 12/26      |
+|             |   Cardio    |             12/20             |
 
 
