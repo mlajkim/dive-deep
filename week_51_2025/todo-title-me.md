@@ -16,7 +16,7 @@
     - [Setup: Create TLD beforehand](#setup-create-tld-beforehand)
     - [Setup: Create subdomains](#setup-create-subdomains)
     - [Setup: Kubebuilder](#setup-kubebuilder)
-  - [Exp1: Create K8s-Athenz-Syncer the hard way.](#exp1-create-k8s-athenz-syncer-the-hard-way)
+  - [Exp1: Create k8s-athenz-syncer-the-hard-way](#exp1-create-k8s-athenz-syncer-the-hard-way)
     - [Exp1: Initialize Syncer Project](#exp1-initialize-syncer-project)
     - [Exp1: Initialize git](#exp1-initialize-git)
     - [Exp1: Initialize an API](#exp1-initialize-an-api)
@@ -248,7 +248,7 @@ brew install kubebuilder
 ```
 
 
-## Exp1: Create K8s-Athenz-Syncer the hard way.
+## Exp1: Create k8s-athenz-syncer-the-hard-way
 
 > [!INFO]
 > Similar concept: [Kubernetes-the-hard-way](https://github.com/kelseyhightower/kubernetes-the-hard-way)
