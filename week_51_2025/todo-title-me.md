@@ -13,6 +13,7 @@
       - [Check](#check-1)
     - [Setup: Athenz ZMS Server Outside](#setup-athenz-zms-server-outside)
       - [Check](#check-2)
+    - [Setup: Create TLD beforehand](#setup-create-tld-beforehand)
     - [Setup: Kubebuilder](#setup-kubebuilder)
   - [Exp1: Create K8s-Athenz-Syncer the hard way.](#exp1-create-k8s-athenz-syncer-the-hard-way)
     - [Exp1: Initialize Syncer Project](#exp1-initialize-syncer-project)
@@ -23,9 +24,9 @@
     - [Exp1: Define API](#exp1-define-api)
     - [Exp1: Define Spec](#exp1-define-spec)
     - [Exp1: Define yaml](#exp1-define-yaml)
-    - [Exp1: Define Controller](#exp1-define-controller)
     - [Exp1: Register CRD](#exp1-register-crd)
       - [Check](#check-3)
+    - [Exp1: Define Controller](#exp1-define-controller)
     - [Exp1: Run Controller](#exp1-run-controller)
     - [Exp1: Finally create](#exp1-finally-create)
       - [Check: Log from Controller](#check-log-from-controller)
@@ -191,6 +192,29 @@ curl -k -X GET "https://localhost:4443/zms/v1/domain" \
 # {"names":["home","sys","sys.auth","sys.auth.audit","sys.auth.audit.domain","sys.auth.audit.org","user","user.ajkim","user.dev"]}
 ```
 
+### Setup: Create TLD beforehand
+
+> [!TIP]
+> [Source code](https://github.com/AthenZ/athenz/blob/master/core/zms/src/main/rdl/Domain.rdli#L65-L77) for the `POST /domain` API in Athenz ZMS Server.
+
+We need to create a TLD
+
+```sh
+curl -k -X POST "https://localhost:4443/zms/v1/domain" \
+	--cert ./athenz_distribution/certs/athenz_admin.cert.pem \
+	--key ./athenz_distribution/keys/athenz_admin.private.pem \
+	-H "Content-Type: application/json" \
+	-d '{
+		"name": "eks",
+		"description": "Elastic Kubernetes Service Domain",
+		"org": "ajkim",
+		"enabled": true,
+		"adminUsers": ["user.athenz_admin"]
+	}'
+
+# {"description":"Elastic Kubernetes Service Domain","org":"ajkim","auditEnabled":false,"ypmId":0,"autoDeleteTenantAssumeRoleAssertions":false,"name":"eks","modified":"2025-12-27T03:00:05.421Z","id":"253b65d0-e2d0-11f0-9dea-17c92bf9f5a9"}
+```
+
 ### Setup: Kubebuilder
 
 If you do not have `kubebuilder` yet, please install it first:
@@ -341,9 +365,27 @@ metadata:
     app.kubernetes.io/managed-by: kustomize
   name: athenzsyncer-sample
 spec:
-  athenzDomain: "athenz-syncer"
+  athenzDomain: "eks.users"
   zmsURL: "https://localhost:4443/zms/v1"
 
+```
+
+### Exp1: Register CRD
+
+All the files under `config/crd/bases` are applied:
+
+```sh
+make -C ./k8s-athenz-syncer-the-hard-way install
+...
+# customresourcedefinition.apiextensions.k8s.io/athenzsyncers.identity.ajktown.com created
+```
+
+#### Check
+
+```sh
+k api-resources | grep $domain
+
+# athenzsyncers                                    identity.ajktown.com/v1           true         AthenzSynce
 ```
 
 
@@ -398,23 +440,6 @@ func (r *AthenzSyncerReconciler) Reconcile(ctx context.Context, req ctrl.Request
 }
 ```
 
-### Exp1: Register CRD
-
-All the files under `config/crd/bases` are applied:
-
-```sh
-make -C ./k8s-athenz-syncer-the-hard-way install
-...
-# customresourcedefinition.apiextensions.k8s.io/athenzsyncers.identity.ajktown.com created
-```
-
-#### Check
-
-```sh
-k api-resources | grep $domain
-# athenzsyncers                                    identity.ajktown.com/v1           true         AthenzSynce
-```
-
 ### Exp1: Run Controller
 
 > [!TIP]
@@ -424,6 +449,7 @@ Controller for now works locally to receive your request:
 
 ```sh
 make -C ./k8s-athenz-syncer-the-hard-way run
+
 # 2025-12-26T11:48:04+09:00	INFO	setup	starting manager
 # 2025-12-26T11:48:04+09:00	INFO	starting server	{"name": "health probe", "addr": "[::]:8081"}
 # 2025-12-26T11:48:04+09:00	INFO	Starting EventSource	{"controller": "athenzsyncer", "controllerGroup": "identity.ajktown.com", "controllerKind": "AthenzSyncer", "source": "kind source: *v1.AthenzSyncer"}
