@@ -13,24 +13,25 @@
       - [Check](#check-1)
     - [Setup: Athenz ZMS Server Outside](#setup-athenz-zms-server-outside)
       - [Check](#check-2)
+    - [Setup: Create TLD beforehand](#setup-create-tld-beforehand)
+    - [Setup: Create subdomains](#setup-create-subdomains)
     - [Setup: Kubebuilder](#setup-kubebuilder)
-  - [Exp1: Create a brute-force approaching](#exp1-create-a-brute-force-approaching)
+  - [Exp1: Create k8s-athenz-syncer-the-hard-way](#exp1-create-k8s-athenz-syncer-the-hard-way)
     - [Exp1: Initialize Syncer Project](#exp1-initialize-syncer-project)
-      - [Check: Structure](#check-structure)
-    - [Exp1: Initalize git](#exp1-initalize-git)
-    - [Exp1: Initalize an API](#exp1-initalize-an-api)
-      - [Checl: Structure](#checl-structure)
+    - [Exp1: Initialize git](#exp1-initialize-git)
+    - [Exp1: Initialize an API](#exp1-initialize-an-api)
       - [Check: Domain](#check-domain)
       - [Check: Repo](#check-repo)
     - [Exp1: Define API](#exp1-define-api)
     - [Exp1: Define Spec](#exp1-define-spec)
-    - [Exp1: Define yaml](#exp1-define-yaml)
-    - [Exp1: Define Controller](#exp1-define-controller)
     - [Exp1: Register CRD](#exp1-register-crd)
       - [Check](#check-3)
+    - [Exp1: Define Controller](#exp1-define-controller)
     - [Exp1: Run Controller](#exp1-run-controller)
+    - [Exp1: Define yaml](#exp1-define-yaml)
     - [Exp1: Finally create](#exp1-finally-create)
       - [Check: Log from Controller](#check-log-from-controller)
+    - [Exp1: Create an operator that creates Athenz Domain when NS is created in Kubernetes](#exp1-create-an-operator-that-creates-athenz-domain-when-ns-is-created-in-kubernetes)
 - [Dive Records](#dive-records)
 
 <!-- /TOC -->
@@ -39,6 +40,16 @@
 # Goal
 
 The temporary goal is to build a cluster with Athenz installed, and see
+
+
+1. exp1: Create a custom k8s-athenz-syncer only with ZMS API, in a hard way
+- /domain?prefix={athenzDomain}   (ex: /domain?prefix=shared-kubernetes-cluster-helper)
+- /domain/{domainName}/role/{roleName}?auditLog=true&expand=true
+1. exp2: Create a custom k8s-athenz-syncer only with ZMS API, in a elegant way with checking updates and other mechanisms that I can think of
+1. exp3: Write a guide for deploying the k8s-athenz-syncer with good UI UX so that others can easily deploy and test it out. => This is especially good as I can contribute the team to really work on it (Remember the jenkins day that I did it for them so that they can easily deploy Copper Argos in Jenkins)
+1. exp4: Write thoughts and stuff
+1. exp5: Maybe I can write some PRs to improve the k8s-athenz-syncer if I find something missing or can be better.
+
 
 
 
@@ -55,8 +66,6 @@ The goal of this document is to setup a syncer mechanism between Athenz and Kube
 
 1. Create the similar one only with ZMS API and see how it affects the k8s-athenz-syncer
 
-- /domain?prefix={athenzDomain}   (ex: /domain?prefix=shared-kubernetes-cluster-helper)
-- /domain/{domainName}/role/{roleName}?auditLog=true&expand=true
 
 
 1. Learn about the core logic of https://github.com/AthenZ/k8s-athenz-syncer with deployment examples
@@ -111,17 +120,16 @@ k cluster-info
 
 ### Setup: Athenz Server in Kubernetes Cluster
 
-Let's first setup the basic Athenz environment. We will use @ctyano's `athenz-distribution` repository:
+Let's first setup the basic Athenz environment. We will use [@ctyano's `athenz-distribution`](https://github.com/ctyano/athenz-distribution) repository:
 
 ```sh
-test_name=athenz_distribution
-tmp_dir=$(date +%y%m%d_%H%M%S_$test_name)
-mkdir -p ~/test_dive/
-cd ~/test_dive
+test_name=custom_k8s-athenz-syncer
 
-git clone https://github.com/ctyano/athenz-distribution.git $tmp_dir
-cd $tmp_dir
-make clean-kubernetes-athenz deploy-kubernetes-athenz
+_tmp_dir=$(date +%y%m%d_%H%M%S_$test_name)
+mkdir -p ~/test_dive/$_tmp_dir && cd ~/test_dive/$_tmp_dir
+
+git clone https://github.com/ctyano/athenz-distribution.git athenz_distribution
+make -C ./athenz_distribution clean-kubernetes-athenz deploy-kubernetes-athenz
 
 # Lots of log ...
 # kubectl apply -k athenz-ui/kustomize
@@ -137,7 +145,13 @@ make clean-kubernetes-athenz deploy-kubernetes-athenz
 #### Check
 
 > [!TIP]
-> Make take few minutes to see the UI up and running.
+> If you see `error: unable to forward port because pod is not running. Current status=Pending`,
+> Wait for few minutes before pods running
+> You can check status in live with `kubectl get deploy athenz-ui -n athenz -w`
+
+> [!TIP]
+> It requires some DB spaces, and if you encounter `athenz-db`'s error `Errcode: 28 "No space left on device`
+> you can clean it up `docker image prune -a`
 
 Let's do this:
 
@@ -148,7 +162,11 @@ kubectl -n athenz port-forward deployment/athenz-ui 3000:3000
 # Forwarding from [::1]:3000 -> 3000
 ```
 
-Then open up your browser and go to `http://localhost:3000`. You should see the Athenz UI page:
+Then do the following to see the screenshot below:
+
+```sh
+open http://localhost:3000
+```
 
 ![athenz_page](./assets/athenz_page.png)
 
@@ -170,10 +188,56 @@ Try to connect to the ZMS server with auto generated root certificate from `athe
 
 ```sh
 curl -k -X GET "https://localhost:4443/zms/v1/domain" \
-  --cert ./certs/athenz_admin.cert.pem \
-  --key ./keys/athenz_admin.private.pem
+  --cert ./athenz_distribution/certs/athenz_admin.cert.pem \
+  --key ./athenz_distribution/keys/athenz_admin.private.pem
 
 # {"names":["home","sys","sys.auth","sys.auth.audit","sys.auth.audit.domain","sys.auth.audit.org","user","user.ajkim","user.dev"]}
+```
+
+### Setup: Create TLD beforehand
+
+> [!TIP]
+> [Source code](https://github.com/AthenZ/athenz/blob/master/core/zms/src/main/rdl/Domain.rdli#L65-L77) for the `POST /domain` API in Athenz ZMS Server.
+
+We need to create a TLD
+
+```sh
+curl -k -X POST "https://localhost:4443/zms/v1/domain" \
+	--cert ./athenz_distribution/certs/athenz_admin.cert.pem \
+	--key ./athenz_distribution/keys/athenz_admin.private.pem \
+	-H "Content-Type: application/json" \
+	-d '{
+		"name": "eks",
+		"description": "Elastic Kubernetes Service Domain",
+		"org": "ajkim",
+		"enabled": true,
+		"adminUsers": ["user.athenz_admin"]
+	}'
+
+# {"description":"Elastic Kubernetes Service Domain","org":"ajkim","auditEnabled":false,"ypmId":0,"autoDeleteTenantAssumeRoleAssertions":false,"name":"eks","modified":"2025-12-27T03:00:05.421Z","id":"253b65d0-e2d0-11f0-9dea-17c92bf9f5a9"}
+```
+
+
+### Setup: Create subdomains
+
+> [!TIP]
+> [Source code](https://github.com/AthenZ/athenz/blob/master/core/zms/src/main/rdl/Domain.rdli#L81-L95) for the `POST /subdomain/{parent}` API in Athenz ZMS Server.
+
+```sh
+curl -k -X POST "https://localhost:4443/zms/v1/subdomain/eks" \
+	--cert ./athenz_distribution/certs/athenz_admin.cert.pem \
+	--key ./athenz_distribution/keys/athenz_admin.private.pem \
+	-H "Content-Type: application/json" \
+	-d '{
+		"parent": "eks",
+		"name": "users",
+		"description": "EKS Users Subdomain",
+		"org": "ajkim",
+		"enabled": true,
+		"adminUsers": ["user.athenz_admin"]
+	}'
+
+# {"description":"Athenz Users Subdomain","org":"ajkim","auditEnabled":false,"name":"eks.users","modified":"2025-12-27T03:02:42.141Z","id":"82a4f8d0-e2d0-11f0-9dea-17c92bf9f5a9"}
 ```
 
 ### Setup: Kubebuilder
@@ -185,7 +249,10 @@ brew install kubebuilder
 ```
 
 
-## Exp1: Create a brute-force approaching
+## Exp1: Create k8s-athenz-syncer-the-hard-way
+
+> [!NOTE]
+> Similar concept: [Kubernetes-the-hard-way](https://github.com/kelseyhightower/kubernetes-the-hard-way)
 
 Let's first create something that works, but not elegant *yet*.
 
@@ -207,80 +274,28 @@ https://book.kubebuilder.io/
 
 ```sh
 domain="ajktown.com"
-repo="github.com/mlajkim/athenz-syncer"
+repo="github.com/mlajkim/k8s-athenz-syncer-the-hard-way"
 
-mkdir -p my-athenz-syncer && cd my-athenz-syncer
-kubebuilder init --domain $domain --repo $repo &> /dev/null
-# Lots of log...
-# go: downloading github.com/cenkalti/backoff/v4 v4.3.0
-# go: downloading github.com/grpc-ecosystem/grpc-gateway/v2 v2.26.3
+mkdir -p k8s-athenz-syncer-the-hard-way && \
+(cd k8s-athenz-syncer-the-hard-way && kubebuilder init --domain $domain --repo $repo)
+
+# Lots of log ...
 # go: downloading go.opentelemetry.io/otel/sdk/metric v1.34.0
 # Next: define a resource with:
 # $ kubebuilder create api
 ```
 
-#### Check: Structure
-
-Let' see what kind of file structure we have now:
-
-```sh
-tree .
-# .
-# ├── Dockerfile
-# ├── Makefile
-# ├── PROJECT
-# ├── README.md
-# ├── cmd
-# │   └── main.go
-# ├── config
-# │   ├── default
-# │   │   ├── cert_metrics_manager_patch.yaml
-# │   │   ├── kustomization.yaml
-# │   │   ├── manager_metrics_patch.yaml
-# │   │   └── metrics_service.yaml
-# │   ├── manager
-# │   │   ├── kustomization.yaml
-# │   │   └── manager.yaml
-# │   ├── network-policy
-# │   │   ├── allow-metrics-traffic.yaml
-# │   │   └── kustomization.yaml
-# │   ├── prometheus
-# │   │   ├── kustomization.yaml
-# │   │   ├── monitor.yaml
-# │   │   └── monitor_tls_patch.yaml
-# │   └── rbac
-# │       ├── kustomization.yaml
-# │       ├── leader_election_role.yaml
-# │       ├── leader_election_role_binding.yaml
-# │       ├── metrics_auth_role.yaml
-# │       ├── metrics_auth_role_binding.yaml
-# │       ├── metrics_reader_role.yaml
-# │       ├── role.yaml
-# │       ├── role_binding.yaml
-# │       └── service_account.yaml
-# ├── go.mod
-# ├── go.sum
-# ├── hack
-# │   └── boilerplate.go.txt
-# └── test
-#     ├── e2e
-#     │   ├── e2e_suite_test.go
-#     │   └── e2e_test.go
-#     └── utils
-#         └── utils.go
-```
-
-### Exp1: Initalize git
+### Exp1: Initialize git
 
 To track progress, let's initialize git:
 
 ```sh
-git init
-git add .
-git commit -m "Initial commit: Initialize kubebuilder project"
+git -C k8s-athenz-syncer-the-hard-way init
+git -C k8s-athenz-syncer-the-hard-way add .
+git -C k8s-athenz-syncer-the-hard-way commit -m "Initial commit: Initialize kubebuilder project"
 ```
 
-### Exp1: Initalize an API
+### Exp1: Initialize an API
 
 The full name will be: `<group>.<domain>/<version>, Kind=<kind>`, as:
 
@@ -295,81 +310,10 @@ group="identity"
 version="v1"
 kind="AthenzSyncer"
 
-kubebuilder create api --group $group --version $version --kind $kind --resource --controller
-```
+(cd k8s-athenz-syncer-the-hard-way && kubebuilder create api --group $group --version $version --kind $kind --resource --controller)
 
-
-#### Checl: Structure
-
-```sh
-tree .
-# .
-# ├── Dockerfile
-# ├── Makefile
-# ├── PROJECT
-# ├── README.md
-# ├── api
-# │   └── v1
-# │       ├── athenzsyncer_types.go
-# │       ├── groupversion_info.go
-# │       └── zz_generated.deepcopy.go
-# ├── bin
-# │   ├── controller-gen -> /Users/jekim/test_dive/251226_080757_athenz_distribution/my-athenz-syncer/bin/controller-gen-v0.19.0
-# │   └── controller-gen-v0.19.0
-# ├── cmd
-# │   └── main.go
-# ├── config
-# │   ├── crd
-# │   │   ├── kustomization.yaml
-# │   │   └── kustomizeconfig.yaml
-# │   ├── default
-# │   │   ├── cert_metrics_manager_patch.yaml
-# │   │   ├── kustomization.yaml
-# │   │   ├── manager_metrics_patch.yaml
-# │   │   └── metrics_service.yaml
-# │   ├── manager
-# │   │   ├── kustomization.yaml
-# │   │   └── manager.yaml
-# │   ├── network-policy
-# │   │   ├── allow-metrics-traffic.yaml
-# │   │   └── kustomization.yaml
-# │   ├── prometheus
-# │   │   ├── kustomization.yaml
-# │   │   ├── monitor.yaml
-# │   │   └── monitor_tls_patch.yaml
-# │   ├── rbac
-# │   │   ├── athenzsyncer_admin_role.yaml
-# │   │   ├── athenzsyncer_editor_role.yaml
-# │   │   ├── athenzsyncer_viewer_role.yaml
-# │   │   ├── kustomization.yaml
-# │   │   ├── leader_election_role.yaml
-# │   │   ├── leader_election_role_binding.yaml
-# │   │   ├── metrics_auth_role.yaml
-# │   │   ├── metrics_auth_role_binding.yaml
-# │   │   ├── metrics_reader_role.yaml
-# │   │   ├── role.yaml
-# │   │   ├── role_binding.yaml
-# │   │   └── service_account.yaml
-# │   └── samples
-# │       ├── identity_v1_athenzsyncer.yaml
-# │       └── kustomization.yaml
-# ├── go.mod
-# ├── go.sum
-# ├── hack
-# │   └── boilerplate.go.txt
-# ├── internal
-# │   └── controller
-# │       ├── athenzsyncer_controller.go
-# │       ├── athenzsyncer_controller_test.go
-# │       └── suite_test.go
-# └── test
-#     ├── e2e
-#     │   ├── e2e_suite_test.go
-#     │   └── e2e_test.go
-#     └── utils
-#         └── utils.go
-
-# 19 directories, 46 files
+git -C k8s-athenz-syncer-the-hard-way add .
+git -C k8s-athenz-syncer-the-hard-way commit -m "Feat: Initialize AthenzSyncer API and Controller"
 ```
 
 #### Check: Domain
@@ -377,7 +321,7 @@ tree .
 Check domain:
 
 ```sh
-head -n 1 config/samples/identity_v1_athenzsyncer.yaml
+head -n 1 ./k8s-athenz-syncer-the-hard-way/config/samples/identity_v1_athenzsyncer.yaml
 # apiVersion: identity.ajktown.com/v1
 ```
 
@@ -386,7 +330,7 @@ head -n 1 config/samples/identity_v1_athenzsyncer.yaml
 You can see your domain and repo in the `go.mod` file:
 
 ```sh
-head -n 1 go.mod
+head -n 1 ./k8s-athenz-syncer-the-hard-way/go.mod
 # module github.com/mlajkim/athenz-syncer
 ```
 
@@ -402,7 +346,7 @@ So far we only have boilerplate code, and we need to define the oeperator's:
 
 ### Exp1: Define Spec
 
-Modify `api/v1/athenzsyncer_types.go`:
+Modify `./k8s-athenz-syncer-the-hard-way/api/v1/athenzsyncer_types.go`:
 
 ```go
 type AthenzSyncerSpec struct {
@@ -428,40 +372,16 @@ type AthenzSyncerSpec struct {
 Then:
 
 ```sh
-make manifests
+make -C ./k8s-athenz-syncer-the-hard-way manifests
 # "~/test_dive/251226_080757_athenz_distribution/my-athenz-syncer/bin/controller-gen" rbac:roleName=manager-role crd webhook paths="./..." output:crd:artifacts:config=config/crd/bases
 ```
-
-### Exp1: Define yaml
-
-
-`config/samples/identity_v1_athenzsyncer.yaml`
-
-```yaml
-apiVersion: identity.ajktown.com/v1
-kind: AthenzSyncer
-metadata:
-  labels:
-    app.kubernetes.io/name: my-athenz-syncer
-    app.kubernetes.io/managed-by: kustomize
-  name: athenzsyncer-sample
-spec:
-  athenzDomain: "athenz-syncer"
-  zmsURL: "https://localhost:4443/zms/v1"
-
-```
-
-
-### Exp1: Define Controller
-
-`internal/controller/athenzsyncer_controller.go`
 
 ### Exp1: Register CRD
 
 All the files under `config/crd/bases` are applied:
 
 ```sh
-make install
+make -C ./k8s-athenz-syncer-the-hard-way install
 ...
 # customresourcedefinition.apiextensions.k8s.io/athenzsyncers.identity.ajktown.com created
 ```
@@ -470,7 +390,60 @@ make install
 
 ```sh
 k api-resources | grep $domain
+
 # athenzsyncers                                    identity.ajktown.com/v1           true         AthenzSynce
+```
+
+
+### Exp1: Define Controller
+
+`internal/controller/athenzsyncer_controller.go`
+
+Replace the original `Reconcile` function with the following:
+
+```go
+func (r *AthenzSyncerReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
+	log := logf.FromContext(ctx)
+
+	var syncer identityv1.AthenzSyncer
+	if err := r.Get(ctx, req.NamespacedName, &syncer); err != nil {
+		return ctrl.Result{}, client.IgnoreNotFound(err)
+	}
+
+	targetDomain := syncer.Spec.AthenzDomain
+	zmsURL := syncer.Spec.ZMSURL
+
+	log.Info("Reconciling AthenzSyncer ...", "AthenzSyncer", req.NamespacedName, "Target", targetDomain, "URL", zmsURL)
+
+	tr := &http.Transport{
+		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
+	}
+	httpClient := &http.Client{Transport: tr}
+
+	fullURL := fmt.Sprintf("%s/domain/%s", zmsURL, targetDomain)
+
+	resp, err := httpClient.Get(fullURL)
+	if err != nil {
+		log.Error(err, "🔥 Failed to connect to Athenz Server")
+	} else {
+		defer resp.Body.Close()
+		bodyBytes, _ := io.ReadAll(resp.Body)
+		bodyString := string(bodyBytes)
+
+		// if response is 200
+		if resp.StatusCode == 200 {
+			preview := bodyString
+			if len(bodyString) > 200 {
+				preview = bodyString[:200] + "..."
+			}
+			log.Info("✅ Athenz Response OK!", "StatusCode", resp.StatusCode, "Data", preview)
+		} else {
+			log.Info("⚠️ Athenz Returned Error", "StatusCode", resp.StatusCode)
+		}
+	}
+
+	return ctrl.Result{}, nil
+}
 ```
 
 ### Exp1: Run Controller
@@ -481,7 +454,8 @@ k api-resources | grep $domain
 Controller for now works locally to receive your request:
 
 ```sh
-make run
+make -C ./k8s-athenz-syncer-the-hard-way run
+
 # 2025-12-26T11:48:04+09:00	INFO	setup	starting manager
 # 2025-12-26T11:48:04+09:00	INFO	starting server	{"name": "health probe", "addr": "[::]:8081"}
 # 2025-12-26T11:48:04+09:00	INFO	Starting EventSource	{"controller": "athenzsyncer", "controllerGroup": "identity.ajktown.com", "controllerKind": "AthenzSyncer", "source": "kind source: *v1.AthenzSyncer"}
@@ -489,33 +463,66 @@ make run
 # 2025-12-26T11:48:04+09:00	INFO	Starting workers	{"controller": "athenzsyncer", "controllerGroup": "identity.ajktown.com", "controllerKind": "AthenzSyncer", "worker count": 1}
 ```
 
+### Exp1: Define yaml
+
+`./k8s-athenz-syncer-the-hard-way/config/samples/identity_v1_athenzsyncer.yaml`
+
+```yaml
+apiVersion: identity.ajktown.com/v1
+kind: AthenzSyncer
+metadata:
+  labels:
+    app.kubernetes.io/name: my-athenz-syncer
+    app.kubernetes.io/managed-by: kustomize
+  name: athenzsyncer-sample
+spec:
+  athenzDomain: "eks.users"
+  zmsURL: "https://localhost:4443/zms/v1"
+
+```
 
 ### Exp1: Finally create
 
-Finally, create the AthenzSyncer resource:
+So far we have the running operator locally, but the operator is not seeing any CRD deployed yet in your local cluster. That means the operator will do nothing and keep waiting for your request.
+
+By creating the resource with the following command, the operator will soon notice it and start reconciling it:
 
 ```sh
-kubectl apply -f ./config/samples/identity_v1_athenzsyncer.yaml
+kubectl apply -f ./k8s-athenz-syncer-the-hard-way/config/samples/identity_v1_athenzsyncer.yaml
+
 # athenzsyncer.identity.ajktown.com/athenzsyncer-sample created
 ```
 
 #### Check: Log from Controller
 
-🟡 TODO: Fix the fire
+> [!TIP]
+> You will see `🔥 Failed to connect to Athenz Server	{"controller": ...` if the operator cannot connect to the ZMS Server
+> To fix it, checkout [Setup: Athenz ZMS Server Outside](#setup-athenz-zms-server-outside)
+
+> [!TIP]
+> To fix error `⚠️ Athenz Returned Error	{"controller": ... "StatusCode": 401}`
+> You may not present X.509 certificate to the ZMS server, which is required for authentication.
+
+Check out the log from the controller terminal:
 
 ```sh
-2025-12-26T11:52:38+09:00	INFO	Reconciling AthenzSyncer ...	{"controller": "athenzsyncer", "controllerGroup": "identity.ajktown.com", "controllerKind": "AthenzSyncer", "AthenzSyncer": {"name":"athenzsyncer-sample","namespace":"default"}, "namespace": "default", "name": "athenzsyncer-sample", "reconcileID": "f5431c86-a12a-414e-a242-83744a3139bb", "AthenzSyncer": {"name":"athenzsyncer-sample","namespace":"default"}, "Target": "athenz-syncer", "URL": "https://localhost:4443/zms/v1"}
-2025-12-26T11:52:38+09:00	ERROR	🔥 Failed to connect to Athenz Server	{"controller": "athenzsyncer", "controllerGroup": "identity.ajktown.com", "controllerKind": "AthenzSyncer", "AthenzSyncer": {"name":"athenzsyncer-sample","namespace":"default"}, "namespace": "default", "name": "athenzsyncer-sample", "reconcileID": "f5431c86-a12a-414e-a242-83744a3139bb", "error": "Get \"https://localhost:4443/zms/v1/domain/athenz-syncer\": dial tcp [::1]:4443: connect: connection refused"}
-github.com/mlajkim/athenz-syncer/internal/controller.(*AthenzSyncerReconciler).Reconcile
-	/Users/jekim/test_dive/251226_080757_athenz_distribution/my-athenz-syncer/internal/controller/athenzsyncer_controller.go:75
-sigs.k8s.io/controller-runtime/pkg/internal/controller.(*Controller[...]).Reconcile
-	/Users/jekim/go/pkg/mod/sigs.k8s.io/controller-runtime@v0.22.4/pkg/internal/controller/controller.go:216
-sigs.k8s.io/controller-runtime/pkg/internal/controller.(*Controller[...]).reconcileHandler
-	/Users/jekim/go/pkg/mod/sigs.k8s.io/controller-runtime@v0.22.4/pkg/internal/controller/controller.go:461
-sigs.k8s.io/controller-runtime/pkg/internal/controller.(*Controller[...]).processNextWorkItem
-	/Users/jekim/go/pkg/mod/sigs.k8s.io/controller-runtime@v0.22.4/pkg/internal/controller/controller.go:421
-sigs.k8s.io/controller-runtime/pkg/internal/controller.(*Controller[...]).Start.func1.1
-	/Users/jekim/go/pkg/mod/sigs.k8s.io/controller-runtime@v0.22.4/pkg/internal/controller/controller.go:296
+# 2025-12-27T12:41:52025-12-27T12:41:58+09:00	INFO	Reconciling AthenzSyncer ...	{"controller": "athenzsyncer", "controllerGroup": "identity.ajktown.com", "controllerKind": "AthenzSyncer", "AthenzSyncer": {"name":"athenzsyncer-sample","namespace":"default"}, "namespace": "default", "name": "athenzsyncer-sample", "reconcileID": "366e13d0-fadf-4b37-9850-c1ae4e017d05", "AthenzSyncer": {"name":"athenzsyncer-sample","namespace":"default"}, "Target": "eks.users", "URL": "https://localhost:4443/zms/v1"}
+# 2025-12-27T12:41:58+09:00	INFO	✅ Athenz Response OK!	{"controller": "athenzsyncer", "controllerGroup": "identity.ajktown.com", "controllerKind": "AthenzSyncer", "AthenzSyncer": {"name":"athenzsyncer-sample","namespace":"default"}, "namespace": "default", "name": "athenzsyncer-sample", "reconcileID": "366e13d0-fadf-4b37-9850-c1ae4e017d05", "StatusCode": 200, "Data": "{\"description\":\"Athenz Users Subdomain\",\"org\":\"ajkim\",\"enabled\":true,\"auditEnabled\":false,\"ypmId\":0,\"autoDeleteTenantAssumeRoleAssertions\":false,\"name\":\"eks.users\",\"modified\":\"2025-12-27T03:02:42.153Z..."}
+```
+
+
+### Exp1: Create an operator that creates Athenz Domain when NS is created in Kubernetes
+
+> [!TIP]
+> I first decided against deleting the Athenz domain upon namespace deletion.
+> This is to prevent the accidental loss of critical roles if a Kubernetes namespace is deleted in error.
+> BUT, I realized this creates a trade-off where stale data may accumulate in the Athenz server,
+> potentially leading to namespace name occupancy or collisions in the future.
+
+We can set `--resource=false` as we do not need the CRD (Because `Namespace` is the native Kubernetes resource):
+
+```sh
+(cd k8s-athenz-syncer-the-hard-way && kubebuilder create api --group core --version v1 --kind Namespace --controller=true --resource=false)
 ```
 
 

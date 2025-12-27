@@ -58,9 +58,9 @@ cat <<EOF > "$FILE_PATH"
 | Protein 1/2 |   240    |   37    |
 |     ...     |   ...    |   ...   |
 
-## Dinner.xxx.xx
-
 <!-- ## Dinner.71.12 -->
+
+## Dinner.xxx.xx
 
 |    Food     | Calories | Protein |
 |:-----------:|:--------:|:-------:|
@@ -76,4 +76,4 @@ git commit -m "first automated commit"
 
 git push -u origin "$BRANCH_NAME"
 
-echo "Done! Open the PR: https://github.com/mlajkim/dive-deep/pulls"
+open https://github.com/mlajkim/dive-deep/pulls

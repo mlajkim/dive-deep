@@ -3,22 +3,23 @@ ignorePaths: []
 dictionaryDefinitions: []
 dictionaries: []
 words:
-  - apiextensions
-  - apiregistration
-  - apiserver
-  - apiserverinternal
-  - CAPA
-  - CGOA
-  - CNPA
-  - CNPE
-  - journalctl
-  - Kubestronaut
-  - LFCS
-  - mlajkim
-  - OTCA
-  - OTCA - CAPA - CGOA - CNPA - CNPE - Kubestronaut - LFCS - mlajkim - OTCA -
-    udemy
-  - poweroff
-  - renice
+- apiextensions
+- apiregistration
+- apiserver
+- apiserverinternal
+- Athenz
+- CAPA
+- CGOA
+- CNPA
+- CNPE
+- journalctl
+- Kubestronaut
+- LFCS
+- mlajkim
+- OTCA
+- OTCA - CAPA - CGOA - CNPA - CNPE - Kubestronaut - LFCS - mlajkim - OTCA - udemy
+- poweroff
+- renice
+- syncer
 ignoreWords: []
 import: []
