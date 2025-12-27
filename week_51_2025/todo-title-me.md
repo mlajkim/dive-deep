@@ -502,14 +502,11 @@ kubectl apply -f ./k8s-athenz-syncer-the-hard-way/config/samples/identity_v1_ath
 > To fix error `⚠️ Athenz Returned Error	{"controller": ... "StatusCode": 401}`
 > You may not present X.509 certificate to the ZMS server, which is required for authentication.
 
-
-🟡 TODO: Fix the `⚠️ Athenz Returned Error	{"controller": ... "StatusCode": 401}`
-
 Check out the log from the controller terminal:
 
 ```sh
-# 2025-12-27T07:26:48+09:00	INFO	Reconciling AthenzSyncer ...	{"controller": "athenzsyncer", "controllerGroup": "identity.ajktown.com", "controllerKind": "AthenzSyncer", "AthenzSyncer": {"name":"athenzsyncer-sample","namespace":"default"}, "namespace": "default", "name": "athenzsyncer-sample", "reconcileID": "d4b4697e-de8c-40ce-a842-4f8a742aa19a", "AthenzSyncer": {"name":"athenzsyncer-sample","namespace":"default"}, "Target": "athenz-syncer", "URL": "https://localhost:4443/zms/v1"}
-# 2025-12-27T07:26:48+09:00	INFO	⚠️ Athenz Returned Error	{"controller": "athenzsyncer", "controllerGroup": "identity.ajktown.com", "controllerKind": "AthenzSyncer", "AthenzSyncer": {"name":"athenzsyncer-sample","namespace":"default"}, "namespace": "default", "name": "athenzsyncer-sample", "reconcileID": "d4b4697e-de8c-40ce-a842-4f8a742aa19a", "StatusCode": 401}
+# 2025-12-27T12:41:52025-12-27T12:41:58+09:00	INFO	Reconciling AthenzSyncer ...	{"controller": "athenzsyncer", "controllerGroup": "identity.ajktown.com", "controllerKind": "AthenzSyncer", "AthenzSyncer": {"name":"athenzsyncer-sample","namespace":"default"}, "namespace": "default", "name": "athenzsyncer-sample", "reconcileID": "366e13d0-fadf-4b37-9850-c1ae4e017d05", "AthenzSyncer": {"name":"athenzsyncer-sample","namespace":"default"}, "Target": "eks.users", "URL": "https://localhost:4443/zms/v1"}
+# 2025-12-27T12:41:58+09:00	INFO	✅ Athenz Response OK!	{"controller": "athenzsyncer", "controllerGroup": "identity.ajktown.com", "controllerKind": "AthenzSyncer", "AthenzSyncer": {"name":"athenzsyncer-sample","namespace":"default"}, "namespace": "default", "name": "athenzsyncer-sample", "reconcileID": "366e13d0-fadf-4b37-9850-c1ae4e017d05", "StatusCode": 200, "Data": "{\"description\":\"Athenz Users Subdomain\",\"org\":\"ajkim\",\"enabled\":true,\"auditEnabled\":false,\"ypmId\":0,\"autoDeleteTenantAssumeRoleAssertions\":false,\"name\":\"eks.users\",\"modified\":\"2025-12-27T03:02:42.153Z..."}
 ```
 
 
