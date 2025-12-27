@@ -24,6 +24,7 @@
 
 Want to be really good in technology over getting certain certificates that may touch only surface level knowledge.
 
+
 ## 2026 Performance: Weekly Tech Blogs
 
 ### 12/28~1/3: Not Yet Titled
