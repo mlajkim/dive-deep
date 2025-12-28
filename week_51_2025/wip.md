@@ -34,13 +34,15 @@
     - [Exp1: Create an operator that creates Athenz Domain when NS is created in Kubernetes](#exp1-create-an-operator-that-creates-athenz-domain-when-ns-is-created-in-kubernetes)
       - [Check: Operator Log](#check-operator-log)
       - [Check: Athenz Domain](#check-athenz-domain)
+    - [Deploy a mock application](#deploy-a-mock-application)
     - [Exp1: Let's create a user in Kubernetes with user name `user.mlajkim`](#exp1-lets-create-a-user-in-kubernetes-with-user-name-usermlajkim)
       - [Check](#check-4)
     - [Exp1: Add user `user.mlajkim` to the role `k8s_ns_admins` in Athenz](#exp1-add-user-usermlajkim-to-the-role-k8s_ns_admins-in-athenz)
       - [Check](#check-5)
-      - [Check](#check-6)
-      - [Check: member inside](#check-member-inside)
-      - [Check](#check-7)
+      - [Check: Get pods in ajktown-api](#check-get-pods-in-ajktown-api)
+      - [Check: member inside in ajktown-api](#check-member-inside-in-ajktown-api)
+      - [Check: Get pods in ajktown-db](#check-get-pods-in-ajktown-db)
+      - [Check: member inside in ajktown-db](#check-member-inside-in-ajktown-db)
 - [Dive Records](#dive-records)
 
 <!-- /TOC -->
@@ -537,9 +539,6 @@ We can set `--resource=false` as we do not need the CRD (Because `Namespace` is 
 
 #### Check: Operator Log
 
-> [!TIP]
-> You can always mimic running pods with the following command, but optional: `kubectl run ajktown-api --image=nginx:alpine -n ajktown-api`
-
 You will see the following log in the operator:
 
 ```sh
@@ -566,6 +565,15 @@ Let's see if the athenz domain is created. We can use the command too but let's 
 
 ```sh
 open "http://localhost:3000/domain/eks.users.ajktown-api/role"
+```
+
+### Deploy a mock application
+
+Let's deploy an application in each namespace for easier understanding:
+
+```sh
+kubectl run ajktown-api --image=nginx:alpine -n ajktown-api
+kubectl run ajktown-db --image=nginx:alpine -n ajktown-db
 ```
 
 ### Exp1: Let's create a user in Kubernetes with user name `user.mlajkim`
@@ -657,7 +665,7 @@ kubectl --user=user.mlajkim get po -n ajktown-api
 # Error from server (Forbidden): pods is forbidden: User "user.mlajkim" cannot list resource "pods" in API group "" in the namespace "ajktown-api"
 ```
 
-#### Check
+#### Check: Get pods in ajktown-api
 
 > [!TIP]
 > Could take at most a minute for operator to sync the changes to K8s RBAC
@@ -669,8 +677,7 @@ kubectl get rolebindings -n ajktown-api
 # NAME                                       ROLE                        AGE
 # eks.users.ajktown-api:role.k8s_ns_admins   Role/ns_ajktown-api_admin   42s
 ```
-
-#### Check: member inside
+#### Check: member inside in ajktown-api
 
 ```sh
 kubectl describe rolebindings eks.users.ajktown-api:role.k8s_ns_admins -n ajktown-api
@@ -687,20 +694,34 @@ kubectl describe rolebindings eks.users.ajktown-api:role.k8s_ns_admins -n ajktow
 #   User  user.mlajkim
 ```
 
+#### Check: Get pods in ajktown-db
 
-#### Check
-🟡 TODO: Write me
-Non approved members are not applied as tested:
+User `user.mlajkim` should NOT have access to `ajktown-db` as the user is not added to the role `k8s_ns_admins` in `eks.users.ajktown-db`:
+
+```sh
+kubectl --user=user.mlajkim get po -n ajktown-db
+
+# Error from server (Forbidden): pods is forbidden: User "user.mlajkim" cannot list resource "pods" in API group "" in the namespace "ajktown-db"
 ```
+#### Check: member inside in ajktown-db
+
+The current operator does not create role-binding if no members are added to the role in Athenz, so there should be no role-binding in `ajktown-db`:
+
+```sh
+kubectl get rolebindings -n ajktown-db
+# No resources found in ajktown-db namespace.
 ```
+
 
 # Dive Records
 
-Target: 
+Target:
+
 - This document itself
 - The PR Following: 🟡 TODO
 
-Time:
+Daily Dive:
+
 - `12/26 Fri`: 4.5h
 - `12/27 Sat`: 5.5h
 - `12/28 Sun`: ...7h
