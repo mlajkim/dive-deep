@@ -18,7 +18,7 @@
     - [Setup: Create TLD beforehand](#setup-create-tld-beforehand)
     - [Setup: Create subdomains](#setup-create-subdomains)
     - [Setup: Kubebuilder](#setup-kubebuilder)
-  - [Exp1: Create k8s-athenz-syncer-the-hard-way](#exp1-create-k8s-athenz-syncer-the-hard-way)
+  - [Exp1: Create k8s-athenz-syncer-the-hard-clean-way](#exp1-create-k8s-athenz-syncer-the-hard-clean-way)
     - [Exp1: Initialize Syncer Project](#exp1-initialize-syncer-project)
     - [Exp1: Initialize git](#exp1-initialize-git)
     - [Exp1: Initialize an API](#exp1-initialize-an-api)
@@ -269,7 +269,7 @@ brew install kubebuilder
 ```
 
 
-## Exp1: Create k8s-athenz-syncer-the-hard-way
+## Exp1: Create k8s-athenz-syncer-the-hard-clean-way
 
 > [!NOTE]
 > Similar concept: [Kubernetes-the-hard-way](https://github.com/kelseyhightower/kubernetes-the-hard-way)
@@ -295,8 +295,8 @@ https://book.kubebuilder.io/
 ```sh
 repo="github.com/mlajkim"
 
-mkdir -p k8s-athenz-syncer-the-hard-way && \
-(cd k8s-athenz-syncer-the-hard-way && kubebuilder init --domain "ajktown.com" --repo "$repo/k8s-athenz-syncer-the-hard-way")
+mkdir -p k8s-athenz-syncer-the-hard-clean-way && \
+(cd k8s-athenz-syncer-the-hard-clean-way && kubebuilder init --domain "ajktown.com" --repo "$repo/k8s-athenz-syncer-the-hard-clean-way")
 
 # Lots of log ...
 # go: downloading go.opentelemetry.io/otel/sdk/metric v1.34.0
@@ -309,9 +309,9 @@ mkdir -p k8s-athenz-syncer-the-hard-way && \
 To track progress, let's initialize git:
 
 ```sh
-git -C k8s-athenz-syncer-the-hard-way init
-git -C k8s-athenz-syncer-the-hard-way add .
-git -C k8s-athenz-syncer-the-hard-way commit -m "Initial commit: Initialize kubebuilder project"
+git -C k8s-athenz-syncer-the-hard-clean-way init
+git -C k8s-athenz-syncer-the-hard-clean-way add .
+git -C k8s-athenz-syncer-the-hard-clean-way commit -m "Initial commit: Initialize kubebuilder project"
 ```
 
 ### Exp1: Initialize an API
@@ -329,10 +329,10 @@ group="identity"
 version="v1"
 kind="AthenzSyncer"
 
-(cd k8s-athenz-syncer-the-hard-way && kubebuilder create api --group $group --version $version --kind $kind --resource --controller)
+(cd k8s-athenz-syncer-the-hard-clean-way && kubebuilder create api --group $group --version $version --kind $kind --resource --controller)
 
-git -C k8s-athenz-syncer-the-hard-way add .
-git -C k8s-athenz-syncer-the-hard-way commit -m "Feat: Initialize AthenzSyncer API and Controller"
+git -C k8s-athenz-syncer-the-hard-clean-way add .
+git -C k8s-athenz-syncer-the-hard-clean-way commit -m "Feat: Initialize AthenzSyncer API and Controller"
 ```
 
 #### Check: Domain
@@ -340,7 +340,7 @@ git -C k8s-athenz-syncer-the-hard-way commit -m "Feat: Initialize AthenzSyncer A
 Check domain:
 
 ```sh
-head -n 1 ./k8s-athenz-syncer-the-hard-way/config/samples/identity_v1_athenzsyncer.yaml
+head -n 1 ./k8s-athenz-syncer-the-hard-clean-way/config/samples/identity_v1_athenzsyncer.yaml
 # apiVersion: identity.ajktown.com/v1
 ```
 
@@ -349,7 +349,7 @@ head -n 1 ./k8s-athenz-syncer-the-hard-way/config/samples/identity_v1_athenzsync
 You can see your domain and repo in the `go.mod` file:
 
 ```sh
-head -n 1 ./k8s-athenz-syncer-the-hard-way/go.mod
+head -n 1 ./k8s-athenz-syncer-the-hard-clean-way/go.mod
 # module github.com/mlajkim/athenz-syncer
 ```
 
@@ -365,7 +365,7 @@ So far we only have boilerplate code, and we need to define the oeperator's:
 
 ### Exp1: Define Spec
 
-Modify `./k8s-athenz-syncer-the-hard-way/api/v1/athenzsyncer_types.go`:
+Modify `./k8s-athenz-syncer-the-hard-clean-way/api/v1/athenzsyncer_types.go`:
 
 ```go
 type AthenzSyncerSpec struct {
@@ -391,7 +391,7 @@ type AthenzSyncerSpec struct {
 Then:
 
 ```sh
-make -C ./k8s-athenz-syncer-the-hard-way manifests
+make -C ./k8s-athenz-syncer-the-hard-clean-way manifests
 # "~/test_dive/251226_080757_athenz_distribution/my-athenz-syncer/bin/controller-gen" rbac:roleName=manager-role crd webhook paths="./..." output:crd:artifacts:config=config/crd/bases
 ```
 
@@ -400,7 +400,7 @@ make -C ./k8s-athenz-syncer-the-hard-way manifests
 All the files under `config/crd/bases` are applied:
 
 ```sh
-make -C ./k8s-athenz-syncer-the-hard-way install
+make -C ./k8s-athenz-syncer-the-hard-clean-way install
 ...
 # customresourcedefinition.apiextensions.k8s.io/athenzsyncers.identity.ajktown.com created
 ```
@@ -473,7 +473,7 @@ func (r *AthenzSyncerReconciler) Reconcile(ctx context.Context, req ctrl.Request
 Controller for now works locally to receive your request:
 
 ```sh
-make -C ./k8s-athenz-syncer-the-hard-way run
+make -C ./k8s-athenz-syncer-the-hard-clean-way run
 
 # 2025-12-26T11:48:04+09:00	INFO	setup	starting manager
 # 2025-12-26T11:48:04+09:00	INFO	starting server	{"name": "health probe", "addr": "[::]:8081"}
@@ -484,7 +484,7 @@ make -C ./k8s-athenz-syncer-the-hard-way run
 
 ### Exp1: Define yaml
 
-`./k8s-athenz-syncer-the-hard-way/config/samples/identity_v1_athenzsyncer.yaml`
+`./k8s-athenz-syncer-the-hard-clean-way/config/samples/identity_v1_athenzsyncer.yaml`
 
 ```yaml
 apiVersion: identity.ajktown.com/v1
@@ -507,7 +507,7 @@ So far we have the running operator locally, but the operator is not seeing any 
 By creating the resource with the following command, the operator will soon notice it and start reconciling it:
 
 ```sh
-kubectl apply -f ./k8s-athenz-syncer-the-hard-way/config/samples/identity_v1_athenzsyncer.yaml
+kubectl apply -f ./k8s-athenz-syncer-the-hard-clean-way/config/samples/identity_v1_athenzsyncer.yaml
 
 # athenzsyncer.identity.ajktown.com/athenzsyncer-sample created
 ```
@@ -541,7 +541,7 @@ Check out the log from the controller terminal:
 We can set `--resource=false` as we do not need the CRD (Because `Namespace` is the native Kubernetes resource):
 
 ```sh
-(cd k8s-athenz-syncer-the-hard-way && kubebuilder create api --group core --version v1 --kind Namespace --controller=true --resource=false)
+(cd k8s-athenz-syncer-the-hard-clean-way && kubebuilder create api --group core --version v1 --kind Namespace --controller=true --resource=false)
 ```
 
 
