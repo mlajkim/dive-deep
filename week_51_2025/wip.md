@@ -5,6 +5,7 @@
 - [🟡 TODO: TITLE ME](#🟡-todo-title-me)
 - [Goal](#goal)
 - [Conclusion](#conclusion)
+- [What I learned](#what-i-learned)
 - [Steps for the conclusion](#steps-for-the-conclusion)
   - [Setup](#setup)
     - [Setup: Local Kubernetes Cluster w/ Kind](#setup-local-kubernetes-cluster-w-kind)
@@ -86,6 +87,10 @@ The goal of this document is to setup a syncer mechanism between Athenz and Kube
 🟡 Everything above is temporary (note purpose)
 
 # Conclusion
+
+🟡 TODO Write me
+
+# What I learned
 
 🟡 TODO Write me
 
