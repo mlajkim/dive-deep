@@ -4,6 +4,7 @@
 
 - [🟡 TODO: TITLE ME](#🟡-todo-title-me)
 - [Goal](#goal)
+- [Background](#background)
 - [Conclusion](#conclusion)
 - [What I learned](#what-i-learned)
 - [Steps for the conclusion](#steps-for-the-conclusion)
@@ -85,6 +86,10 @@ The goal of this document is to setup a syncer mechanism between Athenz and Kube
 
 
 🟡 Everything above is temporary (note purpose)
+
+# Background
+
+Why I am doing this!
 
 # Conclusion
 
