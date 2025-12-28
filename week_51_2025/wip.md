@@ -610,16 +610,14 @@ ls -al ./k8s_users/
 #### Check
 
 > [!TIP]
-> You can test admin access with `kubectl get ns`
+> You can test admin access with `kubectl get po -n ajktown-api`
 
-Let's see if user `user.mlajkim` can access the cluster:
-
-We can see that KubeAPI server rejects the request with `Forbidden` as expected, with context `--user=user.mlajkim`:
+We can see that KubeAPI server rejects to see the pods in ns `ajktown-api` with `Forbidden` as expected, with context `--user=user.mlajkim`:
 
 ```sh
-kubectl --user=user.mlajkim get ns
+kubectl --user=user.mlajkim get po -n ajktown-api
 
-# Error from server (Forbidden): namespaces is forbidden: User "user.mlajkim" cannot list resource "namespaces" in API group "" at the cluster scope
+# Error from server (Forbidden): pods is forbidden: User "user.mlajkim" cannot list resource "pods" in API group "" in the namespace "ajktown-api"
 ```
 
 <!-- 🟡 TODO: Give me time: # Dive Records: 15h -->
