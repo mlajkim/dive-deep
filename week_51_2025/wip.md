@@ -36,6 +36,7 @@
       - [Check: Athenz Domain](#check-athenz-domain)
     - [Let's create a user in Kubernetes with user name `user.mlajkim`](#lets-create-a-user-in-kubernetes-with-user-name-usermlajkim)
       - [Check](#check-4)
+    - [Add user `user.mlajkim` to the role `k8s_ns_admins` in Athenz](#add-user-usermlajkim-to-the-role-k8s_ns_admins-in-athenz)
 - [Dive Records](#dive-records)
 
 <!-- /TOC -->
@@ -622,6 +623,19 @@ kubectl --user=user.mlajkim get po -n ajktown-api
 
 <!-- 🟡 TODO: Give me time: # Dive Records: 15h -->
 
+### Add user `user.mlajkim` to the role `k8s_ns_admins` in Athenz
+
+```sh
+curl -k -X PUT "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/role/k8s_ns_admins/member/user.mlajkim" \
+	--cert ./athenz_distribution/certs/athenz_admin.cert.pem \
+	--key ./athenz_distribution/keys/athenz_admin.private.pem \
+	-H "Content-Type: application/json" \
+	-d '{
+		"memberName": "user.mlajkim"
+	}'
+
+# (Returns nothing if success)
+```
 # Dive Records
 
 - `12/26 Fri`: 4.5h
