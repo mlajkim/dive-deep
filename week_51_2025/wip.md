@@ -34,6 +34,7 @@
     - [Exp1: Create an operator that creates Athenz Domain when NS is created in Kubernetes](#exp1-create-an-operator-that-creates-athenz-domain-when-ns-is-created-in-kubernetes)
       - [Check: Operator Log](#check-operator-log)
       - [Check: Athenz Domain](#check-athenz-domain)
+    - [Let's create a user in Kubernetes with user name `user.mlajkim`](#lets-create-a-user-in-kubernetes-with-user-name-usermlajkim)
 - [Dive Records](#dive-records)
 
 <!-- /TOC -->
@@ -555,6 +556,47 @@ Let's see if the athenz domain is created. We can use the command too but let's 
 open "http://localhost:3000/domain/eks.users.ajktown-api/role"
 ```
 
+### Let's create a user in Kubernetes with user name `user.mlajkim`
+
+If you test yourself with `kubectl config view --raw --minify`, you will see:
+
+- `k8s-config-user`: `kind-kind`
+
+And you will see the following with `kubectl config view --raw --minify -o jsonpath='{.users[0].user.client-certificate-data}' | base64 -d | openssl x509 -noout -text`:
+
+- `CN`: kubernetes-admin
+
+We want to create a user with `CN`: `user.mlajkim` instead, and request for X.509 signed by kubernetes CSR API, then use the certificate to try see how access system works:
+
+```sh
+mkdir -p ./k8s_users
+openssl genrsa -out ./k8s_users/user.mlajkim.key 2048
+openssl req -new -key ./k8s_users/user.mlajkim.key -out ./k8s_users/user.mlajkim.csr -subj "/CN=user.mlajkim/O=devs"
+
+export CSR_BASE64=$(cat ./k8s_users/user.mlajkim.csr | base64 | tr -d '\n')
+cat <<EOF | kubectl apply -f -
+apiVersion: certificates.k8s.io/v1
+kind: CertificateSigningRequest
+metadata:
+  name: user.mlajkim-csr
+spec:
+  request: ${CSR_BASE64}
+  signerName: kubernetes.io/kube-apiserver-client
+  expirationSeconds: 31536000
+  usages:
+  - client auth
+EOF
+rm ./k8s_users/user.mlajkim.csr
+
+kubectl certificate approve user.mlajkim-csr
+kubectl get csr user.mlajkim-csr -o jsonpath='{.status.certificate}' | base64 -d > ./k8s_users/user.mlajkim.crt
+ls -al ./k8s_users/
+
+# Lots of log ...
+# -rw-r--r--  1 ajk  staff  1119 Dec 28 10:45 user.mlajkim.crt
+# -rw-r--r--  1 ajk  staff   915 Dec 28 10:43 user.mlajkim.csr
+# -rw-------  1 ajk  staff  1708 Dec 28 10:43 user.mlajkim.key
+```
 
 <!-- 🟡 TODO: Give me time: # Dive Records: 15h -->
 
