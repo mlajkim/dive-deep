@@ -35,6 +35,7 @@
       - [Check: Operator Log](#check-operator-log)
       - [Check: Athenz Domain](#check-athenz-domain)
     - [Let's create a user in Kubernetes with user name `user.mlajkim`](#lets-create-a-user-in-kubernetes-with-user-name-usermlajkim)
+      - [Check](#check-4)
 - [Dive Records](#dive-records)
 
 <!-- /TOC -->
@@ -558,6 +559,9 @@ open "http://localhost:3000/domain/eks.users.ajktown-api/role"
 
 ### Let's create a user in Kubernetes with user name `user.mlajkim`
 
+> [!TIP]
+> We won't modify the default user created by `kind` for the cluster admin access.
+
 If you test yourself with `kubectl config view --raw --minify`, you will see:
 
 - `k8s-config-user`: `kind-kind`
@@ -590,12 +594,31 @@ rm ./k8s_users/user.mlajkim.csr
 
 kubectl certificate approve user.mlajkim-csr
 kubectl get csr user.mlajkim-csr -o jsonpath='{.status.certificate}' | base64 -d > ./k8s_users/user.mlajkim.crt
+kubectl config set-credentials user.mlajkim \
+  --client-certificate=./k8s_users/user.mlajkim.crt \
+  --client-key=./k8s_users/user.mlajkim.key
+
 ls -al ./k8s_users/
 
 # Lots of log ...
 # -rw-r--r--  1 ajk  staff  1119 Dec 28 10:45 user.mlajkim.crt
 # -rw-r--r--  1 ajk  staff   915 Dec 28 10:43 user.mlajkim.csr
 # -rw-------  1 ajk  staff  1708 Dec 28 10:43 user.mlajkim.key
+```
+
+
+#### Check
+
+> [!TIP]
+> You can test admin access with `kubectl get ns`
+
+Let's see if user `user.mlajkim` can access the cluster:
+
+We can see that KubeAPI server rejects the request with `Forbidden` as expected, with context `--user=user.mlajkim`:
+
+```sh
+kubectl --user=user.mlajkim get ns
+# Error from server (Forbidden): namespaces is forbidden: User "user.mlajkim" cannot list resource "namespaces" in API group "" at the cluster scope
 ```
 
 <!-- 🟡 TODO: Give me time: # Dive Records: 15h -->
