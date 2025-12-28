@@ -32,6 +32,8 @@
     - [Exp1: Finally create](#exp1-finally-create)
       - [Check: Log from Controller](#check-log-from-controller)
     - [Exp1: Create an operator that creates Athenz Domain when NS is created in Kubernetes](#exp1-create-an-operator-that-creates-athenz-domain-when-ns-is-created-in-kubernetes)
+      - [Check: Operator Log](#check-operator-log)
+      - [Check: Athenz Domain](#check-athenz-domain)
 - [Dive Records](#dive-records)
 
 <!-- /TOC -->
@@ -523,6 +525,34 @@ We can set `--resource=false` as we do not need the CRD (Because `Namespace` is 
 
 ```sh
 (cd k8s-athenz-syncer-the-hard-way && kubebuilder create api --group core --version v1 --kind Namespace --controller=true --resource=false)
+```
+
+
+#### Check: Operator Log
+
+You will see the following log in the operator:
+
+```sh
+# 2025-12-28T08:26:52+09:00	INFO	Reconciling Namespace Controller ...	{"controller": "namespace", "controllerGroup": "", "controllerKind": "Namespace", "Namespace": {"name":"ajktown-api"}, "namespace": "", "name": "ajktown-api", "reconcileID": "ca153dcd-6708-4a90-8dfd-f3d95cb32b40", "namespace": "ajktown-api"}
+# 2025-12-28T08:26:52+09:00	INFO	Athenz subdomain created successfully	{"controller": "namespace", "controllerGroup": "", "controllerKind": "Namespace", "Namespace": {"name":"ajktown-api"}, "namespace": "", "name": "ajktown-api", "reconcileID": "ca153dcd-6708-4a90-8dfd-f3d95cb32b40", "namespace": "ajktown-api", "name": "eks.users.ajktown-api"}
+```
+
+After doing this:
+
+```sh
+kubectl create ns ajktown-api
+# namespace/ajktown-api created
+```
+
+#### Check: Athenz Domain
+
+> [!TIP]
+> It would be awesome if we can have a PR that no longer requires that `/role` at the end.
+
+Let's see if the athenz domain is created. We can use the command too but let's simply see on the URL:
+
+```sh
+open "http://localhost:3000/domain/eks.users.ajktown-api/role"
 ```
 
 
