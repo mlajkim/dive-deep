@@ -682,6 +682,11 @@ Non approved members are not applied as tested:
 
 # Dive Records
 
+Target: 
+- This document itself
+- The PR Following: 🟡 TODO
+
+Time:
 - `12/26 Fri`: 4.5h
 - `12/27 Sat`: 5.5h
 - `12/28 Sun`: ...7h
