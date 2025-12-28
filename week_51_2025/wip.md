@@ -711,11 +711,20 @@ kubectl --user=user.mlajkim get po -n ajktown-db
 ```
 #### Check: member inside in ajktown-db
 
-The current operator does not create role-binding if no members are added to the role in Athenz, so there should be no role-binding in `ajktown-db`:
+You can see that the operator creates the role-binding in `ajktown-db` namespace too, but without any member (`Subjects` is empty):
 
 ```sh
-kubectl get rolebindings -n ajktown-db
-# No resources found in ajktown-db namespace.
+kubectl describe rolebindings eks.users.ajktown-db:role.k8s_ns_admins:members -n ajktown-db
+
+# Name:         eks.users.ajktown-db:role.k8s_ns_admins:members
+# Labels:       managed-by=athenz-syncer
+# Annotations:  <none>
+# Role:
+#   Kind:  Role
+#   Name:  eks.users.ajktown-db:role.k8s_ns_admins
+# Subjects:
+#   Kind  Name  Namespace
+#   ----  ----  ---------
 ```
 
 # Dive Records
