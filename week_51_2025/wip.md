@@ -618,6 +618,7 @@ We can see that KubeAPI server rejects the request with `Forbidden` as expected,
 
 ```sh
 kubectl --user=user.mlajkim get ns
+
 # Error from server (Forbidden): namespaces is forbidden: User "user.mlajkim" cannot list resource "namespaces" in API group "" at the cluster scope
 ```
 
@@ -626,3 +627,6 @@ kubectl --user=user.mlajkim get ns
 # Dive Records
 
 - `12/26 Fri`: 4.5h
+- `12/27 Sat`: 5.5h
+- `12/28 Sun`: ...7h
+- ...EOF
