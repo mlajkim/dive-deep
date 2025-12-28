@@ -38,6 +38,7 @@
       - [Check](#check-4)
     - [Exp1: Add user `user.mlajkim` to the role `k8s_ns_admins` in Athenz](#exp1-add-user-usermlajkim-to-the-role-k8s_ns_admins-in-athenz)
       - [Check](#check-5)
+      - [Check: member inside](#check-member-inside)
       - [Check](#check-6)
 - [Dive Records](#dive-records)
 
@@ -546,7 +547,10 @@ After doing this:
 
 ```sh
 kubectl create ns ajktown-api
+kubectl create ns ajktown-db
+
 # namespace/ajktown-api created
+# namespace/ajktown-db created
 ```
 
 #### Check: Athenz Domain
@@ -650,6 +654,23 @@ Check role-binding is automatically created:
 kubectl get rolebindings -n ajktown-api
 # NAME                                       ROLE                        AGE
 # eks.users.ajktown-api:role.k8s_ns_admins   Role/ns_ajktown-api_admin   42s
+```
+
+#### Check: member inside
+
+```sh
+kubectl describe rolebindings eks.users.ajktown-api:role.k8s_ns_admins -n ajktown-api
+
+# Name:         eks.users.ajktown-api:role.k8s_ns_admins
+# Labels:       managed-by=athenz-syncer
+# Annotations:  <none>
+# Role:
+#   Kind:  Role
+#   Name:  eks.users.ajktown-api:role.k8s_ns_admins
+# Subjects:
+#   Kind  Name          Namespace
+#   ----  ----          ---------
+#   User  user.mlajkim
 ```
 
 
