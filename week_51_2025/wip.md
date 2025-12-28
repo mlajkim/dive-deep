@@ -293,10 +293,10 @@ https://book.kubebuilder.io/
 - `domain`: k8s already has `Pod`, `SA`, `Role`, `RoleBinding`, so we need to specify our own ID so that it does not conflict with existing ones.
 
 ```sh
-repo="github.com/mlajkim/k8s-athenz-syncer-the-hard-way"
+repo="github.com/mlajkim"
 
 mkdir -p k8s-athenz-syncer-the-hard-way && \
-(cd k8s-athenz-syncer-the-hard-way && kubebuilder init --domain "ajktown.com" --repo $repo)
+(cd k8s-athenz-syncer-the-hard-way && kubebuilder init --domain "ajktown.com" --repo "$repo/k8s-athenz-syncer-the-hard-way")
 
 # Lots of log ...
 # go: downloading go.opentelemetry.io/otel/sdk/metric v1.34.0
