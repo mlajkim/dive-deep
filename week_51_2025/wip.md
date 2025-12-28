@@ -34,9 +34,11 @@
     - [Exp1: Create an operator that creates Athenz Domain when NS is created in Kubernetes](#exp1-create-an-operator-that-creates-athenz-domain-when-ns-is-created-in-kubernetes)
       - [Check: Operator Log](#check-operator-log)
       - [Check: Athenz Domain](#check-athenz-domain)
-    - [Let's create a user in Kubernetes with user name `user.mlajkim`](#lets-create-a-user-in-kubernetes-with-user-name-usermlajkim)
+    - [Exp1: Let's create a user in Kubernetes with user name `user.mlajkim`](#exp1-lets-create-a-user-in-kubernetes-with-user-name-usermlajkim)
       - [Check](#check-4)
-    - [Add user `user.mlajkim` to the role `k8s_ns_admins` in Athenz](#add-user-usermlajkim-to-the-role-k8s_ns_admins-in-athenz)
+    - [Exp1: Add user `user.mlajkim` to the role `k8s_ns_admins` in Athenz](#exp1-add-user-usermlajkim-to-the-role-k8s_ns_admins-in-athenz)
+      - [Check](#check-5)
+      - [Check](#check-6)
 - [Dive Records](#dive-records)
 
 <!-- /TOC -->
@@ -558,7 +560,7 @@ Let's see if the athenz domain is created. We can use the command too but let's 
 open "http://localhost:3000/domain/eks.users.ajktown-api/role"
 ```
 
-### Let's create a user in Kubernetes with user name `user.mlajkim`
+### Exp1: Let's create a user in Kubernetes with user name `user.mlajkim`
 
 > [!TIP]
 > We won't modify the default user created by `kind` for the cluster admin access.
@@ -623,7 +625,7 @@ kubectl --user=user.mlajkim get po -n ajktown-api
 
 <!-- 🟡 TODO: Give me time: # Dive Records: 15h -->
 
-### Add user `user.mlajkim` to the role `k8s_ns_admins` in Athenz
+### Exp1: Add user `user.mlajkim` to the role `k8s_ns_admins` in Athenz
 
 ```sh
 curl -k -X PUT "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/role/k8s_ns_admins/member/user.mlajkim" \
@@ -636,6 +638,27 @@ curl -k -X PUT "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/role/
 
 # (Returns nothing if success)
 ```
+
+#### Check
+
+> [!TIP]
+> Could take at most a minute for operator to sync the changes to K8s RBAC
+
+Check role-binding is automatically created:
+
+```sh
+kubectl get rolebindings -n ajktown-api
+# NAME                                       ROLE                        AGE
+# eks.users.ajktown-api:role.k8s_ns_admins   Role/ns_ajktown-api_admin   42s
+```
+
+
+#### Check
+🟡 TODO: Write me
+Non approved members are not applied as tested:
+```
+```
+
 # Dive Records
 
 - `12/26 Fri`: 4.5h
