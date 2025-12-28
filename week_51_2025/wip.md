@@ -306,12 +306,16 @@ mkdir -p k8s-athenz-syncer-the-hard-clean-way && \
 
 ### Exp1: Initialize git
 
-To track progress, let's initialize git:
+To track progress, let's initialize git, and commit the initial state, then create a branch for the experiment:
 
 ```sh
 git -C k8s-athenz-syncer-the-hard-clean-way init
 git -C k8s-athenz-syncer-the-hard-clean-way add .
 git -C k8s-athenz-syncer-the-hard-clean-way commit -m "Initial commit: Initialize kubebuilder project"
+git -C k8s-athenz-syncer-the-hard-clean-way checkout -b feat/hard-clean-syncer
+
+# Lots of log ...
+# Switched to a new branch 'feat/hard-clean-syncer'
 ```
 
 ### Exp1: Initialize an API
