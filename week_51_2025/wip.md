@@ -38,8 +38,9 @@
       - [Check](#check-4)
     - [Exp1: Add user `user.mlajkim` to the role `k8s_ns_admins` in Athenz](#exp1-add-user-usermlajkim-to-the-role-k8s_ns_admins-in-athenz)
       - [Check](#check-5)
-      - [Check: member inside](#check-member-inside)
       - [Check](#check-6)
+      - [Check: member inside](#check-member-inside)
+      - [Check](#check-7)
 - [Dive Records](#dive-records)
 
 <!-- /TOC -->
@@ -536,6 +537,9 @@ We can set `--resource=false` as we do not need the CRD (Because `Namespace` is 
 
 #### Check: Operator Log
 
+> [!TIP]
+> You can always mimic running pods with the following command, but optional: `kubectl run ajktown-api --image=nginx:alpine -n ajktown-api`
+
 You will see the following log in the operator:
 
 ```sh
@@ -641,6 +645,16 @@ curl -k -X PUT "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/role/
 	}'
 
 # (Returns nothing if success)
+```
+
+
+
+#### Check
+
+```sh
+kubectl --user=user.mlajkim get po -n ajktown-api
+
+# Error from server (Forbidden): pods is forbidden: User "user.mlajkim" cannot list resource "pods" in API group "" in the namespace "ajktown-api"
 ```
 
 #### Check
