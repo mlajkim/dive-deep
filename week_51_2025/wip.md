@@ -38,10 +38,9 @@
       - [Check: Athenz Domain](#check-athenz-domain)
     - [Deploy a mock application](#deploy-a-mock-application)
     - [Exp1: Let's create a user in Kubernetes with user name `user.mlajkim`](#exp1-lets-create-a-user-in-kubernetes-with-user-name-usermlajkim)
-      - [Check](#check-4)
-    - [Exp1: Add user `user.mlajkim` to the role `k8s_ns_admins` in Athenz](#exp1-add-user-usermlajkim-to-the-role-k8s_ns_admins-in-athenz)
-      - [Check](#check-5)
       - [Check: Get pods in ajktown-api](#check-get-pods-in-ajktown-api)
+    - [Exp1: Add user `user.mlajkim` to the role `k8s_ns_admins` in Athenz](#exp1-add-user-usermlajkim-to-the-role-k8s_ns_admins-in-athenz)
+      - [Check: Get pods in ajktown-api](#check-get-pods-in-ajktown-api-1)
       - [Check: member inside in ajktown-api](#check-member-inside-in-ajktown-api)
       - [Check: Get pods in ajktown-db](#check-get-pods-in-ajktown-db)
       - [Check: member inside in ajktown-db](#check-member-inside-in-ajktown-db)
@@ -635,8 +634,7 @@ ls -al ./k8s_users/
 # -rw-------  1 ajk  staff  1708 Dec 28 10:43 user.mlajkim.key
 ```
 
-
-#### Check
+#### Check: Get pods in ajktown-api
 
 > [!TIP]
 > You can test admin access with `kubectl get po -n ajktown-api`
@@ -649,9 +647,10 @@ kubectl --user=user.mlajkim get po -n ajktown-api
 # Error from server (Forbidden): pods is forbidden: User "user.mlajkim" cannot list resource "pods" in API group "" in the namespace "ajktown-api"
 ```
 
-<!-- 🟡 TODO: Give me time: # Dive Records: 15h -->
-
 ### Exp1: Add user `user.mlajkim` to the role `k8s_ns_admins` in Athenz
+
+Now let's see if operator really syncs everything to let `user.mlajkim` to access the namespace `ajktown-api`,
+simply by adding the user to the role `k8s_ns_admins` in Athenz domain `eks.users.ajktown-api`:
 
 ```sh
 curl -k -X PUT "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/role/k8s_ns_admins/member/user.mlajkim" \
@@ -666,15 +665,6 @@ curl -k -X PUT "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/role/
 ```
 
 
-
-#### Check
-
-```sh
-kubectl --user=user.mlajkim get po -n ajktown-api
-
-# Error from server (Forbidden): pods is forbidden: User "user.mlajkim" cannot list resource "pods" in API group "" in the namespace "ajktown-api"
-```
-
 #### Check: Get pods in ajktown-api
 
 > [!TIP]
@@ -687,7 +677,13 @@ kubectl get rolebindings -n ajktown-api
 # NAME                                       ROLE                        AGE
 # eks.users.ajktown-api:role.k8s_ns_admins   Role/ns_ajktown-api_admin   42s
 ```
+
 #### Check: member inside in ajktown-api
+
+> [!TIP]
+> Role `eks.users.ajktown-api:role.k8s_ns_admins` by default allows every action on every resource in the namespace, but not other namespaces.
+
+Check that user `user.mlajkim` is added to the role-binding `eks.users.ajktown-api:role.k8s_ns_admins` in `ajktown-api` namespace:
 
 ```sh
 kubectl describe rolebindings eks.users.ajktown-api:role.k8s_ns_admins -n ajktown-api
@@ -721,7 +717,6 @@ The current operator does not create role-binding if no members are added to the
 kubectl get rolebindings -n ajktown-db
 # No resources found in ajktown-db namespace.
 ```
-
 
 # Dive Records
 
