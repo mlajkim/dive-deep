@@ -4,7 +4,9 @@
 
 - [🟡 TODO: TITLE ME](#🟡-todo-title-me)
 - [Goal](#goal)
+- [Background](#background)
 - [Conclusion](#conclusion)
+- [What I learned](#what-i-learned)
 - [Steps for the conclusion](#steps-for-the-conclusion)
   - [Setup](#setup)
     - [Setup: Local Kubernetes Cluster w/ Kind](#setup-local-kubernetes-cluster-w-kind)
@@ -32,6 +34,16 @@
     - [Exp1: Finally create](#exp1-finally-create)
       - [Check: Log from Controller](#check-log-from-controller)
     - [Exp1: Create an operator that creates Athenz Domain when NS is created in Kubernetes](#exp1-create-an-operator-that-creates-athenz-domain-when-ns-is-created-in-kubernetes)
+      - [Check: Operator Log](#check-operator-log)
+      - [Check: Athenz Domain](#check-athenz-domain)
+    - [Deploy a mock application](#deploy-a-mock-application)
+    - [Exp1: Let's create a user in Kubernetes with user name `user.mlajkim`](#exp1-lets-create-a-user-in-kubernetes-with-user-name-usermlajkim)
+      - [Check: Get pods in ajktown-api](#check-get-pods-in-ajktown-api)
+    - [Exp1: Add user `user.mlajkim` to the role `k8s_ns_admins` in Athenz](#exp1-add-user-usermlajkim-to-the-role-k8s_ns_admins-in-athenz)
+      - [Check: Get pods in ajktown-api](#check-get-pods-in-ajktown-api-1)
+      - [Check: member inside in ajktown-api](#check-member-inside-in-ajktown-api)
+      - [Check: Get pods in ajktown-db](#check-get-pods-in-ajktown-db)
+      - [Check: member inside in ajktown-db](#check-member-inside-in-ajktown-db)
 - [Dive Records](#dive-records)
 
 <!-- /TOC -->
@@ -74,7 +86,15 @@ The goal of this document is to setup a syncer mechanism between Athenz and Kube
 
 🟡 Everything above is temporary (note purpose)
 
+# Background
+
+Why I am doing this!
+
 # Conclusion
+
+🟡 TODO Write me
+
+# What I learned
 
 🟡 TODO Write me
 
@@ -203,16 +223,16 @@ We need to create a TLD
 
 ```sh
 curl -k -X POST "https://localhost:4443/zms/v1/domain" \
-	--cert ./athenz_distribution/certs/athenz_admin.cert.pem \
-	--key ./athenz_distribution/keys/athenz_admin.private.pem \
-	-H "Content-Type: application/json" \
-	-d '{
-		"name": "eks",
-		"description": "Elastic Kubernetes Service Domain",
-		"org": "ajkim",
-		"enabled": true,
-		"adminUsers": ["user.athenz_admin"]
-	}'
+  --cert ./athenz_distribution/certs/athenz_admin.cert.pem \
+  --key ./athenz_distribution/keys/athenz_admin.private.pem \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "eks",
+    "description": "Elastic Kubernetes Service Domain",
+    "org": "ajkim",
+    "enabled": true,
+    "adminUsers": ["user.athenz_admin"]
+  }'
 
 # {"description":"Elastic Kubernetes Service Domain","org":"ajkim","auditEnabled":false,"ypmId":0,"autoDeleteTenantAssumeRoleAssertions":false,"name":"eks","modified":"2025-12-27T03:00:05.421Z","id":"253b65d0-e2d0-11f0-9dea-17c92bf9f5a9"}
 ```
@@ -225,17 +245,17 @@ curl -k -X POST "https://localhost:4443/zms/v1/domain" \
 
 ```sh
 curl -k -X POST "https://localhost:4443/zms/v1/subdomain/eks" \
-	--cert ./athenz_distribution/certs/athenz_admin.cert.pem \
-	--key ./athenz_distribution/keys/athenz_admin.private.pem \
-	-H "Content-Type: application/json" \
-	-d '{
-		"parent": "eks",
-		"name": "users",
-		"description": "EKS Users Subdomain",
-		"org": "ajkim",
-		"enabled": true,
-		"adminUsers": ["user.athenz_admin"]
-	}'
+  --cert ./athenz_distribution/certs/athenz_admin.cert.pem \
+  --key ./athenz_distribution/keys/athenz_admin.private.pem \
+  -H "Content-Type: application/json" \
+  -d '{
+    "parent": "eks",
+    "name": "users",
+    "description": "EKS Users Subdomain",
+    "org": "ajkim",
+    "enabled": true,
+    "adminUsers": ["user.athenz_admin"]
+  }'
 
 # {"description":"Athenz Users Subdomain","org":"ajkim","auditEnabled":false,"name":"eks.users","modified":"2025-12-27T03:02:42.141Z","id":"82a4f8d0-e2d0-11f0-9dea-17c92bf9f5a9"}
 ```
@@ -350,21 +370,21 @@ Modify `./k8s-athenz-syncer-the-hard-way/api/v1/athenzsyncer_types.go`:
 
 ```go
 type AthenzSyncerSpec struct {
-	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
-	// Important: Run "make" to regenerate code after modifying this file
-	// The following markers will use OpenAPI v3 schema to validate the value
-	// More info: https://book.kubebuilder.io/reference/markers/crd-validation.html
+  // INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
+  // Important: Run "make" to regenerate code after modifying this file
+  // The following markers will use OpenAPI v3 schema to validate the value
+  // More info: https://book.kubebuilder.io/reference/markers/crd-validation.html
 
-	// foo is an example field of AthenzSyncer. Edit athenzsyncer_types.go to remove/update
-	// +optional
-	Foo *string `json:"foo,omitempty"`
+  // foo is an example field of AthenzSyncer. Edit athenzsyncer_types.go to remove/update
+  // +optional
+  Foo *string `json:"foo,omitempty"`
 
-	// `athenzDomain` is the Athenz domain to be synced by this AthenzSyncer.
-	// It also syncs all the subdomains under this domain.
-	AthenzDomain string `json:"athenzDomain"`
+  // `athenzDomain` is the Athenz domain to be synced by this AthenzSyncer.
+  // It also syncs all the subdomains under this domain.
+  AthenzDomain string `json:"athenzDomain"`
 
-	// `zmsURL` is the ZMS endpoint URL of the Athenz server to sycn against
-	ZMSURL string `json:"zmsURL"`
+  // `zmsURL` is the ZMS endpoint URL of the Athenz server to sycn against
+  ZMSURL string `json:"zmsURL"`
 }
 ```
 
@@ -403,46 +423,46 @@ Replace the original `Reconcile` function with the following:
 
 ```go
 func (r *AthenzSyncerReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
-	log := logf.FromContext(ctx)
+  log := logf.FromContext(ctx)
 
-	var syncer identityv1.AthenzSyncer
-	if err := r.Get(ctx, req.NamespacedName, &syncer); err != nil {
-		return ctrl.Result{}, client.IgnoreNotFound(err)
-	}
+  var syncer identityv1.AthenzSyncer
+  if err := r.Get(ctx, req.NamespacedName, &syncer); err != nil {
+    return ctrl.Result{}, client.IgnoreNotFound(err)
+  }
 
-	targetDomain := syncer.Spec.AthenzDomain
-	zmsURL := syncer.Spec.ZMSURL
+  targetDomain := syncer.Spec.AthenzDomain
+  zmsURL := syncer.Spec.ZMSURL
 
-	log.Info("Reconciling AthenzSyncer ...", "AthenzSyncer", req.NamespacedName, "Target", targetDomain, "URL", zmsURL)
+  log.Info("Reconciling AthenzSyncer ...", "AthenzSyncer", req.NamespacedName, "Target", targetDomain, "URL", zmsURL)
 
-	tr := &http.Transport{
-		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
-	}
-	httpClient := &http.Client{Transport: tr}
+  tr := &http.Transport{
+    TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
+  }
+  httpClient := &http.Client{Transport: tr}
 
-	fullURL := fmt.Sprintf("%s/domain/%s", zmsURL, targetDomain)
+  fullURL := fmt.Sprintf("%s/domain/%s", zmsURL, targetDomain)
 
-	resp, err := httpClient.Get(fullURL)
-	if err != nil {
-		log.Error(err, "🔥 Failed to connect to Athenz Server")
-	} else {
-		defer resp.Body.Close()
-		bodyBytes, _ := io.ReadAll(resp.Body)
-		bodyString := string(bodyBytes)
+  resp, err := httpClient.Get(fullURL)
+  if err != nil {
+    log.Error(err, "🔥 Failed to connect to Athenz Server")
+  } else {
+    defer resp.Body.Close()
+    bodyBytes, _ := io.ReadAll(resp.Body)
+    bodyString := string(bodyBytes)
 
-		// if response is 200
-		if resp.StatusCode == 200 {
-			preview := bodyString
-			if len(bodyString) > 200 {
-				preview = bodyString[:200] + "..."
-			}
-			log.Info("✅ Athenz Response OK!", "StatusCode", resp.StatusCode, "Data", preview)
-		} else {
-			log.Info("⚠️ Athenz Returned Error", "StatusCode", resp.StatusCode)
-		}
-	}
+    // if response is 200
+    if resp.StatusCode == 200 {
+      preview := bodyString
+      if len(bodyString) > 200 {
+        preview = bodyString[:200] + "..."
+      }
+      log.Info("✅ Athenz Response OK!", "StatusCode", resp.StatusCode, "Data", preview)
+    } else {
+      log.Info("⚠️ Athenz Returned Error", "StatusCode", resp.StatusCode)
+    }
+  }
 
-	return ctrl.Result{}, nil
+  return ctrl.Result{}, nil
 }
 ```
 
@@ -526,8 +546,197 @@ We can set `--resource=false` as we do not need the CRD (Because `Namespace` is 
 ```
 
 
-<!-- 🟡 TODO: Give me time: # Dive Records: 15h -->
+#### Check: Operator Log
+
+You will see the following log in the operator:
+
+```sh
+# 2025-12-28T08:26:52+09:00	INFO	Reconciling Namespace Controller ...	{"controller": "namespace", "controllerGroup": "", "controllerKind": "Namespace", "Namespace": {"name":"ajktown-api"}, "namespace": "", "name": "ajktown-api", "reconcileID": "ca153dcd-6708-4a90-8dfd-f3d95cb32b40", "namespace": "ajktown-api"}
+# 2025-12-28T08:26:52+09:00	INFO	Athenz subdomain created successfully	{"controller": "namespace", "controllerGroup": "", "controllerKind": "Namespace", "Namespace": {"name":"ajktown-api"}, "namespace": "", "name": "ajktown-api", "reconcileID": "ca153dcd-6708-4a90-8dfd-f3d95cb32b40", "namespace": "ajktown-api", "name": "eks.users.ajktown-api"}
+```
+
+After doing this:
+
+```sh
+kubectl create ns ajktown-api
+kubectl create ns ajktown-db
+
+# namespace/ajktown-api created
+# namespace/ajktown-db created
+```
+
+#### Check: Athenz Domain
+
+> [!TIP]
+> It would be awesome if we can have a PR that no longer requires that `/role` at the end.
+
+Let's see if the athenz domain is created. We can use the command too but let's simply see on the URL:
+
+```sh
+open "http://localhost:3000/domain/eks.users.ajktown-api/role"
+```
+
+### Deploy a mock application
+
+Let's deploy an application in each namespace for easier understanding:
+
+```sh
+kubectl run ajktown-api --image=nginx:alpine -n ajktown-api
+kubectl run ajktown-db --image=nginx:alpine -n ajktown-db
+```
+
+### Exp1: Let's create a user in Kubernetes with user name `user.mlajkim`
+
+> [!TIP]
+> We won't modify the default user created by `kind` for the cluster admin access.
+
+If you test yourself with `kubectl config view --raw --minify`, you will see:
+
+- `k8s-config-user`: `kind-kind`
+
+And you will see the following with `kubectl config view --raw --minify -o jsonpath='{.users[0].user.client-certificate-data}' | base64 -d | openssl x509 -noout -text`:
+
+- `CN`: kubernetes-admin
+
+We want to create a user with `CN`: `user.mlajkim` instead, and request for X.509 signed by kubernetes CSR API, then use the certificate to try see how access system works:
+
+```sh
+mkdir -p ./k8s_users
+openssl genrsa -out ./k8s_users/user.mlajkim.key 2048
+openssl req -new -key ./k8s_users/user.mlajkim.key -out ./k8s_users/user.mlajkim.csr -subj "/CN=user.mlajkim/O=devs"
+
+export CSR_BASE64=$(cat ./k8s_users/user.mlajkim.csr | base64 | tr -d '\n')
+cat <<EOF | kubectl apply -f -
+apiVersion: certificates.k8s.io/v1
+kind: CertificateSigningRequest
+metadata:
+  name: user.mlajkim-csr
+spec:
+  request: ${CSR_BASE64}
+  signerName: kubernetes.io/kube-apiserver-client
+  expirationSeconds: 31536000
+  usages:
+  - client auth
+EOF
+rm ./k8s_users/user.mlajkim.csr
+
+kubectl certificate approve user.mlajkim-csr
+kubectl get csr user.mlajkim-csr -o jsonpath='{.status.certificate}' | base64 -d > ./k8s_users/user.mlajkim.crt
+kubectl config set-credentials user.mlajkim \
+  --client-certificate=./k8s_users/user.mlajkim.crt \
+  --client-key=./k8s_users/user.mlajkim.key
+
+ls -al ./k8s_users/
+
+# Lots of log ...
+# -rw-r--r--  1 ajk  staff  1119 Dec 28 10:45 user.mlajkim.crt
+# -rw-r--r--  1 ajk  staff   915 Dec 28 10:43 user.mlajkim.csr
+# -rw-------  1 ajk  staff  1708 Dec 28 10:43 user.mlajkim.key
+```
+
+#### Check: Get pods in ajktown-api
+
+> [!TIP]
+> You can test admin access with `kubectl get po -n ajktown-api`
+
+We can see that KubeAPI server rejects to see the pods in ns `ajktown-api` with `Forbidden` as expected, with context `--user=user.mlajkim`:
+
+```sh
+kubectl --user=user.mlajkim get po -n ajktown-api
+
+# Error from server (Forbidden): pods is forbidden: User "user.mlajkim" cannot list resource "pods" in API group "" in the namespace "ajktown-api"
+```
+
+### Exp1: Add user `user.mlajkim` to the role `k8s_ns_admins` in Athenz
+
+Now let's see if operator really syncs everything to let `user.mlajkim` to access the namespace `ajktown-api`,
+simply by adding the user to the role `k8s_ns_admins` in Athenz domain `eks.users.ajktown-api`:
+
+```sh
+curl -k -X PUT "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/role/k8s_ns_admins/member/user.mlajkim" \
+  --cert ./athenz_distribution/certs/athenz_admin.cert.pem \
+  --key ./athenz_distribution/keys/athenz_admin.private.pem \
+  -H "Content-Type: application/json" \
+  -d '{
+    "memberName": "user.mlajkim"
+  }'
+
+# (Returns nothing if success)
+```
+
+
+#### Check: Get pods in ajktown-api
+
+> [!TIP]
+> Could take at most a minute for operator to sync the changes to K8s RBAC
+
+Check role-binding is automatically created:
+
+```sh
+kubectl get rolebindings -n ajktown-api
+# NAME                                       ROLE                        AGE
+# eks.users.ajktown-api:role.k8s_ns_admins   Role/ns_ajktown-api_admin   42s
+```
+
+#### Check: member inside in ajktown-api
+
+> [!TIP]
+> Role `eks.users.ajktown-api:role.k8s_ns_admins` by default allows every action on every resource in the namespace, but not other namespaces.
+
+Check that user `user.mlajkim` is added to the role-binding `eks.users.ajktown-api:role.k8s_ns_admins` in `ajktown-api` namespace:
+
+```sh
+kubectl describe rolebindings eks.users.ajktown-api:role.k8s_ns_admins -n ajktown-api
+
+# Name:         eks.users.ajktown-api:role.k8s_ns_admins
+# Labels:       managed-by=athenz-syncer
+# Annotations:  <none>
+# Role:
+#   Kind:  Role
+#   Name:  eks.users.ajktown-api:role.k8s_ns_admins
+# Subjects:
+#   Kind  Name          Namespace
+#   ----  ----          ---------
+#   User  user.mlajkim
+```
+
+#### Check: Get pods in ajktown-db
+
+User `user.mlajkim` should NOT have access to `ajktown-db` as the user is not added to the role `k8s_ns_admins` in `eks.users.ajktown-db`:
+
+```sh
+kubectl --user=user.mlajkim get po -n ajktown-db
+
+# Error from server (Forbidden): pods is forbidden: User "user.mlajkim" cannot list resource "pods" in API group "" in the namespace "ajktown-db"
+```
+#### Check: member inside in ajktown-db
+
+You can see that the operator creates the role-binding in `ajktown-db` namespace too, but without any member (`Subjects` is empty):
+
+```sh
+kubectl describe rolebindings eks.users.ajktown-db:role.k8s_ns_admins:members -n ajktown-db
+
+# Name:         eks.users.ajktown-db:role.k8s_ns_admins:members
+# Labels:       managed-by=athenz-syncer
+# Annotations:  <none>
+# Role:
+#   Kind:  Role
+#   Name:  eks.users.ajktown-db:role.k8s_ns_admins
+# Subjects:
+#   Kind  Name  Namespace
+#   ----  ----  ---------
+```
 
 # Dive Records
 
+Target:
+
+- This document itself
+- The PR Following: 🟡 TODO
+
+Daily Dive:
+
 - `12/26 Fri`: 4.5h
+- `12/27 Sat`: 5.5h
+- `12/28 Sun`: ...7h
+- ...EOF

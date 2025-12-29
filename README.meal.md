@@ -32,7 +32,7 @@ To not fall into food comma, stay sharp and well fit, I need to maintain my dail
 |  12/28~1/3  |   Calories    |   ...   |                                    |
 |             |    Protein    |   ...   |                                    |
 |             |   Protein %   |   ...   |                                    |
-|             | Protein Setup |   n/a   |                                    |
+|             | Protein Setup |   n/a   |              ...12/29              |
 |             |    Grocery    |   n/a   |                                    |
 | 12/22~12/27 |   Calories    |  2657   | 2584, 2294, 2182, 2863, 2138, 2882 |
 |             |    Protein    |   106   |     134, 66, 72, 132, 80, 149      |

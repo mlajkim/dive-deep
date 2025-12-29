@@ -1,25 +1,14 @@
-<!--
-If it is not directly related to the dive-deep, simply write:
 
-- ## Background
-- ## What's done
--->
+## Miracle Morning
 
-## What I learned (at least three)
+- [ ] Miracle Morning Routines
+  - Post a wake up picture
+  - Modify `README.sleep.md` with the proof above
 
-- ...
-- ...
-- ...
+## Miracle Morning (Before Merger)
 
-## What could be better (at least one)
-
-- ...
-
----
-
-## Before merging Checklist
-- [ ] What I learned/What could be done is filled
-- [ ] Review Yesterday's work
-- [ ] Review work from 4 days ago
-- [ ] Review work from a week ago
-
+- [ ] Miracle Morning Routines
+  - Take a wake up picture
+  - Review every changes in yesterday's daily PR
+  - Merge the PR if everything looks good
+  - EOF

@@ -11,6 +11,8 @@
 - [Dive Deep 🤿](#dive-deep-🤿)
 - [Goal](#goal)
   - [2026 Performance: Weekly Tech Blogs](#2026-performance-weekly-tech-blogs)
+    - [1/4~1/10 (2): Not Yet Titled](#14110-2-not-yet-titled)
+    - [1/4~1/10: Not Yet Titled](#14110-not-yet-titled)
     - [12/28~1/3: Not Yet Titled](#122813-not-yet-titled)
   - [2025 Performance: Weekly Tech Blogs](#2025-performance-weekly-tech-blogs)
     - [12/21~12/27: Not Yet Titled](#12211227-not-yet-titled)
@@ -27,10 +29,23 @@ Want to be really good in technology over getting certain certificates that may 
 
 ## 2026 Performance: Weekly Tech Blogs
 
+### 1/4~1/10 (2): Not Yet Titled
+
+> [!NOTE]
+> Current Goal: By 1/10 as usual
+
+### 1/4~1/10: Not Yet Titled
+
+> [!NOTE]
+> Current Goal: By 1/5
+
 ### 12/28~1/3: Not Yet Titled
 
 > [!NOTE]
 > Topic about learning the production used athenz-syncer and learn based on what I have been searching so far
+
+> [!NOTE]
+> Current Goal: By 1/2
 
 ## 2025 Performance: Weekly Tech Blogs
 
