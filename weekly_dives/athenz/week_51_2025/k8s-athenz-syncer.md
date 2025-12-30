@@ -64,18 +64,18 @@ The operator, `k8s-athenz-syncer-the-hard-clean-way`, performs the following act
 
 **Demo 1: Auto-creation of Resources in Athenz with k8s namespace only**
 
-![Demo](https://raw.githubusercontent.com/mlajkim/k8s-athenz-syncer-the-hard-clean-way/3926c3d57774b5be1ed91afcace70db1115ac73c/assets/01_create_ns.gif)
+![Demo](./assets/01_create_ns.gif)
 
 **Demo 2: Giving permission with Syncing Membership (Polling)**
 
 Operator `k8s-athenz-syncer-the-hard-clean-way` periodically polls Athenz roles under certain parent domain (e.g., `eks.users`), and syncs the members of the Athenz roles into corresponding Kubernetes RBAC Roles, which results in automatic access control based on Athenz role membership.
 
-![Demo](https://raw.githubusercontent.com/mlajkim/k8s-athenz-syncer-the-hard-clean-way/3926c3d57774b5be1ed91afcace70db1115ac73c/assets/02_polling_athenz_roles.gif)
+![Demo](./assets/02_polling_athenz_roles.gif)
 Operator `k8s-athenz-syncer-the-hard-clean-way` makes sure that if you delete members from Athenz roles, the members are also removed from corresponding Kubernetes RBAC Roles.
 
 **Demo 3: Restricting permission with Syncing Membership (Polling)**
 
-![Demo](https://raw.githubusercontent.com/mlajkim/k8s-athenz-syncer-the-hard-clean-way/3926c3d57774b5be1ed91afcace70db1115ac73c/assets/03_remove_athenz_role_members.gif)
+![Demo](./assets/03_remove_athenz_role_members.gif)
 
 # What I Learned
 
@@ -212,4 +212,4 @@ Finally, I don't just want to be an observer:
 
 If you enjoyed this deep dive, please leave a like & subscribe for more!
 
-![like_this_photo](https://github.com/user-attachments/assets/7c240593-7257-41bc-b0d9-0db48a6e74b7)
+![like_this_photo_cat](./assets/like_this_photo_cat.png)

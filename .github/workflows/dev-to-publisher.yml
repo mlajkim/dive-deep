@@ -15,6 +15,7 @@ jobs:
 
     - uses: sinedied/publish-devto@v2
       with:
-        devto_key: ${{ secrets.DEV_TO_KEY }} # Secret "DEV_TO_KEY" must be stored in https://github.com/mlajkim/dive-deep/settings/secrets/actions
+        # Secret "DEV_TO_KEY" must be stored in https://github.com/mlajkim/dive-deep/settings/secrets/actions
+        devto_key: ${{ secrets.DEV_TO_KEY }}
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        files: 'weekly_dives/**/*.md'
+        files: 'weekly_dives/**/[!_]*.md'
