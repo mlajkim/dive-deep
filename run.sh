@@ -113,7 +113,7 @@ else
 fi
 
 git add "$FILE_PATH"
-git commit -m "first automated commit"
+git commit -m "$BRANCH_NAME"
 
 git push -u origin "$BRANCH_NAME"
 
