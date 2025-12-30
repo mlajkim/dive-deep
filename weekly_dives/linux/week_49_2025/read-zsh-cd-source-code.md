@@ -1,7 +1,7 @@
 ---
 title: "Dives into zsh's cd command in Week 49, 2025"
 published: true
-tags: [linux, weekly-dive, zsh, cd-command, source-code]
+tags: [linux, weeklydive, zsh, changedir, sourcecode]
 series: "Weekly Dive"
 cover_image: "./thumbnail.png"
 ---
