@@ -1,7 +1,7 @@
 ---
 title: "Stop Using Magic: Building a Kubernetes Operator from Scratch"
 published: true
-tags: [kubernetes, weekly_dive, operator, athenz, contribution, first_time]
+tags: [kubernetes, operator, athenz, k8sathenzsyncer]
 series: "Weekly Dive"
 cover_image: "./thumbnail.png"
 ---
