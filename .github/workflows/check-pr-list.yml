@@ -4,6 +4,7 @@ on:
   pull_request:
     types: [ opened, edited, reopened, synchronize, ready_for_review ]
 
+# TODO: Make it draft/not draft based on check lists instead, to prevent unnecessary emails
 jobs:
   check-checklist:
     runs-on: ubuntu-latest
