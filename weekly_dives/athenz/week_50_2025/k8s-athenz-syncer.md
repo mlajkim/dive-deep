@@ -77,13 +77,16 @@ Operator `k8s-athenz-syncer-the-hard-clean-way` makes sure that if you delete me
 Through this "hard way" implementation, I gained several key technical insights:
 
 1. **The Power of Kubebuilder Scaffolding**
+
 * Starting from scratch doesn't mean writing boilerplate. `kubebuilder` abstracts away the complexity of leader election, metrics server, and signal handling, allowing us to focus purely on the `Reconcile` logic.
 
 2. **Level-Triggered vs. Edge-Triggered**
+
 * Kubernetes controllers are primarily level-triggered. While I implemented a polling mechanism for the external Athenz API, the internal Kubernetes state relies on the `Reconcile` loop constantly attempting to move the current state to the desired state.
 * I learned that for external resources (like Athenz), we explicitly need to manage the polling interval or set up webhooks, as Kubernetes cannot "watch" an external API by default.
 
 3. **Security Integration Details**
+
 * Connecting Kubernetes RBAC with an external system isn't just about mapping strings. It involves handling X.509 certificates for authentication (Athenz) and correctly signing Kubernetes CSRs for user testing (`user.mlajkim`).
 
 
