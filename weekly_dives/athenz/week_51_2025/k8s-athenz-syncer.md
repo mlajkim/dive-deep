@@ -177,6 +177,8 @@ I first created an operator that works in bare minimum and deployed it public to
 
 But I found myself to improve the code structure and make it cleaner. So I created a new repository: [k8s-athenz-syncer-the-hard-clean-way](https://github.com/mlajkim/k8s-athenz-syncer-the-hard-clean-way/), with `clean` meaning that I re-organized the code structure to make it more modular and readable.
 
+[This is amount of changes I made in a PR](https://github.com/mlajkim/k8s-athenz-syncer-the-hard-clean-way/pull/1) to make it clean.
+
 ### 4. Write demo/local setup guide in README.md
 
 I realized that visuals speak louder than words when demonstrating infrastructure tools. Instead of greeting users with a wall of text, I structured the [README.md](https://github.com/mlajkim/k8s-athenz-syncer-the-hard-clean-way/blob/main/README.md) to lead with [GIFs](https://github.com/mlajkim/k8s-athenz-syncer-the-hard-clean-way/tree/main/assets) that showcase the operator's features immediately. Once I've captured the reader's interest, I provide a ["copy-paste friendly" local setup guide](https://github.com/mlajkim/k8s-athenz-syncer-the-hard-clean-way/blob/main/README.md#how-to-run-locally) to make the onboarding process as seamless as possible.
