@@ -6,7 +6,6 @@ tags:
   - weeklydive
   - zsh
   - changedir
-series: Weekly Dive
 cover_image: ./thumbnail.png
 id: 3135476
 date: '2025-12-30T09:33:29Z'

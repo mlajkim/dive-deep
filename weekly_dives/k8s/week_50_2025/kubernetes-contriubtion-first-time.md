@@ -2,7 +2,6 @@
 title: "Dives into Kubernetes contribution in Week 50, 2025"
 published: true
 tags: [kubernetes, weeklydive, contribution, firsttime]
-series: "Weekly Dive"
 cover_image: "./thumbnail.png"
 ---
 
