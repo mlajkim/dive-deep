@@ -7,8 +7,6 @@ tags:
   - athenz
   - k8sathenzsyncer
 cover_image: ./thumbnail.png
-id: 3135487
-date: '2025-12-30T09:39:19Z'
 ---
 
 # Goal
