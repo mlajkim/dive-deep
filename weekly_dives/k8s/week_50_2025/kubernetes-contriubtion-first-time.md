@@ -1,8 +1,14 @@
 ---
-title: "Dives into Kubernetes contribution in Week 50, 2025"
+title: 'Dives into Kubernetes contribution in Week 50, 2025'
 published: true
-tags: [kubernetes, weeklydive, contribution, firsttime]
-cover_image: "./thumbnail.png"
+tags:
+  - kubernetes
+  - weeklydive
+  - contribution
+  - firsttime
+cover_image: ./thumbnail.png
+id: 3135488
+date: '2025-12-30T09:39:19Z'
 ---
 
 # Week 50, 2025 Weekly Dive

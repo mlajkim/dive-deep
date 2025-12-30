@@ -1,8 +1,14 @@
 ---
-title: "Stop Using Magic: Building a Kubernetes Operator from Scratch"
+title: 'Stop Using Magic: Building a Kubernetes Operator from Scratch'
 published: true
-tags: [kubernetes, operator, athenz, k8sathenzsyncer]
-cover_image: "./thumbnail.png"
+tags:
+  - kubernetes
+  - operator
+  - athenz
+  - k8sathenzsyncer
+cover_image: ./thumbnail.png
+id: 3135487
+date: '2025-12-30T09:39:19Z'
 ---
 
 # Goal
