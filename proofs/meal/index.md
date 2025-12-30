@@ -4,10 +4,6 @@
 
 This markdown stores well-often eaten meals for easy reference, as SSOT.
 
-> [!NOTE]
-> Please store the following in `run.sh`
-> Note that `run.sh`'s data is not the source of truth, but this markdown is.
-
 Protein:
 
 |                  Food                   | Calories | Protein |
