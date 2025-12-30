@@ -37,15 +37,11 @@ Checkout the proofs for:
 - [Workout](./proofs/workout/)
 - [Cardio](./proofs/cardio/)
 
-|    Date     | Weekly Goal |                     Days Done                      |
-|:-----------:|:-----------:|:--------------------------------------------------:|
-|  1/4~1/10   |    Golf     |                      ...1/4F                       |
-|  12/28~1/3  |    Rest     |              12/28, ...12/30, ...1/1               |
-|             |    Golf     |              12/29F,  ...12/31F, 1/2F              |
-|             |   Workout   | ... No Workouts This Week Due To Golf Courses Prep |
-|             |   Cardio    |  ... No Cardio This Week Due To Golf Course Prep   |
-| 12/21~12/27 |    Golf     |                       12/27                        |
-|             |   Workout   |                12/20, 12/24, 12/26                 |
-|             |   Cardio    |                       12/20                        |
+|    Week     |     Sun      |  Mon  |   Tue    |   Wed    | Thu |   Fri    |   Sat   |
+|:-----------:|:------------:|:-----:|:--------:|:--------:|:---:|:--------:|:-------:|
+|  1/4~1/10   |    ...Leg    |  ...  | ...Chest |          |     |          |         |
+|  12/28~1/3  |      -       | Field |    -     | ...Field |  -  | ...Field | ...Back |
+| 12/21~12/27 | Back, Cardio |   -   |    -     |   Leg    |  -  |  Chest   |  Range  |
+
 
 
