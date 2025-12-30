@@ -44,6 +44,7 @@ By doing this, we can:
   - [I: The "Weekly Dive": Performance Optimization](#i-the-weekly-dive-performance-optimization)
   - [II: Dissecting the Production Code (athenz/k8s-athenz-syncer)](#ii-dissecting-the-production-code-athenzk8s-athenz-syncer)
   - [III: Contributing Back](#iii-contributing-back)
+- [Dive Hours: 28 hours](#dive-hours-28-hours)
 - [Closing](#closing)
 
 <!-- /TOC -->
@@ -213,6 +214,15 @@ Finally, I don't just want to be an observer:
 - **Feedback Loop**: If I find performance bottlenecks or logic gaps during my audit, I plan to raise Issues or submit PRs to the upstream repository.
 - **Community**: I hope to start a conversation with the maintainers (Yahoo Inc.) to validate my assumptions and share my findings.
 - **Guide others**: If some teams want to use Athenz role as SSoT for Kubernetes RBAC, I want to help them by sharing my learnings and possibly providing a more production-ready version of my "hard & clean way" operator.
+
+# Dive Hours: 28 hours
+
+This post took me approximately 28 hours of focused work and development, broken down as follows:
+
+- `12/26 Fri`: 4.5h
+- `12/27 Sat`: 5.5h
+- `12/28 Sun`: 8.5h
+- `12/30 Tue`: 9.5h
 
 # Closing
 
