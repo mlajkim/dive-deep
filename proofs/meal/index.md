@@ -25,7 +25,7 @@ Unhealthy Carbs:
 |         Food          | Calories | Protein |
 |:---------------------:|:--------:|:-------:|
 | baehongdong jjolmyeon |   445    |   13    |
-| baehongdong Bibimyeon |   556    |   13    |
+| baehongdong Bibimyeon |   556    |   9    |
 
 Fruit:
 |           Food           | Calories | Protein |
