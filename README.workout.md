@@ -37,11 +37,16 @@ Checkout the proofs for:
 - [Workout](./proofs/workout/)
 - [Cardio](./proofs/cardio/)
 
-|    Week     |     Sun      |  Mon  |   Tue    |   Wed    | Thu |   Fri    |   Sat   |
-|:-----------:|:------------:|:-----:|:--------:|:--------:|:---:|:--------:|:-------:|
-|  1/4~1/10   |    ...Leg    |  ...  | ...Chest |          |     |          |         |
-|  12/28~1/3  |      -       | Field |    -     | ...Field |  -  | ...Field | ...Back |
-| 12/21~12/27 | Back, Cardio |   -   |    -     |   Leg    |  -  |  Chest   |  Range  |
+|    Week     |     Sun      |  Mon  |   Tue    |   Wed    | Thu |   Fri    |      Sat       |
+|:-----------:|:------------:|:-----:|:--------:|:--------:|:---:|:--------:|:--------------:|
+|  1/25~1/31  |              |       |          |          |     |          |                |
+|  1/18~1/24  |              |       |          |          |     |          | ...Competition |
+|  1/11~1/17  |              |       |          |          |     |          |                |
+|  1/4~1/10   |    ...Leg    |  ...  | ...Chest |          |     |          |                |
+|  12/28~1/3  |      -       | Field |    -     | ...Field |  -  | ...Field |    ...Back     |
+| 12/21~12/27 | Back, Cardio |   -   |    -     |   Leg    |  -  |  Chest   |     Range      |
+
+
 
 
 
