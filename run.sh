@@ -66,7 +66,51 @@ cat <<EOF > "$FILE_PATH"
 
 EOF
 
+
+
 echo "File created at $FILE_PATH"
+
+# creates wip directory and wip.md if not exists:
+
+mkdir -p weekly_dives/wip
+WIP_PATH="weekly_dives/wip/${FILE_DATE}-wip.md"
+if [ ! -f "$WIP_PATH" ]; then
+    cat <<EOF > "$WIP_PATH"
+# Goal
+
+TODO: Write goal here above the line.
+
+<!-- TOC -->
+
+<!-- /TOC -->
+
+# Result
+
+# Walkthrough
+
+## Setup
+
+### a. XXX
+
+## Implementation
+
+### 1. XXX
+
+## Verification
+
+### I: XXX
+
+# What's next?
+
+# Dive Hours: XX Hours
+
+# Closing
+
+EOF
+  echo "WIP file created at $WIP_PATH"
+else
+  echo "WIP file already exists at $WIP_PATH"
+fi
 
 git add "$FILE_PATH"
 git commit -m "first automated commit"
