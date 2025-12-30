@@ -1,10 +1,9 @@
-# 🟡 TODO: TITLE ME
+# Creates Kubernetes Operator k8s-athenz-syncer from Scratch
 
 <!-- TOC -->
 
-- [🟡 TODO: TITLE ME](#🟡-todo-title-me)
+- [Creates Kubernetes Operator k8s-athenz-syncer from Scratch](#creates-kubernetes-operator-k8s-athenz-syncer-from-scratch)
 - [Goal](#goal)
-- [Background](#background)
 - [Conclusion](#conclusion)
 - [What I learned](#what-i-learned)
 - [Steps for the conclusion](#steps-for-the-conclusion)
@@ -51,48 +50,33 @@
 
 # Goal
 
-The temporary goal is to build a cluster with Athenz installed, and see
+The primary goal is to demystify how Kubernetes Controllers work by building a custom [Athenz/k8s-athenz-syncer](https://github.com/AthenZ/k8s-athenz-syncer) from scratch ("The Hard & Clean Way"). By doing this I expect to:
+- Understand the core concepts of Kubernetes Operators and Controllers
+- Learn how to interact with Athenz ZMS server via its API
+- Understand how to manage Athenz domains and roles programmatically
+- Learn what are the small details that are often overlooked by simply deploying it
 
 
-1. exp1: Create a custom k8s-athenz-syncer only with ZMS API, in a hard way
-- /domain?prefix={athenzDomain}   (ex: /domain?prefix=shared-kubernetes-cluster-helper)
-- /domain/{domainName}/role/{roleName}?auditLog=true&expand=true
-1. exp2: Create a custom k8s-athenz-syncer only with ZMS API, in a elegant way with checking updates and other mechanisms that I can think of
-1. exp3: Write a guide for deploying the k8s-athenz-syncer with good UI UX so that others can easily deploy and test it out. => This is especially good as I can contribute the team to really work on it (Remember the jenkins day that I did it for them so that they can easily deploy Copper Argos in Jenkins)
-1. exp4: Write thoughts and stuff
-1. exp5: Maybe I can write some PRs to improve the k8s-athenz-syncer if I find something missing or can be better.
+However, I do not want to just build already-proudction level stuff right away, but instead want to simply build something that works first. Then maybe I can improve it later with different blog posts.
 
-
-
-
-🟡 TODO: The following is temporary:
-
-You guys want to leanr about it but have no idea right? here is the tutorial for you all :)
-
-The goal of this document is to setup a syncer mechanism between Athenz and Kubernettes RBAC by:
-- Make really
-- Make a custom syncer that syncs from Athenz to K8s RBAC (Good Challenge & Learn a lot about both Athenz and K8s RBAC) only by ZMS
-- Then learn how to deploy k8s-athenz-syncer properly with good UI UX and how it is differ
-- We can also see what is better and what is missing in the k8s-athenz-sycner and possibly contribute back.
-- Maybe I can mock creating the same cluster!
-
-1. Create the similar one only with ZMS API and see how it affects the k8s-athenz-syncer
-
-
-
-1. Learn about the core logic of https://github.com/AthenZ/k8s-athenz-syncer with deployment examples
-1. Maybe create a very simple deployer for the k8s-athenz-syncer with good UI UX to really make others be able to test => Learn a lot from athenz distribution as I can test Athenz so easy.
-
-
-🟡 Everything above is temporary (note purpose)
-
-# Background
-
-Why I am doing this!
 
 # Conclusion
 
-🟡 TODO Write me
+I was able to build a Kubernetes operator with the following PR: https://github.com/mlajkim/k8s-athenz-syncer-the-hard-clean-way/pull/1
+
+This operator `k8s-athenz-syncer-the-hard-clean-way` creates the following when you simply create a namespace in your Kubernetes cluster:
+- Athenz domain under certain parent domain (e.g., `eks.users`)
+- Athenz roles under the created domain, that you can define in the config file
+- Kubernetes RBAC Roles that correspond to the created Athenz roles, that you define in the config file
+
+![Demo](https://raw.githubusercontent.com/mlajkim/k8s-athenz-syncer-the-hard-clean-way/3926c3d57774b5be1ed91afcace70db1115ac73c/assets/01_create_ns.gif)
+
+Operator `k8s-athenz-syncer-the-hard-clean-way` periodically polls Athenz roles under certain parent domain (e.g., `eks.users`), and syncs the members of the Athenz roles into corresponding Kubernetes RBAC Roles.
+
+![Demo](https://raw.githubusercontent.com/mlajkim/k8s-athenz-syncer-the-hard-clean-way/3926c3d57774b5be1ed91afcace70db1115ac73c/assets/02_polling_athenz_roles.gif)
+Operator `k8s-athenz-syncer-the-hard-clean-way` makes sure that if you delete members from Athenz roles, the members are also removed from corresponding Kubernetes RBAC Roles.
+
+![Demo](https://raw.githubusercontent.com/mlajkim/k8s-athenz-syncer-the-hard-clean-way/3926c3d57774b5be1ed91afcace70db1115ac73c/assets/03_remove_athenz_role_members.gif)
 
 # What I learned
 
