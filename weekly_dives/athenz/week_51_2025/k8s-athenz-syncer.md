@@ -155,6 +155,8 @@ curl -k -X POST "https://localhost:4443/zms/v1/subdomain/eks" \
 
 ## Implementation: The Hard & Clean Way
 
+Here is how I built the operator from scratch in a clean way.
+
 ### 1. Initialize the Project
 
 I initialized the project using `kubebuilder`.
