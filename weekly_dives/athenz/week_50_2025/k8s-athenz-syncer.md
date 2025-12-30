@@ -1,8 +1,25 @@
-# Stop Using Magic: Building a Kubernetes Operator from Scratch
+---
+title: "Stop Using Magic: Building a Kubernetes Operator from Scratch"
+published: true
+tags: [kubernetes, weekly_dive, contribution, first_time]
+series: "Weekly Dive"
+cover_image: "./thumbnail.png"
+---
+
+# Goal
+
+Hello everyone! This post's primary goal is to demystify how Kubernetes Controllers work by building a custom [Athenz/k8s-athenz-syncer](https://github.com/AthenZ/k8s-athenz-syncer) from scratch! Instead of relying on "magic" libraries or copying existing production code, we are diving deep into the core concepts by implementing the operator ourselves.
+
+By doing this, we can:
+
+- Understand the core concepts of Kubernetes Operators and the Reconciliation Loop.
+- Learn how to interact with the Athenz ZMS server via its API programmatically.
+- Implement a logic that automatically maps external identity roles (Athenz) to Kubernetes RBAC.
+- Identify the subtle details often overlooked when simply deploying pre-made operators.
+- Know exactly what to look for to catch the subtle details that other reviewers would miss
 
 <!-- TOC -->
 
-- [Stop Using Magic: Building a Kubernetes Operator from Scratch](#stop-using-magic-building-a-kubernetes-operator-from-scratch)
 - [Goal](#goal)
 - [Result](#result)
 - [What I Learned](#what-i-learned)
@@ -25,19 +42,6 @@
 - [Closing](#closing)
 
 <!-- /TOC -->
-
-
-# Goal
-
-The primary goal of this post is to demystify how Kubernetes Controllers work by building a custom [Athenz/k8s-athenz-syncer](https://github.com/AthenZ/k8s-athenz-syncer) from scratch. Instead of relying on "magic" libraries or copying existing production code, I wanted to build it "The Hard & Clean Way."
-
-By doing this, I aimed to:
-
-- Understand the core concepts of Kubernetes Operators and the Reconciliation Loop.
-- Learn how to interact with the Athenz ZMS server via its API programmatically.
-- Implement a logic that automatically maps external identity roles (Athenz) to Kubernetes RBAC.
-- Identify the subtle details often overlooked when simply deploying pre-made operators.
-- Know exactly what to look for to catch the subtle details that other reviewers would miss
 
 # Result
 
