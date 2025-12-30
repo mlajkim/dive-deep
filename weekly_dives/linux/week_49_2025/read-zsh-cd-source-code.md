@@ -1,9 +1,15 @@
 ---
-title: "Dives into zsh's cd command in Week 49, 2025"
+title: 'Dives into zsh''s cd command in Week 49, 2025'
 published: true
-tags: [linux, weeklydive, zsh, changedir]
-series: "Weekly Dive"
-cover_image: "./thumbnail.png"
+tags:
+  - linux
+  - weeklydive
+  - zsh
+  - changedir
+series: Weekly Dive
+cover_image: ./thumbnail.png
+id: 3135476
+date: '2025-12-30T09:33:29Z'
 ---
 
 # Goal
