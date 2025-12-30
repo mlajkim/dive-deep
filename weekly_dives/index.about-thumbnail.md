@@ -11,9 +11,7 @@
 
 ## How to create thumbnail for Weekly Dives
 
-Use the following service:
-
-https://new.express.adobe.com/
+Use Gemini to create a background picture related to it, and then create a text file on top of it.
 
 
 ## About `_`
