@@ -15,10 +15,10 @@
     - [1/4~1/10: Not Yet Titled](#14110-not-yet-titled)
     - [12/28~1/3: Not Yet Titled](#122813-not-yet-titled)
   - [2025 Performance: Weekly Tech Blogs](#2025-performance-weekly-tech-blogs)
-    - [12/21~12/27: Not Yet Titled](#12211227-not-yet-titled)
-    - [12/14~12/20: Not Yet Titled](#12141220-not-yet-titled)
-    - [12/7~12/13: Dives into Kubernetes contribution in Week 50, 2025](#1271213-dives-into-kubernetes-contribution-in-week-50-2025)
-    - [11/30~12/6: Dives into zsh's cd command in Week 49, 2025](#1130126-dives-into-zshs-cd-command-in-week-49-2025)
+    - [Week 52 (12/21~12/27): Not Yet Titled](#week-52-12211227-not-yet-titled)
+    - [Week 51 (12/14~12/20): Stop Using Magic: Building a Kubernetes Operator from Scratch](#week-51-12141220-stop-using-magic-building-a-kubernetes-operator-from-scratch)
+    - [Week 50 (12/7~12/13): Dives into Kubernetes contribution in Week 50, 2025](#week-50-1271213-dives-into-kubernetes-contribution-in-week-50-2025)
+    - [WEek 49 (11/30~12/6): Dives into zsh's cd command in Week 49, 2025](#week-49-1130126-dives-into-zshs-cd-command-in-week-49-2025)
 
 <!-- /TOC -->
 
@@ -45,30 +45,26 @@ Want to be really good in technology over getting certain certificates that may 
 > Topic about learning the production used athenz-syncer and learn based on what I have been searching so far
 
 > [!NOTE]
-> Current Goal: By 1/2
+> Current Goal: By 1/3
 
 ## 2025 Performance: Weekly Tech Blogs
 
-### 12/21~12/27: Not Yet Titled
+### Week 52 (12/21~12/27): Not Yet Titled
 
 > [!WARNING]
-> LATE HERE: My current goal is to post it on Dec 31, 2025
+> LATE HERE: My current goal is to post it on Jan 2, 2026
 
 > [!NOTE]
 > Topic about how I improved my custom syncer performance to the extreme
 
-### 12/14~12/20: Not Yet Titled
+### Week 51 (12/14~12/20): Stop Using Magic: Building a Kubernetes Operator from Scratch
 
-> [!CAUTION]
-> VERY LATE HERE: My current goal is to post it on Dec 28, 2025
+[Stop Using Magic: Building a Kubernetes Operator from Scratch](https://dev.to/mlajkim/stop-using-magic-building-a-kubernetes-operator-from-scratch-mo2)
 
-> [!NOTE]
-> Topic about the hard way to build a syncer by my own
-
-### 12/7~12/13: Dives into Kubernetes contribution in Week 50, 2025
+### Week 50 (12/7~12/13): Dives into Kubernetes contribution in Week 50, 2025
 [Dives into Kubernetes contribution in Week 50, 2025](https://dev.to/mlajkim/dives-into-kubernetes-contribution-in-week-50-2025-4i6g)
 
-### 11/30~12/6: Dives into zsh's cd command in Week 49, 2025
+### WEek 49 (11/30~12/6): Dives into zsh's cd command in Week 49, 2025
 
 [Dives into zsh's cd command in Week 49, 2025](https://dev.to/mlajkim/251130-zsh-cd-460i)
 

@@ -4,6 +4,7 @@
 - [ ] Miracle Morning Routines
   - Post a wake up picture
   - Modify `README.sleep.md` with the proof above
+  - Add Food Log If You Eat Right Now
 
 ## Miracle Morning (Before Merger)
 

@@ -44,6 +44,7 @@ By doing this, we can:
   - [I: The "Weekly Dive": Performance Optimization](#i-the-weekly-dive-performance-optimization)
   - [II: Dissecting the Production Code (athenz/k8s-athenz-syncer)](#ii-dissecting-the-production-code-athenzk8s-athenz-syncer)
   - [III: Contributing Back](#iii-contributing-back)
+- [Dive Hours: 28 hours](#dive-hours-28-hours)
 - [Closing](#closing)
 
 <!-- /TOC -->
@@ -154,6 +155,8 @@ curl -k -X POST "https://localhost:4443/zms/v1/subdomain/eks" \
 
 ## Implementation: The Hard & Clean Way
 
+Here is how I built the operator from scratch in a clean way.
+
 ### 1. Initialize the Project
 
 I initialized the project using `kubebuilder`.
@@ -173,6 +176,8 @@ I first created an operator that works in bare minimum and deployed it public to
 ### 3. Refactor the operator to make it cleaner
 
 But I found myself to improve the code structure and make it cleaner. So I created a new repository: [k8s-athenz-syncer-the-hard-clean-way](https://github.com/mlajkim/k8s-athenz-syncer-the-hard-clean-way/), with `clean` meaning that I re-organized the code structure to make it more modular and readable.
+
+[This is amount of changes I made in a PR](https://github.com/mlajkim/k8s-athenz-syncer-the-hard-clean-way/pull/1) to make it clean.
 
 ### 4. Write demo/local setup guide in README.md
 
@@ -213,6 +218,15 @@ Finally, I don't just want to be an observer:
 - **Feedback Loop**: If I find performance bottlenecks or logic gaps during my audit, I plan to raise Issues or submit PRs to the upstream repository.
 - **Community**: I hope to start a conversation with the maintainers (Yahoo Inc.) to validate my assumptions and share my findings.
 - **Guide others**: If some teams want to use Athenz role as SSoT for Kubernetes RBAC, I want to help them by sharing my learnings and possibly providing a more production-ready version of my "hard & clean way" operator.
+
+# Dive Hours: 28 hours
+
+This post took me approximately 28 hours of focused work and development, broken down as follows:
+
+- `12/26 Fri`: 4.5h
+- `12/27 Sat`: 5.5h
+- `12/28 Sun`: 8.5h
+- `12/30 Tue`: 9.5h
 
 # Closing
 
