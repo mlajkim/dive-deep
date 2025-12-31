@@ -1,26 +1,45 @@
+---
+title: '🟡 TODO: GIVE ME TITLE'
+published: true
+tags: # four tags only, no '-' or special characters except
+  - 🟡 nodashtag
+  - 🟡 only four
+cover_image: ./thumbnail.png # 🟡 give me thumbnail
+---
+
 # Goal
 
 TODO: Write goal here above the line.
 
 <!-- TOC -->
 
+- [Goal](#goal)
+- [Result](#result)
+- [Walkthrough: Setup](#walkthrough-setup)
+  - [a.](#a)
+- [Walkthrough: Implementation](#walkthrough-implementation)
+  - [1.](#1)
+- [Walkthrough: Verification](#walkthrough-verification)
+  - [I.](#i)
+- [What's next?](#whats-next)
+- [Dive Hours: XX Hours](#dive-hours-xx-hours)
+- [Closing](#closing)
+
 <!-- /TOC -->
 
 # Result
 
-# Walkthrough
+# Walkthrough: Setup
 
-## Setup
+## a.
 
-### a. XXX
+# Walkthrough: Implementation
 
-## Implementation
+## 1.
 
-### 1. XXX
+# Walkthrough: Verification
 
-## Verification
-
-### I: XXX
+## I.
 
 # What's next?
 
