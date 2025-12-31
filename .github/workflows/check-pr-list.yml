@@ -1,31 +1,19 @@
-name: Enforce PR Checklist
+name: Auto Manage PR State
 
 on:
   pull_request:
-    types: [ opened, edited, reopened, synchronize, ready_for_review ]
+    types: [ opened, edited, reopened, synchronize, ready_for_review, converted_to_draft ]
+
+permissions:
+  pull-requests: write
 
 jobs:
-  check-checklist:
+  manage-pr-state:
     runs-on: ubuntu-latest
     steps:
-    - name: Check for unchecked boxes
+    - name: Update PR State based on Checklist
       uses: actions/github-script@v6
       with:
         script: |
-          const pr = context.payload.pull_request;
-
-          if (pr.draft) {
-            console.log("ℹ️ Pull request is a draft. Skipping checklist validation. Please make sure to handle all checklist before making it ready for review.");
-            return;
-          }
-          const body = pr.body;
-
-          // This regex searches for unchecked boxes: [ ]
-          // It allows for spaces inside like [  ] but not [x]
-          const uncheckedRegex = /-\s\[\s*\]/g;
-
-          if (uncheckedRegex.test(body)) {
-            core.setFailed("❌ You have unfinished items in your checklist. Please check all boxes before merging.");
-          } else {
-            console.log("✅ All checklist items are completed.");
-          }
+          const script = require('./.github/scripts/manage-pr-state.js')
+          await script({github, context, core})

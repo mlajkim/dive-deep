@@ -21,6 +21,11 @@ Healthy Carbs (Non-Fruit):
 |               Yakiimo 180g               |   190    |    0    |
 | Topvalu Greek Yogurt with 10 blueberries | 71=63+8  |   12    |
 
+Unhealthy Carbs:
+|         Food          | Calories | Protein |
+|:---------------------:|:--------:|:-------:|
+| baehongdong jjolmyeon |   445    |   13    |
+| baehongdong Bibimyeon |   556    |   9    |
 
 Fruit:
 |           Food           | Calories | Protein |

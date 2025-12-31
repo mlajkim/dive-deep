@@ -73,7 +73,7 @@ echo "File created at $FILE_PATH"
 # creates wip directory and wip.md if not exists:
 
 mkdir -p weekly_dives/wip
-WIP_PATH="weekly_dives/wip/${FILE_DATE}-wip.md"
+WIP_PATH="weekly_dives/wip/_${FILE_DATE}-wip.md"
 if [ ! -f "$WIP_PATH" ]; then
     cat <<EOF > "$WIP_PATH"
 # Goal
@@ -113,7 +113,7 @@ else
 fi
 
 git add "$FILE_PATH"
-git commit -m "first automated commit"
+git commit -m "$BRANCH_NAME"
 
 git push -u origin "$BRANCH_NAME"
 
