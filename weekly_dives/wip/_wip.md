@@ -11,6 +11,16 @@ cover_image: ./thumbnail.png # 🟡 give me thumbnail
 
 TODO: Write goal here above the line.
 
+
+Does it modify modifiedDate too? Does it make the performance better?
+
+We should definitely study the details out there.
+
+Also want to learn if I can use this as well:
+
+- `/v1/domain/{domainName}/group/admin`
+- `/v1/domain/{domainName}/group/viewer`
+
 <!-- TOC -->
 
 - [Goal](#goal)
