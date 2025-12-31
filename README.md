@@ -20,7 +20,7 @@ Want to be really good in technology over getting certain certificates that may 
 
 ## Weekly Tech Blogs
 
-|    Week     |                                   Avg                                    |
+|    Week     |                                Tech Blogs                                |
 |:-----------:|:------------------------------------------------------------------------:|
 |  1/4~1/10   |                                 ...1/10                                  |
 |  12/28~1/3  |                                  ...1/4                                  |
