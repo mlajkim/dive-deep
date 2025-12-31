@@ -82,7 +82,8 @@ title: '🟡 TODO: GIVE ME TITLE'
 published: true
 tags: # four tags only, no '-' or special characters except
   - 🟡 nodashtag
-  - 🟡 only four
+  - 🟡 onlyfour
+  - 🟡 nospace
 cover_image: ./thumbnail.png # 🟡 give me thumbnail
 ---
 
