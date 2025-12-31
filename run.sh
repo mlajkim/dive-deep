@@ -73,7 +73,7 @@ echo "File created at $FILE_PATH"
 # creates wip directory and wip.md if not exists:
 
 mkdir -p weekly_dives/wip
-WIP_PATH="weekly_dives/wip/_${FILE_DATE}-wip.md"
+WIP_PATH="weekly_dives/wip/_wip.md"
 if [ ! -f "$WIP_PATH" ]; then
     cat <<EOF > "$WIP_PATH"
 # Goal
