@@ -5,6 +5,8 @@
   - [Setup: Create `ajktown`'s subdomain `ajktown.api`](#setup-create-ajktowns-subdomain-ajktownapi)
   - [Setup: Create group `ajktown.api:group.prod_cluster_connectors`](#setup-create-group-ajktownapigroupprod_cluster_connectors)
   - [Setup: Add `ajktown.api:group.prod_cluster_connectors` as member of `ajktown.api:role.prod_cluster_admins`](#setup-add-ajktownapigroupprod_cluster_connectors-as-member-of-ajktownapiroleprod_cluster_admins)
+    - [Test: get members with `expand=true`](#test-get-members-with-expandtrue)
+    - [Test: Get members without `expand=true`](#test-get-members-without-expandtrue)
 - [What I learned](#what-i-learned)
 
 <!-- /TOC -->
@@ -88,6 +90,72 @@ curl -k -X PUT "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/role/
 
 # {"memberName":"ajktown.api:group.prod_cluster_connectors","isMember":true,"roleName":"eks.users.ajktown-api:role.k8s_ns_admins","approved":true,"requestPrincipal":"user.athenz_admin"}
 ```
+
+### Test: get members with `expand=true`
+
+Let's get members of role `ajktown.api:role.prod_cluster_admins` to verify.
+
+```sh
+curl -sS -k -X GET "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/role/k8s_ns_admins?expand=true" \
+  --cert ./athenz_distribution/certs/athenz_admin.cert.pem \
+  --key ./athenz_distribution/keys/athenz_admin.private.pem | jq
+
+# {
+#   "name": "eks.users.ajktown-api:role.k8s_ns_admins",
+#   "modified": "2026-01-01T01:25:01.545Z",
+#   "roleMembers": [
+#     {
+#       "memberName": "user.mlajkim",
+#       "approved": true
+#     },
+#     {
+#       "memberName": "user.alice",
+#       "approved": true,
+#       "auditRef": "added using Athenz UI",
+#       "requestPrincipal": "user.athenz_admin"
+#     },
+#     {
+#       "memberName": "user.bob",
+#       "approved": true,
+#       "auditRef": "added using Athenz UI",
+#       "requestPrincipal": "user.athenz_admin"
+#     }
+#   ]
+# }
+```
+
+### Test: Get members without `expand=true`
+
+```sh
+curl -sS -k -X GET "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/role/k8s_ns_admins?expand=false" \
+  --cert ./athenz_distribution/certs/athenz_admin.cert.pem \
+  --key ./athenz_distribution/keys/athenz_admin.private.pem | jq
+
+# {
+#   "name": "eks.users.ajktown-api:role.k8s_ns_admins",
+#   "modified": "2026-01-01T01:25:01.545Z",
+#   "roleMembers": [
+#     {
+#       "memberName": "ajktown.api:group.prod_cluster_connectors",
+#       "approved": true,
+#       "requestPrincipal": "user.athenz_admin"
+#     },
+#     {
+#       "memberName": "user.alice",
+#       "approved": true,
+#       "auditRef": "added using Athenz UI",
+#       "requestPrincipal": "user.athenz_admin"
+#     },
+#     {
+#       "memberName": "user.bob",
+#       "approved": true,
+#       "auditRef": "added using Athenz UI",
+#       "requestPrincipal": "user.athenz_admin"
+#     }
+#   ]
+# }
+```
+
 
 
 # What I learned
