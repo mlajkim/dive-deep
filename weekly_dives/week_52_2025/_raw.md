@@ -17,6 +17,8 @@
       - [Dive: Handle case sensitivity in both endpoint & body](#dive-handle-case-sensitivity-in-both-endpoint--body)
       - [Dive: Handle case sensitivity in body](#dive-handle-case-sensitivity-in-body)
       - [Dive: Creates a PR for optimization](#dive-creates-a-pr-for-optimization)
+  - [Setup: Create a role in trusted tenant domain](#setup-create-a-role-in-trusted-tenant-domain)
+  - [Setup: Create a policy](#setup-create-a-policy)
 - [What I learned](#what-i-learned)
 
 <!-- /TOC -->
@@ -298,6 +300,53 @@ curl -k -X PUT "https://localhost:4443/zms/v1/domain/eks.users.ajktown-Api/role/
 As I try to read the section of the role validation code, I found that the logic first checks `getAthenzDomain()` method, that requires DB call, then compares the names.
 
 So I made a brain-dead simple PR to optimize this by comparing the names first before calling the DB: [Refactor: (Very minor change) Optimize validation order in validateRoleStructure #3166](https://github.com/AthenZ/athenz/pull/3166)
+
+## Setup: Create a role in trusted tenant domain
+
+```sh
+curl -k -X PUT "https://localhost:4443/zms/v1/domain/ajktown.api/role/k8s_ns_viewers" \
+  --cert ./athenz_distribution/certs/athenz_admin.cert.pem \
+  --key ./athenz_distribution/keys/athenz_admin.private.pem \
+  -H "Content-Type: application/json" \
+  -H "Athenz-Return-Object: true" \
+  -d '{
+    "name": "k8s_ns_viewers",
+    "roleMembers": [
+      {
+        "memberName": "user.mlajkim"
+      }
+    ]
+  }'
+
+# {"name":"ajktown.api:role.k8s_ns_viewers","modified":"2026-01-01T04:23:12.928Z","roleMembers":[{"memberName":"user.mlajkim","approved":true,"requestPrincipal":"user.athenz_admin"}],"auditLog":[{"member":"user.mlajkim","admin":"user.athenz_admin","created":"2026-01-01T04:23:12.000Z","action":"ADD"}]}
+```
+
+## Setup: Create a policy
+
+- [API](https://github.com/AthenZ/athenz/blob/master/core/zms/src/main/rdl/Policy.rdli#L59-L77)
+- [TDL: Policy](https://github.com/AthenZ/athenz/blob/master/core/zms/src/main/rdl/Policy.tdl#L48-L59)
+- [TDL: Assertion](https://github.com/AthenZ/athenz/blob/master/core/zms/src/main/rdl/Policy.tdl#L30-L40)
+
+```sh
+curl -k -X PUT "https://localhost:4443/zms/v1/domain/ajktown.api/policy/allow_role_sync" \
+  --cert ./athenz_distribution/certs/athenz_admin.cert.pem \
+  --key ./athenz_distribution/keys/athenz_admin.private.pem \
+  -H "Content-Type: application/json" \
+  -H "Athenz-Return-Object: true" \
+  -d '{
+    "name": "allow_role_sync",
+    "assertions": [
+      {
+        "effect": "ALLOW",
+        "resource": "eks.users.ajktown-api:role.k8s_ns_viewers",
+        "action": "assume_role",
+        "role": "ajktown.api:role.k8s_ns_viewers"
+      }
+    ]
+  }'
+
+# {"name":"ajktown.api:policy.allow_role_sync","modified":"2026-01-01T04:37:08.642Z","assertions":[{"role":"ajktown.api:role.k8s_ns_viewers","resource":"eks.users.ajktown-api:role.k8s_ns_viewers","action":"assume_role","effect":"ALLOW","id":40}],"version":"0","active":true}
+```
 
 # What I learned
 
