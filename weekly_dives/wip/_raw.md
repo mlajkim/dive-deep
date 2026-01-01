@@ -22,7 +22,7 @@
   - [Verify: Creating delegated role works as expected](#verify-creating-delegated-role-works-as-expected)
 - [Goal: Experiment with modified date](#goal-experiment-with-modified-date)
   - [Setup: Create a script to fetch modified date with/without expand](#setup-create-a-script-to-fetch-modified-date-withwithout-expand)
-  - [Verify](#verify)
+  - [Verify: Expect to modify domain when modifying role inside it](#verify-expect-to-modify-domain-when-modifying-role-inside-it)
 - [What I learned](#what-i-learned)
 
 <!-- /TOC -->
@@ -470,18 +470,72 @@ EOF
 
 ```
 
-## Verify
+## Verify: Expect to modify domain when modifying role inside it
+
+Domain's modified date only changes when we modify the role inside it so even if members change from groups/delegated roles outside the domain, it does not affect the domain's modified date. So possibly creating a syncer job to sync modified date could be bad idea.
+
+Conclusion, simply using `expand=true` to get members could be brute but still the most efficient way to get the accurate members including group members and delegated role members, besides server side push (ideal)
+
 
 **Init**
 
-
+| Target Resource                                                 |    Modified Date (UTC)     | Modified |
+|:----------------------------------------------------------------|:--------------------------:|:--------:|
+| `domain/eks.users.ajktown-api?expand=false`                     | `2026-01-01T22:18:25.618Z` |          |
+| `domain/eks.users.ajktown-api?expand=true`                      | `2026-01-01T22:18:25.618Z` |          |
+| `domain/eks.users.ajktown-api/role/k8s_ns_admins?expand=false`  | `2026-01-01T22:18:25.617Z` |          |
+| `domain/eks.users.ajktown-api/role/k8s_ns_admins?expand=true`   | `2026-01-01T22:18:25.617Z` |          |
+| `domain/eks.users.ajktown-api/role/k8s_ns_viewers?expand=false` | `2026-01-01T03:13:25.820Z` |          |
+| `domain/eks.users.ajktown-api/role/k8s_ns_viewers?expand=true`  | `2026-01-01T03:13:25.820Z` |          |
+| `domain/ajktown.api?expand=false`                               | `2026-01-01T22:17:59.583Z` |          |
+| `domain/ajktown.api?expand=true`                                | `2026-01-01T22:17:59.583Z` |          |
+| `domain/ajktown.api/role/k8s_ns_viewers?expand=false`           | `2026-01-01T22:17:59.580Z` |          |
+| `domain/ajktown.api/role/k8s_ns_viewers?expand=true`            | `2026-01-01T22:17:59.580Z` |          |
+| `domain/ajktown.api/group/prod_cluster_connectors?expand=false` | `2026-01-01T22:17:32.136Z` |          |
+| `domain/ajktown.api/group/prod_cluster_connectors?expand=true`  | `2026-01-01T22:17:32.136Z` |          |
 
 
 **Create Role Member `user.dyson` in `eks.users.ajktown-api:role.k8s_ns_admins`**
 
-We can see that the domain modifies too when we modify the role inside it.
+> [!CRITICAL]
+> There is a difference in 0.001 second between domain and role modified date.
 
+> [!TIP]
+> Maybe I can create a PR fixing this problem later.
 
+We can see that the domain modifies too when we modify the role inside it, however it is NOT the perfect time, and we can see 0.001 second difference, sometimes.
+
+| Target Resource                                                 |    Modified Date (UTC)     | Modified |
+|:----------------------------------------------------------------|:--------------------------:|:--------:|
+| `domain/eks.users.ajktown-api?expand=false`                     | `2026-01-01T22:20:08.841Z` |   YES    |
+| `domain/eks.users.ajktown-api?expand=true`                      | `2026-01-01T22:20:08.841Z` |   YES    |
+| `domain/eks.users.ajktown-api/role/k8s_ns_admins?expand=false`  | `2026-01-01T22:20:08.840Z` |   YES    |
+| `domain/eks.users.ajktown-api/role/k8s_ns_admins?expand=true`   | `2026-01-01T22:20:08.840Z` |   YES    |
+| `domain/eks.users.ajktown-api/role/k8s_ns_viewers?expand=false` | `2026-01-01T03:13:25.820Z` |          |
+| `domain/eks.users.ajktown-api/role/k8s_ns_viewers?expand=true`  | `2026-01-01T03:13:25.820Z` |          |
+| `domain/ajktown.api?expand=false`                               | `2026-01-01T22:17:59.583Z` |          |
+| `domain/ajktown.api?expand=true`                                | `2026-01-01T22:17:59.583Z` |          |
+| `domain/ajktown.api/role/k8s_ns_viewers?expand=false`           | `2026-01-01T22:17:59.580Z` |          |
+| `domain/ajktown.api/role/k8s_ns_viewers?expand=true`            | `2026-01-01T22:17:59.580Z` |          |
+| `domain/ajktown.api/group/prod_cluster_connectors?expand=false` | `2026-01-01T22:17:32.136Z` |          |
+| `domain/ajktown.api/group/prod_cluster_connectors?expand=true`  | `2026-01-01T22:17:32.136Z` |          |
+
+**Delete Role Member `user.dyson` in `eks.users.ajktown-api:role.k8s_ns_admins`**
+
+| Target Resource                                                 |    Modified Date (UTC)     | Modified |
+|:----------------------------------------------------------------|:--------------------------:|:--------:|
+| `domain/eks.users.ajktown-api?expand=false`                     | `2026-01-01T22:21:37.135Z` |   YES    |
+| `domain/eks.users.ajktown-api?expand=true`                      | `2026-01-01T22:21:37.135Z` |   YES    |
+| `domain/eks.users.ajktown-api/role/k8s_ns_admins?expand=false`  | `2026-01-01T22:21:37.134Z` |   YES    |
+| `domain/eks.users.ajktown-api/role/k8s_ns_admins?expand=true`   | `2026-01-01T22:21:37.134Z` |   YES    |
+| `domain/eks.users.ajktown-api/role/k8s_ns_viewers?expand=false` | `2026-01-01T03:13:25.820Z` |          |
+| `domain/eks.users.ajktown-api/role/k8s_ns_viewers?expand=true`  | `2026-01-01T03:13:25.820Z` |          |
+| `domain/ajktown.api?expand=false`                               | `2026-01-01T22:17:59.583Z` |          |
+| `domain/ajktown.api?expand=true`                                | `2026-01-01T22:17:59.583Z` |          |
+| `domain/ajktown.api/role/k8s_ns_viewers?expand=false`           | `2026-01-01T22:17:59.580Z` |          |
+| `domain/ajktown.api/role/k8s_ns_viewers?expand=true`            | `2026-01-01T22:17:59.580Z` |          |
+| `domain/ajktown.api/group/prod_cluster_connectors?expand=false` | `2026-01-01T22:17:32.136Z` |          |
+| `domain/ajktown.api/group/prod_cluster_connectors?expand=true`  | `2026-01-01T22:17:32.136Z` |          |
 
 **Create Role Member `user.emma` in `ajktown.api:role.k8s_ns_viewers`**
 
@@ -491,12 +545,73 @@ We can see that the domain modifies too when we modify the role inside it.
 > [!CRITICAL]
 > Provider domain `eks.users.ajktown-api` modified date did **NOT** change when we modify the trusted role `ajktown.api:role.k8s_ns_viewers`.
 
+| Target Resource                                                 |    Modified Date (UTC)     | Modified |
+|:----------------------------------------------------------------|:--------------------------:|:--------:|
+| `domain/eks.users.ajktown-api?expand=false`                     | `2026-01-01T22:21:37.135Z` |          |
+| `domain/eks.users.ajktown-api?expand=true`                      | `2026-01-01T22:21:37.135Z` |          |
+| `domain/eks.users.ajktown-api/role/k8s_ns_admins?expand=false`  | `2026-01-01T22:21:37.134Z` |          |
+| `domain/eks.users.ajktown-api/role/k8s_ns_admins?expand=true`   | `2026-01-01T22:21:37.134Z` |          |
+| `domain/eks.users.ajktown-api/role/k8s_ns_viewers?expand=false` | `2026-01-01T03:13:25.820Z` |          |
+| `domain/eks.users.ajktown-api/role/k8s_ns_viewers?expand=true`  | `2026-01-01T03:13:25.820Z` |          |
+| `domain/ajktown.api?expand=false`                               | `2026-01-01T22:23:10.454Z` |   YES    |
+| `domain/ajktown.api?expand=true`                                | `2026-01-01T22:23:10.454Z` |   YES    |
+| `domain/ajktown.api/role/k8s_ns_viewers?expand=false`           | `2026-01-01T22:23:10.454Z` |   YES    |
+| `domain/ajktown.api/role/k8s_ns_viewers?expand=true`            | `2026-01-01T22:23:10.454Z` |   YES    |
+| `domain/ajktown.api/group/prod_cluster_connectors?expand=false` | `2026-01-01T22:17:32.136Z` |          |
+| `domain/ajktown.api/group/prod_cluster_connectors?expand=true`  | `2026-01-01T22:17:32.136Z` |          |
 
+
+**Delete Role Member `user.emma` in `ajktown.api:role.k8s_ns_viewers`**
+
+| Target Resource                                                 |    Modified Date (UTC)     | Modified |
+|:----------------------------------------------------------------|:--------------------------:|:--------:|
+| `domain/eks.users.ajktown-api?expand=false`                     | `2026-01-01T22:21:37.135Z` |          |
+| `domain/eks.users.ajktown-api?expand=true`                      | `2026-01-01T22:21:37.135Z` |          |
+| `domain/eks.users.ajktown-api/role/k8s_ns_admins?expand=false`  | `2026-01-01T22:21:37.134Z` |          |
+| `domain/eks.users.ajktown-api/role/k8s_ns_admins?expand=true`   | `2026-01-01T22:21:37.134Z` |          |
+| `domain/eks.users.ajktown-api/role/k8s_ns_viewers?expand=false` | `2026-01-01T03:13:25.820Z` |          |
+| `domain/eks.users.ajktown-api/role/k8s_ns_viewers?expand=true`  | `2026-01-01T03:13:25.820Z` |          |
+| `domain/ajktown.api?expand=false`                               | `2026-01-01T22:24:19.537Z` |   YES    |
+| `domain/ajktown.api?expand=true`                                | `2026-01-01T22:24:19.537Z` |   YES    |
+| `domain/ajktown.api/role/k8s_ns_viewers?expand=false`           | `2026-01-01T22:24:19.537Z` |   YES    |
+| `domain/ajktown.api/role/k8s_ns_viewers?expand=true`            | `2026-01-01T22:24:19.537Z` |   YES    |
+| `domain/ajktown.api/group/prod_cluster_connectors?expand=false` | `2026-01-01T22:17:32.136Z` |          |
+| `domain/ajktown.api/group/prod_cluster_connectors?expand=true`  | `2026-01-01T22:17:32.136Z` |          |
 
 
 **Create Member `user.frank` in Group `ajktown.api:group.prod_cluster_connectors`**
 
+| Target Resource                                                 |    Modified Date (UTC)     | Modified |
+|:----------------------------------------------------------------|:--------------------------:|:--------:|
+| `domain/eks.users.ajktown-api?expand=false`                     | `2026-01-01T22:21:37.135Z` |          |
+| `domain/eks.users.ajktown-api?expand=true`                      | `2026-01-01T22:21:37.135Z` |          |
+| `domain/eks.users.ajktown-api/role/k8s_ns_admins?expand=false`  | `2026-01-01T22:21:37.134Z` |          |
+| `domain/eks.users.ajktown-api/role/k8s_ns_admins?expand=true`   | `2026-01-01T22:21:37.134Z` |          |
+| `domain/eks.users.ajktown-api/role/k8s_ns_viewers?expand=false` | `2026-01-01T03:13:25.820Z` |          |
+| `domain/eks.users.ajktown-api/role/k8s_ns_viewers?expand=true`  | `2026-01-01T03:13:25.820Z` |          |
+| `domain/ajktown.api?expand=false`                               | `2026-01-01T22:25:28.744Z` |   YES    |
+| `domain/ajktown.api?expand=true`                                | `2026-01-01T22:25:28.744Z` |   YES    |
+| `domain/ajktown.api/role/k8s_ns_viewers?expand=false`           | `2026-01-01T22:24:19.537Z` |          |
+| `domain/ajktown.api/role/k8s_ns_viewers?expand=true`            | `2026-01-01T22:24:19.537Z` |          |
+| `domain/ajktown.api/group/prod_cluster_connectors?expand=false` | `2026-01-01T22:25:28.742Z` |   YES    |
+| `domain/ajktown.api/group/prod_cluster_connectors?expand=true`  | `2026-01-01T22:25:28.742Z` |   YES    |
 
+**Delete Member `user.frank` in Group `ajktown.api:group.prod_cluster_connectors`**
+
+| Target Resource                                                 |    Modified Date (UTC)     | Modified |
+|:----------------------------------------------------------------|:--------------------------:|:--------:|
+| `domain/eks.users.ajktown-api?expand=false`                     | `2026-01-01T22:21:37.135Z` |          |
+| `domain/eks.users.ajktown-api?expand=true`                      | `2026-01-01T22:21:37.135Z` |          |
+| `domain/eks.users.ajktown-api/role/k8s_ns_admins?expand=false`  | `2026-01-01T22:21:37.134Z` |          |
+| `domain/eks.users.ajktown-api/role/k8s_ns_admins?expand=true`   | `2026-01-01T22:21:37.134Z` |          |
+| `domain/eks.users.ajktown-api/role/k8s_ns_viewers?expand=false` | `2026-01-01T03:13:25.820Z` |          |
+| `domain/eks.users.ajktown-api/role/k8s_ns_viewers?expand=true`  | `2026-01-01T03:13:25.820Z` |          |
+| `domain/ajktown.api?expand=false`                               | `2026-01-01T22:26:13.734Z` |   YES    |
+| `domain/ajktown.api?expand=true`                                | `2026-01-01T22:26:13.734Z` |   YES    |
+| `domain/ajktown.api/role/k8s_ns_viewers?expand=false`           | `2026-01-01T22:24:19.537Z` |          |
+| `domain/ajktown.api/role/k8s_ns_viewers?expand=true`            | `2026-01-01T22:24:19.537Z` |          |
+| `domain/ajktown.api/group/prod_cluster_connectors?expand=false` | `2026-01-01T22:26:13.733Z` |   YES    |
+| `domain/ajktown.api/group/prod_cluster_connectors?expand=true`  | `2026-01-01T22:26:13.733Z` |   YES    |
 
 
 # What I learned
