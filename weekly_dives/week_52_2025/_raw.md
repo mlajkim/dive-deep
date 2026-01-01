@@ -1,15 +1,22 @@
 
 <!-- TOC -->
 
+- [Goal: Adding group as member also syncs its members to the role](#goal-adding-group-as-member-also-syncs-its-members-to-the-role)
   - [Setup: Create TLD `ajktown`](#setup-create-tld-ajktown)
   - [Setup: Create `ajktown`'s subdomain `ajktown.api`](#setup-create-ajktowns-subdomain-ajktownapi)
   - [Setup: Create group `ajktown.api:group.prod_cluster_connectors`](#setup-create-group-ajktownapigroupprod_cluster_connectors)
   - [Setup: Add `ajktown.api:group.prod_cluster_connectors` as member of `ajktown.api:role.prod_cluster_admins`](#setup-add-ajktownapigroupprod_cluster_connectors-as-member-of-ajktownapiroleprod_cluster_admins)
     - [Test: get members with `expand=true`](#test-get-members-with-expandtrue)
     - [Test: Get members without `expand=true`](#test-get-members-without-expandtrue)
+- [Goal: Having delegated role member also works](#goal-having-delegated-role-member-also-works)
+  - [Setup: Modify auto created role into a delegated role](#setup-modify-auto-created-role-into-a-delegated-role)
+    - [Test: Expected to override existing role members once you set delegated domain](#test-expected-to-override-existing-role-members-once-you-set-delegated-domain)
+    - [Test: Expected to fail creating both roleMembers and delegated domain](#test-expected-to-fail-creating-both-rolemembers-and-delegated-domain)
 - [What I learned](#what-i-learned)
 
 <!-- /TOC -->
+
+# Goal: Adding group as member also syncs its members to the role
 
 ## Setup: Create TLD `ajktown`
 
@@ -158,7 +165,59 @@ curl -sS -k -X GET "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/r
 # }
 ```
 
+# Goal: Having delegated role member also works
 
+
+## Setup: Modify auto created role into a delegated role
+
+> [!TIP]
+> - [API](https://github.com/AthenZ/athenz/blob/master/core/zms/src/main/rdl/Role.rdli#L159-L184)
+> - [Role TDL](https://github.com/AthenZ/athenz/blob/master/core/zms/src/main/rdl/Role.tdl#L73-L87)
+
+
+### Test: Expected to override existing role members once you set delegated domain
+
+
+```sh
+curl -k -X PUT "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/role/k8s_ns_viewers" \
+  --cert ./athenz_distribution/certs/athenz_admin.cert.pem \
+  --key ./athenz_distribution/keys/athenz_admin.private.pem \
+  -H "Content-Type: application/json" \
+  -H "Athenz-Return-Object: true" \
+  -d '{
+    "name": "k8s_ns_viewers",
+    "trust": "ajktown.api"
+  }'
+
+```
+
+### Test: Expected to fail creating both roleMembers and delegated domain
+
+> [!TIP]
+> - [API](https://github.com/AthenZ/athenz/blob/master/core/zms/src/main/rdl/Role.rdli#L159-L184)
+> - [Role TDL](https://github.com/AthenZ/athenz/blob/master/core/zms/src/main/rdl/Role.tdl#L73-L87)
+
+```sh
+curl -k -X PUT "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/role/k8s_ns_viewers" \
+  --cert ./athenz_distribution/certs/athenz_admin.cert.pem \
+  --key ./athenz_distribution/keys/athenz_admin.private.pem \
+  -H "Content-Type: application/json" \
+  -H "Athenz-Return-Object: true" \
+  -d '{
+    "name": "k8s_ns_viewers",
+    "trust": "ajktown.api",
+    "roleMembers": [
+      {
+        "memberName": "user.alice"
+      },
+      {
+        "memberName": "user.bob"
+      }
+    ]
+  }'
+
+# {"code":400,"message":"validateRoleMembers: Role cannot have both roleMembers and delegated domain set"}
+```
 
 # What I learned
 
