@@ -55,5 +55,8 @@ Also want to learn if I can use this as well:
 
 # Dive Hours: XX Hours
 
+
+- `1/1 Thu`: X Hours
+
 # Closing
 
