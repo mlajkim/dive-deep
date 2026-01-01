@@ -177,6 +177,8 @@ curl -sS -k -X GET "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/r
 
 ### Test: Expected to override existing role members once you set delegated domain
 
+> [!TIP]
+> It will delete existing members.
 
 ```sh
 curl -k -X PUT "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/role/k8s_ns_viewers" \
