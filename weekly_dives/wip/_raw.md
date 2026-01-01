@@ -22,6 +22,7 @@
   - [Verify: Creating delegated role works as expected](#verify-creating-delegated-role-works-as-expected)
 - [Goal: Experiment with modified date](#goal-experiment-with-modified-date)
   - [Setup: Create a script to fetch modified date with/without expand](#setup-create-a-script-to-fetch-modified-date-withwithout-expand)
+  - [Verify](#verify)
 - [What I learned](#what-i-learned)
 
 <!-- /TOC -->
@@ -412,33 +413,33 @@ curl -sS -k -X GET "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/r
 
 
 ```sh
-#!/bin/bash
 
+bash << 'EOF'
 # --- Config ---
 CERT="./athenz_distribution/certs/athenz_admin.cert.pem"
 KEY="./athenz_distribution/keys/athenz_admin.private.pem"
 BASE_URL="https://localhost:4443/zms/v1"
 
-# --- Targets List (Resource Path) ---
+# --- Targets List ---
 TARGETS=(
-  "domain/eks.users.ajktown-api"                     # 1. Target Domain
-  "domain/eks.users.ajktown-api/role/k8s_ns_admins"  # 2. Target Role
-  "domain/eks.users.ajktown-api/role/k8s_ns_viewers" # 3. Another Role
-  "domain/ajktown.api/role/k8s_ns_viewers"           # 4. Trusted Tenant Role
-  "domain/ajktown.api/group/prod_cluster_connectors" # 5. Group Resource
+  "domain/eks.users.ajktown-api"
+  "domain/eks.users.ajktown-api/role/k8s_ns_admins"
+  "domain/eks.users.ajktown-api/role/k8s_ns_viewers"
+  "domain/ajktown.api/role/k8s_ns_viewers"
+  "domain/ajktown.api/group/prod_cluster_connectors"
 )
 
-# Print: Basic Table Header
-echo "| Target Resource | Expand | Modified Date (UTC) | HTTP Code |"
-echo "| :--- | :---: | :--- | :---: |"
+# --- Header ---
+echo "| Target Resource  | Modified Date (UTC) | Modified |"
+echo "| :--- | :---: | :---: |"
 
 # --- Function ---
 fetch_and_print() {
   local resource_path=$1
   local expand_val=$2
-
   local url="${BASE_URL}/${resource_path}?expand=${expand_val}"
 
+  # cURL: Body + HTTP Code extraction
   response=$(curl -s -k \
     --cert "${CERT}" \
     --key "${KEY}" \
@@ -448,23 +449,60 @@ fetch_and_print() {
   http_code=$(echo "$response" | tail -n1)
   json_body=$(echo "$response" | sed '$d')
 
+  # Parse Modified Date
   modified_ts=$(echo "$json_body" | jq -r '.modified // "null"')
 
   if [ "$http_code" -ne 200 ]; then
     error_msg=$(echo "$json_body" | jq -r '.message // "Unknown Error"')
-    echo "| \`${resource_path}\` | \`${expand_val}\` | ❌ **Error**: ${error_msg} | ${http_code} |"
+    echo "| \`${resource_path}\?expand=${expand_val}\`| ❌ **Error**: ${error_msg} |"
   else
-    echo "| \`${resource_path}\` | \`${expand_val}\` | \`${modified_ts}\` | ${http_code} |"
+    echo "| \`${resource_path}?expand=${expand_val}\`  | \`${modified_ts}\` |"
   fi
 }
 
+# --- Execution Loop ---
 for target in "${TARGETS[@]}"; do
   fetch_and_print "$target" "false"
   fetch_and_print "$target" "true"
 done
+EOF
 
 ```
 
+## Verify
+
+**Init**
+
+| Target Resource                                                 |    Modified Date (UTC)     |
+|:----------------------------------------------------------------|:--------------------------:|
+| `domain/eks.users.ajktown-api?expand=false`                     | `2026-01-01T07:05:15.547Z` |
+| `domain/eks.users.ajktown-api?expand=true`                      | `2026-01-01T07:05:15.547Z` |
+| `domain/eks.users.ajktown-api/role/k8s_ns_admins?expand=false`  | `2026-01-01T07:05:15.547Z` |
+| `domain/eks.users.ajktown-api/role/k8s_ns_admins?expand=true`   | `2026-01-01T07:05:15.547Z` |
+| `domain/eks.users.ajktown-api/role/k8s_ns_viewers?expand=false` | `2026-01-01T03:13:25.820Z` |
+| `domain/eks.users.ajktown-api/role/k8s_ns_viewers?expand=true`  | `2026-01-01T03:13:25.820Z` |
+| `domain/ajktown.api/role/k8s_ns_viewers?expand=false`           | `2026-01-01T04:51:54.881Z` |
+| `domain/ajktown.api/role/k8s_ns_viewers?expand=true`            | `2026-01-01T04:51:54.881Z` |
+| `domain/ajktown.api/group/prod_cluster_connectors?expand=false` | `2026-01-01T01:05:05.643Z` |
+| `domain/ajktown.api/group/prod_cluster_connectors?expand=true`  | `2026-01-01T01:05:05.643Z` |
+
+
+**Create Role Member `user.dyson` in `eks.users.ajktown-api:role.k8s_ns_admins`**
+
+We can see that the domain modifies too when we modify the role inside it.
+
+| Target Resource                                                 | Modified Date (UTC)        | Modified |
+|:----------------------------------------------------------------|:---------------------------|:--------:|
+| `domain/eks.users.ajktown-api?expand=false`                     | `2026-01-01T22:07:22.434Z` |   YES    |
+| `domain/eks.users.ajktown-api?expand=true`                      | `2026-01-01T22:07:22.434Z` |   YES    |
+| `domain/eks.users.ajktown-api/role/k8s_ns_admins?expand=false`  | `2026-01-01T22:07:22.434Z` |   YES    |
+| `domain/eks.users.ajktown-api/role/k8s_ns_admins?expand=true`   | `2026-01-01T22:07:22.434Z` |   YES    |
+| `domain/eks.users.ajktown-api/role/k8s_ns_viewers?expand=false` | `2026-01-01T03:13:25.820Z` |          |
+| `domain/eks.users.ajktown-api/role/k8s_ns_viewers?expand=true`  | `2026-01-01T03:13:25.820Z` |          |
+| `domain/ajktown.api/role/k8s_ns_viewers?expand=false`           | `2026-01-01T04:51:54.881Z` |          |
+| `domain/ajktown.api/role/k8s_ns_viewers?expand=true`            | `2026-01-01T04:51:54.881Z` |          |
+| `domain/ajktown.api/group/prod_cluster_connectors?expand=false` | `2026-01-01T01:05:05.643Z` |          |
+| `domain/ajktown.api/group/prod_cluster_connectors?expand=true`  | `2026-01-01T01:05:05.643Z` |          |
 
 
 # What I learned
