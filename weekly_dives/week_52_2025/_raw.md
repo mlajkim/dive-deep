@@ -20,6 +20,8 @@
   - [Setup: Create a role in trusted tenant domain](#setup-create-a-role-in-trusted-tenant-domain)
   - [Setup: Create a policy](#setup-create-a-policy)
   - [Verify: Creating delegated role works as expected](#verify-creating-delegated-role-works-as-expected)
+- [Goal: Experiment with modified date](#goal-experiment-with-modified-date)
+  - [Setup: Create a script to fetch modified date with/without expand](#setup-create-a-script-to-fetch-modified-date-withwithout-expand)
 - [What I learned](#what-i-learned)
 
 <!-- /TOC -->
@@ -373,6 +375,26 @@ curl -sS -k -X GET "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/r
 ```
 
 ```sh
+
+curl -sS -k -X GET "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api" \
+  --cert ./athenz_distribution/certs/athenz_admin.cert.pem \
+  --key ./athenz_distribution/keys/athenz_admin.private.pem | jq
+
+# {
+#   "org": "ajkim",
+#   "enabled": true,
+#   "auditEnabled": false,
+#   "ypmId": 0,
+#   "autoDeleteTenantAssumeRoleAssertions": false,
+#   "name": "eks.users.ajktown-api",
+#   "modified": "2026-01-01T07:05:15.547Z",
+#   "id": "3081dc90-e540-11f0-9dea-17c92bf9f5a9"
+# }
+
+curl -sS -k -X GET "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api" \
+  --cert ./athenz_distribution/certs/athenz_admin.cert.pem \
+  --key ./athenz_distribution/keys/athenz_admin.private.pem | jq
+
 curl -sS -k -X GET "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/role/k8s_ns_viewers" \
   --cert ./athenz_distribution/certs/athenz_admin.cert.pem \
   --key ./athenz_distribution/keys/athenz_admin.private.pem | jq
@@ -383,6 +405,67 @@ curl -sS -k -X GET "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/r
 #   "trust": "ajktown.api"
 # }
 ```
+
+# Goal: Experiment with modified date
+
+## Setup: Create a script to fetch modified date with/without expand
+
+
+```sh
+#!/bin/bash
+
+# --- Config ---
+CERT="./athenz_distribution/certs/athenz_admin.cert.pem"
+KEY="./athenz_distribution/keys/athenz_admin.private.pem"
+BASE_URL="https://localhost:4443/zms/v1"
+
+# --- Targets List (Resource Path) ---
+TARGETS=(
+  "domain/eks.users.ajktown-api"                     # 1. Target Domain
+  "domain/eks.users.ajktown-api/role/k8s_ns_admins"  # 2. Target Role
+  "domain/eks.users.ajktown-api/role/k8s_ns_viewers" # 3. Another Role
+  "domain/ajktown.api/role/k8s_ns_viewers"           # 4. Trusted Tenant Role
+  "domain/ajktown.api/group/prod_cluster_connectors" # 5. Group Resource
+)
+
+# Print: Basic Table Header
+echo "| Target Resource | Expand | Modified Date (UTC) | HTTP Code |"
+echo "| :--- | :---: | :--- | :---: |"
+
+# --- Function ---
+fetch_and_print() {
+  local resource_path=$1
+  local expand_val=$2
+
+  local url="${BASE_URL}/${resource_path}?expand=${expand_val}"
+
+  response=$(curl -s -k \
+    --cert "${CERT}" \
+    --key "${KEY}" \
+    -w "\n%{http_code}" \
+    "${url}")
+
+  http_code=$(echo "$response" | tail -n1)
+  json_body=$(echo "$response" | sed '$d')
+
+  modified_ts=$(echo "$json_body" | jq -r '.modified // "null"')
+
+  if [ "$http_code" -ne 200 ]; then
+    error_msg=$(echo "$json_body" | jq -r '.message // "Unknown Error"')
+    echo "| \`${resource_path}\` | \`${expand_val}\` | ❌ **Error**: ${error_msg} | ${http_code} |"
+  else
+    echo "| \`${resource_path}\` | \`${expand_val}\` | \`${modified_ts}\` | ${http_code} |"
+  fi
+}
+
+for target in "${TARGETS[@]}"; do
+  fetch_and_print "$target" "false"
+  fetch_and_print "$target" "true"
+done
+
+```
+
+
 
 # What I learned
 
