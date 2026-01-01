@@ -39,6 +39,11 @@ Also want to learn if I can use this as well:
 
 # Result
 
+1. Wanted to improve performance when getting members of a role inside a domain including group members and delegated role members.
+1. Realized that using `modifedDate` could not be ideal
+1. Wanted to learn how Athenz has designed this part
+1. Decided to deploy `athenz/athenz-k8s-syncer` to see how it works.
+
 # Walkthrough: Setup
 
 ## a.
