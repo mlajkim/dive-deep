@@ -8,7 +8,7 @@ BRANCH_NAME="${BRANCH_DATE}-daily-dive"
 FILE_DATE=$(date "+%y%m%d") # i.e) 251224
 FILE_PATH="proofs/meal/${FILE_DATE}.meal.md"
 
-echo "Current Date: $BRANCH_DATE"
+echo "Current Date: $BRANCH_DATE" 
 echo "Target Branch: $BRANCH_NAME"
 echo "Target File: $FILE_PATH"
 
@@ -72,8 +72,8 @@ echo "File created at $FILE_PATH"
 
 # creates wip directory and wip.md if not exists:
 
-mkdir -p weekly_dives/week_xx_2026
-WIP_PATH="weekly_dives/week_xx_2026/_wip.md"
+mkdir -p weekly_dives/wip
+WIP_PATH="weekly_dives/wip/_wip.md"
 if [ ! -f "$WIP_PATH" ]; then
     cat <<EOF > "$WIP_PATH"
 
