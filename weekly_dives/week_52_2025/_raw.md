@@ -16,6 +16,7 @@
       - [Dive: Handle case sensitivity in endpoint domain names](#dive-handle-case-sensitivity-in-endpoint-domain-names)
       - [Dive: Handle case sensitivity in both endpoint & body](#dive-handle-case-sensitivity-in-both-endpoint--body)
       - [Dive: Handle case sensitivity in body](#dive-handle-case-sensitivity-in-body)
+      - [Dive: Creates a PR for optimization](#dive-creates-a-pr-for-optimization)
 - [What I learned](#what-i-learned)
 
 <!-- /TOC -->
@@ -291,6 +292,12 @@ curl -k -X PUT "https://localhost:4443/zms/v1/domain/eks.users.ajktown-Api/role/
 
 # {"code":400,"message":"validateRoleMembers: Role cannot be delegated to itself"}
 ```
+
+#### Dive: Creates a PR for optimization
+
+As I try to read the section of the role validation code, I found that the logic first checks `getAthenzDomain()` method, that requires DB call, then compares the names.
+
+So I made a brain-dead simple PR to optimize this by comparing the names first before calling the DB: [Refactor: (Very minor change) Optimize validation order in validateRoleStructure #3166](https://github.com/AthenZ/athenz/pull/3166)
 
 # What I learned
 
