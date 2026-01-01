@@ -12,6 +12,10 @@
   - [Setup: Modify auto created role into a delegated role](#setup-modify-auto-created-role-into-a-delegated-role)
     - [Test: Expected to override existing role members once you set delegated domain](#test-expected-to-override-existing-role-members-once-you-set-delegated-domain)
     - [Test: Expected to fail creating both roleMembers and delegated domain](#test-expected-to-fail-creating-both-rolemembers-and-delegated-domain)
+    - [Test: Expect to reject delegating itself](#test-expect-to-reject-delegating-itself)
+      - [Dive: Handle case sensitivity in endpoint domain names](#dive-handle-case-sensitivity-in-endpoint-domain-names)
+      - [Dive: Handle case sensitivity in both endpoint & body](#dive-handle-case-sensitivity-in-both-endpoint--body)
+      - [Dive: Handle case sensitivity in body](#dive-handle-case-sensitivity-in-body)
 - [What I learned](#what-i-learned)
 
 <!-- /TOC -->
@@ -200,6 +204,7 @@ curl -k -X PUT "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/role/
 > [!TIP]
 > - [API](https://github.com/AthenZ/athenz/blob/master/core/zms/src/main/rdl/Role.rdli#L159-L184)
 > - [Role TDL](https://github.com/AthenZ/athenz/blob/master/core/zms/src/main/rdl/Role.tdl#L73-L87)
+> - [Related Error Response](https://github.com/AthenZ/athenz/blob/master/servers/zms/src/main/java/com/yahoo/athenz/zms/ZMSImpl.java#L4575-L4604)
 
 ```sh
 curl -k -X PUT "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/role/k8s_ns_viewers" \
@@ -221,6 +226,70 @@ curl -k -X PUT "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/role/
   }'
 
 # {"code":400,"message":"validateRoleMembers: Role cannot have both roleMembers and delegated domain set"}
+```
+
+### Test: Expect to reject delegating itself
+
+```sh
+curl -k -X PUT "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/role/k8s_ns_viewers" \
+  --cert ./athenz_distribution/certs/athenz_admin.cert.pem \
+  --key ./athenz_distribution/keys/athenz_admin.private.pem \
+  -H "Content-Type: application/json" \
+  -H "Athenz-Return-Object: true" \
+  -d '{
+    "name": "k8s_ns_viewers",
+    "trust": "eks.users.ajktown-api"
+  }'
+
+# {"code":400,"message":"validateRoleMembers: Role cannot be delegated to itself"}
+```
+
+#### Dive: Handle case sensitivity in endpoint domain names
+
+```sh
+curl -k -X PUT "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/role/k8s_ns_viewers" \
+  --cert ./athenz_distribution/certs/athenz_admin.cert.pem \
+  --key ./athenz_distribution/keys/athenz_admin.private.pem \
+  -H "Content-Type: application/json" \
+  -H "Athenz-Return-Object: true" \
+  -d '{
+    "name": "k8s_ns_viewers",
+    "trust": "eks.users.ajktown-Api"
+  }'
+
+# {"code":400,"message":"validateRoleMembers: Role cannot be delegated to itself"}
+```
+
+#### Dive: Handle case sensitivity in both endpoint & body
+
+```sh
+curl -k -X PUT "https://localhost:4443/zms/v1/domain/eks.users.ajktown-Api/role/k8s_ns_viewers" \
+  --cert ./athenz_distribution/certs/athenz_admin.cert.pem \
+  --key ./athenz_distribution/keys/athenz_admin.private.pem \
+  -H "Content-Type: application/json" \
+  -H "Athenz-Return-Object: true" \
+  -d '{
+    "name": "k8s_ns_viewers",
+    "trust": "eks.users.ajktown-Api"
+  }'
+
+# {"code":400,"message":"validateRoleMembers: Role cannot be delegated to itself"}
+```
+
+#### Dive: Handle case sensitivity in body
+
+```sh
+curl -k -X PUT "https://localhost:4443/zms/v1/domain/eks.users.ajktown-Api/role/k8s_ns_viewers" \
+  --cert ./athenz_distribution/certs/athenz_admin.cert.pem \
+  --key ./athenz_distribution/keys/athenz_admin.private.pem \
+  -H "Content-Type: application/json" \
+  -H "Athenz-Return-Object: true" \
+  -d '{
+    "name": "k8s_ns_viewers",
+    "trust": "eks.users.ajktown-api"
+  }'
+
+# {"code":400,"message":"validateRoleMembers: Role cannot be delegated to itself"}
 ```
 
 # What I learned
