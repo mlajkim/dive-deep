@@ -1,10 +1,11 @@
 
 <!-- TOC -->
 
-- [Setup: Create TLD `ajktown`](#setup-create-tld-ajktown)
-- [Setup: Create `ajktown`'s subdomain `ajktown.api`](#setup-create-ajktowns-subdomain-ajktownapi)
-- [Setup: Create group `ajktown.api:group.prod_cluster_connectors`](#setup-create-group-ajktownapigroupprod_cluster_connectors)
-- [Setup: Add `ajktown.api:group.prod_cluster_connectors` as member of `ajktown.api:role.prod_cluster_admins`](#setup-add-ajktownapigroupprod_cluster_connectors-as-member-of-ajktownapiroleprod_cluster_admins)
+  - [Setup: Create TLD `ajktown`](#setup-create-tld-ajktown)
+  - [Setup: Create `ajktown`'s subdomain `ajktown.api`](#setup-create-ajktowns-subdomain-ajktownapi)
+  - [Setup: Create group `ajktown.api:group.prod_cluster_connectors`](#setup-create-group-ajktownapigroupprod_cluster_connectors)
+  - [Setup: Add `ajktown.api:group.prod_cluster_connectors` as member of `ajktown.api:role.prod_cluster_admins`](#setup-add-ajktownapigroupprod_cluster_connectors-as-member-of-ajktownapiroleprod_cluster_admins)
+- [What I learned](#what-i-learned)
 
 <!-- /TOC -->
 
@@ -87,3 +88,12 @@ curl -k -X PUT "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/role/
 
 # {"memberName":"ajktown.api:group.prod_cluster_connectors","isMember":true,"roleName":"eks.users.ajktown-api:role.k8s_ns_admins","approved":true,"requestPrincipal":"user.athenz_admin"}
 ```
+
+
+# What I learned
+
+- Learned about how to create TLD and subdomain in Athenz.
+- Learned about how to create group in Athenz.
+- Learned about how to add group as member of role in Athenz.
+- Learned about various API endpoints in Athenz for domain, subdomain, group, and role management.
+- Learned how to read rdli and tdl files to understand the structure of API requests and responses in Athenz.
