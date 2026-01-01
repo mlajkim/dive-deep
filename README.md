@@ -22,8 +22,9 @@ Want to be really good in technology over getting certain certificates that may 
 
 |        Date         |                     Weekly Goal                     |
 |:-------------------:|:---------------------------------------------------:|
-| Apr 2025 ~ Sep 2025 | [How I become Kubestronaut - LY Tech Blog][2025_10] |
 | Oct 2025 ~ Mar 2026 |                         ...                         |
+| Apr 2025 ~ Sep 2025 | [How I become Kubestronaut - LY Tech Blog][2025_10] |
+
 
 
 ## Weekly Tech Blogs
