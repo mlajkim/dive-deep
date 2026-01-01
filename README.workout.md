@@ -33,18 +33,18 @@ The current goal, officially starting on Dec 21, 2025~, is to:
 > It is allowed to write A WEEK ahead of time, but not more than that. This is to ensure that you are motivated to do more or workout in advance to handle certain schedules upcoming.
 
 Checkout the proofs for:
-- [Golf](./proofs/golf/)
-- [Workout](./proofs/workout/)
-- [Cardio](./proofs/cardio/)
+- `Mon~Wed`: [Workout Day](./proofs/workout/), [Cardio Day](./proofs/cardio/)
+- `Thu`: Rest Day
+- `Fri~Sun`: [Golf Day](./proofs/golf/)
 
-|    Week     |     Sun      |  Mon  |   Tue    |   Wed    | Thu |   Fri    |      Sat       |
-|:-----------:|:------------:|:-----:|:--------:|:--------:|:---:|:--------:|:--------------:|
-|  1/25~1/31  |              |       |          |          |     |          |                |
-|  1/18~1/24  |              |       |          |          |     |          | ...Competition |
-|  1/11~1/17  |              |       |          |          |     |          |                |
-|  1/4~1/10   |    ...Leg    |  ...  | ...Chest |          |     |          |                |
-|  12/28~1/3  |      -       | Field |    -     | ...Field |  -  | ...Field |    ...Back     |
-| 12/21~12/27 | Back, Cardio |   -   |    -     |   Leg    |  -  |  Chest   |     Range      |
+|    Week     |     Sun      |   Mon   |  Tue   |       Wed       | Thu  |   Fri    |      Sat       |
+|:-----------:|:------------:|:-------:|:------:|:---------------:|:----:|:--------:|:--------------:|
+|  1/25~1/31  |              |         |        |                 |      |          |                |
+|  1/18~1/24  |              |         |        |                 |      |          | ...Competition |
+|  1/11~1/17  |              |         |        |                 |      |          |                |
+|  1/4~1/10   |   ...Field   | ...Back | ...Leg | ...Chest,Cardio | ...- | ...Range |    ...Field    |
+|  12/28~1/3  |      -       |  Field  |   -    |      Field      |  -   | ...Range |    ...Range    |
+| 12/21~12/27 | Back, Cardio |    -    |   -    |       Leg       |  -   |  Chest   |     Range      |
 
 
 
