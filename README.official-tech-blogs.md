@@ -14,7 +14,10 @@ The goal of this official tech blogs document is to summarize the deep dives res
 
 ## Performance
 
-|        Date         |                                      Weekly Goal                                       |
-|:-------------------:|:--------------------------------------------------------------------------------------:|
-| Apr 2025 ~ Sep 2025 | [How I become Kubestronaut - LY Tech Blog](https://techblog.lycorp.co.jp/ja/20251001a) |
-| Oct 2025 ~ Mar 2026 |                                          ...                                           |
+|        Date         |                     Weekly Goal                     |
+|:-------------------:|:---------------------------------------------------:|
+| Apr 2025 ~ Sep 2025 | [How I become Kubestronaut - LY Tech Blog][2025_10] |
+| Oct 2025 ~ Mar 2026 |                         ...                         |
+
+
+[2025_10]: https://techblog.lycorp.co.jp/ja/20251001a
