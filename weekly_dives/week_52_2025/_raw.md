@@ -126,6 +126,8 @@ curl -sS -k -X GET "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/r
 
 ### Test: Get members without `expand=true`
 
+We can see that we no longer see the `user.mlajkim` inside the role members since we did not expand the group member.
+
 ```sh
 curl -sS -k -X GET "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/role/k8s_ns_admins?expand=false" \
   --cert ./athenz_distribution/certs/athenz_admin.cert.pem \
