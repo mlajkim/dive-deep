@@ -26,19 +26,12 @@ To not fall into food comma, stay sharp and well fit, I need to maintain my dail
 > [!NOTE]
 > Check out the proofs [here](./proofs/meal/).
 
-|   Week    | T | Avg | Sun | Mon | Tue | Wed | Thu |     Fri     | Sat |
-|:---------:|:-:|:---:|:---:|:---:|:---:|:---:|:---:|:-----------:|:---:|
-| 1/25~1/31 |   |     |     |     |     |     |     |             |     |
-| 1/18~1/24 |   |     |     |     |     |     |     |             |     |
-| 1/11~1/17 |   |     |     |     |     |     |     |             |     |
-| 1/4~1/10  | k |     |     |     |     |     |     |             |     |
-|           | p |     |     |     |     |     |     |             |     |
-| 12/28~1/3 | k |     |     |     |     |     |     | [2123][102] |     |
-|           | p |     |     |     |     |     |     |             |     |
-
-
-<!-- Variable Declaration -->
-
-[102]: ./proofs/meal/260102.meal.md
-
-<!-- Variable Declaration EOF -->
+|   Week    | T | Avg | Sun | Mon | Tue | Wed | Thu |  Fri  | Sat |
+|:---------:|:-:|:---:|:---:|:---:|:---:|:---:|:---:|:-----:|:---:|
+| 1/25~1/31 |   |     |     |     |     |     |     |       |     |
+| 1/18~1/24 |   |     |     |     |     |     |     |       |     |
+| 1/11~1/17 |   |     |     |     |     |     |     |       |     |
+| 1/4~1/10  | k |     |     |     |     |     |     |       |     |
+|           | p |     |     |     |     |     |     |       |     |
+| 12/28~1/3 | k |     |     |     |     |     |     | 2,123 |     |
+|           | p |     |     |     |     |     |     |       |     |
