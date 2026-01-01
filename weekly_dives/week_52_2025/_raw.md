@@ -191,6 +191,8 @@ curl -k -X PUT "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/role/
 
 ```
 
+![delegated_role](./assets/delegated_role.png)
+
 ### Test: Expected to fail creating both roleMembers and delegated domain
 
 > [!TIP]
