@@ -60,3 +60,6 @@ Also want to learn if I can use this as well:
 
 # Closing
 
+If you enjoyed this deep dive, please leave a like & subscribe for more!
+
+![cats_thumbs_up](./assets/cats_thumbs_up.png)
