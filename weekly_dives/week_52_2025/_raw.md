@@ -19,6 +19,7 @@
       - [Dive: Creates a PR for optimization](#dive-creates-a-pr-for-optimization)
   - [Setup: Create a role in trusted tenant domain](#setup-create-a-role-in-trusted-tenant-domain)
   - [Setup: Create a policy](#setup-create-a-policy)
+  - [Verify: Creating delegated role works as expected](#verify-creating-delegated-role-works-as-expected)
 - [What I learned](#what-i-learned)
 
 <!-- /TOC -->
@@ -346,6 +347,41 @@ curl -k -X PUT "https://localhost:4443/zms/v1/domain/ajktown.api/policy/allow_ro
   }'
 
 # {"name":"ajktown.api:policy.allow_role_sync","modified":"2026-01-01T04:37:08.642Z","assertions":[{"role":"ajktown.api:role.k8s_ns_viewers","resource":"eks.users.ajktown-api:role.k8s_ns_viewers","action":"assume_role","effect":"ALLOW","id":40}],"version":"0","active":true}
+```
+
+## Verify: Creating delegated role works as expected
+
+![delegated_role_member_adding](./assets/delegated_role_member_adding.gif)
+
+```sh
+curl -sS -k -X GET "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/role/k8s_ns_viewers?expand=true" \
+  --cert ./athenz_distribution/certs/athenz_admin.cert.pem \
+  --key ./athenz_distribution/keys/athenz_admin.private.pem | jq
+
+# {
+#   "name": "eks.users.ajktown-api:role.k8s_ns_viewers",
+#   "modified": "2026-01-01T03:13:25.820Z",
+#   "roleMembers": [
+#     {
+#       "memberName": "user.mlajkim",
+#       "requestPrincipal": "user.athenz_admin",
+#       "principalType": 1
+#     }
+#   ],
+#   "trust": "ajktown.api"
+# }
+```
+
+```sh
+curl -sS -k -X GET "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/role/k8s_ns_viewers" \
+  --cert ./athenz_distribution/certs/athenz_admin.cert.pem \
+  --key ./athenz_distribution/keys/athenz_admin.private.pem | jq
+
+# {
+#   "name": "eks.users.ajktown-api:role.k8s_ns_viewers",
+#   "modified": "2026-01-01T03:13:25.820Z",
+#   "trust": "ajktown.api"
+# }
 ```
 
 # What I learned
