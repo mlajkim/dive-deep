@@ -55,8 +55,10 @@ curl -k -X PUT "https://localhost:4443/zms/v1/domain/ajktown.api/group/prod_clus
   --cert ./athenz_distribution/certs/athenz_admin.cert.pem \
   --key ./athenz_distribution/keys/athenz_admin.private.pem \
   -H "Content-Type: application/json" \
+  -H "Athenz-Return-Object: true" \
   -d '{
-    "domainName": "ajktown.api",
-    "groupName": "prod_cluster_connectors"
+    "name": "prod_cluster_connectors"
   }'
+
+# {"name":"ajktown.api:group.prod_cluster_connectors","modified":"2026-01-01T01:05:05.643Z"}
 ```
