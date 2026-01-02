@@ -215,25 +215,49 @@ curl -sS -k -D - -o /dev/null -X GET "https://localhost:4443/zms/v1/domain/eks.u
 
 🟡 todo: test me
 
+```sh
+
+```
+
 **Delete Role Member `user.dyson` in `eks.users.ajktown-api:role.k8s_ns_admins`**
 
 🟡 todo: test me
+
+```sh
+
+```
 
 **Create Role Member `user.emma` in `ajktown.api:role.k8s_ns_viewers`**
 
 🟡 todo: test me
 
+```sh
+
+```
+
 **Delete Role Member `user.emma` in `ajktown.api:role.k8s_ns_viewers`**
 
 🟡 todo: test me
+
+```sh
+
+```
 
 **Create Member `user.frank` in Group `ajktown.api:group.prod_cluster_connectors`**
 
 🟡 todo: test me
 
+```sh
+
+```
+
 **Delete Member `user.frank` in Group `ajktown.api:group.prod_cluster_connectors`**
 
 🟡 todo: test me
+
+```sh
+
+```
 
 # 🟡 Goal: Deploy `athenz/k8s-athenz-syncer`
 
