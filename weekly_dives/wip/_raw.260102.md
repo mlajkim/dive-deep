@@ -213,16 +213,20 @@ curl -sS -k -D - -o /dev/null -X GET "https://localhost:4443/zms/v1/domain/eks.u
 
 **Create Role Member `user.george` in `eks.users.ajktown-api:role.k8s_ns_admins`**
 
-🟡 todo: test me
-
 ```sh
 curl -sS -k -D - -o /dev/null -X GET "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/signed" \
   --cert ./athenz_distribution/certs/athenz_admin.cert.pem \
   --key ./athenz_distribution/keys/athenz_admin.private.pem \
   -H 'If-None-Match: "2026-01-02T06:22:09.082Z"'
+
+# HTTP/1.1 200 OK
+# Host: athenz-zms-server-56dd5fcc5d-d5268
+# ETag: "2026-01-02T06:28:00.364Z"
+# Content-Type: application/json
+# Content-Length: 3551
 ```
 
-**Delete Role Member `user.dyson` in `eks.users.ajktown-api:role.k8s_ns_admins`**
+**Delete Role Member `user.helen` in `eks.users.ajktown-api:role.k8s_ns_admins`**
 
 🟡 todo: test me
 
