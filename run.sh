@@ -5,10 +5,11 @@ set -e
 BRANCH_DATE=$(LC_TIME=C date "+%b-%d-%Y" | tr '[:upper:]' '[:lower:]') # i.e) dec-24-2025
 BRANCH_NAME="${BRANCH_DATE}-daily-dive"
 
-FILE_DATE=$(date "+%y%m%d") # i.e) 251224
-FILE_PATH="proofs/meal/${FILE_DATE}.meal.md"
+# For meal file, we create for the next day:
+FILE_NEXT_DATE=$(date -v+1d "+%y%m%d") # i.e) 251225
+FILE_PATH="proofs/meal/${FILE_NEXT_DATE}.meal.md"
 
-echo "Current Date: $BRANCH_DATE" 
+echo "Current Date: $BRANCH_DATE"
 echo "Target Branch: $BRANCH_NAME"
 echo "Target File: $FILE_PATH"
 
@@ -22,7 +23,7 @@ git checkout -b "$BRANCH_NAME"
 cat <<EOF > "$FILE_PATH"
 <!-- # 251225.2863.132.18 -->
 
-# ${FILE_DATE}
+# ${FILE_NEXT_DATE}
 
 > [!TIP]
 > Check out the parent README file: [README.meal.md](../../README.meal.md)
@@ -133,6 +134,24 @@ EOF
   echo "WIP file created at $WIP_PATH"
 else
   echo "WIP file already exists at $WIP_PATH"
+fi
+
+# if _raw.XXXXXX.md does not exist in weekly_dives/wip, create it:
+FILE_DATE=$(date "+%y%m%d") # i.e) 251224
+RAW_PATH="weekly_dives/wip/_raw.${FILE_DATE}.md"
+if [ ! -f "$RAW_PATH" ]; then
+  cat <<EOF > "$RAW_PATH"
+# About _raw.${FILE_DATE}.md
+
+This is a raw dump file for daily dive on ${BRANCH_DATE}.
+
+<!-- TOC -->
+
+<!-- /TOC -->
+
+# Goal: ???
+
+EOF
 fi
 
 git add "$FILE_PATH"

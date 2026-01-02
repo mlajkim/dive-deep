@@ -26,16 +26,12 @@ To not fall into food comma, stay sharp and well fit, I need to maintain my dail
 > [!NOTE]
 > Check out the proofs [here](./proofs/meal/).
 
-
-|    Date     |   Category    | Average |               Daily                |
-|:-----------:|:-------------:|:-------:|:----------------------------------:|
-|  12/28~1/3  |   Calories    |   ...   |                                    |
-|             |    Protein    |   ...   |                                    |
-|             |   Protein %   |   ...   |                                    |
-|             | Protein Setup |   n/a   |              ...12/29              |
-|             |    Grocery    |   n/a   |                                    |
-| 12/22~12/27 |   Calories    |  2657   | 2584, 2294, 2182, 2863, 2138, 2882 |
-|             |    Protein    |   106   |     134, 66, 72, 132, 80, 149      |
-|             |   Protein %   |   16%   |       20, 12, 13, 18, 15, 21       |
-|             | Protein Setup |   n/a   |               12/25                |
-|             |    Grocery    |   n/a   |               12/27                |
+|   Week    | T | Avg | Sun | Mon | Tue | Wed | Thu |  Fri  | Sat |
+|:---------:|:-:|:---:|:---:|:---:|:---:|:---:|:---:|:-----:|:---:|
+| 1/25~1/31 |   |     |     |     |     |     |     |       |     |
+| 1/18~1/24 |   |     |     |     |     |     |     |       |     |
+| 1/11~1/17 |   |     |     |     |     |     |     |       |     |
+| 1/4~1/10  | k |     |     |     |     |     |     |       |     |
+|           | p |     |     |     |     |     |     |       |     |
+| 12/28~1/3 | k |     |     |     |     |     |     | 2,123 |     |
+|           | p |     |     |     |     |     |     |       |     |

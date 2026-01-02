@@ -4,6 +4,7 @@
 > - Workout performance: [README.workout.md](./README.workout.md)
 > - Meal performance: [README.meal.md](./README.meal.md)
 > - Sleep performance: [README.sleep.md](./README.sleep.md)
+> - No Electronics on Bed performance: [README.no-electronics-on-bed.md](./README.no-electronics-on-bed.md)
 
 <!-- TOC -->
 
