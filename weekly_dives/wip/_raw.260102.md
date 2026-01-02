@@ -6,6 +6,7 @@
   - [Try: Get signed domain payload API WITH eTag](#try-get-signed-domain-payload-api-with-etag)
   - [Try: Get Header TOO with `-i`](#try-get-header-too-with--i)
   - [Try: To get the 304 response](#try-to-get-the-304-response)
+- [🟡 Goal: Test if group members/trusted role member changes affect the sign as well](#🟡-goal-test-if-group-memberstrusted-role-member-changes-affect-the-sign-as-well)
 - [🟡 Goal: Deploy `athenz/k8s-athenz-syncer`](#🟡-goal-deploy-athenzk8s-athenz-syncer)
   - [Setup: Clone the repo](#setup-clone-the-repo)
 - [Note](#note)
@@ -177,6 +178,36 @@ curl -i -sS -k -X GET "https://localhost:4443/zms/v1/domain/eks.users.ajktown-ap
 # ETag: "2026-01-01T22:21:37.135Z"
 # Content-Length: 0
 ```
+
+# 🟡 Goal: Test if group members/trusted role member changes affect the sign as well
+
+**Init**
+
+🟡 todo: test me
+
+**Create Role Member `user.dyson` in `eks.users.ajktown-api:role.k8s_ns_admins`**
+
+🟡 todo: test me
+
+**Delete Role Member `user.dyson` in `eks.users.ajktown-api:role.k8s_ns_admins`**
+
+🟡 todo: test me
+
+**Create Role Member `user.emma` in `ajktown.api:role.k8s_ns_viewers`**
+
+🟡 todo: test me
+
+**Delete Role Member `user.emma` in `ajktown.api:role.k8s_ns_viewers`**
+
+🟡 todo: test me
+
+**Create Member `user.frank` in Group `ajktown.api:group.prod_cluster_connectors`**
+
+🟡 todo: test me
+
+**Delete Member `user.frank` in Group `ajktown.api:group.prod_cluster_connectors`**
+
+🟡 todo: test me
 
 # 🟡 Goal: Deploy `athenz/k8s-athenz-syncer`
 
