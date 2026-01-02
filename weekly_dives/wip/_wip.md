@@ -62,7 +62,7 @@ Also want to learn if I can use this as well:
 
 
 - `1/1 Thu`: 6.75 Hours
-- `1/2 Fri`: ...
+- `1/2 Fri`: 4.75 Hours
 
 # Closing
 
