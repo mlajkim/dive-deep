@@ -211,7 +211,7 @@ curl -sS -k -D - -o /dev/null -X GET "https://localhost:4443/zms/v1/domain/eks.u
 
 **Create Role Member `user.george` in `eks.users.ajktown-api:role.k8s_ns_admins`**
 
-`200 OK`:
+`200 OK: YES MODIFIED`:
 
 ```sh
 curl -sS -k -D - -o /dev/null -X GET "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/signed" \
@@ -229,7 +229,7 @@ curl -sS -k -D - -o /dev/null -X GET "https://localhost:4443/zms/v1/domain/eks.u
 
 **Delete Member `user.george` in `eks.users.ajktown-api:role.k8s_ns_admins`**
 
-`200 OK`:
+`200 OK: YES MODIFIED`:
 
 ```sh
 curl -sS -k -D - -o /dev/null -X GET "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/signed" \
