@@ -24,6 +24,7 @@
   - [Setup: Create a script to fetch modified date with/without expand](#setup-create-a-script-to-fetch-modified-date-withwithout-expand)
   - [Verify: Expect to modify domain when modifying role inside it](#verify-expect-to-modify-domain-when-modifying-role-inside-it)
 - [Goal: Deploy `athenz/k8s-athenz-syncer`](#goal-deploy-athenzk8s-athenz-syncer)
+  - [Setup: Clone the repo](#setup-clone-the-repo)
 - [What I learned](#what-i-learned)
 
 <!-- /TOC -->
@@ -615,6 +616,8 @@ We can see that the domain modifies too when we modify the role inside it, howev
 | `domain/ajktown.api/group/prod_cluster_connectors?expand=true`  | `2026-01-01T22:26:13.733Z` |   YES    |
 
 # Goal: Deploy `athenz/k8s-athenz-syncer`
+
+## Setup: Clone the repo
 
 ```sh
 git clone https://github.com/AthenZ/k8s-athenz-syncer.git k8s_athenz_syncer
