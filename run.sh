@@ -138,7 +138,18 @@ fi
 # if _raw.XXXXXX.md does not exist in weekly_dives/wip, create it:
 RAW_PATH="weekly_dives/wip/_raw.${FILE_DATE}.md"
 if [ ! -f "$RAW_PATH" ]; then
-  touch "$RAW_PATH"
+  cat <<EOF > "$FILE_PATH"
+# About _raw.${FILE_DATE}.md
+
+This is a raw dump file for daily dive on ${BRANCH_DATE}.
+
+<!-- TOC -->
+
+<!-- /TOC -->
+
+# Goal: ???
+
+EOF
 fi
 
 git add "$FILE_PATH"
