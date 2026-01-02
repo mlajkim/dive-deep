@@ -23,9 +23,6 @@
 - [Goal: Experiment with modified date](#goal-experiment-with-modified-date)
   - [Setup: Create a script to fetch modified date with/without expand](#setup-create-a-script-to-fetch-modified-date-withwithout-expand)
   - [Verify: Expect to modify domain when modifying role inside it](#verify-expect-to-modify-domain-when-modifying-role-inside-it)
-- [Goal: Deploy `athenz/k8s-athenz-syncer`](#goal-deploy-athenzk8s-athenz-syncer)
-  - [Setup: Clone the repo](#setup-clone-the-repo)
-- [What I learned](#what-i-learned)
 
 <!-- /TOC -->
 
@@ -615,19 +612,3 @@ We can see that the domain modifies too when we modify the role inside it, howev
 | `domain/ajktown.api/group/prod_cluster_connectors?expand=false` | `2026-01-01T22:26:13.733Z` |   YES    |
 | `domain/ajktown.api/group/prod_cluster_connectors?expand=true`  | `2026-01-01T22:26:13.733Z` |   YES    |
 
-# Goal: Deploy `athenz/k8s-athenz-syncer`
-
-## Setup: Clone the repo
-
-```sh
-git clone https://github.com/AthenZ/k8s-athenz-syncer.git k8s_athenz_syncer
-```
-ㅑ
-
-# What I learned
-
-- Learned about how to create TLD and subdomain in Athenz.
-- Learned about how to create group in Athenz.
-- Learned about how to add group as member of role in Athenz.
-- Learned about various API endpoints in Athenz for domain, subdomain, group, and role management.
-- Learned how to read rdli and tdl files to understand the structure of API requests and responses in Athenz.
