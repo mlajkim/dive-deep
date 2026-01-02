@@ -12,6 +12,9 @@
   - [Setup: Clone the repo](#setup-clone-the-repo)
   - [Setup: Try to deploy the AthenZ CRD](#setup-try-to-deploy-the-athenz-crd)
     - [Dive: Create a commit](#dive-create-a-commit)
+  - [Setup: Create k8s sa](#setup-create-k8s-sa)
+    - [Dive: Write a instruction for namespace & modify correctly](#dive-write-a-instruction-for-namespace--modify-correctly)
+  - [Setup: cr and crb](#setup-cr-and-crb)
 - [Note](#note)
   - [Try: GET sys modified_domains API](#try-get-sys-modified_domains-api)
 - [What I learned](#what-i-learned)
@@ -339,6 +342,38 @@ kubectl apply -f k8s_athenz_syncer/k8s/athenzdomain.yaml
 # customresourcedefinition.apiextensions.k8s.io/athenzdomains.athenz.io created
 ```
 
+## Setup: Create k8s sa
+
+```sh
+kubectl apply -f k8s_athenz_syncer/k8s/serviceaccount.yaml
+# Error from server (NotFound): error when creating "k8s_athenz_syncer/k8s/serviceaccount.yaml": namespaces "kube-yahoo" not found
+```
+
+### Dive: Write a instruction for namespace & modify correctly
+
+Create the [commit](https://github.com/mlajkim/k8s-athenz-syncer/commit/2f4f5b89751f1d88267b09b4d3d565deac1f06d0) and was able to do the following:
+
+
+```sh
+kubectl apply -f k8s/namespace.yaml
+# namespace/hekube-k8s-athenz-syncer configured
+```
+
+```sh
+kubectl apply -f k8s/serviceaccount.yaml
+# serviceaccount/k8s-athenz-syncer created
+```
+
+## Setup: cr and crb
+
+It worked no problem:
+
+```sh
+kubectl apply -f k8s/clusterrole.yaml
+kubectl apply -f k8s/clusterrolebinding.yaml
+# clusterrole.rbac.authorization.k8s.io/k8s-athenz-syncer created
+# clusterrolebinding.rbac.authorization.k8s.io/k8s-athenz-syncer created
+```
 
 # Note
 
