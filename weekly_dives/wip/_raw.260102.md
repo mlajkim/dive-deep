@@ -231,10 +231,13 @@ curl -sS -k -D - -o /dev/null -X GET "https://localhost:4443/zms/v1/domain/eks.u
 🟡 todo: test me
 
 ```sh
-
+curl -sS -k -D - -o /dev/null -X GET "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/signed" \
+  --cert ./athenz_distribution/certs/athenz_admin.cert.pem \
+  --key ./athenz_distribution/keys/athenz_admin.private.pem \
+  -H 'If-None-Match: "2026-01-02T06:28:00.364Z"'
 ```
 
-**Create Role Member `user.emma` in `ajktown.api:role.k8s_ns_viewers`**
+**Create Role Member `user.helen` in `ajktown.api:role.k8s_ns_viewers`**
 
 🟡 todo: test me
 
