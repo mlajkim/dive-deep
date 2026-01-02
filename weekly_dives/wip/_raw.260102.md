@@ -7,6 +7,7 @@
   - [Try: Get Header TOO with `-i`](#try-get-header-too-with--i)
   - [Try: To get the 304 response](#try-to-get-the-304-response)
 - [Goal: Test if group members/trusted role member changes affect the sign as well](#goal-test-if-group-memberstrusted-role-member-changes-affect-the-sign-as-well)
+  - [Next step](#next-step)
 - [🟡 Goal: Deploy `athenz/k8s-athenz-syncer`](#🟡-goal-deploy-athenzk8s-athenz-syncer)
   - [Setup: Clone the repo](#setup-clone-the-repo)
 - [Note](#note)
@@ -295,6 +296,13 @@ curl -sS -k -D - -o /dev/null -X GET "https://localhost:4443/zms/v1/domain/eks.u
 # ETag: "2026-01-02T06:28:00.364Z"
 # Content-Length: 0
 ```
+
+## Next step
+
+After testing the signed API, I have a clear picture of the features required to create a custom `k8s-athenz-syncer`. While I feel confident I could build it myself, there might be things I'm missing. By diving into the existing `athenz/k8s-athenz-syncer` code, I aim to either:
+
+- Learn a smarter approach by understanding the existing component
+- Realize that the official syncer already does exactly what I have in mind
 
 # 🟡 Goal: Deploy `athenz/k8s-athenz-syncer`
 
