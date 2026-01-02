@@ -15,6 +15,7 @@
   - [Setup: Create k8s sa](#setup-create-k8s-sa)
     - [Dive: Write a instruction for namespace & modify correctly](#dive-write-a-instruction-for-namespace--modify-correctly)
   - [Setup: cr and crb](#setup-cr-and-crb)
+    - [Next Step: Brain-dead deploy the deployment](#next-step-brain-dead-deploy-the-deployment)
 - [Note](#note)
   - [Try: GET sys modified_domains API](#try-get-sys-modified_domains-api)
 - [What I learned](#what-i-learned)
@@ -373,6 +374,15 @@ kubectl apply -f k8s/clusterrole.yaml
 kubectl apply -f k8s/clusterrolebinding.yaml
 # clusterrole.rbac.authorization.k8s.io/k8s-athenz-syncer created
 # clusterrolebinding.rbac.authorization.k8s.io/k8s-athenz-syncer created
+```
+
+### Next Step: Brain-dead deploy the deployment
+
+I know it won't work because there are so many configurations it seems missing, but let's try it out and see:
+
+```sh
+kubectl apply -f k8s/deployment.yaml
+# deployment.apps/k8s-athenz-syncer created
 ```
 
 # Note
