@@ -1,5 +1,10 @@
+# About _raw.${FILE_DATE}.md
+
+This is a raw dump file for daily dive on jan-02-2026.
+
 <!-- TOC -->
 
+- [About _raw.${FILE_DATE}.md](#about-_rawfile_datemd)
 - [Goal: Learn about signed domain API](#goal-learn-about-signed-domain-api)
   - [Try: GET signed domain payload API WITHOUT eTag](#try-get-signed-domain-payload-api-without-etag)
   - [Try: READ payload inside the signed domain returned above](#try-read-payload-inside-the-signed-domain-returned-above)
