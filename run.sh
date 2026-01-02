@@ -154,6 +154,9 @@ This is a raw dump file for daily dive on ${BRANCH_DATE}.
 EOF
 fi
 
+# Right after creating/editing files, commit and push:
+sleep 2
+
 git add "$FILE_PATH"
 git commit -m "$BRANCH_NAME"
 
