@@ -2,6 +2,7 @@
 
 - [Goal: Learn about signed domain API](#goal-learn-about-signed-domain-api)
   - [Try: GET signed domain payload API WITHOUT eTag](#try-get-signed-domain-payload-api-without-etag)
+  - [Try: READ payload inside the signed domain returned above](#try-read-payload-inside-the-signed-domain-returned-above)
   - [Try: Get signed domain payload API WITH eTag](#try-get-signed-domain-payload-api-with-etag)
   - [Try: Get Header TOO with `-i`](#try-get-header-too-with--i)
   - [Try: To get the 304 response](#try-to-get-the-304-response)
@@ -32,6 +33,94 @@ curl -sS -k -X GET "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/s
 #   },
 #   "signature": "fJAxIVwD-Wr4KnJeffl_ebtctnGd3aaiBYGNIDBewI80eKBQZRgY-KwIGI2QXpWiQX4zYYFSMaO9WiybzPSSsBR1Zl-NcK54SJ_b86CBtgH8ChZ9mhgqKnGSxEuVI_Bp0Eegn9B9WAMK4nheEabhXa7t5vSiUi6oKuYjrSwPVTZpcPAbSwA8MFZmYfKAbPg4J9Ya8mOND_Js939Lj6Uly-4qRF2uHXq1z_CCMpJRCC5fkyWq1zdVucpPQLZBZQrrCGj4u7dsPFgs3BIA_h66dhMBLpdjVOWFYSN4Tc6caUNxJiEcEBBBSr9XFE85TW6P4AIaVF9vXsyqvvSpGYqtdzmpx5lrPrWZ_P0bcYr9jJNRoMvY87N0LjyUR3bdY2wDvo2sN4JYLjVon_Y9rMNwvmC_e_BI7TBAavE2QvvqR3R6fkfkgkG1vcwXhPa9UyB1JKC4qvXUvZjzVFlaX3S8AgsfYIyJZI84hJuqN1gAx5bfVxui3kxNN78-lQpad7r1EUsad4Yk13BHhxe13nxVWqHNFg9Q5QbX1GhyddKxoE31itdMtw9TGgyOXO76sMoKXpy1BdxFVKSDIcHEVAS3jXdEVl5212lRaGXnkZWE57929JYrOwjZI0JJcuZF83jHe_2ZLzQC6FEvRTIMYWO8ahExKSEaHht-AwJpAjvrK84",
 #   "protected": "eyJraWQiOiJhdGhlbnotem1zLXNlcnZlci01NmRkNWZjYzVkLWQ1MjY4IiwiYWxnIjoiUlMyNTYifQ"
+# }
+```
+
+## Try: READ payload inside the signed domain returned above
+
+```sh
+curl -sS -k -X GET "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/signed" \
+  --cert ./athenz_distribution/certs/athenz_admin.cert.pem \
+  --key ./athenz_distribution/keys/athenz_admin.private.pem | jq -r .payload | base64 -d | jq
+
+# {
+#   "org": "ajkim",
+#   "enabled": true,
+#   "auditEnabled": false,
+#   "ypmId": 0,
+#   "name": "eks.users.ajktown-api",
+#   "roles": [
+#     {
+#       "name": "eks.users.ajktown-api:role.k8s_ns_admins",
+#       "modified": "2026-01-01T22:21:37.134Z",
+#       "roleMembers": [
+#         {
+#           "memberName": "user.alice",
+#           "requestPrincipal": "user.athenz_admin",
+#           "principalType": 1
+#         },
+#         {
+#           "memberName": "user.bob",
+#           "requestPrincipal": "user.athenz_admin",
+#           "principalType": 1
+#         },
+#         {
+#           "memberName": "ajktown.api:group.prod_cluster_connectors",
+#           "requestPrincipal": "user.athenz_admin",
+#           "principalType": 3
+#         },
+#         {
+#           "memberName": "user.cyan",
+#           "requestPrincipal": "user.athenz_admin",
+#           "principalType": 1
+#         }
+#       ]
+#     },
+#     {
+#       "name": "eks.users.ajktown-api:role.k8s_ns_viewers",
+#       "modified": "2026-01-01T03:13:25.820Z",
+#       "trust": "ajktown.api"
+#     },
+#     {
+#       "name": "eks.users.ajktown-api:role.admin",
+#       "modified": "2025-12-30T05:27:10.300Z",
+#       "roleMembers": [
+#         {
+#           "memberName": "user.athenz_admin",
+#           "requestPrincipal": "user.athenz_admin",
+#           "principalType": 1
+#         }
+#       ]
+#     }
+#   ],
+#   "policies": {
+#     "contents": {
+#       "domain": "eks.users.ajktown-api",
+#       "policies": [
+#         {
+#           "name": "eks.users.ajktown-api:policy.admin",
+#           "modified": "2025-12-30T05:27:10.302Z",
+#           "assertions": [
+#             {
+#               "role": "eks.users.ajktown-api:role.admin",
+#               "resource": "eks.users.ajktown-api:*",
+#               "action": "*",
+#               "effect": "ALLOW",
+#               "id": 33
+#             }
+#           ],
+#           "version": "0",
+#           "active": true
+#         }
+#       ]
+#     },
+#     "signature": "L8RzhurzBe5M8XcLEA0Bur4grA9YDFrUn24C.kCfhI98dJoaC4aBHP12KlcCrtUW5KQmpGwbBpcG_hw63vfXJ3Mn0bn4xjdTcrtd55Zq1cN1o0K0AsqNO9a1sPj43Se_8L.YF9WyH4nPyjOANUOcl54EfxH3BpyKIdYi6KBSXSSIF8BwCWEcTodVRjgitIEiFwllyALPjWFYbE2aCAns5PQXHX9v1mnwqzUkPe5XDYgEc0htMkc_k8HOfpYzeKc3VlopjgFPQTCX8z6V74tWb.5QoAkRKfDV9LhyMPBkA2y0E4IwZpKkskW4ycaia_3PM6TKDh0yWP0.eoEHz4DCXX3sFnmI1qA.vdbin2CpYzzEGX34x0RhY7ZtOTUnCLoMTny7y963K_FITGAbhlFrKfrviwdosZiOgPxtBAq6th.PN9V4URWQ62uaPMqVFCItqoYb9DS2tKGGHwWoIhwmeWk0qZqKT6_RaqeYxv5FEitge3f4iVtqnuXVkLK3sriKSsPI1Y9NBRvUMgaOyZc7nmerR3xfe3bv8ObH_Adf7g.ihpZm_bFtg.oOsp27IWWSKn5XmQM6gA1FH_BClRLnPgEGrRozrenxXDcg9WlqYUqr7v956IqHruPwuoFNyrFaXMrUyqGh8csPRTdBl3Y47nAxOMQ4TjPX4sW73IJ.RJk-",
+#     "keyId": "athenz-zms-server-56dd5fcc5d-d5268"
+#   },
+#   "services": [],
+#   "entities": [],
+#   "groups": [],
+#   "modified": "2026-01-01T22:21:37.135Z"
 # }
 ```
 
