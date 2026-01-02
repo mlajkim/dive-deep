@@ -10,6 +10,8 @@
   - [Next step](#next-step)
 - [🟡 Goal: Deploy `athenz/k8s-athenz-syncer`](#🟡-goal-deploy-athenzk8s-athenz-syncer)
   - [Setup: Clone the repo](#setup-clone-the-repo)
+  - [Setup: Try to deploy the AthenZ CRD](#setup-try-to-deploy-the-athenz-crd)
+    - [Dive: Create a commit](#dive-create-a-commit)
 - [Note](#note)
   - [Try: GET sys modified_domains API](#try-get-sys-modified_domains-api)
 - [What I learned](#what-i-learned)
@@ -310,6 +312,31 @@ After testing the signed API, I have a clear picture of the features required to
 
 ```sh
 git clone https://github.com/AthenZ/k8s-athenz-syncer.git k8s_athenz_syncer
+```
+
+## Setup: Try to deploy the AthenZ CRD
+
+I treid to create the AthenZ CRD first, but the following error occurred:
+
+```sh
+git clone https://github.com/AthenZ/k8s-athenz-syncer.git k8s_athenz_syncer
+kubectl apply -f k8s_athenz_syncer/k8s/athenzdomain.yaml
+
+# error: resource mapping not found for name: "athenzdomains.athenz.io" namespace: "" from "k8s_athenz_syncer/k8s/athenzdomain.yaml": no matches for kind "CustomResourceDefinition" in version "apiextensions.k8s.io/v1beta1"
+# ensure CRDs are installed first
+```
+
+### Dive: Create a commit
+
+Made the following commit, and fixed it:
+
+https://github.com/mlajkim/k8s-athenz-syncer/commit/305902d2114846f5a239955b320ca78c51821d93
+
+Then:
+
+```sh
+kubectl apply -f k8s_athenz_syncer/k8s/athenzdomain.yaml
+# customresourcedefinition.apiextensions.k8s.io/athenzdomains.athenz.io created
 ```
 
 
