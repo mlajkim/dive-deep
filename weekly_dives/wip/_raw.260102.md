@@ -5,7 +5,7 @@
   - [Try: Get signed domain payload API WITH eTag](#try-get-signed-domain-payload-api-with-etag)
   - [Try: Get Header TOO with `-i`](#try-get-header-too-with--i)
   - [Try: To get the 304 response](#try-to-get-the-304-response)
-- [Goal: Deploy `athenz/k8s-athenz-syncer`](#goal-deploy-athenzk8s-athenz-syncer)
+- [🟡 Goal: Deploy `athenz/k8s-athenz-syncer`](#🟡-goal-deploy-athenzk8s-athenz-syncer)
   - [Setup: Clone the repo](#setup-clone-the-repo)
 - [Note](#note)
   - [Try: GET sys modified_domains API](#try-get-sys-modified_domains-api)
@@ -89,7 +89,7 @@ curl -i -sS -k -X GET "https://localhost:4443/zms/v1/domain/eks.users.ajktown-ap
 # Content-Length: 0
 ```
 
-# Goal: Deploy `athenz/k8s-athenz-syncer`
+# 🟡 Goal: Deploy `athenz/k8s-athenz-syncer`
 
 ## Setup: Clone the repo
 
