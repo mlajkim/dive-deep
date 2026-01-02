@@ -8,7 +8,7 @@ BRANCH_NAME="${BRANCH_DATE}-daily-dive"
 FILE_DATE=$(date "+%y%m%d") # i.e) 251224
 FILE_PATH="proofs/meal/${FILE_DATE}.meal.md"
 
-echo "Current Date: $BRANCH_DATE" 
+echo "Current Date: $BRANCH_DATE"
 echo "Target Branch: $BRANCH_NAME"
 echo "Target File: $FILE_PATH"
 
@@ -133,6 +133,12 @@ EOF
   echo "WIP file created at $WIP_PATH"
 else
   echo "WIP file already exists at $WIP_PATH"
+fi
+
+# if _raw.XXXXXX.md does not exist in weekly_dives/wip, create it:
+RAW_PATH="weekly_dives/wip/_raw.${FILE_DATE}.md"
+if [ ! -f "$RAW_PATH" ]; then
+  touch "$RAW_PATH"
 fi
 
 git add "$FILE_PATH"
