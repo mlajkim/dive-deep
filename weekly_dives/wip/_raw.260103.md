@@ -5,7 +5,7 @@ This is a raw dump file for daily dive on jan-03-2026.
 <!-- TOC -->
 
 - [About _raw.260103.md](#about-_raw260103md)
-- [Goal: Deploy `athenz/k8s-athenz-syncer`](#goal-deploy-athenzk8s-athenz-syncer)
+- [Goal: Deploy `athenz/k8s-athenz-syncer` by Jan 3 08:00](#goal-deploy-athenzk8s-athenz-syncer-by-jan-3-0800)
   - [Setup: Clone the repo](#setup-clone-the-repo)
   - [Setup: Try to deploy the AthenZ CRD](#setup-try-to-deploy-the-athenz-crd)
     - [Dive: Create a commit](#dive-create-a-commit)
@@ -17,7 +17,7 @@ This is a raw dump file for daily dive on jan-03-2026.
 <!-- /TOC -->
 
 
-# Goal: Deploy `athenz/k8s-athenz-syncer`
+# Goal: Deploy `athenz/k8s-athenz-syncer` by Jan 3 08:00
 
 ## Setup: Clone the repo
 
