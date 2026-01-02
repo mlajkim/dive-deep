@@ -7,6 +7,7 @@
   - [Try: To get the 304 response](#try-to-get-the-304-response)
 - [Goal: Deploy `athenz/k8s-athenz-syncer`](#goal-deploy-athenzk8s-athenz-syncer)
   - [Setup: Clone the repo](#setup-clone-the-repo)
+- [What I learned](#what-i-learned)
 
 <!-- /TOC -->
 
@@ -104,3 +105,10 @@ curl -i -sS -k -X GET "https://localhost:4443/zms/v1/domain/eks.users.ajktown-ap
 ```sh
 git clone https://github.com/AthenZ/k8s-athenz-syncer.git k8s_athenz_syncer
 ```
+
+
+# What I learned
+
+It is actually important to use the signed one with eTag for security + performance.
+
+What if data is hijacked in between? Some of them may get permissions that they should not have.
