@@ -183,7 +183,33 @@ curl -i -sS -k -X GET "https://localhost:4443/zms/v1/domain/eks.users.ajktown-ap
 
 **Init**
 
-🟡 todo: test me
+```sh
+curl -sS -k -D - -o /dev/null -X GET "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/signed" \
+  --cert ./athenz_distribution/certs/athenz_admin.cert.pem \
+  --key ./athenz_distribution/keys/athenz_admin.private.pem \
+  -H 'If-None-Match: "2026-01-01T22:21:37.135Z"'
+
+# HTTP/1.1 304 Not Modified
+# Host: athenz-zms-server-56dd5fcc5d-d5268
+# ETag: "2026-01-01T22:21:37.135Z"
+# Content-Length: 0
+```
+
+**Create Role Member `user.george` in `eks.users.ajktown-api:role.k8s_ns_admins`**
+
+```sh
+curl -sS -k -D - -o /dev/null -X GET "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/signed" \
+  --cert ./athenz_distribution/certs/athenz_admin.cert.pem \
+  --key ./athenz_distribution/keys/athenz_admin.private.pem \
+  -H 'If-None-Match: "2026-01-01T22:21:37.135Z"'
+
+# HTTP/1.1 200 OK
+# Host: athenz-zms-server-56dd5fcc5d-d5268
+# ETag: "2026-01-02T06:22:09.082Z"
+# Content-Type: application/json
+# Content-Length: 3666
+```
+
 
 **Create Role Member `user.dyson` in `eks.users.ajktown-api:role.k8s_ns_admins`**
 
