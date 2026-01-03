@@ -12,6 +12,7 @@ Protein:
 | Protein Shake 1.5 Scoops w/ Almond Milk |   240    |   37    |
 |      Dongwon Hot Pepper 1 can 90g       |   130    |    9    |
 |       Sunny Side Up Egg w/ 1 egg        |   140    |   12    |
+|           Savas Milk Protein            |   103    |   15    |
 
 Healthy Carbs (Non-Fruit):
 
@@ -25,7 +26,7 @@ Unhealthy Carbs:
 |         Food          | Calories | Protein |
 |:---------------------:|:--------:|:-------:|
 | baehongdong jjolmyeon |   445    |   13    |
-| baehongdong Bibimyeon |   556    |   9    |
+| baehongdong Bibimyeon |   556    |    9    |
 
 Fruit:
 |           Food           | Calories | Protein |
