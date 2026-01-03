@@ -12,7 +12,11 @@ This is a raw dump file for daily dive on jan-03-2026.
   - [Setup: Create k8s sa](#setup-create-k8s-sa)
     - [Dive: Write a instruction for namespace & modify correctly](#dive-write-a-instruction-for-namespace--modify-correctly)
   - [Setup: cr and crb](#setup-cr-and-crb)
-    - [Next Step: Brain-dead deploy the deployment](#next-step-brain-dead-deploy-the-deployment)
+  - [Setup: Create certificate as k8s secret instead](#setup-create-certificate-as-k8s-secret-instead)
+  - [Create docker image locally](#create-docker-image-locally)
+    - [Dive: Improve Dockerfile](#dive-improve-dockerfile)
+  - [Setup: Create Deploy](#setup-create-deploy)
+  - [Verify: Syncs every minute](#verify-syncs-every-minute)
 
 <!-- /TOC -->
 
@@ -83,11 +87,82 @@ kubectl apply -f k8s/clusterrolebinding.yaml
 # clusterrolebinding.rbac.authorization.k8s.io/k8s-athenz-syncer created
 ```
 
-### Next Step: Brain-dead deploy the deployment
+## Setup: Create certificate as k8s secret instead
 
-I know it won't work because there are so many configurations it seems missing, but let's try it out and see:
+The sample deployment requires `athenz-sia` which is fine, but again
+
+
+Create secret with cert filed inserted:
 
 ```sh
-kubectl apply -f k8s/deployment.yaml
+kubectl create secret generic k8s-athenz-syncer-cert \
+  -n kube-k8s-athenz-syncer \
+  --from-file=cert.pem=./athenz_distribution/certs/athenz_admin.cert.pem \
+  --from-file=key.pem=./athenz_distribution/keys/athenz_admin.private.pem \
+  --from-file=ca.pem=./athenz_distribution/certs/ca.cert.pem
+
+# secret/k8s-athenz-syncer-cert created
+```
+
+## Create docker image locally
+
+```sh
+go mod tidy
+docker build -t local/k8s-athenz-syncer:latest .
+kind load docker-image local/k8s-athenz-syncer:latest
+```
+
+### Dive: Improve Dockerfile
+
+Had the following problem:
+
+- Very old golang version `1.14` => `1.25`
+
+
+## Setup: Create Deploy
+
+```sh
+kubectl apply -f k8s/mydeploy.yaml
 # deployment.apps/k8s-athenz-syncer created
+```
+
+## Verify: Syncs every minute
+
+
+**Create subdomain**
+
+After creating the a namespace called `ajktown-db`, it synced `ajktown.db` as the following:
+
+```sh
+kg domain
+NAME          AGE
+# ajktown.api   28m
+# ajktown.db    47s
+```
+
+You can also describe the domain:
+
+```sh
+kubectl describe domain ajktown.api
+# Name:         ajktown.api
+# Namespace:
+# Labels:       <none>
+# Annotations:  <none>
+# API Version:  athenz.io/v1
+# Kind:         AthenzDomain
+# Metadata:
+#   Creation Timestamp:  2026-01-02T21:11:14Z
+#   Generation:          3
+#   Resource Version:    757982
+#   UID:                 fb7bbab3-5150-4833-af83-77bfde09de45
+# Spec:
+#   Domain:
+#     Account:
+#     Application Id:
+#     Audit Enabled:       false
+#     Azure Subscription:
+#     Business Service:
+#     Cert Dns Domain:
+#     Description:         AJK Town API Subdomain
+# ...
 ```
