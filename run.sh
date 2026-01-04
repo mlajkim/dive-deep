@@ -136,6 +136,12 @@ else
   echo "WIP file already exists at $WIP_PATH"
 fi
 
+# Write TODOs so that you do not forget:
+
+echo "🟡 TODOs:" >> "README.meal.md"
+echo "🟡 TODOs:" >> "README.sleep.md"
+echo "🟡 TODOs:" >> "README.workout.md"
+
 # if _raw.XXXXXX.md does not exist in weekly_dives/wip, create it:
 FILE_DATE=$(date "+%y%m%d") # i.e) 251224
 RAW_PATH="weekly_dives/wip/_raw.${FILE_DATE}.md"
