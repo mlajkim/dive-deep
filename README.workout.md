@@ -42,8 +42,8 @@ Checkout the proofs for:
 |  1/25~1/31  |              |         |        |                 |      |          |                |
 |  1/18~1/24  |              |         |        |                 |      |          | ...Competition |
 |  1/11~1/17  |              |         |        |                 |      |          |                |
-|  1/4~1/10   |   ...Field   | ...Back | ...Leg | ...Chest,Cardio | ...- | ...Range |    ...Field    |
-|  12/28~1/3  |      -       |  Field  |   -    |      Field      |  -   | ...Range |    ...Range    |
+|  1/4~1/10   | Range,Field  | ...Back | ...Leg | ...Chest,Cardio | ...- | ...Range |    ...Field    |
+|  12/28~1/3  |      -       |  Field  |   -    |      Field      |  -   |  Range   |     Range      |
 | 12/21~12/27 | Back, Cardio |    -    |   -    |       Leg       |  -   |  Chest   |     Range      |
 
 
