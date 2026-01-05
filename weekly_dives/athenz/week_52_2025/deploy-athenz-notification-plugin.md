@@ -38,7 +38,7 @@ This is the general architecture of how the `Athenz Custom Plugin` works:
   - [Setup: Athenz and Local Kubernetes Cluster](#setup-athenz-and-local-kubernetes-cluster)
   - [Setup: Clone Athenz Plugin](#setup-clone-athenz-plugin)
   - [Setup: AWS SES Configuration](#setup-aws-ses-configuration)
-  - [Setup: AWS SES Secret](#setup-aws-ses-secret)
+  - [Setup: Create secret for AWS SES](#setup-create-secret-for-aws-ses)
   - [Setup: Build jar and deploy plugin as configmap in Kubernetes](#setup-build-jar-and-deploy-plugin-as-configmap-in-kubernetes)
   - [Setup: Modify Athenz ZMS Server Deployment to use the Plugin and Secret](#setup-modify-athenz-zms-server-deployment-to-use-the-plugin-and-secret)
   - [Verify: Does it work?](#verify-does-it-work)
@@ -71,7 +71,13 @@ cd ~/test_dive/$tmp_dir
 
 ## Setup: AWS SES Configuration
 
-## Setup: AWS SES Secret
+## Setup: Create secret for AWS SES
+
+```sh
+make -C plugin create-aws-ses-secret
+```
+
+![create_aws_ses_secret_result](./assets/create_aws_ses_secret_result.png)
 
 ## Setup: Build jar and deploy plugin as configmap in Kubernetes
 
