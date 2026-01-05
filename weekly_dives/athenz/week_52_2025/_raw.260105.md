@@ -11,6 +11,7 @@ This is a raw dump file for daily dive on jan-05-2026.
     - [Setup: Working directory](#setup-working-directory)
     - [Setup: Kind k8s cluster & Athenz server](#setup-kind-k8s-cluster--athenz-server)
     - [Setup: Clone plugin](#setup-clone-plugin)
+    - [Setup: cd to plugin](#setup-cd-to-plugin)
     - [Setup: Successfully mount the jar on ZMS server first with configmap.](#setup-successfully-mount-the-jar-on-zms-server-first-with-configmap)
     - [Setup: Setup email server that sends an email](#setup-setup-email-server-that-sends-an-email)
     - [Setup: prepare id and password](#setup-prepare-id-and-password)
@@ -49,6 +50,14 @@ cd ~/test_dive/$tmp_dir
 
 ```sh
 git clone https://github.com/mlajkim/athenz-amazon-ses-notification-plugin plugin
+```
+
+### Setup: cd to plugin
+
+We will mostly work inside `plugin` directory, so let's `cd` into it:
+
+```sh
+cd plugin
 ```
 
 ### Setup: Successfully mount the jar on ZMS server first with configmap.
