@@ -9,3 +9,7 @@ tags:
 cover_image: ./thumbnail.png
 ---
 
+# Goal
+
+
+![plugin_n_aws_sms_architecture](./assets/plugin_n_aws_sms_architecture.png)
