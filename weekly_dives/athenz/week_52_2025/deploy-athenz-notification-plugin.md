@@ -83,6 +83,8 @@ make -C plugin create-aws-ses-secret
 
 ## Setup: Modify Athenz ZMS Server Deployment to use the Plugin and Secret
 
+![patch_zms_deployment](./assets/patch_zms_deployment.png)
+
 ## Verify: Does it work?
 
 # What's next?
