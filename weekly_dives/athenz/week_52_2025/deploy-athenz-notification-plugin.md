@@ -11,6 +11,9 @@ cover_image: ./thumbnail.png
 
 # Goal
 
+> [!TIP]
+> In hurry? Jump directly to [Result](#result) section to see the outcome of this dive.
+
 I’ve been diving into [Athenz](https://github.com/AthenZ/athenz), an open-source RBAC/ABAC platform, running it on a local Kubernetes ([Kind](https://kind.sigs.k8s.io/)) cluster. Everything was working great until I needed to test the approval workflow.
 
 I looked through official documentations and found out [this "Email Notifications - Athenz"](https://athenz.github.io/athenz/email_notifications/), and they tell me that you can simply utilize already built AWS SES integration if you *only* run your Athenz server on AWS infrastructure, but I was running it locally. So, I had to figure out how to make it work on my own.
@@ -82,6 +85,10 @@ make -C plugin create-aws-ses-secret
 ## Setup: Build jar and deploy plugin as configmap in Kubernetes
 
 ## Setup: Modify Athenz ZMS Server Deployment to use the Plugin and Secret
+
+```sh
+make -C plugin patch
+```
 
 ![patch_zms_deployment](./assets/patch_zms_deployment.png)
 

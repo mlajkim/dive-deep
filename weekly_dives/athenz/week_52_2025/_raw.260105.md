@@ -107,6 +107,9 @@ kubectl create secret generic aws-ses-secret \
 
 ### Setup: Modifies configmap of zms server
 
+> [!NOTE]
+> This step has been simplified with `make patch` command
+
 
 Modifying the zms server deployment will restart the pod:
 
@@ -147,7 +150,7 @@ Add the following volumeMount:
           subPath: ses-plugin.jar
 ```
 
-And finally add the follwoing config volume that stores your plugin!:
+And finally add the following config volume that stores your plugin!:
 
 ```yaml
 
