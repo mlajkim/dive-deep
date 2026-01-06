@@ -196,6 +196,11 @@ This post took me approximately 9.25 hours of focused work and development, brok
 - `1/5/26`: 5.25h
 - `1/6/26`: 4h
 
+With the separate PRs of the following:
+
+- [Feat: plugin that works with Athenz v1.12.31 #1](https://github.com/mlajkim/athenz-amazon-ses-notification-plugin/pull/1)
+- [Feat: automated makefile for easier setup #2](https://github.com/mlajkim/athenz-amazon-ses-notification-plugin/pull/2)
+
 # Closing
 
 If you enjoyed this deep dive, please leave a like & subscribe for more!
