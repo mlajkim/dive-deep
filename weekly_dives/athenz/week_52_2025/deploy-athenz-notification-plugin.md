@@ -48,17 +48,27 @@ This is the general architecture of how the `Athenz Custom Plugin` works:
   - [Setup: Build jar and deploy plugin as configmap in Kubernetes](#setup-build-jar-and-deploy-plugin-as-configmap-in-kubernetes)
   - [Setup: Modify Athenz ZMS Server Deployment to use the Plugin and Secret](#setup-modify-athenz-zms-server-deployment-to-use-the-plugin-and-secret)
   - [Verify: Does it work?](#verify-does-it-work)
-- [What's next?](#whats-next)
-- [Dive Hours](#dive-hours)
+- [What I learned](#what-i-learned)
+  - [What's Next?](#whats-next)
+- [Dive Hours: 9.25h](#dive-hours-925h)
 - [Closing](#closing)
 
 <!-- /TOC -->
 
 # Result
 
-I was able to successfully build and deploy the custom Athenz notification plugin that integrates with AWS SES for sending email notifications. The plugin listens for specific events in Athenz, such as role membership changes or domain modifications, and triggers email notifications through AWS SES.
+I have successfully built and deployed a custom Athenz notification plugin that integrates with **AWS SES**. The plugin monitors specific Athenz events—such as role membership changes or domain modifications—and triggers email notifications via AWS SES.
 
+The following GIF demonstrates the end-to-end workflow:
 
+1. **Filter Logs**: Search for `AWS` to isolate logs related to the **AWS SES Plugin**.
+1. **Configure Recipient**: Add a recipient by defining a `user.<identifier>` rule (e.g., adding `user.jkim67cloud` maps to `jkim67cloud@gmail.com`). (Only supports `gmail.com` for now)
+1. **Create Role**: Create a new role that requires an **approval review**.
+1. **Request Membership**: Attempt to add `user.test` as a member to the role.
+1. **Trigger Notification**: The ZMS Server detects the pending request and triggers a notification to the role administrators.
+1. **Verify Email**: Check the inbox to confirm the receipt of the notification email sent via AWS SES.
+
+![result](./assets/result.gif)
 
 # Setup
 
@@ -72,6 +82,12 @@ cd ~/test_dive/$tmp_dir
 ```
 
 ## Setup: Athenz and Local Kubernetes Cluster
+
+> [!TIP]
+> Soon we are coming with the local cluster + Athenz server setup guide! Meanwhile, please refer to the following guides
+
+- Local k8s server setup guide: https://dev.to/mlajkim/stop-using-magic-building-a-kubernetes-operator-from-scratch-mo2#a-local-kubernetes-cluster-kind
+- Local athenz server setup guide: https://dev.to/mlajkim/stop-using-magic-building-a-kubernetes-operator-from-scratch-mo2#b-deploy-athenz-server
 
 ## Setup: Clone Athenz Plugin
 
@@ -157,9 +173,34 @@ make -C plugin patch
 
 ## Verify: Does it work?
 
-# What's next?
+Please refer to the [Result](#result) section above to see the verification steps and outcome.
 
-# Dive Hours
+# What I learned
+
+Through this project, I gained hands-on experience in extending a complex open-source platform and integrating it with cloud infrastructure.
+
+- **Plugin Injection & Classpath**: I discovered that Athenz supports custom plugin injection via the `USER_CLASSPATH` environment defined path variable. This allows for seamless integration of custom logic into a running ZMS server without modifying the core codebase
+- **AWS SES Integration**: Successfully implemented a real-world email notification workflow using AWS SES, gaining a deeper understanding of SMTP authentication and identity verification
+- **Enhanced Developer UX**: I focused on improving the CLI experience by adding color-coded outputs and streamlined Makefile targets, making the deployment process more intuitive
+- **Scripting & Database Exploration**: Refined my automation skills by improving `hack` scripts and performed direct hands-on database queries within the Athenz DB to verify internal data states.
+- **Visual Documentation**: Utilized [Excalidraw](https://excalidraw.com) to create technical diagrams, recognizing that visual aids significantly improve the readability and accessibility of complex architectures.
+
+## What's Next?
+
+As I reflect on this dive, I see several opportunities for further enhancement and exploration:
+
+* **Unified Setup Automation**: I plan to create a robust, "one-click" Makefile that orchestrates the entire Kubernetes cluster and Athenz server setup.
+
+# Dive Hours: 9.25h
+
+This post took me approximately 9.25 hours of focused work and development, broken down as follows:
+
+- `1/5/26`: 5.25h
+- `1/6/26`: 4h
 
 # Closing
+
+If you enjoyed this deep dive, please leave a like & subscribe for more!
+
+![like_this_photo_cat](./assets/cats_thumbs_up.png)
 
