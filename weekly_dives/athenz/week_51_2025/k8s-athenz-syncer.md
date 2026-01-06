@@ -13,6 +13,9 @@ date: '2025-12-30T09:55:38Z'
 
 # Goal
 
+> [!TIP]
+> In hurry? Jump directly to [Result](#result) section to see the outcome of this dive.
+
 Hello everyone! This post's primary goal is to demystify how Kubernetes Controllers work by building a custom [Athenz/k8s-athenz-syncer](https://github.com/AthenZ/k8s-athenz-syncer) from scratch! Instead of relying on "magic" libraries or copying existing production code, we are diving deep into the core concepts by implementing the operator ourselves.
 
 By doing this, we can:
@@ -23,9 +26,12 @@ By doing this, we can:
 - Identify the subtle details often overlooked when simply deploying pre-made operators.
 - Know exactly what to look for to catch the subtle details that other reviewers would miss
 
+# Table of Contents
+
 <!-- TOC -->
 
 - [Goal](#goal)
+- [Table of Contents](#table-of-contents)
 - [Result](#result)
 - [What I Learned](#what-i-learned)
 - [Walkthrough](#walkthrough)

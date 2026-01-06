@@ -37,16 +37,19 @@ Checkout the proofs for:
 - `Thu`: Rest Day
 - `Fri~Sun`: [Golf Day](./proofs/golf/)
 
-|    Week     |     Sun      |   Mon   |  Tue   |       Wed       | Thu  |   Fri    |         Sat          |
-|:-----------:|:------------:|:-------:|:------:|:---------------:|:----:|:--------:|:--------------------:|
-|  1/25~1/31  |              |         |        |                 |      |          |                      |
-|  1/18~1/24  |              |         |        |                 |      |          | ...Range,Competition |
-|  1/11~1/17  |              |         |        |                 |      |          |                      |
-|  1/4~1/10   | Range,Field  | ...Back | ...Leg | ...Chest,Cardio | ...- | ...Range |    ...Range,Field    |
-|  12/28~1/3  |      -       |  Field  |   -    |      Field      |  -   |  Range   |        Range         |
-| 12/21~12/27 | Back, Cardio |    -    |   -    |       Leg       |  -   |  Chest   |        Range         |
+|    Week     |     Sun      |      Mon       |  Tue   |       Wed       | Thu  |   Fri    |         Sat          |
+|:-----------:|:------------:|:--------------:|:------:|:---------------:|:----:|:--------:|:--------------------:|
+|  1/25~1/31  |              |                |        |                 |      |          |                      |
+|  1/18~1/24  |              |                |        |                 |      |          | ...Range,Competition |
+|  1/11~1/17  |              |                |        |                 |      |          |                      |
+|  1/4~1/10   | Range,Field  | [Back][260105] | ...Leg | ...Chest,Cardio | ...- | ...Range |    ...Range,Field    |
+|  12/28~1/3  |      -       |     Field      |   -    |      Field      |  -   |  Range   |        Range         |
+| 12/21~12/27 | Back, Cardio |       -        |   -    |       Leg       |  -   |  Chest   |        Range         |
 
 
+<!-- Variable Declaration -->
 
+[260105]: ./proofs/workout/260105.back.png
 
+<!-- Variable Declaration EOF -->
 

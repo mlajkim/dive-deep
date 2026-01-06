@@ -1,15 +1,8 @@
 
 ## Miracle Morning
 
-- [ ] Miracle Morning Routines
-  - Post a wake up picture
-  - Modify `README.sleep.md` with the proof above
-  - Add Food Log If You Eat Right Now
-
-## Miracle Morning (Before Merger)
-
-- [ ] Miracle Morning Routines
-  - Take a wake up picture
-  - Review every changes in yesterday's daily PR
-  - Merge the PR if everything looks good
-  - EOF
+1. Wake up and take a picture of outside view with time
+1. Update sleep log in `README.sleep.md` with the proof above
+1. If eating right now, update food log in `README.meal.md`
+1. Review yesterday's daily PR and merge if everything looks good
+1. Merge PR: The miracle morning routine is complete.

@@ -141,6 +141,7 @@ fi
 echo "🟡 TODOs:" >> "README.meal.md"
 echo "🟡 TODOs:" >> "README.sleep.md"
 echo "🟡 TODOs:" >> "README.workout.md"
+echo "🟡 TODOs:" >> "README.dishwash.md"
 
 # if _raw.XXXXXX.md does not exist in weekly_dives/wip, create it:
 FILE_DATE=$(date "+%y%m%d") # i.e) 251224
@@ -161,7 +162,7 @@ EOF
 fi
 
 # Right after creating/editing files, commit and push:
-sleep 2
+sleep 5
 
 git add "$FILE_PATH"
 git commit -m "$BRANCH_NAME"
