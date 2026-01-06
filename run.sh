@@ -146,7 +146,7 @@ echo "🟡 TODOs:" >> "README.no-electronics-on-bed"
 
 # if _raw.XXXXXX.md does not exist in weekly_dives/wip, create it:
 FILE_DATE=$(date "+%y%m%d") # i.e) 251224
-RAW_PATH="weekly_dives/wip/_raw.${FILE_DATE}.md"
+RAW_PATH="weekly_dives/wip/_raw.${FILE_DATE}_1.md"
 if [ ! -f "$RAW_PATH" ]; then
   cat <<EOF > "$RAW_PATH"
 # About _raw.${FILE_DATE}.md
