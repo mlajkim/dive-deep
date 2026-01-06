@@ -85,7 +85,7 @@ https://ap-northeast-1.console.aws.amazon.com/ses/home?region=ap-northeast-1#/id
 ![set_smtp_credentials](./assets/set_smtp_credentials.png)
 
 ![username_and_password](./assets/username_and_password.png)
-n
+
 ### Setup: Create secret in namespace athenz
 
 > [!TIP]

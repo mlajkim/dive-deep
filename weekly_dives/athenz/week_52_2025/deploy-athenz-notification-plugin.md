@@ -40,7 +40,10 @@ This is the general architecture of how the `Athenz Custom Plugin` works:
   - [Setup: Working directory](#setup-working-directory)
   - [Setup: Athenz and Local Kubernetes Cluster](#setup-athenz-and-local-kubernetes-cluster)
   - [Setup: Clone Athenz Plugin](#setup-clone-athenz-plugin)
-  - [Setup: AWS SES Configuration](#setup-aws-ses-configuration)
+  - [Setup: AWS SES Recipient Setup](#setup-aws-ses-recipient-setup)
+    - [Setup: Open AWS SES Console](#setup-open-aws-ses-console)
+  - [Setup: Get AWS SES SMTP Credentials](#setup-get-aws-ses-smtp-credentials)
+    - [Setup: Get Smtp credentials](#setup-get-smtp-credentials)
   - [Setup: Create secret for AWS SES](#setup-create-secret-for-aws-ses)
   - [Setup: Build jar and deploy plugin as configmap in Kubernetes](#setup-build-jar-and-deploy-plugin-as-configmap-in-kubernetes)
   - [Setup: Modify Athenz ZMS Server Deployment to use the Plugin and Secret](#setup-modify-athenz-zms-server-deployment-to-use-the-plugin-and-secret)
@@ -72,9 +75,53 @@ cd ~/test_dive/$tmp_dir
 
 ## Setup: Clone Athenz Plugin
 
-## Setup: AWS SES Configuration
+```sh
+git clone https://github.com/mlajkim/athenz-amazon-ses-notification-plugin.git plugin
+```
+
+## Setup: AWS SES Recipient Setup
+
+First, we need to set up **trusted** email addresses in AWS SES. AWS restricts sending emails to unverified addresses to prevent them from being flagged as spam. Therefore, we must first verify the email addresses we intend to use. For this example, we will simply use our personal email address:
+
+![setup_allowed_email](./assets/setup_allowed_email.png)
+
+
+### Setup: Open AWS SES Console
+
+
+
+Open [Amazon SES Console's identity management page](https://ap-northeast-1.console.aws.amazon.com/ses/home?region=ap-northeast-1#/identities), and hit the `Create identity` button:
+
+![aws_ses_create_identity](./assets/aws_ses_create_identity.png)
+
+Select `Email address` as identity type, and input your personal email address that you want to use it as the recipient of Athenz notification emails:
+
+![create_identity](./assets/create_identity.png)
+
+You will shortly receive a verification email from AWS SES. Open the email and click the `Verify email address` button to complete the verification process:
+
+![verify_email](./assets/verify_email.png)
+
+## Setup: Get AWS SES SMTP Credentials
+
+For Athenz Server to connect to the public AWS SES service, we need to create SMTP credentials that Athenz server will use to authenticate itself when sending emails via AWS SES:
+
+![set_smtp_credentials_architecture](./assets/set_smtp_credentials_architecture.png)
+
+
+### Setup: Get Smtp credentials
+
+Click `Create SMTP Credentials` button on the [SMTP Settings page](https://ap-northeast-1.console.aws.amazon.com/ses/home?region=ap-northeast-1#/smtp):
+
+![set_smtp_credentials](./assets/set_smtp_credentials.png)
+
+Store the generated username and password somewhere safe, as we will need them later when creating Kubernetes secret:
+
+![username_and_password](./assets/username_and_password.png)
 
 ## Setup: Create secret for AWS SES
+
+With the `STMP Username` and `SMTP Password` we just created, we can now create a Kubernetes secret that will store these credentials securely. The plugin repo contains a Makefile target that automates this process for us. Simply run the following command:
 
 ```sh
 make -C plugin create-aws-ses-secret
@@ -84,11 +131,26 @@ make -C plugin create-aws-ses-secret
 
 ## Setup: Build jar and deploy plugin as configmap in Kubernetes
 
+We will build the plugin jar file and deploy it as a configmap in our local Kubernetes cluster. The plugin repo contains a Makefile target that automates this process for us. Simply run the following command:
+
+```sh
+make -C plugin deploy
+```
+
+![make_deploy_result](./assets/make_deploy_result.png)
+
 ## Setup: Modify Athenz ZMS Server Deployment to use the Plugin and Secret
+
+We have the following ready so far:
+- AWS SES SMTP Credentials stored as Kubernetes Secret
+- Athenz Notification Plugin stored as Kubernetes ConfigMap
+
+Now we need to let ZMS Server know about these resources by modifying its deployment manifest. The plugin repo contains a Makefile target that automates this process for us. Simply run the following command:
 
 ```sh
 make -C plugin patch
 ```
+
 ![alt patch_zms_deployment](./assets/patch_zms_deployment.png)
 
 ## Verify: Does it work?
