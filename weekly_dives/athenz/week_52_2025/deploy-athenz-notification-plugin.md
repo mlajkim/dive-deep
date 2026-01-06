@@ -131,7 +131,9 @@ make -C plugin create-aws-ses-secret
 
 ## Setup: Build jar and deploy plugin as configmap in Kubernetes
 
-We will build the plugin jar file and deploy it as a configmap in our local Kubernetes cluster. The plugin repo contains a Makefile target that automates this process for us. Simply run the following command:
+![build_plugin](./assets/build_plugin.png)
+
+We will build the plugin (as RedBox) jar file and deploy it as a configmap in our local Kubernetes cluster. The plugin repo contains a Makefile target that automates this process for us. Simply run the following command:
 
 ```sh
 make -C plugin deploy
