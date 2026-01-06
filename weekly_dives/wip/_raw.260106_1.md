@@ -10,6 +10,7 @@ This is a raw dump file for daily dive on jan-06-2026.
   - [Knows what `Rosetta` is](#knows-what-rosetta-is)
 - [Setup](#setup)
   - [Setup: Working directory](#setup-working-directory)
+  - [Setup: Clone Provider sidecar](#setup-clone-provider-sidecar)
 
 <!-- /TOC -->
 
@@ -37,4 +38,10 @@ test_name=provider_sidecar_arm64
 tmp_dir=$(date +%y%m%d_%H%M%S_$test_name)
 mkdir -p ~/test_dive/$tmp_dir
 cd ~/test_dive/$tmp_dir
+```
+
+## Setup: Clone Provider sidecar
+
+```sh
+git clone https://github.com/AthenZ/authorization-proxy sidecar
 ```
