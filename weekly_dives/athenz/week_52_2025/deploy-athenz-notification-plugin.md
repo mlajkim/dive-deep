@@ -187,9 +187,7 @@ Through this project, I gained hands-on experience in extending a complex open-s
 
 ## What's Next?
 
-As I reflect on this dive, I see several opportunities for further enhancement and exploration:
-
-* **Unified Setup Automation**: I plan to create a robust, "one-click" Makefile that orchestrates the entire Kubernetes cluster and Athenz server setup.
+As I reflect on this dive, I plan to create a robust, "one-click" Makefile that orchestrates the entire Kubernetes cluster and Athenz server setup.
 
 # Dive Hours: 9.25h
 
