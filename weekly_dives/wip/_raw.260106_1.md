@@ -11,6 +11,11 @@ This is a raw dump file for daily dive on jan-06-2026.
 - [Setup](#setup)
   - [Setup: Working directory](#setup-working-directory)
   - [Setup: Clone Provider sidecar](#setup-clone-provider-sidecar)
+  - [Setup: Check if Docker is running](#setup-check-if-docker-is-running)
+  - [Brain-dead try: build](#brain-dead-try-build)
+    - [Check](#check)
+  - [Try: build with different platform](#try-build-with-different-platform)
+    - [Check](#check-1)
 
 <!-- /TOC -->
 
@@ -44,4 +49,47 @@ cd ~/test_dive/$tmp_dir
 
 ```sh
 git clone https://github.com/AthenZ/authorization-proxy sidecar
+```
+
+## Setup: Check if Docker is running
+
+```sh
+docker ps
+```
+
+## Brain-dead try: build
+
+> [!TIP]
+> `docker buildx` allows you to build both linux/amd64 and linux/arm64 images on an M Series Mac.
+
+```sh
+cd sidecar
+docker build -t provider-sidecar .
+docker images | grep provider-sidecar
+
+# provider-sidecar                                                 latest          209ed2a27bca   18 seconds ago   30.6M
+```
+
+### Check
+
+oh, the image is building for arm64!
+
+```sh
+docker inspect provider-sidecar:latest | grep Architecture
+
+#         "Architecture": "arm64",
+```
+
+## Try: build with different platform
+
+```sh
+docker build --platform linux/amd64 -t provider-sidecar:intel .
+```
+
+### Check
+
+```sh
+docker inspect provider-sidecar:intel | grep Architecture
+
+        # "Architecture": "amd64",
 ```
