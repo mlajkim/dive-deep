@@ -5,8 +5,11 @@ tags: # four tags only, no '-' or special characters except
   - athenz
   - kubernetes
   - k8sathenzsyncer
-# cover_image: ./thumbnail.png # 🟡 give me thumbnail
 ---
+
+```sh
+# cover_image: ./thumbnail.png # 🟡 give me thumbnail
+```
 
 # Goal
 
@@ -22,7 +25,6 @@ That's why I looked into [Athenz/k8s-athenz-syncer](https://github.com/AthenZ/k8
 
 <!-- TOC -->
 
-- [cover_image: ./thumbnail.png # 🟡 give me thumbnail](#cover_image-thumbnailpng--🟡-give-me-thumbnail)
 - [Goal](#goal)
 - [Result](#result)
 - [Setup](#setup)
