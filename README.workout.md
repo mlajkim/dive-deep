@@ -52,5 +52,3 @@ Checkout the proofs for:
 [260105]: ./proofs/workout/260105.back.png
 
 <!-- Variable Declaration EOF -->
-
-🟡 TODOs:
