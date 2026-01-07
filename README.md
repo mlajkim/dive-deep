@@ -30,6 +30,9 @@ Want to be really good in technology over getting certain certificates that may 
 
 ## Weekly Tech Blogs
 
+> [!NOTE]
+> TODO: Try to implement multi-architect build push build later.
+
 |    Week     |                                Tech Blogs                                |
 |:-----------:|:------------------------------------------------------------------------:|
 |  1/4~1/10   |                                 ...1/10                                  |
