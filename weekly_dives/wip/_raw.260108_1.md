@@ -11,4 +11,3 @@ This is a raw dump file for daily dive on jan-08-2026.
 
 # Goal: ???
 
-Spent most of my day building the following PR: https://github.com/AthenZ/authorization-proxy/pull/64

@@ -93,3 +93,5 @@ docker inspect provider-sidecar:intel | grep Architecture
 
         # "Architecture": "amd64",
 ```
+
+Spent most of my day building the following PR: https://github.com/AthenZ/authorization-proxy/pull/64
