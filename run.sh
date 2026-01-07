@@ -85,7 +85,7 @@ tags: # four tags only, no '-' or special characters except
   - 🟡 nodashtag
   - 🟡 onlyfour
   - 🟡 nospace
-cover_image: ./thumbnail.png # 🟡 give me thumbnail
+# cover_image: ./thumbnail.png # 🟡 give me thumbnail
 ---
 
 # Goal
