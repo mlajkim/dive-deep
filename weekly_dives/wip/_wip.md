@@ -2,9 +2,10 @@
 title: '🟡 TODO: GIVE ME TITLE'
 published: true
 tags: # four tags only, no '-' or special characters except
-  - 🟡 nodashtag
-  - 🟡 onlyfour
-cover_image: ./thumbnail.png # 🟡 give me thumbnail
+  - athenz
+  - kubernetes
+  - k8sathenzsyncer
+# cover_image: ./thumbnail.png # 🟡 give me thumbnail
 ---
 
 # Goal
@@ -23,6 +24,7 @@ Also want to learn if I can use this as well:
 
 <!-- TOC -->
 
+- [cover_image: ./thumbnail.png # 🟡 give me thumbnail](#cover_image-thumbnailpng--🟡-give-me-thumbnail)
 - [Goal](#goal)
 - [Result](#result)
 - [Walkthrough: Setup](#walkthrough-setup)
