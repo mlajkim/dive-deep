@@ -90,6 +90,9 @@ tags: # four tags only, no '-' or special characters except
 
 # Goal
 
+> [!TIP]
+> In hurry? Jump directly to [Result](#result) section to see the outcome of this dive.
+
 TODO: Write goal here above the line.
 
 <!-- TOC -->
