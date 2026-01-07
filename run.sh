@@ -142,10 +142,11 @@ echo "🟡 TODOs:" >> "README.meal.md"
 echo "🟡 TODOs:" >> "README.sleep.md"
 echo "🟡 TODOs:" >> "README.workout.md"
 echo "🟡 TODOs:" >> "README.dishwash.md"
+echo "🟡 TODOs:" >> "README.no-electronics-on-bed"
 
 # if _raw.XXXXXX.md does not exist in weekly_dives/wip, create it:
 FILE_DATE=$(date "+%y%m%d") # i.e) 251224
-RAW_PATH="weekly_dives/wip/_raw.${FILE_DATE}.md"
+RAW_PATH="weekly_dives/wip/_raw.${FILE_DATE}_1.md"
 if [ ! -f "$RAW_PATH" ]; then
   cat <<EOF > "$RAW_PATH"
 # About _raw.${FILE_DATE}.md
@@ -162,9 +163,7 @@ EOF
 fi
 
 # Right after creating/editing files, commit and push:
-sleep 5
-
-git add "$FILE_PATH"
+git add .
 git commit -m "$BRANCH_NAME"
 
 git push -u origin "$BRANCH_NAME"

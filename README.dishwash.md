@@ -21,9 +21,9 @@ I want to stop doing this record by buying a dishwasher machine in the future, b
 
 Basically want to do dishwash every day, with max of 15 minutes:
 
-|   Week    | Avg | Sun | Mon  | Tue | Wed | Thu | Fri | Sat |
-|:---------:|:---:|:---:|:----:|:---:|:---:|:---:|:---:|:---:|
-| 1/25~1/31 |     |     |      |     |     |     |     |     |
-| 1/18~1/24 |     |     |      |     |     |     |     |     |
-| 1/11~1/17 |     |     |      |     |     |     |     |     |
-| 1/4~1/10  |  -  |  -  | DONE |     |     |     |     |     |
+|   Week    | Avg | Sun | Mon  | Tue  | Wed  | Thu | Fri | Sat |
+|:---------:|:---:|:---:|:----:|:----:|:----:|:---:|:---:|:---:|
+| 1/25~1/31 |     |     |      |      |      |     |     |     |
+| 1/18~1/24 |     |     |      |      |      |     |     |     |
+| 1/11~1/17 |     |     |      |      |      |     |     |     |
+| 1/4~1/10  |  -  |  -  | DONE | DONE | DONE |     |     |     |
