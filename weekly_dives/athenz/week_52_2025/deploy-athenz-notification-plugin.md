@@ -1,5 +1,5 @@
 ---
-title: 'Integrate Athenz Notification Feature with AWS SES'
+title: Integrate Athenz Notification Feature with AWS SES
 published: true
 tags:
   - athenz
@@ -7,6 +7,8 @@ tags:
   - simpleemailservice
   - plugin
 cover_image: ./thumbnail.png
+id: 3154905
+date: '2026-01-07T08:41:13Z'
 ---
 
 # Goal
