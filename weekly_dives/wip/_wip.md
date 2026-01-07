@@ -1,5 +1,5 @@
 ---
-title: '🟡 TODO: GIVE ME TITLE'
+title: 'One-Click Deploy: Simplifying k8s-athenz-syncer Setup'
 published: true
 tags: # four tags only, no '-' or special characters except
   - athenz
