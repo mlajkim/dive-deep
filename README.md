@@ -45,7 +45,7 @@ Want to be really good in technology over getting certain certificates that may 
 [2025_10]: https://techblog.lycorp.co.jp/ja/20251001a
 
 <!-- Weekly Tech Blogs Links: -->
-[w52_y25]: https://dev.to/mlajkim/integrate-athenz-notification-feature-with-aws-ses-39k8
+[w52_y25]: https://dev.to/mlajkim/integrate-athenz-notification-feature-with-aws-ses-2471
 [w51_y25]: https://dev.to/mlajkim/stop-using-magic-building-a-kubernetes-operator-from-scratch-mo2
 [w50_y25]: https://dev.to/mlajkim/dives-into-kubernetes-contribution-in-week-50-2025-4i6g
 [w49_y25]: https://dev.to/mlajkim/251130-zsh-cd-460i
