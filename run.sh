@@ -85,10 +85,16 @@ tags: # four tags only, no '-' or special characters except
   - 🟡 nodashtag
   - 🟡 onlyfour
   - 🟡 nospace
-cover_image: ./thumbnail.png # 🟡 give me thumbnail
 ---
 
+```sh
+# cover_image: ./thumbnail.png # 🟡 give me thumbnail
+```
+
 # Goal
+
+> [!TIP]
+> In hurry? Jump directly to [Result](#result) section to see the outcome of this dive.
 
 TODO: Write goal here above the line.
 
@@ -142,7 +148,7 @@ echo "🟡 TODOs:" >> "README.meal.md"
 echo "🟡 TODOs:" >> "README.sleep.md"
 echo "🟡 TODOs:" >> "README.workout.md"
 echo "🟡 TODOs:" >> "README.dishwash.md"
-echo "🟡 TODOs:" >> "README.no-electronics-on-bed"
+echo "🟡 TODOs:" >> "README.no-electronics-on-bed.md"
 
 # if _raw.XXXXXX.md does not exist in weekly_dives/wip, create it:
 FILE_DATE=$(date "+%y%m%d") # i.e) 251224

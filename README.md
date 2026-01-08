@@ -21,19 +21,26 @@ Want to be really good in technology over getting certain certificates that may 
 
 ## Official Tech Blogs
 
+- How Weekly Tech Blog Made me Unstoppable ?
+- How I helped 
+
 |        Date         |                 Official Tech Blogs                 |
 |:-------------------:|:---------------------------------------------------:|
-| Oct 2025 ~ Mar 2026 |                         ...                         |
+| Oct 2025 ~ Mar 2026 |   ... How Weekly Tech Blog Made me Unstoppable ?    |
 | Apr 2025 ~ Sep 2025 | [How I become Kubestronaut - LY Tech Blog][2025_10] |
 
 
 
 ## Weekly Tech Blogs
 
+> [!NOTE]
+> TODO: Try to implement multi-architect build push build later.
+
 |    Week     |                                Tech Blogs                                |
 |:-----------:|:------------------------------------------------------------------------:|
-|  1/4~1/10   |                                 ...1/10                                  |
-|  12/28~1/3  |                                 ...1/11                                  |
+|  1/11~1/17  |                                 ...1/18                                  |
+|  1/4~1/10   |                                 ...1/13                                  |
+|  12/28~1/3  |                  ...1/9 How to deploy k8s-athenz-syncer                  |
 | 12/21~12/27 |      [Integrate Athenz Notification Feature with AWS SES][w52_y25]       |
 | 12/14~12/20 | [Stop Using Magic: Building a Kubernetes Operator from Scratch][w51_y25] |
 | 12/7~12/13  |              [First Time K8s Contribution Attempt][w50_y25]              |
@@ -45,7 +52,7 @@ Want to be really good in technology over getting certain certificates that may 
 [2025_10]: https://techblog.lycorp.co.jp/ja/20251001a
 
 <!-- Weekly Tech Blogs Links: -->
-[w52_y25]: https://dev.to/mlajkim/integrate-athenz-notification-feature-with-aws-ses-39k8
+[w52_y25]: https://dev.to/mlajkim/integrate-athenz-notification-feature-with-aws-ses-2471
 [w51_y25]: https://dev.to/mlajkim/stop-using-magic-building-a-kubernetes-operator-from-scratch-mo2
 [w50_y25]: https://dev.to/mlajkim/dives-into-kubernetes-contribution-in-week-50-2025-4i6g
 [w49_y25]: https://dev.to/mlajkim/251130-zsh-cd-460i

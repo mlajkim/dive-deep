@@ -1,32 +1,35 @@
 ---
-title: '🟡 TODO: GIVE ME TITLE'
+title: 'One-Click Deploy: Simplifying k8s-athenz-syncer Setup'
 published: true
 tags: # four tags only, no '-' or special characters except
-  - 🟡 nodashtag
-  - 🟡 onlyfour
-cover_image: ./thumbnail.png # 🟡 give me thumbnail
+  - athenz
+  - kubernetes
+  - k8sathenzsyncer
 ---
+
+```sh
+# cover_image: ./thumbnail.png # 🟡 give me thumbnail
+```
 
 # Goal
 
-TODO: Write goal here above the line.
-
-
-Does it modify modifiedDate too? Does it make the performance better?
-
-We should definitely study the details out there.
-
-Also want to learn if I can use this as well:
+Athenz provides the following API endpoints for getting Athenz domain and its role/policy information:
 
 - `/v1/domain/{domainName}/group/admin`
 - `/v1/domain/{domainName}/group/viewer`
+
+But let's be realistic—building your own client to fetch, cache, and manage these resources within Kubernetes is a hassle. Why spend time reinventing the wheel when you just want to consume the data?
+
+That's why I looked into [Athenz/k8s-athenz-syncer](https://github.com/AthenZ/k8s-athenz-syncer). It’s an existing tool designed to sync Athenz data into Kubernetes Custom Resources (CRDs) called `AthenzDomain` (Obviously), effectively handling the heavy lifting for us. In this post, I’ll walk through how to deploy this syncer, fix a few build issues I encountered, and explore how it can save us from writing unnecessary boilerplate code.
+
 
 <!-- TOC -->
 
 - [Goal](#goal)
 - [Result](#result)
-- [Walkthrough: Setup](#walkthrough-setup)
-  - [a.](#a)
+- [Setup](#setup)
+  - [Setup: Working directory](#setup-working-directory)
+  - [Setup: Athenz and Local Kubernetes Cluster](#setup-athenz-and-local-kubernetes-cluster)
 - [Walkthrough: Implementation](#walkthrough-implementation)
   - [1.](#1)
 - [Walkthrough: Verification](#walkthrough-verification)
@@ -44,9 +47,24 @@ Also want to learn if I can use this as well:
 1. Wanted to learn how Athenz has designed this part
 1. Decided to deploy `athenz/athenz-k8s-syncer` to see how it works.
 
-# Walkthrough: Setup
+# Setup
 
-## a.
+## Setup: Working directory
+
+```sh
+test_name=deploy_k8s_athenz_syncer
+tmp_dir=$(date +%y%m%d_%H%M%S_$test_name)
+mkdir -p ~/test_dive/$tmp_dir
+cd ~/test_dive/$tmp_dir
+```
+
+## Setup: Athenz and Local Kubernetes Cluster
+
+> [!TIP]
+> Soon we are coming with the local cluster + Athenz server setup guide! Meanwhile, please refer to the following guides
+
+- Local k8s server setup guide: https://dev.to/mlajkim/stop-using-magic-building-a-kubernetes-operator-from-scratch-mo2#a-local-kubernetes-cluster-kind
+- Local athenz server setup guide: https://dev.to/mlajkim/stop-using-magic-building-a-kubernetes-operator-from-scratch-mo2#b-deploy-athenz-server
 
 # Walkthrough: Implementation
 
