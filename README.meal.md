@@ -33,5 +33,3 @@ To not fall into food comma, stay sharp and well fit, I need to maintain my dail
 | 1/11~1/17 |   |     |     |     |     |     |     |       |     |
 | 1/4~1/10  | k |     |     |     |     |     |     |       |     |
 |           | p |     |     |     |     |     |     |       |     |
-
-🟡 TODOs:
