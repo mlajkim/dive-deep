@@ -33,4 +33,22 @@ As of Jan 11, 2026, I want to make sure that I know where I am in terms of my ge
 
 ## I need to benchmark well
 
-I realized that I need to benchmark as much as possible to really know where I am at, and also want to make sur
+I realized that I need to benchmark as much as possible to really know where I am at, and also want to make sure my records really present:
+
+- my improvement
+- my club fitness
+
+## Options I can think of 
+
+I am using the drvier with:
+- Qi LS
+- Tour AD VF 6
+
+So I can think as:
+
+1. Buy new Qi4D Driver with Max?
+1. Buy less stronger shaft?
+
+But wait, I already have a shorter shaft for my Wood5. Can I use Wood 5?
+
+## Optimal Tee High?
