@@ -26,4 +26,4 @@ To really sleep well, I need to stop watching electronics on bed.
 | 1/18~1/24 |     |     |     |     |     |     |      |       |
 | 1/11~1/17 |     |     |     |     |     |     |      |       |
 | 1/4~1/10  |     | YES | NO  | NO  | NO  | YES |      |       |
-| 12/28~1/3 |  -  |  -  |  -  |  -  |  -  |  -  | OKAY | ...NO |
+| 12/28~1/3 |  -  |  -  |  -  |  -  |  -  |  -  | OKAY | ...NO |🟡 TODOs:
