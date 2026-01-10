@@ -50,6 +50,8 @@ TODO
 
 ## Setup: Working directory
 
+Let's quickly set up working directory. You may use your own, but here is an idempotennt code for quick set up:
+
 ```sh
 test_name=deploy_k8s_athenz_syncer
 tmp_dir=$(date +%y%m%d_%H%M%S_$test_name)
@@ -59,11 +61,12 @@ cd ~/test_dive/$tmp_dir
 
 ## Setup: Athenz and Local Kubernetes Cluster
 
-> [!TIP]
-> Soon we are coming with the local cluster + Athenz server setup guide! Meanwhile, please refer to the following guides
+Let's set up Kubernetes cluster locally and install Athenz server:
 
-- Local k8s server setup guide: https://dev.to/mlajkim/stop-using-magic-building-a-kubernetes-operator-from-scratch-mo2#a-local-kubernetes-cluster-kind
-- Local athenz server setup guide: https://dev.to/mlajkim/stop-using-magic-building-a-kubernetes-operator-from-scratch-mo2#b-deploy-athenz-server
+```sh
+git clone https://github.com/mlajkim/dive-manifest.git manifest && cd manifest
+make setup
+```
 
 # Walkthrough: Implementation
 
