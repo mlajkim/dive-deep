@@ -42,6 +42,7 @@ I realized that I need to benchmark as much as possible to really know where I a
 
 This is my current routine that I take before getting into core routines so that I maintian these skills and my bodies are warmed up:
 
+1. (5 minutes) Stretch
 1. 5 random chipshots (60", 56", 52", P) Usually
 1. Benchmark: 60" half shot and see consistency (5 shots)
 1. Benchmark: 56" half shot and see consistency (5 shots)
