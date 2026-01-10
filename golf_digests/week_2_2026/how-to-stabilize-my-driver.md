@@ -38,6 +38,23 @@ I realized that I need to benchmark as much as possible to really know where I a
 - my improvement
 - my club fitness
 
+### How I benchmark: Non-Driver
+
+This is my current routine that I take before getting into core routines so that I maintian these skills and my bodies are warmed up:
+
+1. 5 random chipshots (60", 56", 52", P) Usually
+1. Benchmark: 60" half shot and see consistency (5 shots)
+1. Benchmark: 56" half shot and see consistency (5 shots)
+1. Benchmark: 52" half shot and see consistency (5 shots)
+1. Benchmark: P half shot and see consistency (5 shots)
+1. Benchmark: 9, 8, 7, 6 Full Swing with consistency (5 shots each = 20 shots)
+1. Benchmark: 9, 8, 7, 6 Full Swing but small stance with consistency (5 shots each = 20 shots)
+1. Begins the Driver Benchmark (Plays only Driver Only)
+
+
+
+### How I benchmark: Driver
+
 ## Options I can think of 
 
 I am using the drvier with:
