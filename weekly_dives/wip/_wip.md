@@ -18,6 +18,8 @@ Athenz provides the following API endpoints for getting Athenz domain and its ro
 - `/v1/domain/{domainName}/group/admin`
 - `/v1/domain/{domainName}/group/viewer`
 
+But imagine you have your applications in kubernetes clusters and want to have some kind of sync mechanism of the data rather than getting them all the time. Also, what if you want to make sure that your applications do not depend on Athenz that much?
+
 But let's be realistic—building your own client to fetch, cache, and manage these resources within Kubernetes is a hassle. Why spend time reinventing the wheel when you just want to consume the data?
 
 That's why I looked into [Athenz/k8s-athenz-syncer](https://github.com/AthenZ/k8s-athenz-syncer). It’s an existing tool designed to sync Athenz data into Kubernetes Custom Resources (CRDs) called `AthenzDomain` (Obviously), effectively handling the heavy lifting for us. In this post, I’ll walk through how to deploy this syncer, fix a few build issues I encountered, and explore how it can save us from writing unnecessary boilerplate code.
@@ -42,10 +44,7 @@ That's why I looked into [Athenz/k8s-athenz-syncer](https://github.com/AthenZ/k8
 
 # Result
 
-1. Wanted to improve performance when getting members of a role inside a domain including group members and delegated role members.
-1. Realized that using `modifedDate` could not be ideal
-1. Wanted to learn how Athenz has designed this part
-1. Decided to deploy `athenz/athenz-k8s-syncer` to see how it works.
+TODO
 
 # Setup
 

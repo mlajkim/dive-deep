@@ -44,12 +44,8 @@ This is my current routine that I take before getting into core routines so that
 
 1. (5 minutes) Stretch
 1. 5 random chipshots (60", 56", 52", P) Usually
-1. Benchmark: 60" half shot and see consistency (5 shots)
-1. Benchmark: 56" half shot and see consistency (5 shots)
-1. Benchmark: 52" half shot and see consistency (5 shots)
-1. Benchmark: P half shot and see consistency (5 shots)
-1. Benchmark: 9, 8, 7, 6 Full Swing with consistency (5 shots each = 20 shots)
-1. Benchmark: 9, 8, 7, 6 Full Swing but small stance with consistency (5 shots each = 20 shots)
+1. Benchmark: Rotating 60", P, 56", 52" half shot every ball, total of 5 shots each = 20 shots
+1. Benchmark: Rotating 9, 8, 7, 6 Full Swing/Full-Swing-But-Short-Stance with consistency (5 shots each = 40 shots)
 1. Begins the Driver Benchmark (Plays only Driver Only)
 
 
