@@ -62,13 +62,20 @@ cd ~/test_dive/$tmp_dir
 ## Setup: Athenz and Local Kubernetes Cluster
 
 > [!WARNING]
-> The following script only works on macOS.
+> The following script only works on macOS. Let me know in comments if you want to use other platforms.
 
 Let's set up Kubernetes cluster locally and install Athenz server:
 
 ```sh
 git clone https://github.com/mlajkim/dive-manifest.git manifest
 make -C manifest setup
+```
+
+
+## Setup: Clone k8s-athenz-syncer
+
+```sh
+git clone https://github.com/AthenZ/k8s-athenz-syncer.git syncer
 ```
 
 # Walkthrough: Implementation
