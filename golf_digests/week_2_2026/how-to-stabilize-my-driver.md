@@ -53,4 +53,6 @@ But wait, I already have a shorter shaft for my Wood5. Can I use Wood 5?
 
 ![vf-tx6](./assets/vf-tx6.png)
 
+*https://graphitedesign.gd-inc.co.jp/tourad/tour-ad-vf/*
+
 ## Optimal Tee High?
