@@ -69,4 +69,8 @@ But wait, I already have a shorter shaft for my Wood5. Can I use Wood 5?
 
 *https://graphitedesign.gd-inc.co.jp/tourad/tour-ad-vf/*
 
+Want to know my head weight, head speed, swing speed and my shaft's whirling rate.
+Cycles Per Minute (CPM)
+
+
 ## Optimal Tee High?
