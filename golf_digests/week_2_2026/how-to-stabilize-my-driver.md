@@ -51,4 +51,6 @@ So I can think as:
 
 But wait, I already have a shorter shaft for my Wood5. Can I use Wood 5?
 
+![vf-tx6](./assets/vf-tx6.png)
+
 ## Optimal Tee High?
