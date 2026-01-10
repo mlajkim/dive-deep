@@ -87,6 +87,10 @@ make -C manifest setup
 - `1/1 Thu`: 6.75 Hours
 - `1/2 Fri`: 4.75 Hours
 
+With:
+
+- https://github.com/mlajkim/dive-manifest/pull/1
+
 # Closing
 
 If you enjoyed this deep dive, please leave a like & subscribe for more!
