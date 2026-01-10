@@ -61,11 +61,14 @@ cd ~/test_dive/$tmp_dir
 
 ## Setup: Athenz and Local Kubernetes Cluster
 
+> [!WARNING]
+> The following script only works on macOS.
+
 Let's set up Kubernetes cluster locally and install Athenz server:
 
 ```sh
-git clone https://github.com/mlajkim/dive-manifest.git manifest && cd manifest
-make setup
+git clone https://github.com/mlajkim/dive-manifest.git manifest
+make -C manifest setup
 ```
 
 # Walkthrough: Implementation
