@@ -1,11 +1,13 @@
 ---
-title: 'I Deployed Athenz/k8s-athenz-syncer locally! (Feat. Fixing Legacy Code)'
+title: I Deployed Athenz/k8s-athenz-syncer locally! (Feat. Fixing Legacy Code)
 published: true
-tags: # four tags only, no '-' or special characters except
+tags:
   - athenz
   - kubernetes
   - k8sathenzsyncer
 cover_image: ./thumbnail.png
+id: 3164863
+date: '2026-01-11T19:38:38Z'
 ---
 
 # Goal
