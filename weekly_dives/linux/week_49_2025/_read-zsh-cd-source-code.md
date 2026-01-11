@@ -1,5 +1,5 @@
 ---
-title: 'Dives into zsh''s cd command in Week 49, 2025'
+title: "How 'cd' actually works in Linux Kernel: A Source Code Analysis"
 published: true
 tags:
   - linux

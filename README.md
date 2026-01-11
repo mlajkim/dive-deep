@@ -43,8 +43,8 @@ Want to be really good in technology over getting certain certificates that may 
 |  12/28~1/3  | [I Deployed Athenz/k8s-athenz-syncer locally! (Feat. Fixing Legacy Code)][w01_y26] |
 | 12/21~12/27 |           [Integrate Athenz Notification Feature with AWS SES][w52_y25]            |
 | 12/14~12/20 |      [Stop Using Magic: Building a Kubernetes Operator from Scratch][w51_y25]      |
-| 12/7~12/13  |                   [First Time K8s Contribution Attempt][w50_y25]                   |
-| 11/30~12/6  |                       [Dives into zsh's cd command][w49_y25]                       |
+| 12/7~12/13  |  [Why this K8s TODO survived 3 years: An Autopsy of fieldnamedocscheck][w50_y25]   |
+| 11/30~12/6  |     [How 'cd' actually works in Linux Kernel: A Source Code Analysis][w49_y25]     |
 
 <!-- Variable Declaration -->
 
