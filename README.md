@@ -21,8 +21,7 @@ Want to be really good in technology over getting certain certificates that may 
 
 ## Official Tech Blogs
 
-- How Weekly Tech Blog Made me Unstoppable ?
-- How I helped 
+Here is my official, long-term tech blogs:
 
 |        Date         |                 Official Tech Blogs                 |
 |:-------------------:|:---------------------------------------------------:|
