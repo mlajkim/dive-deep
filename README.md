@@ -40,7 +40,7 @@ Want to be really good in technology over getting certain certificates that may 
 |:-----------:|:------------------------------------------------------------------------:|
 |  1/11~1/17  |                   ...1/18    I've tested JWT token ...                   |
 |  1/4~1/10   |           ...1/13 How to setup Athenz Server with one command            |
-|  12/28~1/3  |                  ...1/9 How to deploy k8s-athenz-syncer                  |
+|  12/28~1/3  | I Deployed Athenz/k8s-athenz-syncer locally! (Feat. Fixing Legacy Code)  |
 | 12/21~12/27 |      [Integrate Athenz Notification Feature with AWS SES][w52_y25]       |
 | 12/14~12/20 | [Stop Using Magic: Building a Kubernetes Operator from Scratch][w51_y25] |
 | 12/7~12/13  |              [First Time K8s Contribution Attempt][w50_y25]              |

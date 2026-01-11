@@ -30,14 +30,19 @@ That's why I looked into [Athenz/k8s-athenz-syncer](https://github.com/AthenZ/k8
   - [Setup: Working directory](#setup-working-directory)
   - [Setup: Athenz and Local Kubernetes Cluster](#setup-athenz-and-local-kubernetes-cluster)
     - [Test](#test)
+  - [Setup: Set UI for web page](#setup-set-ui-for-web-page)
+    - [Test](#test-1)
   - [Setup: Clone k8s-athenz-syncer](#setup-clone-k8s-athenz-syncer)
   - [Setup: Build image](#setup-build-image)
   - [Setup: Load image to kind cluster](#setup-load-image-to-kind-cluster)
   - [Setup: Deploy manifests](#setup-deploy-manifests)
+    - [Test](#test-2)
   - [Setup: Create a secret to represent `k8s-athenz-syncer`](#setup-create-a-secret-to-represent-k8s-athenz-syncer)
   - [Setup: Create our custom deployment](#setup-create-our-custom-deployment)
+  - [Verify: Does it work?](#verify-does-it-work)
+- [What I learned](#what-i-learned)
 - [What's next?](#whats-next)
-- [Dive Hours: XX Hours](#dive-hours-xx-hours)
+- [Dive Hours: 24.5 Hours](#dive-hours-245-hours)
 - [Closing](#closing)
 
 <!-- /TOC -->
@@ -89,7 +94,7 @@ Let's verify that the Athenz server is running:
 kubectl get pods -n athenz
 ```
 
-## Setup: Set UI for web page 
+## Setup: Set UI for web page
 
 To visualize the results later, let's set up port forwarding to access the Athenz UI in a browser:
 
@@ -248,9 +253,17 @@ Please refer to the [Result](#result) section above to see the verification step
 
 # What I learned
 
+Here's what I've learned:
+
+- I discovered that when members change in a Trusted Domain (delegated role), the Modified Date and ETag of the Provider Domain do NOT change.
+- I learned that `CustomResourceDefinition`'s `v1beta1` API has been deprecated
+- I learned that you can enforce type in CRD
+
 # What's next?
 
-# Dive Hours: 24 Hours
+I will dive into jag token and how Athenz integrates with it, and what Athenz lacks so far.
+
+# Dive Hours: 24.5 Hours
 
 > [!NOTE]
 > `aegis` that utilizes syncer's CRD and kubernetes RBAC enforcer has been stopped as they do not sync super well yet.
@@ -258,7 +271,7 @@ Please refer to the [Result](#result) section above to see the verification step
 - `1/1 Thu`: 6.75 Hours
 - `1/2 Fri`: 4.75 Hours
 - `1/3 Sat`: 6.5 Hours
-- `1/11 Sun`: 6 Hours
+- `1/11 Sun`: 6.5 Hours
 
 
 With the separate PRs of the following:
@@ -268,6 +281,7 @@ With the separate PRs of the following:
 - https://github.com/mlajkim/dive-manifest/pull/2
 - https://github.com/mlajkim/dive-manifest/pull/3
 - https://github.com/AthenZ/k8s-athenz-syncer/pull/45
+- https://github.com/AthenZ/athenz/pull/3166
 
 # Closing
 
