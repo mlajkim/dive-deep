@@ -18,11 +18,11 @@ Athenz provides the following API endpoints for getting Athenz domain and its ro
 - `/v1/domain/{domainName}/group/admin`
 - `/v1/domain/{domainName}/group/viewer`
 
-But imagine you have your applications in kubernetes clusters and want to have some kind of sync mechanism of the data rather than getting them all the time. Also, what if you want to make sure that your applications do not depend on Athenz that much?
+However, if your applications are running in Kubernetes, constantly querying these endpoints can be inefficient. Ideally, you want a synchronization mechanism to cache this data within the cluster. Furthermore, you might want to decouple your applications from a direct dependency on Athenz to improve resilience.
 
-But let's be realistic—building your own client to fetch, cache, and manage these resources within Kubernetes is a hassle. Why spend time reinventing the wheel when you just want to consume the data?
+Let's be realistic—building a custom client to fetch, cache, and manage these resources within Kubernetes is a hassle. Why reinvent the wheel when you just want to consume the data?
 
-That's why I looked into [Athenz/k8s-athenz-syncer](https://github.com/AthenZ/k8s-athenz-syncer). It’s an existing tool designed to sync Athenz data into Kubernetes Custom Resources (CRDs) called `AthenzDomain` (Obviously), effectively handling the heavy lifting for us. In this post, I’ll walk through how to deploy this syncer, fix a few build issues I encountered, and explore how it can save us from writing unnecessary boilerplate code.
+That's why I looked into [Athenz/k8s-athenz-syncer](https://github.com/AthenZ/k8s-athenz-syncer). It is an existing tool designed to sync Athenz data into Kubernetes Custom Resources (CRDs) called `AthenzDomain`, effectively handling the heavy lifting for us. In this post, I’ll walk through how to deploy this syncer, fix a few build issues I encountered, and explore how it can save us from writing unnecessary boilerplate code.
 
 
 <!-- TOC -->
@@ -47,15 +47,15 @@ That's why I looked into [Athenz/k8s-athenz-syncer](https://github.com/AthenZ/k8
 
 # Result
 
-I was able to deploy `k8s-athenz-syncer` successfully, with CRD `AthenzDomain` registered as following:
+I successfully deployed `k8s-athenz-syncer`, and the `AthenzDomain` CRD was registered as follows:
 
 ![01](./assets/01.gif)
 
-Then, I quickly create a domain `home.syncer` and its role `can-i-see-this-role-in-crd`:
+Next, I created a domain named `home.syncer` and a role `can-i-see-this-role-in-crd` to see if syncer can really sync the AthenzDomain CRD:
 
 ![02](./assets/02.gif)
 
-Finally I created a k8s namespace `home-syncer` (It must follow the rule of `.` => `-`), and I was able to find out that the syncer has outpputed the AthenzDomain, with its role and policy correctly synced:
+Finally, I created a Kubernetes namespace `home-syncer` (Note: Athenz domains replace dots `.` with dashes `-` in K8s namespaces). I verified that the syncer successfully generated the `AthenzDomain` resource, with its roles and policies correctly synced:
 
 ![03](./assets/03.gif)
 
@@ -64,8 +64,7 @@ Finally I created a k8s namespace `home-syncer` (It must follow the rule of `.` 
 
 ## Setup: Working directory
 
-Let's quickly set up working directory. You may use your own, but here is an idempotennt code for quick set up:
-
+Let's set up the working directory. Feel free to use your own, but here is an idempotent script for a quick start:
 ```sh
 test_name=deploy_k8s_athenz_syncer
 tmp_dir=$(date +%y%m%d_%H%M%S_$test_name)
@@ -78,7 +77,7 @@ cd ~/test_dive/$tmp_dir
 > [!WARNING]
 > The following script only works on macOS. Let me know in comments if you want to use other platforms.
 
-Let's set up Kubernetes cluster locally and install Athenz server:
+The following script will set up a local Kubernetes cluster and install the Athenz server:
 
 ```sh
 git clone https://github.com/mlajkim/dive-manifest.git manifest
@@ -87,7 +86,7 @@ make -C manifest setup
 
 ### Test
 
-Let's quickly see if we really have athenz server running:
+Let's verify that the Athenz server is running:
 
 ```sh
 kubectl get pods -n athenz
@@ -95,7 +94,7 @@ kubectl get pods -n athenz
 
 ## Setup: Set UI for web page 
 
-To test as the result, let's quickly set up so that we can see in browser:
+To visualize the results later, let's set up port forwarding to access the Athenz UI in a browser:
 
 ```sh
 kubectl -n athenz port-forward deployment/athenz-ui 3000:3000
@@ -121,7 +120,7 @@ git clone -b fix/deprecated-Dockerfile-images-and-CRD-definition-API https://git
 
 ## Setup: Build image
 
-Let's build the image locally so that we can use it locally:
+Let's build the image locally:
 
 ```sh
 (cd syncer && docker build -t local/k8s-athenz-syncer:latest .)
@@ -144,7 +143,7 @@ kind load docker-image local/k8s-athenz-syncer:latest
 > For the detailed explanation of each command, please refer to the [following](https://github.com/mlajkim/k8s-athenz-syncer/tree/fix/deprecated-Dockerfile-images-and-CRD-definition-API?tab=readme-ov-file#install)
 
 > [!WARNING]
-> Please we will create our own `deployment.yaml` as the OSS sample requires custom settings that could be a bit tricky to set up quick.
+> We will create a custom `deployment.yaml` later, as the sample provided in the OSS repository requires configurations that are a bit complex for a quick demo.
 
 ```sh
 kubectl create ns kube-yahoo
@@ -157,9 +156,9 @@ kubectl apply -f ./syncer/k8s/clusterrolebinding.yaml
 ### Test
 
 > [!TIP]
-> It is okay to have "No resources found", as the syncer, that manages the `AthenzDomain`, is not yet deployed
+> It is okay to see `No resources found` at this stage, as the syncer managing the `AthenzDomain` is not yet deployed.
 
-The apply above creates a CRD `AthenzDomain` (Shortened to `domain`), so let's quickly check:
+The commands above registered the `AthenzDomain CRD` (shortened to `domain`). Let's quickly check:
 
 ```sh
 kubectl get domain
@@ -169,7 +168,7 @@ kubectl get domain
 
 ## Setup: Create a secret to represent `k8s-athenz-syncer`
 
-Unlike the OSS component where it uses [CopperArgos](https://github.com/AthenZ/athenz/blob/master/docs/copper_argos.md) to auto-distribute X.509 certificate to represent the `k8s-athenz-syncer` as an Athenz service, for quick demo we will simply use the root certificate given.
+Unlike a standard production setup which uses [CopperArgos](https://github.com/AthenZ/athenz/blob/master/docs/copper_argos.md) to auto-distribute X.509 certificates, we will simply use the root certificate for this quick demo to represent `k8s-athenz-syncer` as an Athenz service.
 
 ```sh
 kubectl create secret generic k8s-athenz-syncer-cert \
@@ -184,11 +183,11 @@ kubectl create secret generic k8s-athenz-syncer-cert \
 ## Setup: Create our custom deployment
 
 > [!NOTE]
-> Please note that:
-> - we can set `athenz-zms-server.athenz` because we are sharing the same kubernetes cluster with Athenz server.
-> - we set `update-cron=5s` to quickly see the result
+> Note the following configurations:
+> - We set `zms-url=https://athenz-zms-server.athenz:4443/zms/v1` because we are sharing the same Kubernetes cluster with the Athenz server
+> - We set `update-cron=5s` to see the synchronization results quickly
 
-As explained above, since we want the quick set up and want the working `k8s-athenz-syncer`, we will create our own `deployment.yaml`, with a SecretVolume defined above:
+As mentioned earlier, we are using a custom manifest that mounts the Secret we just created:
 
 ```sh
 cat <<EOF | kubectl apply -f -
@@ -250,20 +249,27 @@ EOF
 
 Please refer to the [Result](#result) section above to see the verification steps and outcome.
 
+# What I learned
 
 # What's next?
 
-# Dive Hours: XX Hours
+# Dive Hours: 24 Hours
 
+> [!NOTE]
+> `aegis` that utilizes syncer's CRD and kubernetes RBAC enforcer has been stopped as they do not sync super well yet.
 
 - `1/1 Thu`: 6.75 Hours
 - `1/2 Fri`: 4.75 Hours
-- `1/3 Sat`: ...
-- `1/11 Sun`: ...
+- `1/3 Sat`: 6.5 Hours
+- `1/11 Sun`: 6 Hours
 
-With:
 
+With the separate PRs of the following:
+
+- https://github.com/mlajkim/aegis/pull/1
 - https://github.com/mlajkim/dive-manifest/pull/1
+- https://github.com/mlajkim/dive-manifest/pull/2
+- https://github.com/mlajkim/dive-manifest/pull/3
 
 # Closing
 
