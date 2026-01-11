@@ -87,7 +87,43 @@ athenz.auth.oauth.jwt.auth0.claim_client_id=cid
 athenz.auth.oauth.jwt.verify_cert_thumbprint=false
 ```
 
+## Setup: Policy and rule, and test yourself
 
-# Goal
+Create a scope `athenz`:
+![create_scope](./assets/create_scope.png)
+
+Test yourself:
 
 ![get_token_preview](./assets/get_token_preview.png)
+
+
+## Setup: Get Access Token
+
+![id_and_secret](./assets/id_and_secret.png)
+
+```sh
+CLIENT_ID="0oaz36xyehsYf8Cwz697"
+CLIENT_SECRET="PUT_YOUR_SECRET_HERE"
+
+curl -X POST \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -u "${CLIENT_ID}:${CLIENT_SECRET}" \
+  "https://integrator-8302118.okta.com/oauth2/default/v1/token" \
+  -d "grant_type=client_credentials" \
+  -d "scope=athenz" | jq
+
+# {
+#   "token_type": "Bearer",
+#   "expires_in": 3600,
+#   "access_token": "CENSORED",
+#   "scope": "athenz"
+# }
+```
+
+## Test
+
+```sh
+TOKEN="PUT_YOUR_ACCESS_TOKEN"
+curl -k -H "Authorization: Bearer $TOKEN" \
+  "https://localhost:4443/zms/v1/domain"
+```
