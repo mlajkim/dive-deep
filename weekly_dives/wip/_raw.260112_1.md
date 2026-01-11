@@ -54,3 +54,7 @@ Login completed!
 ![authorization_server_api](./assets/authorization_server_api.png)
 
 https://integrator-8302118-admin.okta.com/admin/oauth2/as
+
+
+
+![create_app_integration](./assets/create_app_integration.png)
