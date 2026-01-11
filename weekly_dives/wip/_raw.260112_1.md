@@ -43,3 +43,14 @@ I don't want to bring my phone to work, so I will use Okta Verify for Mac OS:
 Login completed!
 
 ![okta_login_complete](./assets/okta_login_complete.png)
+
+
+# Goal
+
+
+## Setup
+
+
+![authorization_server_api](./assets/authorization_server_api.png)
+
+https://integrator-8302118-admin.okta.com/admin/oauth2/as
