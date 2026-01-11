@@ -1,22 +1,5 @@
 # Dive Deep 🤿
 
-> [!NOTE]
-> - Workout performance: [README.workout.md](./README.workout.md)
-> - Meal performance: [README.meal.md](./README.meal.md)
-> - Sleep performance: [README.sleep.md](./README.sleep.md)
-> - No Electronics on Bed performance: [README.no-electronics-on-bed.md](./README.no-electronics-on-bed.md)
-
-<!-- TOC -->
-
-- [Dive Deep 🤿](#dive-deep-🤿)
-- [Goal](#goal)
-  - [Official Tech Blogs](#official-tech-blogs)
-  - [Weekly Tech Blogs](#weekly-tech-blogs)
-
-<!-- /TOC -->
-
-# Goal
-
 Want to be really good in technology over getting certain certificates that may touch only surface level knowledge.
 
 ## Official Tech Blogs
@@ -27,7 +10,6 @@ Here is my official, long-term tech blogs:
 |:-------------------:|:---------------------------------------------------:|
 | Oct 2025 ~ Mar 2026 |                   ... About JAG?                    |
 | Apr 2025 ~ Sep 2025 | [How I become Kubestronaut - LY Tech Blog][2025_10] |
-
 
 
 ## Weekly Tech Blogs
