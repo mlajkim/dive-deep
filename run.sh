@@ -116,17 +116,17 @@ TODO: Write goal here above the line.
 
 # Result
 
-# Walkthrough: Setup
+# Setup
 
-## a.
+## Setup: ...
 
-# Walkthrough: Implementation
+## Setup: ...
 
-## 1.
+## Verify
 
-# Walkthrough: Verification
+Please refer to the [Result](#result) section above to see the verification steps and outcome.
 
-## I.
+# What I learned
 
 # What's next?
 

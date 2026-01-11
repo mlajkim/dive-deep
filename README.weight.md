@@ -16,6 +16,7 @@ The goal of this doc is to write performance for my weight
 
 > [!NOTE]
 > Requires at least one measurement per week to track progress:
+> Proofs are stored in [`proofs/weight/`](./proofs/weight/index.md)
 
 |    Week     |                          Weight                           |
 |:-----------:|:---------------------------------------------------------:|
