@@ -14,9 +14,6 @@ Here is my official, long-term tech blogs:
 
 ## Weekly Tech Blogs
 
-> [!NOTE]
-> TODO: Try to implement multi-architect build push build later.
-
 |    Week     |                                     Tech Blogs                                     |
 |:-----------:|:----------------------------------------------------------------------------------:|
 |  1/11~1/17  |                        ...1/18    I've tested JWT token ...                        |
