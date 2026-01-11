@@ -89,6 +89,25 @@ kubectl get pods -n athenz
 git clone -b fix/deprecated-Dockerfile-images-and-CRD-definition-API https://github.com/mlajkim/k8s-athenz-syncer.git syncer
 ```
 
+## Setup: Build image
+
+Let's build the image locally so that we can use it locally:
+
+```sh
+(cd syncer && docker build -t local/k8s-athenz-syncer:latest .)
+```
+
+## Setup: Load image to kind cluster
+
+Since we are using Kind, we need to load the locally built `k8s-athenz-syncer` image into the cluster:
+
+```sh
+kind load docker-image local/k8s-athenz-syncer:latest
+
+# Image: "local/k8s-athenz-syncer:latest" with ID "sha256:bb5bcf2d9c362a46444f9476791f6c9e3f81ce6abf6ebc07d3228b9b7da53fa8" not yet present on node "kind-control-plane", loading...
+```
+
+
 ## Setup: Deploy manifests
 
 > [!TIP]
@@ -105,19 +124,79 @@ kubectl apply -f ./syncer/k8s/clusterrole.yaml
 kubectl apply -f ./syncer/k8s/clusterrolebinding.yaml
 ```
 
-## Setup: Create our custom deployment
+## Setup: Create a secret to represent `k8s-athenz-syncer`
+
+Unlike the OSS component where it uses [CopperArgos](https://github.com/AthenZ/athenz/blob/master/docs/copper_argos.md) to auto-distribute X.509 certificate to represent the `k8s-athenz-syncer` as an Athenz service, for quick demo we will simply use the root certificate given.
 
 ```sh
+kubectl create secret generic k8s-athenz-syncer-cert \
+  -n kube-yahoo \
+  --from-file=cert.pem=./athenz/certs/athenz_admin.cert.pem \
+  --from-file=key.pem=./athenz/keys/athenz_admin.private.pem \
+  --from-file=ca.pem=./athenz/certs/ca.cert.pem
 
+# secret/k8s-athenz-syncer-cert created
 ```
 
-# Walkthrough: Implementation
+## Setup: Create our custom deployment
 
-## 1.
+With the certificate created with Secret, we will deploy the image
 
-# Walkthrough: Verification
+```sh
+cat <<EOF | kubectl apply -f -
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-athenz-syncer
+  namespace: kube-yahoo
+  labels:
+    app: k8s-athenz-syncer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k8s-athenz-syncer
+  strategy:
+    rollingUpdate:
+      maxSurge: 50%
+      maxUnavailable: 0%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: k8s-athenz-syncer
+    spec:
+      containers:
+      - name: syncer
+        image: local/k8s-athenz-syncer
+        imagePullPolicy: IfNotPresent
+        resources:
+          limits:
+            cpu: 1
+            memory: 1Gi
+          requests:
+            cpu: 1
+            memory: 1Gi
+        args:
+        - --zms-url=https://athenz-zms-server.athenz:4443/zms/v1
+        - --cert=/var/run/athenz/cert.pem
+        - --key=/var/run/athenz/key.pem
+        - --cacert=/var/run/athenz/ca.pem
+        - --exclude-namespaces=kube-system,kube-public,kube-k8s-athenz-syncer,default,local-path-storage,kube-node-lease,athenz,ajktown-api,kube-yahoo
+        volumeMounts:
+        - name: athenz-certs
+          mountPath: /var/run/athenz
+          readOnly: true
+      serviceAccountName: k8s-athenz-syncer
+      volumes:
+      - name: athenz-certs
+        secret:
+          secretName: k8s-athenz-syncer-cert
+EOF
 
-## I.
+# deployment.apps/k8s-athenz-syncer created
+```
+
 
 # What's next?
 
