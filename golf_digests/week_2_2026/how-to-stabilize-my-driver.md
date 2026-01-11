@@ -32,9 +32,9 @@ I see some top balls as well
 
 |     Swing      | 1/10 | 1/11 |
 |:--------------:|:----:|:----:|
-| Half swing 60" | 75%  | 71   |
-| Half swing 56" | 75%  | 66   |
-| Half swing 52" | 75%  | 0*   |
+| Half swing 60" | 75%  |  71  |
+| Half swing 56" | 75%  |  66  |
+| Half swing 52" | 75%  |  0*  |
 |  Half swing P  | 75%  |      |
 
 `*`: Shank Once
@@ -79,6 +79,14 @@ But wait, I already have a shorter shaft for my Wood5. Can I use Wood 5?
 
 Want to know my head weight, head speed, swing speed and my shaft's whirling rate.
 Cycles Per Minute (CPM)
+
+
+## Setup: Maybe I gotta learn how to actually do all of them
+
+> [!NOTE]
+> 1/12/26
+
+If I can tune all of them, I can get in between of them right?
 
 
 ## Optimal Tee High?
