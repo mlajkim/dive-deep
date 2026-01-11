@@ -47,15 +47,18 @@ That's why I looked into [Athenz/k8s-athenz-syncer](https://github.com/AthenZ/k8
 
 # Result
 
-1. k9s: Quickly show runnning syncer
-1. k9s: Quickly show current `athenzdomani` => Nothing shows
-1. Web: Create domain with UI
-1. Web: Create a role as a sample "can-i-see-this-role-in-crd"
-1. Web: Maybe add a user
-1. cli: Create a namespace that represents the domain
-1. k9s: Shows that `athenzdoain` is created
-1. Read the yaml of the domain with `d`
-1. Note that it is well synced
+I was able to deploy `k8s-athenz-syncer` successfully, with CRD `AthenzDomain` registered as following:
+
+![01](./assets/01.gif)
+
+Then, I quickly create a domain `home.syncer` and its role `can-i-see-this-role-in-crd`:
+
+![02](./assets/02.gif)
+
+Finally I created a k8s namespace `home-syncer` (It must follow the rule of `.` => `-`), and I was able to find out that the syncer has outpputed the AthenzDomain, with its role and policy correctly synced:
+
+![03](./assets/03.gif)
+
 
 # Setup
 
