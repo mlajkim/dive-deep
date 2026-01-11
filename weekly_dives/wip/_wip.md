@@ -143,7 +143,10 @@ kubectl create secret generic k8s-athenz-syncer-cert \
 
 ## Setup: Create our custom deployment
 
-With the certificate created with Secret, we will deploy the image
+> [!NOTE]
+> Please note that we can set `athenz-zms-server.athenz` because we are sharing the same kubernetes cluster with Athenz server.
+
+As explained above, since we want the quick set up and want the working `k8s-athenz-syncer`, we will create our own `deployment.yaml`, with a SecretVolume defined above:
 
 ```sh
 cat <<EOF | kubectl apply -f -
@@ -199,6 +202,10 @@ EOF
 
 # deployment.apps/k8s-athenz-syncer created
 ```
+
+## Verify: Does it work?
+
+Please refer to the [Result](#result) section above to see the verification steps and outcome.
 
 
 # What's next?
