@@ -20,7 +20,7 @@ git pull origin main
 echo "Creating branch $BRANCH_NAME..."
 git checkout -b "$BRANCH_NAME"
 
-cat <<EOF > "$FILE_PATH"
+cat <<-EOF > "$FILE_PATH"
 <!-- # 251225.2863.132.18 -->
 
 # ${FILE_NEXT_DATE}
@@ -76,7 +76,7 @@ echo "File created at $FILE_PATH"
 mkdir -p weekly_dives/wip
 WIP_PATH="weekly_dives/wip/_wip.md"
 if [ ! -f "$WIP_PATH" ]; then
-    cat <<EOF > "$WIP_PATH"
+    cat <<-EOF > "$WIP_PATH"
 
 ---
 title: '🟡 TODO: GIVE ME TITLE'
@@ -155,7 +155,7 @@ echo "🟡 TODOs:" >> "README.weight.md"
 FILE_DATE=$(date "+%y%m%d") # i.e) 251224
 RAW_PATH="weekly_dives/wip/_raw.${FILE_DATE}_1.md"
 if [ ! -f "$RAW_PATH" ]; then
-  cat <<EOF > "$RAW_PATH"
+  cat <<-EOF > "$RAW_PATH"
 # About _raw.${FILE_DATE}.md
 
 This is a raw dump file for daily dive on ${BRANCH_DATE}.
