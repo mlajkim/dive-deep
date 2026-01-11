@@ -48,10 +48,10 @@ That's why I looked into [Athenz/k8s-athenz-syncer](https://github.com/AthenZ/k8
 # Result
 
 1. k9s: Quickly show runnning syncer
+1. k9s: Quickly show current `athenzdomani` => Nothing shows
 1. Web: Create domain with UI
 1. Web: Create a role as a sample "can-i-see-this-role-in-crd"
 1. Web: Maybe add a user
-1. k9s: Quickly show current `athenzdomani` => Nothing shows
 1. cli: Create a namespace that represents the domain
 1. k9s: Shows that `athenzdoain` is created
 1. Read the yaml of the domain with `d`
@@ -90,6 +90,22 @@ Let's quickly see if we really have athenz server running:
 kubectl get pods -n athenz
 ```
 
+## Setup: Set UI for web page 
+
+To test as the result, let's quickly set up so that we can see in browser:
+
+```sh
+kubectl -n athenz port-forward deployment/athenz-ui 3000:3000
+```
+
+
+### Test
+
+Open the UI in browser:
+
+```sh
+open http://localhost:3000
+```
 
 ## Setup: Clone k8s-athenz-syncer
 
@@ -165,7 +181,9 @@ kubectl create secret generic k8s-athenz-syncer-cert \
 ## Setup: Create our custom deployment
 
 > [!NOTE]
-> Please note that we can set `athenz-zms-server.athenz` because we are sharing the same kubernetes cluster with Athenz server.
+> Please note that:
+> - we can set `athenz-zms-server.athenz` because we are sharing the same kubernetes cluster with Athenz server.
+> - we set `update-cron=5s` to quickly see the result
 
 As explained above, since we want the quick set up and want the working `k8s-athenz-syncer`, we will create our own `deployment.yaml`, with a SecretVolume defined above:
 
@@ -206,6 +224,7 @@ spec:
             memory: 1Gi
         args:
         - --zms-url=https://athenz-zms-server.athenz:4443/zms/v1
+        - update-cron=5s
         - --cert=/var/run/athenz/cert.pem
         - --key=/var/run/athenz/key.pem
         - --cacert=/var/run/athenz/ca.pem
