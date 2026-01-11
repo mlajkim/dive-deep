@@ -231,7 +231,7 @@ spec:
             memory: 1Gi
         args:
         - --zms-url=https://athenz-zms-server.athenz:4443/zms/v1
-        - update-cron=5s
+        - --update-cron=5s
         - --cert=/var/run/athenz/cert.pem
         - --key=/var/run/athenz/key.pem
         - --cacert=/var/run/athenz/ca.pem
