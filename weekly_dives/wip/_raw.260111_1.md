@@ -6,5 +6,4 @@ This is a raw dump file for daily dive on jan-11-2026.
 
 <!-- /TOC -->
 
-# Goal: ???
-
+Spent the time writing the blog with the previous research

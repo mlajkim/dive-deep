@@ -47,7 +47,15 @@ That's why I looked into [Athenz/k8s-athenz-syncer](https://github.com/AthenZ/k8
 
 # Result
 
-TODO
+1. k9s: Quickly show runnning syncer
+1. Web: Create domain with UI
+1. Web: Create a role as a sample "can-i-see-this-role-in-crd"
+1. Web: Maybe add a user
+1. k9s: Quickly show current `athenzdomani` => Nothing shows
+1. cli: Create a namespace that represents the domain
+1. k9s: Shows that `athenzdoain` is created
+1. Read the yaml of the domain with `d`
+1. Note that it is well synced
 
 # Setup
 
@@ -125,6 +133,19 @@ kubectl apply -f ./syncer/k8s/athenzdomain.yaml
 kubectl apply -f ./syncer/k8s/serviceaccount.yaml
 kubectl apply -f ./syncer/k8s/clusterrole.yaml
 kubectl apply -f ./syncer/k8s/clusterrolebinding.yaml
+```
+
+### Test
+
+> [!TIP]
+> It is okay to have "No resources found", as the syncer, that manages the `AthenzDomain`, is not yet deployed
+
+The apply above creates a CRD `AthenzDomain` (Shortened to `domain`), so let's quickly check:
+
+```sh
+kubectl get domain
+
+# No resources found
 ```
 
 ## Setup: Create a secret to represent `k8s-athenz-syncer`
@@ -215,6 +236,8 @@ Please refer to the [Result](#result) section above to see the verification step
 
 - `1/1 Thu`: 6.75 Hours
 - `1/2 Fri`: 4.75 Hours
+- `1/3 Sat`: ...
+- `1/11 Sun`: ...
 
 With:
 
