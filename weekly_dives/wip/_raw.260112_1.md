@@ -86,3 +86,8 @@ athenz.auth.oauth.jwt.parser.jwks_url=https://integrator-8302118.okta.com/oauth2
 athenz.auth.oauth.jwt.auth0.claim_client_id=cid
 athenz.auth.oauth.jwt.verify_cert_thumbprint=false
 ```
+
+
+# Goal
+
+![get_token_preview](./assets/get_token_preview.png)
