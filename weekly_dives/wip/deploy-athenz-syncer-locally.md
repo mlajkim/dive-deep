@@ -1,15 +1,12 @@
 ---
-title: 'One-Click Deploy: Simplifying k8s-athenz-syncer Setup'
+title: 'I Deployed Athenz/k8s-athenz-syncer locally! (Feat. Fixing Legacy Code)'
 published: true
 tags: # four tags only, no '-' or special characters except
   - athenz
   - kubernetes
   - k8sathenzsyncer
+cover_image: ./thumbnail.png
 ---
-
-```sh
-# cover_image: ./thumbnail.png # 🟡 give me thumbnail
-```
 
 # Goal
 
@@ -270,6 +267,7 @@ With the separate PRs of the following:
 - https://github.com/mlajkim/dive-manifest/pull/1
 - https://github.com/mlajkim/dive-manifest/pull/2
 - https://github.com/mlajkim/dive-manifest/pull/3
+- https://github.com/AthenZ/k8s-athenz-syncer/pull/45
 
 # Closing
 
