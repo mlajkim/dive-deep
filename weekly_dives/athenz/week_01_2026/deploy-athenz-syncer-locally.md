@@ -10,6 +10,9 @@ cover_image: ./thumbnail.png
 
 # Goal
 
+> [!TIP]
+> In hurry? Jump directly to [Result](#result) section to see the outcome of this dive.
+
 Athenz provides the following API endpoints for getting Athenz domain and its role/policy information:
 
 - `/v1/domain/{domainName}/group/admin`
