@@ -36,3 +36,10 @@ it seems like only work email works:
 I don't want to bring my phone to work, so I will use Okta Verify for Mac OS:
 
 ![okta_verify_for_mac_install](./assets/okta_verify_for_mac_install.png)
+
+
+### Test
+
+Login completed!
+
+![okta_login_complete](./assets/okta_login_complete.png)
