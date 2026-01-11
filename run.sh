@@ -130,6 +130,7 @@ Please refer to the [Result](#result) section above to see the verification step
 
 EOF
   echo "WIP file created at $WIP_PATH"
+  mkdir -p weekly_dives/wip/assets
 else
   echo "WIP file already exists at $WIP_PATH"
 fi
