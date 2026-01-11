@@ -71,11 +71,44 @@ git clone https://github.com/mlajkim/dive-manifest.git manifest
 make -C manifest setup
 ```
 
+### Test
+
+Let's quickly see if we really have athenz server running:
+
+```sh
+kubectl get pods -n athenz
+```
+
 
 ## Setup: Clone k8s-athenz-syncer
 
+> [!NOTE]
+> Once the PR https://github.com/AthenZ/k8s-athenz-syncer/pull/45 is released, we will use `mlajkim`'s fork.
+
 ```sh
-git clone https://github.com/AthenZ/k8s-athenz-syncer.git syncer
+git clone -b fix/deprecated-Dockerfile-images-and-CRD-definition-API https://github.com/mlajkim/k8s-athenz-syncer.git syncer
+```
+
+## Setup: Deploy manifests
+
+> [!TIP]
+> For the detailed explanation of each command, please refer to the [following](https://github.com/mlajkim/k8s-athenz-syncer/tree/fix/deprecated-Dockerfile-images-and-CRD-definition-API?tab=readme-ov-file#install)
+
+> [!WARNING]
+> Please we will create our own `deployment.yaml` as the OSS sample requires custom settings that could be a bit tricky to set up quick.
+
+```sh
+kubectl create ns kube-yahoo
+kubectl apply -f ./syncer/k8s/athenzdomain.yaml
+kubectl apply -f ./syncer/k8s/serviceaccount.yaml
+kubectl apply -f ./syncer/k8s/clusterrole.yaml
+kubectl apply -f ./syncer/k8s/clusterrolebinding.yaml
+```
+
+## Setup: Create our custom deployment
+
+```sh
+
 ```
 
 # Walkthrough: Implementation
