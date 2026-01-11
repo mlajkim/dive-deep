@@ -16,3 +16,16 @@ I think this is my first time getting into the website:
 https://www.okta.com/
 
 ![okta_developer](./assets/okta_developer.png)
+
+
+## Setup: Sign up?
+
+![sign_up_okta](./assets/sign_up_okta.png)
+
+https://developer.okta.com/signup/
+
+## Setup: Setting up okta
+
+it seems like only work email works:
+
+![okta_verify](./assets/okta_verify.png)
