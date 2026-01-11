@@ -48,6 +48,22 @@ Login completed!
 # Goal
 
 
+## Setup: Create app integration
+
+> [!TIP]
+> Official Athenz Doc: https://github.com/AthenZ/athenz/blob/master/docker/docs/IdP/Auth0.md
+
+![create_app_integration](./assets/create_app_integration.png)
+https://integrator-8302118-admin.okta.com/admin/apps/active
+
+Click next with `OIDC` & `Web Application`:
+
+![odic_n_web_app](./assets/odic_n_web_app.png)
+
+
+- `Proof of possession`: Makes required signed token, for now we skip
+
+
 ## Setup
 
 
@@ -56,5 +72,17 @@ Login completed!
 https://integrator-8302118-admin.okta.com/admin/oauth2/as
 
 
+## Setup: Adding ZMS properties so that ZMS can trust the okta verify
 
-![create_app_integration](./assets/create_app_integration.png)
+![zms_properties_setting](./assets/zms_properties_setting.png)
+
+```sh
+### Okta Configuration for ZMS ###
+
+# Issuer:
+athenz.auth.oauth.jwt.claim.aud=api://default
+athenz.auth.oauth.jwt.claim.iss=https://integrator-8302118.okta.com/oauth2/default
+athenz.auth.oauth.jwt.parser.jwks_url=https://integrator-8302118.okta.com/oauth2/default/v1/keys
+athenz.auth.oauth.jwt.auth0.claim_client_id=cid
+athenz.auth.oauth.jwt.verify_cert_thumbprint=false
+```
