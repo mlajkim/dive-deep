@@ -1,28 +1,10 @@
 # Dive Deep 🤿
 
-> [!NOTE]
-> - Workout performance: [README.workout.md](./README.workout.md)
-> - Meal performance: [README.meal.md](./README.meal.md)
-> - Sleep performance: [README.sleep.md](./README.sleep.md)
-> - No Electronics on Bed performance: [README.no-electronics-on-bed.md](./README.no-electronics-on-bed.md)
-
-<!-- TOC -->
-
-- [Dive Deep 🤿](#dive-deep-🤿)
-- [Goal](#goal)
-  - [Official Tech Blogs](#official-tech-blogs)
-  - [Weekly Tech Blogs](#weekly-tech-blogs)
-
-<!-- /TOC -->
-
-# Goal
-
 Want to be really good in technology over getting certain certificates that may touch only surface level knowledge.
 
 ## Official Tech Blogs
 
-- How Weekly Tech Blog Made me Unstoppable ?
-- How I helped 
+Here is my official, long-term tech blogs:
 
 |        Date         |                 Official Tech Blogs                 |
 |:-------------------:|:---------------------------------------------------:|
@@ -30,11 +12,7 @@ Want to be really good in technology over getting certain certificates that may 
 | Apr 2025 ~ Sep 2025 | [How I become Kubestronaut - LY Tech Blog][2025_10] |
 
 
-
 ## Weekly Tech Blogs
-
-> [!NOTE]
-> TODO: Try to implement multi-architect build push build later.
 
 |    Week     |                                     Tech Blogs                                     |
 |:-----------:|:----------------------------------------------------------------------------------:|
@@ -43,8 +21,8 @@ Want to be really good in technology over getting certain certificates that may 
 |  12/28~1/3  | [I Deployed Athenz/k8s-athenz-syncer locally! (Feat. Fixing Legacy Code)][w01_y26] |
 | 12/21~12/27 |           [Integrate Athenz Notification Feature with AWS SES][w52_y25]            |
 | 12/14~12/20 |      [Stop Using Magic: Building a Kubernetes Operator from Scratch][w51_y25]      |
-| 12/7~12/13  |                   [First Time K8s Contribution Attempt][w50_y25]                   |
-| 11/30~12/6  |                       [Dives into zsh's cd command][w49_y25]                       |
+| 12/7~12/13  |  [Why this K8s TODO survived 3 years: An Autopsy of fieldnamedocscheck][w50_y25]   |
+| 11/30~12/6  |     [How 'cd' actually works in Linux Kernel: A Source Code Analysis][w49_y25]     |
 
 <!-- Variable Declaration -->
 
@@ -52,7 +30,7 @@ Want to be really good in technology over getting certain certificates that may 
 [2025_10]: https://techblog.lycorp.co.jp/ja/20251001a
 
 <!-- Weekly Tech Blogs Links: -->
-[w01_y26]: 🟡 TODO
+[w01_y26]: https://dev.to/mlajkim/i-deployed-athenzk8s-athenz-syncer-locally-feat-fixing-legacy-code-2lcb
 [w52_y25]: https://dev.to/mlajkim/integrate-athenz-notification-feature-with-aws-ses-2471
 [w51_y25]: https://dev.to/mlajkim/stop-using-magic-building-a-kubernetes-operator-from-scratch-mo2
 [w50_y25]: https://dev.to/mlajkim/dives-into-kubernetes-contribution-in-week-50-2025-4i6g
