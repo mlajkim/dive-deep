@@ -13,4 +13,5 @@ intake so that I know what I eat.
 
 ## 1/12
 
-- Honey Butter Mixnut 30g
+- 1520: Honey Butter Mixnut 30g
+- 1540: Banana Flavor Milk 200ml
