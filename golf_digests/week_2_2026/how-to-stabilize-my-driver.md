@@ -40,6 +40,6 @@ with heavier readings (like D0, D2) indicating more weight towards the head and 
 
 ## Driver Qi 10 LS 
 
-## Wood 5 Q
+## Wood 5 Qi10 Tour #5
 
-## Iron P7MC
+## Iron P7MC S200 Dynamic Gold
