@@ -20,58 +20,6 @@ git pull origin main
 echo "Creating branch $BRANCH_NAME..."
 git checkout -b "$BRANCH_NAME"
 
-cat <<-EOF > "$FILE_PATH"
-<!-- # 251225.2863.132.18 -->
-
-# ${FILE_NEXT_DATE}
-
-> [!TIP]
-> Check out the parent README file: [README.meal.md](../../README.meal.md)
-
-<!-- 414 + 700 + 1180 = 2294 kcal
-
-6 + 14 + 46 = 66 g protein
-
-66g * 4 = 264kcal / 2294kcal = 11% protein -->
-
-<!-- TOC -->
-
-<!-- /TOC -->
-
-<!-- ## Breakfast.627.47 -->
-
-## Breakfast.xxx.xx
-
-
-|    Food     | Calories | Protein |
-|:-----------:|:--------:|:-------:|
-|     ...     |   ...    |   ...   |
-
-
-<!-- ## Lunch.71.12 -->
-
-## Lunch.xxx.xx
-
-|    Food     | Calories | Protein |
-|:-----------:|:--------:|:-------:|
-|     ...     |   ...    |   ...   |
-
-<!-- ## Dinner.71.12 -->
-
-## Dinner.xxx.xx
-
-|    Food     | Calories | Protein |
-|:-----------:|:--------:|:-------:|
-|     ...     |   ...    |   ...   |
-
-
-EOF
-
-
-
-echo "File created at $FILE_PATH"
-
-# creates wip directory and wip.md if not exists:
 
 mkdir -p weekly_dives/wip
 WIP_PATH="weekly_dives/wip/_wip.md"
@@ -137,7 +85,7 @@ fi
 
 # Write TODOs so that you do not forget:
 
-echo "🟡 TODOs:" >> "README.meal.md"
+echo "🟡 TODOs:" >> "README.snack_n_alcohol.md"
 echo "🟡 TODOs:" >> "README.sleep.md"
 echo "🟡 TODOs:" >> "README.workout.md"
 echo "🟡 TODOs:" >> "README.dishwash.md"
