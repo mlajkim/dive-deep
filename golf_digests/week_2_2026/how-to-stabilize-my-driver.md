@@ -80,6 +80,8 @@ But wait, I already have a shorter shaft for my Wood5. Can I use Wood 5?
 Want to know my head weight, head speed, swing speed and my shaft's whirling rate.
 Cycles Per Minute (CPM)
 
+For Dynamic GOld Shaft S200
+
 
 ## Setup: Maybe I gotta learn how to actually do all of them
 
