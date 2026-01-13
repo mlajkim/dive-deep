@@ -1,98 +1,45 @@
-# How to stabilize my driver swing
 
 
 
+| S200
+
+
+클럽스피드: 110.9mph (49.57m/s) (50m/s, 75m/s)
+
+
+Tour Series
+https://jumbomax.com/products/tour-series
+
+
+
+| Grip |     Shaft      |    Driver    |    Iron     | My Swing Speed |
+|:----:|:--------------:|:------------:|:-----------:|:--------------:|
+| 112g |  S200 (Stiff)  | 95 ~ 105 mph | 80 ~ 85 mph |    110.9mph    |
+| 112g | X100 (X-Stiff) |   105 mph~   |   88 mph~   |                |
+
+Also the Wood5 maybe.
+
+Qi LS 18g sliding weight
+
+
+How to calculate swing weight:
+
+- Grip 5g => Swing Weight 1 point Down
+- Head 2g => Swing Weight 1 point Up
+
+112g - 50g = 62g
+
+62g / 5 = 12.2 points off
+
+12.2 points * 2g  = 24.4g in head to balance
+
+
+with heavier readings (like D0, D2) indicating more weight towards the head and lighter ones (like C8) making the club feel easier to swing
 
 # Goal
 
-The goal of this document is to summarize how I have stabilized my driver swing.
+## Driver Qi 10 LS 
 
-# Conclusion
+## Wood 5 Qi10 Tour #5
 
-> [!NOTE]
-> Not completed yet
-
-Starting Jan 11, 2026 until XXX xx, 2026, I was able to:
-
-- ...
-- ...
-
-# How I did it
-
-## Know where I am
-
-As of Jan 11, 2026, I want to make sure that I know where I am in terms of my general golf skills, and want to improve my driver while maintaining other performances like putter, iron, and wedge which are decent enough (Already 80s score level)
-
-# I used to be
-
-> [!NOTE]
-> Note that I am writing this as if it is already past
-
-I see some top balls as well
-
-|     Swing      | 1/10 | 1/11 |
-|:--------------:|:----:|:----:|
-| Half swing 60" | 75%  | 71%  |
-| Half swing 56" | 75%  | 66%  |
-| Half swing 52" | 75%  |  0%  |
-|  Half swing P  | 75%  |      |
-
-`*`: Shank Once
-
-## I need to benchmark well
-
-I realized that I need to benchmark as much as possible to really know where I am at, and also want to make sure my records really present:
-
-- my improvement
-- my club fitness
-
-### How I benchmark: Non-Driver
-
-This is my current routine that I take before getting into core routines so that I maintian these skills and my bodies are warmed up:
-
-1. (5 minutes) Stretch
-1. 5 random chipshots (60", 56", 52", P) Usually
-1. Benchmark: Rotating 60", P, 56", 52" half shot every ball, total of 5 shots each = 20 shots
-1. Benchmark: Rotating 9, 8, 7, 6 Full Swing/Full-Swing-But-Short-Stance with consistency (5 shots each = 40 shots)
-1. Begins the Driver Benchmark (Plays only Driver Only)
-
-
-
-### How I benchmark: Driver
-
-## Options I can think of 
-
-I am using the drvier with:
-- Qi LS
-- Tour AD VF 6
-
-So I can think as:
-
-1. Buy new Qi4D Driver with Max?
-1. Buy less stronger shaft?
-
-But wait, I already have a shorter shaft for my Wood5. Can I use Wood 5?
-
-![vf-tx6](./assets/vf-tx6.png)
-
-*https://graphitedesign.gd-inc.co.jp/tourad/tour-ad-vf/*
-
-Want to know my head weight, head speed, swing speed and my shaft's whirling rate.
-Cycles Per Minute (CPM)
-
-For Dynamic GOld Shaft S200
-
-
-## Setup: Maybe I gotta learn how to actually do all of them
-
-> [!NOTE]
-> 1/12/26
-
-If I can tune all of them, I can get in between of them right?
-
-## Setup:
-
-There is a chance chat my grip is too heavy for the club head. that way clud head does not bend. I need to inc
-
-
-## Optimal Tee High?
+## Iron P7MC S200 Dynamic Gold

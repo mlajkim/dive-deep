@@ -23,6 +23,6 @@ To really sleep well, I need to stop watching electronics on bed.
 |:---------:|:---:|:---:|:----:|:----:|:----:|:----:|:----:|:----:|
 | 1/25~1/31 |     |     |      |      |      |      |      |      |
 | 1/18~1/24 |     |     |      |      |      |      |      |      |
-| 1/11~1/17 |     | BAD | BAD  |      |      |      |      |      |
+| 1/11~1/17 |     | BAD | BAD  | BAD  |      |      |      |      |
 | 1/4~1/10  |  4  | BAD | GOOD | GOOD | GOOD | GOOD | BAD  | OKAY |
 | 12/28~1/3 |  -  |  -  |  -   |  -   |  -   |  -   | OKAY | GOOD |

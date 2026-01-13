@@ -1,0 +1,11 @@
+# About _raw.260113.md
+
+This is a raw dump file for daily dive on jan-13-2026.
+
+<!-- TOC -->
+
+<!-- /TOC -->
+
+# Goal: ???
+
+Spent most of the time doing the work
