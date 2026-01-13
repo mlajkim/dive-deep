@@ -99,6 +99,7 @@ echo "🟡 TODOs:" >> "README.workout.md"
 echo "🟡 TODOs:" >> "README.dishwash.md"
 echo "🟡 TODOs:" >> "README.no-electronics-on-bed.md"
 echo "🟡 TODOs:" >> "README.weight.md"
+echo "🟡 TODOs: Dive Hours" >> "./weekly_dives/wip/_wip.md"
 
 # if _raw.XXXXXX.md does not exist in weekly_dives/wip, create it:
 FILE_DATE=$(date "+%y%m%d") # i.e) 251224
