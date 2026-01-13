@@ -83,6 +83,9 @@ Test yourself:
 
 ## Setup: `sub` as athenz user service name
 
+> [!NOTE]
+> `authorized client ids path not required` [code](https://github.com/AthenZ/athenz/blob/master/libs/java/auth_core/src/main/java/com/yahoo/athenz/auth/oauth/OAuthCertBoundJwtAccessTokenAuthority.java#L100-L102)
+
 Athenz only sees the `sub` field to define who you are. You can set up conversion field too but for now we can simply do this:
 
 ![sub_as_user_sevice_name](./assets/sub_as_user_sevice_name.png)
