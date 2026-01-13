@@ -17,9 +17,17 @@ echo "Checking out main..."
 git checkout main
 git pull origin main
 
+# If branch already exists, checkout and pull and exit:
+if git show-ref --verify --quiet "refs/heads/$BRANCH_NAME"; then
+    echo "Branch $BRANCH_NAME already exists. Checking out and pulling..."
+    git checkout "$BRANCH_NAME"
+    git pull origin "$BRANCH_NAME"
+    exit 0
+fi
+
+# If not exists, create one and checkout:
 echo "Creating branch $BRANCH_NAME..."
 git checkout -b "$BRANCH_NAME"
-
 
 mkdir -p weekly_dives/wip
 WIP_PATH="weekly_dives/wip/_wip.md"
