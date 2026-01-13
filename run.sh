@@ -106,15 +106,15 @@ FILE_DATE=$(date "+%y%m%d") # i.e) 251224
 RAW_PATH="weekly_dives/wip/_raw.${FILE_DATE}_1.md"
 if [ ! -f "$RAW_PATH" ]; then
   cat <<-EOF > "$RAW_PATH"
-# About _raw.${FILE_DATE}.md
+# Goal of _raw.${FILE_DATE}.md
 
-This is a raw dump file for daily dive on ${BRANCH_DATE}.
+🟡 TODO: Write one goal here.
 
 <!-- TOC -->
 
 <!-- /TOC -->
 
-# Goal: ???
+## Setup: ...
 
 EOF
 fi
