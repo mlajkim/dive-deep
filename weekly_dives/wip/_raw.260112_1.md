@@ -84,7 +84,8 @@ Test yourself:
 ## Setup: `sub` as athenz user service name
 
 > [!NOTE]
-> `authorized client ids path not required` [code](https://github.com/AthenZ/athenz/blob/master/libs/java/auth_core/src/main/java/com/yahoo/athenz/auth/oauth/OAuthCertBoundJwtAccessTokenAuthority.java#L100-L102)
+> - [Source code](https://github.com/AthenZ/athenz/blob/master/libs/java/auth_core/src/main/java/com/yahoo/athenz/auth/oauth/OAuthCertBoundJwtAccessTokenAuthority.java#L100-L102) for authorized client ids not mandatory
+> - [Source code](https://github.com/AthenZ/athenz/blob/master/libs/java/auth_core/src/main/java/com/yahoo/athenz/auth/oauth/OAuthCertBoundJwtAccessTokenAuthority.java#L246-L252) for using `sub` as service principal
 
 Athenz only sees the `sub` field to define who you are. You can set up conversion field too but for now we can simply do this:
 
