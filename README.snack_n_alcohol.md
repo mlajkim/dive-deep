@@ -15,7 +15,7 @@ intake so that I know what I eat.
 ## 1/13 Tue
 
 - 1930: Beer 350ml
-- 1940: Chocochips Cookie - Morinaga 
+- 1940: Chocochips Cookie - Morinaga 4 cookies
 
 ## 1/12 Mon
 
