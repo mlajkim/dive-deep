@@ -12,6 +12,11 @@ intake so that I know what I eat.
 
 ## 1/14 Wed
 
+- 1500: Kodawari no Financier - Family Mart
+- 1920: Beer 350ml
+- 1920: Ghana Ice Cream
+
+
 ## 1/13 Tue
 
 - 1540: Banana Flavor Milk 200ml
