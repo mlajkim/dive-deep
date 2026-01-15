@@ -10,6 +10,10 @@ intake so that I know what I eat.
 
 # Records
 
+## 1/15 Thu
+
+- 1300: Ghana Ice Cream
+
 ## 1/14 Wed
 
 - 1500: Kodawari no Financier - Family Mart
