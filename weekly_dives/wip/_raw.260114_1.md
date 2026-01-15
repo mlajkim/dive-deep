@@ -6,5 +6,4 @@ This is a raw dump file for daily dive on jan-14-2026.
 
 <!-- /TOC -->
 
-# Goal: ???
-
+Spend most of time doing work
