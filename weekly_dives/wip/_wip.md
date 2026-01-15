@@ -45,7 +45,8 @@ Please refer to the [Result](#result) section above to see the verification step
 
 # Dive Hours: XX Hours
 
+- 1/12: 3 hours
+- 1/14: 3 hours
+
 # Closing
-
-
 

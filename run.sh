@@ -17,9 +17,17 @@ echo "Checking out main..."
 git checkout main
 git pull origin main
 
+# If branch already exists, checkout and pull and exit:
+if git show-ref --verify --quiet "refs/heads/$BRANCH_NAME"; then
+    echo "Branch $BRANCH_NAME already exists. Checking out and pulling..."
+    git checkout "$BRANCH_NAME"
+    git pull origin "$BRANCH_NAME"
+    exit 0
+fi
+
+# If not exists, create one and checkout:
 echo "Creating branch $BRANCH_NAME..."
 git checkout -b "$BRANCH_NAME"
-
 
 mkdir -p weekly_dives/wip
 WIP_PATH="weekly_dives/wip/_wip.md"
@@ -91,21 +99,22 @@ echo "🟡 TODOs:" >> "README.workout.md"
 echo "🟡 TODOs:" >> "README.dishwash.md"
 echo "🟡 TODOs:" >> "README.no-electronics-on-bed.md"
 echo "🟡 TODOs:" >> "README.weight.md"
+echo "🟡 TODOs: Dive Hours" >> "./weekly_dives/wip/_wip.md"
 
 # if _raw.XXXXXX.md does not exist in weekly_dives/wip, create it:
 FILE_DATE=$(date "+%y%m%d") # i.e) 251224
 RAW_PATH="weekly_dives/wip/_raw.${FILE_DATE}_1.md"
 if [ ! -f "$RAW_PATH" ]; then
   cat <<-EOF > "$RAW_PATH"
-# About _raw.${FILE_DATE}.md
+# Goal of _raw.${FILE_DATE}.md
 
-This is a raw dump file for daily dive on ${BRANCH_DATE}.
+🟡 TODO: Write one goal here.
 
 <!-- TOC -->
 
 <!-- /TOC -->
 
-# Goal: ???
+## Setup: ...
 
 EOF
 fi
