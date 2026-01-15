@@ -12,6 +12,8 @@ intake so that I know what I eat.
 
 ## 1/15 Thu
 
+- 2000: IPA
+- 2000: MOW Ice cream
 - 1300: Ghana Ice Cream
 
 ## 1/14 Wed
