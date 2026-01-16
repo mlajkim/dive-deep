@@ -50,3 +50,4 @@ Please refer to the [Result](#result) section above to see the verification step
 
 # Closing
 
+🟡 TODOs: Dive Hours
