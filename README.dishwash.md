@@ -28,3 +28,4 @@ Basically want to do dishwash every day, with max of 15 minutes:
 | 1/11~1/17 |  ?  | DONE |  -   | DONE |  -   |      |     |     |
 | 1/4~1/10  |  4  |  -   | DONE | DONE | DONE | DONE |  -  |  -  |
 🟡 TODOs:
+🟡 TODOs:
