@@ -10,6 +10,8 @@ intake so that I know what I eat.
 
 # Records
 
+## 1/18
+
 ## 1/16~1/17
 
 No Snack
