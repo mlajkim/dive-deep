@@ -94,6 +94,7 @@ fi
 # Write TODOs so that you do not forget:
 
 echo "🟡 TODOs:" >> "README.snack_n_alcohol.md"
+echo "🟡 TODOs:" >> "README.protein.md"
 echo "🟡 TODOs:" >> "README.sleep.md"
 echo "🟡 TODOs:" >> "README.workout.md"
 echo "🟡 TODOs:" >> "README.dishwash.md"
