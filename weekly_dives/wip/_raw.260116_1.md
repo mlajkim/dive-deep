@@ -1,10 +1,8 @@
-# Goal of _raw.260116.md
+# 260116
 
-🟡 TODO: Write one goal here.
+Spent whole time doing work
 
 <!-- TOC -->
 
 <!-- /TOC -->
-
-## Setup: ...
 
