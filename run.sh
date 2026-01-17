@@ -94,6 +94,7 @@ fi
 # Write TODOs so that you do not forget:
 
 echo "🟡 TODOs:" >> "README.snack_n_alcohol.md"
+echo "🟡 TODOs:" >> "README.protein.md"
 echo "🟡 TODOs:" >> "README.sleep.md"
 echo "🟡 TODOs:" >> "README.workout.md"
 echo "🟡 TODOs:" >> "README.dishwash.md"
@@ -103,7 +104,7 @@ echo "🟡 TODOs: Dive Hours" >> "./weekly_dives/wip/_wip.md"
 
 # if _raw.XXXXXX.md does not exist in weekly_dives/wip, create it:
 FILE_DATE=$(date "+%y%m%d") # i.e) 251224
-RAW_PATH="weekly_dives/wip/_raw.${FILE_DATE}_1.md"
+RAW_PATH="weekly_dives/wip/_raw.${FILE_DATE}.md"
 if [ ! -f "$RAW_PATH" ]; then
   cat <<-EOF > "$RAW_PATH"
 # Goal of _raw.${FILE_DATE}.md

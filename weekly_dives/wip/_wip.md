@@ -47,7 +47,6 @@ Please refer to the [Result](#result) section above to see the verification step
 
 - 1/12: 3 hours
 - 1/14: 3 hours
+- 1/18: ? hours
 
 # Closing
-
-🟡 TODOs: Dive Hours

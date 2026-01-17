@@ -1,6 +1,6 @@
-# About _raw.260114.md
+# 260114
 
-This is a raw dump file for daily dive on jan-14-2026.
+Spend most of time doing work
 
 <!-- TOC -->
 
