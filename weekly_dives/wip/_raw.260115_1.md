@@ -1,6 +1,6 @@
-# Goal of _raw.260115.md
+# 260115
 
-🟡 TODO: Write one goal here.
+Spent whole day for work and practice golf
 
 <!-- TOC -->
 
