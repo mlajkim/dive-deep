@@ -16,8 +16,11 @@ Here is my official, long-term tech blogs:
 
 |    Week     |                                     Tech Blogs                                     |
 |:-----------:|:----------------------------------------------------------------------------------:|
-|  1/11~1/17  |                        ...1/18    I've tested JWT token ...                        |
-|  1/4~1/10   |                ...1/13 How to setup Athenz Server with one command                 |
+|  1/11~1/17  |                                                                                    |
+|  1/25~1/31  |                                     ...2/1 ...                                     |
+|  1/18~1/24  |                       ...1/26 Show demo about the JAG Token                        |
+|  1/11~1/17  |                 ...1/19 Get JAG Token with Athenz (Feat Standard)p                 |
+|  1/4~1/10   |                      ...1/19 Deploy Athenz with Okta Sign In                       |
 |  12/28~1/3  | [I Deployed Athenz/k8s-athenz-syncer locally! (Feat. Fixing Legacy Code)][w01_y26] |
 | 12/21~12/27 |           [Integrate Athenz Notification Feature with AWS SES][w52_y25]            |
 | 12/14~12/20 |      [Stop Using Magic: Building a Kubernetes Operator from Scratch][w51_y25]      |
