@@ -229,6 +229,9 @@ Copy the following container spec right under the `spec.template.spec.containers
         - --cookie-name=Athenz-Principal-Auth
         - --cookie-secure=false
         - --pass-access-token=true
+        # Let the UI read?
+        - --set-xauthrequest=true
+        - --pass-user-headers=true
 ```
 
 ## Setup: Remove `STATIC_USER_NAME`
@@ -245,3 +248,18 @@ Remove the following line from the `spec.template.spec.containers` section, this
 > [!NOTE]
 > `docker/ui/conf/extended-config.js`
 
+
+
+# Goal
+
+Fix the following error where UI is asking for the following:
+
+- x-auth-request-preferred-username: (undefined)
+- x-auth-request-email: (undefined)
+
+```sh
+2026-01-18T04:56:44.385Z AthenzUI:AuthStrategy Authenticating with username: [x-auth-request-preferred-username: undefined]
+2026-01-18T04:56:44.385Z AthenzUI:AuthStrategy Authenticating with email: [x-auth-request-email: undefined]
+2026-01-18T04:56:44.386Z AthenzUI:AuthStrategy Authenticated with authUserName: 
+requestDone ... "user":"invalid user" ...
+```
