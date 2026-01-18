@@ -277,8 +277,23 @@ requestDone ... "user":"invalid user" ...
 
 What the hack is the `x-auth...` prefix? Fix as the following:
 
+```yaml
+
+            authUserNameHeader: 'X-Forwarded-Email',
+            authUserEmailHeader: 'X-Forwarded-Preferred-Username',
+```
+
 
 ![fixed_wrongful_not_standard_prefix_name](./assets/fixed_wrongful_not_standard_prefix_name.png)
+
+Add back if you need once again:
+
+```yaml
+
+            authUserNameHeader: 'X-Auth-Request-Preferred-Username',
+            authUserEmailHeader: 'X-Auth-Request-Email',
+
+```
 
 
 ## Verify

@@ -27,6 +27,13 @@ Here is my official, long-term tech blogs:
 | 12/7~12/13  |  [Why this K8s TODO survived 3 years: An Autopsy of fieldnamedocscheck][w50_y25]   |
 | 11/30~12/6  |     [How 'cd' actually works in Linux Kernel: A Source Code Analysis][w49_y25]     |
 
+## Dives Record
+
+|   Week    | Sun | Mon | Tue | Wed | Thu | Fri | Sat |
+|:---------:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| 1/25~1/31 |     |     |     |     |     |     |     |
+| 1/18~1/24 | 🤿  |     |     |     |     |     |     |
+
 <!-- Variable Declaration -->
 
 <!-- Official Tech Blogs Links: -->
