@@ -16,8 +16,8 @@ Here is my official, long-term tech blogs:
 
 |    Week     |                                     Tech Blogs                                     |
 |:-----------:|:----------------------------------------------------------------------------------:|
-|  1/11~1/17  |                                                                                    |
-|  1/25~1/31  |                                     ...2/1 ...                                     |
+|  1/11~1/17  |                                       ...2/6                                       |
+|  1/25~1/31  |                                    ...1/30 ...                                     |
 |  1/18~1/24  |                       ...1/26 Show demo about the JAG Token                        |
 |  1/11~1/17  |                 ...1/19 Get JAG Token with Athenz (Feat Standard)                  |
 |  1/4~1/10   |                      ...1/19 Deploy Athenz with Okta Sign In                       |
