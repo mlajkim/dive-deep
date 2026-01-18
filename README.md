@@ -31,7 +31,7 @@ Here is my weekly hands-on tech blogs:
 
 ## Dives Record
 
-Here is a quick summary of my dives in the last few weeks:
+Here is a quick summary of my dives in the last few weeks, usually saturday off:
 
 |   Week    | Cnt  |  Sun  |  Mon  |  Tue  |  Wed  | Thu  |  Fri  | Sat  |
 |:---------:|:----:|:-----:|:-----:|:-----:|:-----:|:----:|:-----:|:----:|
