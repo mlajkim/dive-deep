@@ -18,6 +18,7 @@ Will open up the following UI:
 
 > [!TIP]
 > - To forward: `kubectl -n default port-forward deployment/auth-helper 3200:3200 > /dev/null 2>&1 &`
+> - To check current jobs: `jobs`
 > - To kill later: `pkill -f "port-forward"`
 
 Run the following command to setup the quick small server
