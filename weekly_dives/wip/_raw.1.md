@@ -33,7 +33,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: header-debug-svc
+  name: echo
   namespace: athenz
 spec:
   ports:
@@ -43,6 +43,12 @@ spec:
     app: header-debug
 EOF
 
+```
+
+## Setup: your proxy to forward the header 
+
+```yaml
+          - --upstream=http://echo:80
 ```
 
 ## Verify: Echo Result

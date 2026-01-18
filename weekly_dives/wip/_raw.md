@@ -8,6 +8,14 @@ This is a raw dump file for daily dive on jan-12-2026.
 
 # Goal: Install Okta
 
+## Tip: Sign out session 
+
+If you modify certain settings, some of the tokens may have old settings. If it does not work as intended, try to remove the session, and sign in again
+
+Delete all three:
+
+![delete_session](./assets/delete_session.png)
+
 
 ## Step: Get into website
 
@@ -267,6 +275,7 @@ requestDone ... "user":"invalid user" ...
 ## Notice: that `config.js` of Athenz UI is not following the standard `x-forwared`
 
 What the hack is the `x-auth...` prefix? Fix as the following:
+
 
 ![fixed_wrongful_not_standard_prefix_name](./assets/fixed_wrongful_not_standard_prefix_name.png)
 
