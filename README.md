@@ -45,6 +45,7 @@ Here is a quick summary of my dives in the last few weeks, usually saturday off:
 | 12/7~12/13  |  2   |  -  |  -  |  -  |  -  | 🤿  | 🤿  |    🤿    |
 | 11/30~12/6  |  2   | 🤿  |  -  |  -  |  -  |  -  | 🤿  |    🤿    |
 | 11/23~11/29 |  1   |  -  |  -  |  -  |  -  |  -  |  -  | First 🤿 |
+
 <!-- Variable Declaration -->
 
 <!-- Official Tech Blogs Links: -->
