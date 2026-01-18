@@ -33,10 +33,10 @@ Here is my weekly hands-on tech blogs:
 
 Here is a quick summary of my dives in the last few weeks:
 
-|   Week    | Sun | Mon | Tue | Wed | Thu | Fri | Sat |
-|:---------:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| 1/25~1/31 |     |     |     |     |     |     |     |
-| 1/18~1/24 | 🤿  |     |     |     |     |     |     |
+|   Week    | Cnt  |  Sun  |  Mon  |  Tue  |  Wed  | Thu  |  Fri  | Sat  |
+|:---------:|:----:|:-----:|:-----:|:-----:|:-----:|:----:|:-----:|:----:|
+| 1/25~1/31 |      | ...🤿 |       |       |       |      |       |      |
+| 1/18~1/24 | ...5 |  🤿   | ...🤿 | ...🤿 | ...🤿 | ...- | ...🤿 | ...- |
 
 <!-- Variable Declaration -->
 
