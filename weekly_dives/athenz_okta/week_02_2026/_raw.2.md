@@ -5,6 +5,12 @@ To forward: `kubectl -n default port-forward deployment/auth-helper 3200:3200 &`
 
 ## Verify: The following command that creates UI
 
+Run the following python code:
+
+```sh
+python3 _get_auth.py
+```
+
 ![copy_clipboard](./assets/copy_clipboard.png)
 
 ```yaml
