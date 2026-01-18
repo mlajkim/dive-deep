@@ -263,3 +263,17 @@ Fix the following error where UI is asking for the following:
 2026-01-18T04:56:44.386Z AthenzUI:AuthStrategy Authenticated with authUserName: 
 requestDone ... "user":"invalid user" ...
 ```
+
+## Notice: that `config.js` of Athenz UI is not following the standard `x-forwared`
+
+What the hack is the `x-auth...` prefix? Fix as the following:
+
+![fixed_wrongful_not_standard_prefix_name](./assets/fixed_wrongful_not_standard_prefix_name.png)
+
+
+## Verify
+
+![login_as_ajkim_ajktown](./assets/login_as_ajkim_ajktown.png)
+
+# Goal: I want to login it as `ajkim` over `ajkim@ajktown.com`!
+
