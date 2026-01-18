@@ -14,6 +14,8 @@ Here is my official, long-term tech blogs:
 
 ## Weekly Tech Blogs
 
+Here is my weekly hands-on tech blogs:
+
 |    Week     |                                     Tech Blogs                                     |
 |:-----------:|:----------------------------------------------------------------------------------:|
 |  1/11~1/17  |                                       ...2/6                                       |
@@ -28,6 +30,8 @@ Here is my official, long-term tech blogs:
 | 11/30~12/6  |     [How 'cd' actually works in Linux Kernel: A Source Code Analysis][w49_y25]     |
 
 ## Dives Record
+
+Here is a quick summary of my dives in the last few weeks:
 
 |   Week    | Sun | Mon | Tue | Wed | Thu | Fri | Sat |
 |:---------:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
