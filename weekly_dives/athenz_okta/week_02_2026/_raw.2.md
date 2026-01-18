@@ -1,17 +1,25 @@
 # Goal
 
-To forward: `kubectl -n default port-forward deployment/auth-helper 3200:3200 &`
 
 
-## Verify: The following command that creates UI
+## Result
 
-Run the following python code:
+Running the following code:
 
 ```sh
-python3 _get_auth.py
+python3 ./weekly_dives/athenz_okta/week_02_2026/_get_auth.py
 ```
 
+Will open up the following UI:
+
 ![copy_clipboard](./assets/copy_clipboard.png)
+
+## Setup: 3100 port server
+
+> [!TIP]
+> To forward: `kubectl -n default port-forward deployment/auth-helper 3200:3200 &`
+
+Run the following command to setup the quick small server
 
 ```yaml
 cat <<EOF | kubectl apply -f -
