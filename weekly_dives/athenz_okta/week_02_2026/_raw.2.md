@@ -17,7 +17,8 @@ Will open up the following UI:
 ## Setup: 3100 port server
 
 > [!TIP]
-> To forward: `kubectl -n default port-forward deployment/auth-helper 3200:3200 &`
+> - To forward: `kubectl -n default port-forward deployment/auth-helper 3200:3200 > /dev/null 2>&1 &`
+> - To kill later: `pkill -f "port-forward"`
 
 Run the following command to setup the quick small server
 
