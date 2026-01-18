@@ -17,9 +17,9 @@ Will open up the following UI:
 ## Setup: 3100 port server
 
 > [!TIP]
-> - To forward: `kubectl -n default port-forward deployment/auth-helper 3200:3200 > /dev/null 2>&1 &`
-> - To check current jobs: `jobs`
-> - To kill later: `pkill -f "port-forward"`
+> - To forward: `nohup kubectl -n default port-forward deployment/auth-helper 3200:3200 > /dev/null 2>&1 &`
+> - To check current jobs: `ps -ef | grep "port-forward"`
+> - To kill later: `kill -9 <PID>`
 
 Run the following command to setup the quick small server
 
