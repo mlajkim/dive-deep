@@ -97,15 +97,12 @@ Let's verify that the Athenz server is running:
 
 ```sh
 kubectl get pods -n athenz
-```
 
 ## Setup: Set UI for web page
 
-To visualize the results later, let's set up port forwarding to access the Athenz UI in a browser:
-
-```sh
-kubectl -n athenz port-forward deployment/athenz-ui 3000:3000
-```
+> [!TIP]
+> - To forward: `kubectl -n athenz athenz-ui deployment/athenz-ui 3000:3000 > /dev/null 2>&1 &`
+> - To kill later: `pkill -f "athenz-ui"`
 
 
 ### Test
