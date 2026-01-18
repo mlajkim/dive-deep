@@ -247,8 +247,9 @@ Copy the following container spec right under the `spec.template.spec.containers
 Remove the following line from the `spec.template.spec.containers` section, this is only for test and if you want to use the admin back, please do add them later once again:
 
 ```yaml
-- name: STATIC_USER_NAME
-  value: athenz_admin
+
+        - name: STATIC_USER_NAME
+          value: athenz_admin
 ```
 
 ## Setup: Modify the UI config
