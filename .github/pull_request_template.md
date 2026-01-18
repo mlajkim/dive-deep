@@ -7,3 +7,4 @@
 1. Handle every `🟡 TODO` in the PR
 1. Review yesterday's daily PR and merge if everything looks good
 1. Merge PR: The miracle morning routine is complete.
+1. Reminder: use speaker later

@@ -34,6 +34,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: header-debug-svc
+  namespace: athenz
 spec:
   ports:
   - port: 80
@@ -43,3 +44,7 @@ spec:
 EOF
 
 ```
+
+## Verify: Echo Result
+
+![echo_result](./assets/echo_result.png)
