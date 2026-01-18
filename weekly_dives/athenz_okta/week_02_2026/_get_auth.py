@@ -55,7 +55,7 @@ print(f"Please open the following URL in your browser:\n\n{full_auth_url}\n")
 webbrowser.open(full_auth_url)
 print("Login with your Okta test user.")
 print("After login, you will be redirected to your Redirect URI with a 'code' parameter.")
-print("Example: http://localhost:8080/callback?code=YOUR_CODE&state=test_state")
+print(f"Example: {REDIRECT_URI}?code=YOUR_CODE&state=test_state")
 
 auth_code = input("\nEnter the value of the 'code' parameter: ").strip()
 
