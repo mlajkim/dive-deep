@@ -8,6 +8,14 @@ This is a raw dump file for daily dive on jan-12-2026.
 
 # Goal: Install Okta
 
+## Tip: Sign out session 
+
+If you modify certain settings, some of the tokens may have old settings. If it does not work as intended, try to remove the session, and sign in again
+
+Delete all three:
+
+![delete_session](./assets/delete_session.png)
+
 
 ## Step: Get into website
 
@@ -229,6 +237,9 @@ Copy the following container spec right under the `spec.template.spec.containers
         - --cookie-name=Athenz-Principal-Auth
         - --cookie-secure=false
         - --pass-access-token=true
+        # Let the UI read?
+        - --set-xauthrequest=true
+        - --pass-user-headers=true
 ```
 
 ## Setup: Remove `STATIC_USER_NAME`
@@ -236,12 +247,58 @@ Copy the following container spec right under the `spec.template.spec.containers
 Remove the following line from the `spec.template.spec.containers` section, this is only for test and if you want to use the admin back, please do add them later once again:
 
 ```yaml
-- name: STATIC_USER_NAME
-  value: athenz_admin
+
+        - name: STATIC_USER_NAME
+          value: athenz_admin
 ```
 
 ## Setup: Modify the UI config
 
 > [!NOTE]
 > `docker/ui/conf/extended-config.js`
+
+
+
+# Goal
+
+Fix the following error where UI is asking for the following:
+
+- x-auth-request-preferred-username: (undefined)
+- x-auth-request-email: (undefined)
+
+```sh
+2026-01-18T04:56:44.385Z AthenzUI:AuthStrategy Authenticating with username: [x-auth-request-preferred-username: undefined]
+2026-01-18T04:56:44.385Z AthenzUI:AuthStrategy Authenticating with email: [x-auth-request-email: undefined]
+2026-01-18T04:56:44.386Z AthenzUI:AuthStrategy Authenticated with authUserName: 
+requestDone ... "user":"invalid user" ...
+```
+
+## Notice: that `config.js` of Athenz UI is not following the standard `x-forwared`
+
+What the hack is the `x-auth...` prefix? Fix as the following:
+
+```yaml
+
+            authUserNameHeader: 'X-Forwarded-Email',
+            authUserEmailHeader: 'X-Forwarded-Preferred-Username',
+```
+
+
+![fixed_wrongful_not_standard_prefix_name](./assets/fixed_wrongful_not_standard_prefix_name.png)
+
+Add back if you need once again:
+
+```yaml
+
+            authUserNameHeader: 'X-Auth-Request-Preferred-Username',
+            authUserEmailHeader: 'X-Auth-Request-Email',
+
+```
+
+
+## Verify
+
+![login_as_ajkim_ajktown](./assets/login_as_ajkim_ajktown.png)
+
+# Goal: I want to login it as `ajkim` over `ajkim@ajktown.com`!
 
