@@ -31,6 +31,11 @@ if not OKTA_DOMAIN.startswith("https://"):
     OKTA_DOMAIN = "https://" + OKTA_DOMAIN
 
 CLIENT_ID = get_input("Enter Okta Client ID", "0oaz36xyehsYf8Cwz697")
+CLIENT_SECRET = input(f"Enter Okta Client Secret: ").strip()
+if not CLIENT_SECRET:
+    print("Client Secret is required!")
+    sys.exit(1)
+
 REDIRECT_URI = get_input("Enter Redirect URI", "http://localhost:3200/oauth2/callback")
 ZMS_URL = get_input("Enter ZMS URL", "http://localhost:4443/zms/v1")
 
@@ -69,6 +74,7 @@ token_url = f"{OKTA_DOMAIN}/oauth2/default/v1/token"
 data = urllib.parse.urlencode({
     "grant_type": "authorization_code",
     "client_id": CLIENT_ID,
+    "client_secret": CLIENT_SECRET,
     "code": auth_code,
     "redirect_uri": REDIRECT_URI
 }).encode("utf-8")
@@ -83,7 +89,7 @@ try:
         access_token = token_response.get("access_token")
         print("\nSuccessfully obtained tokens!")
         # print(f"ID Token: {id_token[:20]}...")
-        print(f"Access Token: {access_token[:20]}...")
+        print(f"Access Token: {access_token}...")
 except urllib.error.HTTPError as e:
     print(f"Error exchanging token: {e}")
     print(e.read().decode("utf-8"))
