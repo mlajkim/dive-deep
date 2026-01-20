@@ -25,8 +25,8 @@ This is a raw dump file for daily dive on jan-02-2026.
 
 ```sh
 curl -sS -k -X GET "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/signed" \
-  --cert ./athenz_distribution/certs/athenz_admin.cert.pem \
-  --key ./athenz_distribution/keys/athenz_admin.private.pem | jq
+  --cert ~/athenz_dist/certs/athenz_admin.cert.pem \
+  --key ~/athenz_dist/keys/athenz_admin.private.pem | jq
 
 # {
 #   "payload": "eyJvcmciOiJhamtpbSIsImVuYWJsZWQiOnRydWUsImF1ZGl0RW5hYmxlZCI6ZmFsc2UsInlwbUlkIjowLCJuYW1lIjoiZWtzLnVzZXJzLmFqa3Rvd24tYXBpIiwicm9sZXMiOlt7Im5hbWUiOiJla3MudXNlcnMuYWprdG93bi1hcGk6cm9sZS5rOHNfbnNfYWRtaW5zIiwibW9kaWZpZWQiOiIyMDI2LTAxLTAxVDIyOjIxOjM3LjEzNFoiLCJyb2xlTWVtYmVycyI6W3sibWVtYmVyTmFtZSI6InVzZXIuYWxpY2UiLCJyZXF1ZXN0UHJpbmNpcGFsIjoidXNlci5hdGhlbnpfYWRtaW4iLCJwcmluY2lwYWxUeXBlIjoxfSx7Im1lbWJlck5hbWUiOiJ1c2VyLmJvYiIsInJlcXVlc3RQcmluY2lwYWwiOiJ1c2VyLmF0aGVuel9hZG1pbiIsInByaW5jaXBhbFR5cGUiOjF9LHsibWVtYmVyTmFtZSI6ImFqa3Rvd24uYXBpOmdyb3VwLnByb2RfY2x1c3Rlcl9jb25uZWN0b3JzIiwicmVxdWVzdFByaW5jaXBhbCI6InVzZXIuYXRoZW56X2FkbWluIiwicHJpbmNpcGFsVHlwZSI6M30seyJtZW1iZXJOYW1lIjoidXNlci5jeWFuIiwicmVxdWVzdFByaW5jaXBhbCI6InVzZXIuYXRoZW56X2FkbWluIiwicHJpbmNpcGFsVHlwZSI6MX1dfSx7Im5hbWUiOiJla3MudXNlcnMuYWprdG93bi1hcGk6cm9sZS5rOHNfbnNfdmlld2VycyIsIm1vZGlmaWVkIjoiMjAyNi0wMS0wMVQwMzoxMzoyNS44MjBaIiwidHJ1c3QiOiJhamt0b3duLmFwaSJ9LHsibmFtZSI6ImVrcy51c2Vycy5hamt0b3duLWFwaTpyb2xlLmFkbWluIiwibW9kaWZpZWQiOiIyMDI1LTEyLTMwVDA1OjI3OjEwLjMwMFoiLCJyb2xlTWVtYmVycyI6W3sibWVtYmVyTmFtZSI6InVzZXIuYXRoZW56X2FkbWluIiwicmVxdWVzdFByaW5jaXBhbCI6InVzZXIuYXRoZW56X2FkbWluIiwicHJpbmNpcGFsVHlwZSI6MX1dfV0sInBvbGljaWVzIjp7ImNvbnRlbnRzIjp7ImRvbWFpbiI6ImVrcy51c2Vycy5hamt0b3duLWFwaSIsInBvbGljaWVzIjpbeyJuYW1lIjoiZWtzLnVzZXJzLmFqa3Rvd24tYXBpOnBvbGljeS5hZG1pbiIsIm1vZGlmaWVkIjoiMjAyNS0xMi0zMFQwNToyNzoxMC4zMDJaIiwiYXNzZXJ0aW9ucyI6W3sicm9sZSI6ImVrcy51c2Vycy5hamt0b3duLWFwaTpyb2xlLmFkbWluIiwicmVzb3VyY2UiOiJla3MudXNlcnMuYWprdG93bi1hcGk6KiIsImFjdGlvbiI6IioiLCJlZmZlY3QiOiJBTExPVyIsImlkIjozM31dLCJ2ZXJzaW9uIjoiMCIsImFjdGl2ZSI6dHJ1ZX1dfSwic2lnbmF0dXJlIjoiTDhSemh1cnpCZTVNOFhjTEVBMEJ1cjRnckE5WURGclVuMjRDLmtDZmhJOThkSm9hQzRhQkhQMTJLbGNDcnRVVzVLUW1wR3diQnBjR19odzYzdmZYSjNNbjBibjR4amRUY3J0ZDU1WnExY04xbzBLMEFzcU5POWExc1BqNDNTZV84TC5ZRjlXeUg0blB5ak9BTlVPY2w1NEVmeEgzQnB5S0lkWWk2S0JTWFNTSUY4QndDV0VjVG9kVlJqZ2l0SUVpRndsbHlBTFBqV0ZZYkUyYUNBbnM1UFFYSFg5djFtbndxelVrUGU1WERZZ0VjMGh0TWtjX2s4SE9mcFl6ZUtjM1Zsb3BqZ0ZQUVRDWDh6NlY3NHRXYi41UW9Ba1JLZkRWOUxoeU1QQmtBMnkwRTRJd1pwS2tza1c0eWNhaWFfM1BNNlRLRGgweVdQMC5lb0VIejREQ1hYM3NGbm1JMXFBLnZkYmluMkNwWXp6RUdYMzR4MFJoWTdadE9UVW5DTG9NVG55N3k5NjNLX0ZJVEdBYmhsRnJLZnJ2aXdkb3NaaU9nUHh0QkFxNnRoLlBOOVY0VVJXUTYydWFQTXFWRkNJdHFvWWI5RFMydEtHR0h3V29JaHdtZVdrMHFacUtUNl9SYXFlWXh2NUZFaXRnZTNmNGlWdHFudVhWa0xLM3NyaUtTc1BJMVk5TkJSdlVNZ2FPeVpjN25tZXJSM3hmZTNidjhPYkhfQWRmN2cuaWhwWm1fYkZ0Zy5vT3NwMjdJV1dTS241WG1RTTZnQTFGSF9CQ2xSTG5QZ0VHclJvenJlbnhYRGNnOVdscVlVcXI3djk1NklxSHJ1UHd1b0ZOeXJGYVhNclV5cUdoOGNzUFJUZEJsM1k0N25BeE9NUTRUalBYNHNXNzNJSi5SSmstIiwia2V5SWQiOiJhdGhlbnotem1zLXNlcnZlci01NmRkNWZjYzVkLWQ1MjY4In0sInNlcnZpY2VzIjpbXSwiZW50aXRpZXMiOltdLCJncm91cHMiOltdLCJtb2RpZmllZCI6IjIwMjYtMDEtMDFUMjI6MjE6MzcuMTM1WiJ9",
@@ -42,8 +42,8 @@ curl -sS -k -X GET "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/s
 
 ```sh
 curl -sS -k -X GET "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/signed" \
-  --cert ./athenz_distribution/certs/athenz_admin.cert.pem \
-  --key ./athenz_distribution/keys/athenz_admin.private.pem | jq -r .payload | base64 -d | jq
+  --cert ~/athenz_dist/certs/athenz_admin.cert.pem \
+  --key ~/athenz_dist/keys/athenz_admin.private.pem | jq -r .payload | base64 -d | jq
 
 # {
 #   "org": "ajkim",
@@ -132,8 +132,8 @@ The response contains the status 304 Not Modified if the eTag matches, with no p
 
 ```sh
 curl -sS -k -X GET "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/signed" \
-  --cert ./athenz_distribution/certs/athenz_admin.cert.pem \
-  --key ./athenz_distribution/keys/athenz_admin.private.pem \
+  --cert ~/athenz_dist/certs/athenz_admin.cert.pem \
+  --key ~/athenz_dist/keys/athenz_admin.private.pem \
   -H 'If-None-Match: "2026-01-01T22:21:37.135Z"' | jq
 
 # (Nothing is returned with 304 Not Modified)
@@ -149,8 +149,8 @@ I can see that eTag `"2026-01-01T22:21:37.135Z"`!
 
 ```sh
 curl -i -sS -k -X GET "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/signed" \
-  --cert ./athenz_distribution/certs/athenz_admin.cert.pem \
-  --key ./athenz_distribution/keys/athenz_admin.private.pem
+  --cert ~/athenz_dist/certs/athenz_admin.cert.pem \
+  --key ~/athenz_dist/keys/athenz_admin.private.pem
 
 # HTTP/1.1 200 OK
 # Host: athenz-zms-server-56dd5fcc5d-d5268
@@ -170,8 +170,8 @@ Ah-ha!
 
 ```sh
 curl -i -sS -k -X GET "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/signed" \
-  --cert ./athenz_distribution/certs/athenz_admin.cert.pem \
-  --key ./athenz_distribution/keys/athenz_admin.private.pem \
+  --cert ~/athenz_dist/certs/athenz_admin.cert.pem \
+  --key ~/athenz_dist/keys/athenz_admin.private.pem \
   -H 'If-None-Match: "2026-01-01T22:21:37.135Z"'
 
 # HTTP/1.1 304 Not Modified
@@ -188,8 +188,8 @@ Result: `ModifiedDate` is updated, only when its domain members, not the members
 
 ```sh
 curl -sS -k -D - -o /dev/null -X GET "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/signed" \
-  --cert ./athenz_distribution/certs/athenz_admin.cert.pem \
-  --key ./athenz_distribution/keys/athenz_admin.private.pem \
+  --cert ~/athenz_dist/certs/athenz_admin.cert.pem \
+  --key ~/athenz_dist/keys/athenz_admin.private.pem \
   -H 'If-None-Match: "2026-01-01T22:21:37.135Z"'
 
 # HTTP/1.1 304 Not Modified
@@ -204,8 +204,8 @@ curl -sS -k -D - -o /dev/null -X GET "https://localhost:4443/zms/v1/domain/eks.u
 
 ```sh
 curl -sS -k -D - -o /dev/null -X GET "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/signed" \
-  --cert ./athenz_distribution/certs/athenz_admin.cert.pem \
-  --key ./athenz_distribution/keys/athenz_admin.private.pem \
+  --cert ~/athenz_dist/certs/athenz_admin.cert.pem \
+  --key ~/athenz_dist/keys/athenz_admin.private.pem \
   -H 'If-None-Match: "2026-01-01T22:21:37.135Z"'
 
 # HTTP/1.1 200 OK
@@ -222,8 +222,8 @@ curl -sS -k -D - -o /dev/null -X GET "https://localhost:4443/zms/v1/domain/eks.u
 
 ```sh
 curl -sS -k -D - -o /dev/null -X GET "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/signed" \
-  --cert ./athenz_distribution/certs/athenz_admin.cert.pem \
-  --key ./athenz_distribution/keys/athenz_admin.private.pem \
+  --cert ~/athenz_dist/certs/athenz_admin.cert.pem \
+  --key ~/athenz_dist/keys/athenz_admin.private.pem \
   -H 'If-None-Match: "2026-01-02T06:22:09.082Z"'
 
 # HTTP/1.1 200 OK
@@ -239,8 +239,8 @@ curl -sS -k -D - -o /dev/null -X GET "https://localhost:4443/zms/v1/domain/eks.u
 
 ```sh
 curl -sS -k -D - -o /dev/null -X GET "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/signed" \
-  --cert ./athenz_distribution/certs/athenz_admin.cert.pem \
-  --key ./athenz_distribution/keys/athenz_admin.private.pem \
+  --cert ~/athenz_dist/certs/athenz_admin.cert.pem \
+  --key ~/athenz_dist/keys/athenz_admin.private.pem \
   -H 'If-None-Match: "2026-01-02T06:28:00.364Z"'
 
 # HTTP/1.1 304 Not Modified
@@ -255,8 +255,8 @@ curl -sS -k -D - -o /dev/null -X GET "https://localhost:4443/zms/v1/domain/eks.u
 
 ```sh
 curl -sS -k -D - -o /dev/null -X GET "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/signed" \
-  --cert ./athenz_distribution/certs/athenz_admin.cert.pem \
-  --key ./athenz_distribution/keys/athenz_admin.private.pem \
+  --cert ~/athenz_dist/certs/athenz_admin.cert.pem \
+  --key ~/athenz_dist/keys/athenz_admin.private.pem \
   -H 'If-None-Match: "2026-01-02T06:28:00.364Z"'
 
 # HTTP/1.1 304 Not Modified
@@ -271,8 +271,8 @@ curl -sS -k -D - -o /dev/null -X GET "https://localhost:4443/zms/v1/domain/eks.u
 
 ```sh
 curl -sS -k -D - -o /dev/null -X GET "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/signed" \
-  --cert ./athenz_distribution/certs/athenz_admin.cert.pem \
-  --key ./athenz_distribution/keys/athenz_admin.private.pem \
+  --cert ~/athenz_dist/certs/athenz_admin.cert.pem \
+  --key ~/athenz_dist/keys/athenz_admin.private.pem \
   -H 'If-None-Match: "2026-01-02T06:28:00.364Z"'
 
 # HTTP/1.1 304 Not Modified
@@ -287,8 +287,8 @@ curl -sS -k -D - -o /dev/null -X GET "https://localhost:4443/zms/v1/domain/eks.u
 
 ```sh
 curl -sS -k -D - -o /dev/null -X GET "https://localhost:4443/zms/v1/domain/eks.users.ajktown-api/signed" \
-  --cert ./athenz_distribution/certs/athenz_admin.cert.pem \
-  --key ./athenz_distribution/keys/athenz_admin.private.pem \
+  --cert ~/athenz_dist/certs/athenz_admin.cert.pem \
+  --key ~/athenz_dist/keys/athenz_admin.private.pem \
   -H 'If-None-Match: "2026-01-02T06:28:00.364Z"'
 
 # HTTP/1.1 304 Not Modified
