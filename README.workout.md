@@ -28,3 +28,4 @@ The goal of this document is to track my workout progress.
 <!-- Variable Declaration EOF -->
 
 🟡 TODOs:
+🟡 TODOs:
