@@ -2,6 +2,16 @@
 
 Want to be really good in technology over getting certain certificates that may touch only surface level knowledge.
 
+## Offcial Public Presentations
+
+Here is my official, public presentations:
+
+|        Date         | Official Public Presentations |
+|:-------------------:|:-----------------------------:|
+|          ?          |               ?               |
+| Jan 2026 ~ Feb 2026 |       ... Athenz and AI       |
+
+
 ## Official Tech Blogs
 
 Here is my official, long-term tech blogs:
@@ -18,7 +28,7 @@ Here is my weekly hands-on tech blogs:
 
 |    Week     |                                     Tech Blogs                                     |
 |:-----------:|:----------------------------------------------------------------------------------:|
-|  1/11~1/17  |                                       ...2/6                                       |
+|   2/1~2/7   |                                       ...2/6                                       |
 |  1/25~1/31  |                                    ...1/30 ...                                     |
 |  1/18~1/24  |                       ...1/26 Show demo about the JAG Token                        |
 |  1/11~1/17  |                 ...1/19 Get JAG Token with Athenz (Feat Standard)                  |
