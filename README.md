@@ -46,7 +46,7 @@ Here is a quick summary of my dives in the last few weeks, usually saturday off:
 |    Week     | Cnt  | Sun | Mon | Tue | Wed | Thu | Fri |   Sat    |
 |:-----------:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:--------:|
 |  1/25~1/31  |      |     |     |     |     |     |     |          |
-|  1/18~1/24  | ...5 | 🤿  | 🤿  |  -  |     |     |     |          |
+|  1/18~1/24  | ...5 | 🤿  | 🤿  |  -  |  -  |     |     |          |
 |  1/11~1/17  |  3   | 🤿  | 🤿  |  -  | 🤿  |  -  |  -  |    -     |
 |  1/4~1/10   |  5   | 🤿  | 🤿  | 🤿  |  -  | 🤿  | 🤿  |    -     |
 |  12/28~1/3  |  5   | 🤿  |  -  | 🤿  |  -  | 🤿  | 🤿  |    🤿    |
@@ -69,4 +69,3 @@ Here is a quick summary of my dives in the last few weeks, usually saturday off:
 [w49_y25]: https://dev.to/mlajkim/251130-zsh-cd-460i
 
 <!-- Variable Declaration EOF -->
-🟡 TODOs:
