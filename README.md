@@ -59,3 +59,4 @@ Here is a quick summary of my dives in the last few weeks, usually saturday off:
 [w49_y25]: https://dev.to/mlajkim/251130-zsh-cd-460i
 
 <!-- Variable Declaration EOF -->
+🟡 TODOs:
