@@ -6,10 +6,10 @@ Want to be really good in technology over getting certain certificates that may 
 
 Here is my official, public presentations:
 
-|        Date         | Official Public Presentations |
-|:-------------------:|:-----------------------------:|
-|          ?          |               ?               |
-| Jan 2026 ~ Feb 2026 |       ... Athenz and AI       |
+|        Date         |             Official Public Presentations              |
+|:-------------------:|:------------------------------------------------------:|
+|          ?          |                           ?                            |
+| Jan 2026 ~ Feb 2026 | ... [Japan Regional User Group (RUG) Meet-Up][2026_02] |
 
 
 ## Official Tech Blogs
@@ -57,6 +57,10 @@ Here is a quick summary of my dives in the last few weeks, usually saturday off:
 | 11/23~11/29 |  1   |  -  |  -  |  -  |  -  |  -  |  -  | First 🤿 |
 
 <!-- Variable Declaration -->
+
+Official Meetup Speaks
+
+[2026_02]: https://community.linuxfoundation.org/events/details/lfhq-lf-ai-data-foundation-presents-japan-regional-user-group-rug-meet-up-1/
 
 <!-- Official Tech Blogs Links: -->
 [2025_10]: https://techblog.lycorp.co.jp/ja/20251001a
