@@ -73,4 +73,3 @@ Official Meetup Speaks
 [w49_y25]: https://dev.to/mlajkim/251130-zsh-cd-460i
 
 <!-- Variable Declaration EOF -->
-🟡 TODOs:

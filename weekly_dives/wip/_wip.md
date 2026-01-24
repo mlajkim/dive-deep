@@ -44,10 +44,3 @@ Please refer to the [Result](#result) section above to see the verification step
 # Dive Hours: XX Hours
 
 # Closing
-
-
-
-🟡 TODOs: Dive Hours
-🟡 TODOs: Dive Hours
-🟡 TODOs: Dive Hours
-🟡 TODOs: Dive Hours
