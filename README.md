@@ -6,10 +6,10 @@ Want to be really good in technology over getting certain certificates that may 
 
 Here is my official, public presentations:
 
-|        Date         | Official Public Presentations |
-|:-------------------:|:-----------------------------:|
-|          ?          |               ?               |
-| Jan 2026 ~ Feb 2026 |       ... Athenz and AI       |
+|        Date         |             Official Public Presentations              |
+|:-------------------:|:------------------------------------------------------:|
+|          ?          |                           ?                            |
+| Jan 2026 ~ Feb 2026 | ... [Japan Regional User Group (RUG) Meet-Up][2026_02] |
 
 
 ## Official Tech Blogs
@@ -43,20 +43,24 @@ Here is my weekly hands-on tech blogs:
 
 Here is a quick summary of my dives in the last few weeks, usually saturday off:
 
-|    Week     | Cnt  | Sun | Mon | Tue | Wed | Thu | Fri |   Sat    |
-|:-----------:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:--------:|
-|  1/25~1/31  |      |     |     |     |     |     |     |          |
-|  1/18~1/24  | ...5 | 🤿  | 🤿  |  -  |  -  |  -  |  -  |          |
-|  1/11~1/17  |  3   | 🤿  | 🤿  |  -  | 🤿  |  -  |  -  |    -     |
-|  1/4~1/10   |  5   | 🤿  | 🤿  | 🤿  |  -  | 🤿  | 🤿  |    -     |
-|  12/28~1/3  |  5   | 🤿  |  -  | 🤿  |  -  | 🤿  | 🤿  |    🤿    |
-| 12/21~12/27 |  7   | 🤿  | 🤿  | 🤿  | 🤿  | 🤿  | 🤿  |    🤿    |
-| 12/14~12/20 |  4   | 🤿  | 🤿  | 🤿  | 🤿  |  -  |  -  |    -     |
-| 12/7~12/13  |  2   |  -  |  -  |  -  |  -  | 🤿  | 🤿  |    🤿    |
-| 11/30~12/6  |  2   | 🤿  |  -  |  -  |  -  |  -  | 🤿  |    🤿    |
-| 11/23~11/29 |  1   |  -  |  -  |  -  |  -  |  -  |  -  | First 🤿 |
+|    Week     | Cnt | Sun | Mon | Tue | Wed | Thu | Fri |   Sat    |
+|:-----------:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:--------:|
+|  1/25~1/31  |     |     |     |     |     |     |     |          |
+|  1/18~1/24  |  2  | 🤿  | 🤿  |  -  |  -  |  -  |  -  |    -     |
+|  1/11~1/17  |  3  | 🤿  | 🤿  |  -  | 🤿  |  -  |  -  |    -     |
+|  1/4~1/10   |  5  | 🤿  | 🤿  | 🤿  |  -  | 🤿  | 🤿  |    -     |
+|  12/28~1/3  |  5  | 🤿  |  -  | 🤿  |  -  | 🤿  | 🤿  |    🤿    |
+| 12/21~12/27 |  7  | 🤿  | 🤿  | 🤿  | 🤿  | 🤿  | 🤿  |    🤿    |
+| 12/14~12/20 |  4  | 🤿  | 🤿  | 🤿  | 🤿  |  -  |  -  |    -     |
+| 12/7~12/13  |  2  |  -  |  -  |  -  |  -  | 🤿  | 🤿  |    🤿    |
+| 11/30~12/6  |  2  | 🤿  |  -  |  -  |  -  |  -  | 🤿  |    🤿    |
+| 11/23~11/29 |  1  |  -  |  -  |  -  |  -  |  -  |  -  | First 🤿 |
 
 <!-- Variable Declaration -->
+
+Official Meetup Speaks
+
+[2026_02]: https://community.linuxfoundation.org/events/details/lfhq-lf-ai-data-foundation-presents-japan-regional-user-group-rug-meet-up-1/
 
 <!-- Official Tech Blogs Links: -->
 [2025_10]: https://techblog.lycorp.co.jp/ja/20251001a
