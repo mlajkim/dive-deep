@@ -1,5 +1,13 @@
 #!/bin/bash
 
+
+# Sample Code
+# git checkout main
+# git branch -D jan-26-2026-daily-dive
+# git push origin --delete jan-26-2026-daily-dive
+# git branch -dr origin/jan-26-2026-daily-dive
+# then run
+
 set -e
 
 # Variables
