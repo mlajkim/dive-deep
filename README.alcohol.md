@@ -15,3 +15,5 @@ intake so that I know what I eat.
 |:---------:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | 1/25~1/31 |     | 🫧  |     |     |     |     |     |     |
 | 1/18~1/24 |     |  -  | 🍺  | 🍻  |  -  | 🍻  | 🍺  | 🍺  |
+
+End of the day => Want to reset my stress => Want to get some sparkling water that affects the thorat => brain takes it as a signal to relax + benign masochism => Feels good
