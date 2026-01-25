@@ -23,8 +23,9 @@ Basically want to do dishwash every day, with max of 15 minutes:
 
 |   Week    | Cnt | Sun  | Mon  | Tue  | Wed  | Thu  | Fri  | Sat |
 |:---------:|:---:|:----:|:----:|:----:|:----:|:----:|:----:|:---:|
-| 1/25~1/31 |     |      |      |      |      |      |      |     |
+| 1/25~1/31 |     |  -   |      |      |      |      |      |     |
 | 1/18~1/24 |  5  | DONE | DONE | DONE |  -   | DONE | DONE |  -  |
 | 1/11~1/17 |  2  | DONE |  -   | DONE |  -   |  -   |  -   |  -  |
 | 1/4~1/10  |  4  |  -   | DONE | DONE | DONE | DONE |  -   |  -  |
 
+🟡 TODOs:
