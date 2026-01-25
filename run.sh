@@ -68,7 +68,7 @@ fi
 for readme in README.alcohol.md README.md README.protein.md README.sleep.md \
               README.workout.md README.dishwash.md README.no-electronics-on-bed.md \
               README.weight.md; do
-    echo "🟡 TODOs: $(date)" >> "$readme"
+    echo "🟡 TODO" >> "$readme"
 done
 
 echo "🟡 TODO: Dive Hours ($(date))" >> "$WIP_PATH"
