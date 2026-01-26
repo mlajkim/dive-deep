@@ -13,7 +13,7 @@ intake so that I know what I eat.
 
 |   Week    | Cnt | Sun | Mon | Tue | Wed | Thu | Fri | Sat |
 |:---------:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| 1/25~1/31 |     | 🫧  |     |     |     |     |     |     |
+| 1/25~1/31 |     | 🫧  |  -  |     |     |     |     |     |
 | 1/18~1/24 |     |  -  | 🍺  | 🍻  |  -  | 🍻  | 🍺  | 🍺  |
 
-End of the day => Want to reset my stress => Want to get some sparkling water that affects the thorat => brain takes it as a signal to relax + benign masochism => Feels good🟡 TODOs: Mon Jan 26 05:18:10 JST 2026
+End of the day => Want to reset my stress => Want to get some sparkling water that affects the thorat => brain takes it as a signal to relax + benign masochism => Feels good

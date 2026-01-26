@@ -21,8 +21,7 @@ To really sleep well, I need to stop watching electronics on bed.
 
 |   Week    | Cnt | Sun | Mon  | Tue  | Wed  | Thu  | Fri | Sat  |
 |:---------:|:---:|:---:|:----:|:----:|:----:|:----:|:---:|:----:|
-| 1/25~1/31 |     |  -  |      |      |      |      |     |      |
+| 1/25~1/31 |     |  -  | GOOD |      |      |      |     |      |
 | 1/18~1/24 |  0  |  -  |  -   |  -   |  -   |  -   |  -  |  -   |
 | 1/11~1/17 |  2  |  -  |  -   |  -   | GOOD |  -   |  -  | GOOD |
 | 1/4~1/10  |  4  |  -  | GOOD | GOOD | GOOD | GOOD |  -  | OKAY |
-🟡 TODOs: Mon Jan 26 05:18:10 JST 2026
