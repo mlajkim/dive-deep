@@ -44,6 +44,3 @@ Please refer to the [Result](#result) section above to see the verification step
 # Dive Hours: XX Hours
 
 # Closing
-🟡 TODOs: Dive Hours
-🟡 TODO: Dive Hours (Mon Jan 26 05:18:10 JST 2026)
-🟡 TODO: Dive Hours (Tue Jan 27 15:59:56 JST 2026)
