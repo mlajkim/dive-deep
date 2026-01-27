@@ -70,3 +70,4 @@ Here is a quick summary of my dives in the last few weeks, usually saturday off:
 [w50_y25]: https://dev.to/mlajkim/dives-into-kubernetes-contribution-in-week-50-2025-4i6g
 [w49_y25]: https://dev.to/mlajkim/251130-zsh-cd-460i
 🟡 TODOs: Tue Jan 27 15:59:56 JST 2026
+🟡 TODO
