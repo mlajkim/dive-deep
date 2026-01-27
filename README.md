@@ -2,7 +2,7 @@
 
 Want to be really good in technology over getting certain certificates that may touch only surface level knowledge.
 
-## Offcial Public Presentations
+## Official Public Presentations
 
 Here is my official, public presentations:
 
