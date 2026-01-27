@@ -24,10 +24,10 @@ git pull origin main
 git fetch origin
 
 if git show-ref --verify --quiet "refs/remotes/origin/$BRANCH_NAME"; then
-    echo "✅ Branch already exists on origin. Pulling and exiting..."
-    git checkout "$BRANCH_NAME"
-    git pull origin "$BRANCH_NAME"
-    exit 0
+  echo "🔄 Sync and exit: Branch Already Exists"
+  git checkout "$BRANCH_NAME"
+  git pull origin "$BRANCH_NAME"
+  exit 0
 fi
 
 # Create new branch:
