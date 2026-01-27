@@ -6,10 +6,10 @@ Want to be really good in technology over getting certain certificates that may 
 
 Here is my official, public presentations:
 
-|        Date         |             Official Public Presentations              |
-|:-------------------:|:------------------------------------------------------:|
-|          ?          |                           ?                            |
-| Jan 2026 ~ Feb 2026 | ... [Japan Regional User Group (RUG) Meet-Up][2026_02] |
+|        Date         |          Official Public Presentations          |
+|:-------------------:|:-----------------------------------------------:|
+|          ?          |                        ?                        |
+| Jan 2026 ~ Feb 2026 | ... [LF AI & Data - Japan RUG Meet-Up][2026_02] |
 
 
 ## Official Tech Blogs
