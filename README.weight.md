@@ -27,5 +27,3 @@ The goal of this doc is to write performance for my weight
 |  1/4~1/10   |                             -                             |
 |  12/28~1/3  |                             -                             |
 | 12/21~12/27 | [12/25 88.2kg / 24.6%](./proofs/weight/251225.weight.png) |
-
-🟡 TODOs: Tue Jan 27 15:59:56 JST 2026
