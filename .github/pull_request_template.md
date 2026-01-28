@@ -2,9 +2,9 @@
 
 @mlajkim wants to accomplish the following three things today:
 
-- [ ]
-- [ ]
-- [ ]
+- [ ] 
+- [ ] 
+- [ ] 
 
 # Schedule today
 
@@ -13,7 +13,7 @@ Here is a quick overview of @mlajkim schedule today:
 - `4.5-5`: Miracle Morning
 - `5-10`: Dive Deep
 - `10-12`: Pro
-- `12-13`: Workot
+- `12-13`: Workout
 - `13-17`: Pro
 - `17-20`: Free Time
 
