@@ -25,3 +25,4 @@ To really sleep well, I need to stop watching electronics on bed.
 | 1/18~1/24 |  0  |  -  |  -   |  -   |  -   |  -   |  -  |  -   |
 | 1/11~1/17 |  2  |  -  |  -   |  -   | GOOD |  -   |  -  | GOOD |
 | 1/4~1/10  |  4  |  -  | GOOD | GOOD | GOOD | GOOD |  -  | OKAY |
+🟡 TODO
